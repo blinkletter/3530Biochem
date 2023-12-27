@@ -1,2 +1,2 @@
-# 3530Biochem
+# 3530 Biochemistry
 Python Notebooks for Colab
