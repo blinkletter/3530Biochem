@@ -1,0 +1,10 @@
+﻿### Calibration curve for permethrin mixture,
+### Stock solution: 2 mg in 2 mL,
+### See page 2024-1-22 of lab book for details.,
+### Integration of total area from 9.5 to 17.5 minutes,
+µM PM soln,Area
+20,32000
+30,50500
+50,81500
+70,117500
+100,163000
