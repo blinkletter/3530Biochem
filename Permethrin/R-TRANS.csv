@@ -1,7 +1,7 @@
-﻿### Hydrolysis of R-TRANS Permethrin by human carboxyesterase 1 and 2,,,,,,,,,,
-### Integration from16.2 to 17.5 minutes reported at A(225nm),,,,,,,,,,
-### See page 2024-1-23 of lab book for details.,,,,,,,,,,
-"Vol PM µL","C1",   "C2",  "hCE1-1",  "hCE1-2",  "hCE1-3",  "hCE1-4",  "hCE1-5", "hCE2-1",  "hCE2-2",  "hCE2-3",  "hCE2-4",  "hCE2-5"
+﻿### Hydrolysis of R-TRANS Permethrin by human carboxyesterase 1 and 2
+### Integration from16.2 to 17.5 minutes reported at A(225nm)
+### See page 2024-1-23 of lab book for details.
+"Vol (/uL)","C1",   "C2",  "hCE1-1",  "hCE1-2",  "hCE1-3",  "hCE1-4",  "hCE1-5", "hCE2-1",  "hCE2-2",  "hCE2-3",  "hCE2-4",  "hCE2-5"
 2,     209163,    209272,    204283,    206976,    204017,    202409,    206979,   188950,    195698,    192537,    188414,   193792
 5,     525955,    525072,    511220,    517181,    517917,    511409,    514934,   499046,    497593,    492711,    495875,   494864
 7,     732049,    735909,    724446,    723114,    719508,    722241,    726637,   695188,    701650,    700494,    699645,   698685

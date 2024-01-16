@@ -1,7 +1,7 @@
-﻿### Hydrolysis of R-CIS Permethrin by human carboxyesterase 1 and 2,,,,,,,,,,
-### Integration from 12.2 to 13.2 minutes reported at A(225nm),,,,,,,,,,
-### See page 2024-1-23 of lab book for details.,,,,,,,,,,
-"Vol PM µL","C1","C2",  "hCE1-1", "hCE1-2", "hCE1-3", "hCE1-4", "hCE1-5", "hCE2-1", "hCE2-2", "hCE2-3", "hCE2-4", "hCE2-5"
+﻿### Hydrolysis of R-CIS Permethrin by human carboxyesterase 1 and 2
+### Integration from 12.2 to 13.2 minutes reported at A(225nm)
+### See page 2024-1-23 of lab book for details.
+"Vol (/uL)","C1","C2",  "hCE1-1", "hCE1-2", "hCE1-3", "hCE1-4", "hCE1-5", "hCE2-1", "hCE2-2", "hCE2-3", "hCE2-4", "hCE2-5"
 2,     84853,    84550,    83056,    82598,    80201,    80349,    82359,    80306,    79460,    82293,    80004,    81415
 5,    212237,   214428,   202250,   205392,   203280,   205554,   202718,   204704,   201249,   202661,   201336,   202570
 7,    297884,   297802,   285502,   284935,   285472,   286673,   288212,   287083,   284148,   285308,   284352,   286972
