@@ -1,0 +1,879 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Calibration Curve for HPLC Analysis &#8212; Python for Biochemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Permethrin/Permethrin_Calibration_means';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../start.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/plot.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/plot.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../start.html">
+                    Data Interpretation and Modelling for Biochemistry
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AcidBaseMath.html">A Calculator</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./Permethrin/Permethrin_Calibration_means.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Permethrin/Permethrin_Calibration_means.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Calibration Curve for HPLC Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-line-fits-using-error-propagation">An example of line fits using error propagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-load-data-and-calculate-means-and-errors">Step 1: Load data and calculate means and errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-perform-linear-fit-with-errors">Step 2: Perform linear fit with errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-plot-data-with-error-pars-and-line-fit">Step 3: Plot data with error pars and line fit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-convert-to-preferred-units-and-track-errors">Step 4: Convert to preferred units and track errors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="calibration-curve-for-hplc-analysis">
+<h1>Calibration Curve for HPLC Analysis<a class="headerlink" href="#calibration-curve-for-hplc-analysis" title="Permalink to this heading">#</a></h1>
+<section id="an-example-of-line-fits-using-error-propagation">
+<h2>An example of line fits using error propagation<a class="headerlink" href="#an-example-of-line-fits-using-error-propagation" title="Permalink to this heading">#</a></h2>
+<p>We have performed a series of injections of a standard solution and seek to create a calibration factor for our analyte. We will also be paying attention to error propagation in my own clumsy way so the errors are properly estimated across all our calculations. In the end, no matter how much I goof up, this notebook will document everything so that others can see exactly what approach I used and correct my work.</p>
+<p>We will plot the mean of the peak area for each injection with error bars based on the standard deviation of the measurements. We will then perform a linear fit that includes the standard deviations and obtain a calibration coefficient with its own standard deviation value.</p>
+<p>This will provide a rigourous and documented source for the calibration coefficent and its standard deviation.</p>
+</section>
+<section id="step-1-load-data-and-calculate-means-and-errors">
+<h2>Step 1: Load data and calculate means and errors<a class="headerlink" href="#step-1-load-data-and-calculate-means-and-errors" title="Permalink to this heading">#</a></h2>
+<p>The code below creates a data frame from the experimental calibration data and adds a column for the mean and stadard deviation across each row.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+
+<span class="c1">############################</span>
+<span class="c1">### Set global variables </span>
+<span class="c1">############################</span>
+
+<span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/3530Biochem/main/Permethrin/&quot;</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/3530Biochem/main/Permethrin/images/&quot;</span>
+
+<span class="n">github_styles_location</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/LFER-QSAR/main/styles/&quot;</span>
+
+
+
+<span class="c1">################################################################################</span>
+<span class="c1">### Read data set. The fields are separated by commas; comments are enabled  </span>
+<span class="c1">################################################################################</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span> <span class="o">+</span> <span class="s2">&quot;PM-Calibration2.csv&quot;</span><span class="p">,</span> 
+                 <span class="n">delimiter</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> 
+                 <span class="n">skipinitialspace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+                 <span class="n">index_col</span><span class="o">=</span><span class="s2">&quot;Vol (/uL)&quot;</span><span class="p">,</span> 
+                 <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span><span class="p">)</span> 
+
+
+<span class="c1">### use built-in methods in dataframe to calculate mean and stdev of rows</span>
+
+<span class="n">means</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stdevs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="c1">### Add mean values and st_devs to dataframe for easy comparison.</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">means</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;stdev&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">stdevs</span>
+
+
+<span class="c1">### display all data in dataframe</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Area-1</th>
+      <th>Area-2</th>
+      <th>Area-3</th>
+      <th>Area-4</th>
+      <th>Area-5</th>
+      <th>Area-6</th>
+      <th>mean</th>
+      <th>stdev</th>
+    </tr>
+    <tr>
+      <th>Vol (/uL)</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>20</th>
+      <td>31553</td>
+      <td>31991</td>
+      <td>33784</td>
+      <td>34178</td>
+      <td>33671</td>
+      <td>33830</td>
+      <td>33167.833333</td>
+      <td>1103.119471</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>47717</td>
+      <td>50298</td>
+      <td>48470</td>
+      <td>50185</td>
+      <td>50026</td>
+      <td>49075</td>
+      <td>49295.166667</td>
+      <td>1053.715221</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>81206</td>
+      <td>83212</td>
+      <td>80860</td>
+      <td>82135</td>
+      <td>82250</td>
+      <td>80709</td>
+      <td>81728.666667</td>
+      <td>970.016014</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>115975</td>
+      <td>113347</td>
+      <td>114418</td>
+      <td>114965</td>
+      <td>114318</td>
+      <td>115340</td>
+      <td>114727.166667</td>
+      <td>911.820030</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>164874</td>
+      <td>163760</td>
+      <td>163519</td>
+      <td>164033</td>
+      <td>164139</td>
+      <td>163175</td>
+      <td>163916.666667</td>
+      <td>585.184643</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>245118</td>
+      <td>244527</td>
+      <td>245653</td>
+      <td>246896</td>
+      <td>245577</td>
+      <td>245320</td>
+      <td>245515.166667</td>
+      <td>787.632761</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>327267</td>
+      <td>326758</td>
+      <td>327735</td>
+      <td>326328</td>
+      <td>327121</td>
+      <td>326311</td>
+      <td>326920.000000</td>
+      <td>560.825106</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="step-2-perform-linear-fit-with-errors">
+<h2>Step 2: Perform linear fit with errors<a class="headerlink" href="#step-2-perform-linear-fit-with-errors" title="Permalink to this heading">#</a></h2>
+<p>The code below perform a curve fit that includes the errors in each data point (using the standard deviations as the errors). A slope with a standard deviation will be obtained.</p>
+<p>I fit the data to the following linear relationship: $<span class="math notranslate nohighlight">\( y = c \cdot x \)</span><span class="math notranslate nohighlight">\( where \)</span>y<span class="math notranslate nohighlight">\( is the area, \)</span>x<span class="math notranslate nohighlight">\( is the volume injected and \)</span>c<span class="math notranslate nohighlight">\( is the correlation coefficient. Observe that this is a linear line passing through the origin. This equation requires that the \)</span>y$-intercept is zero by definition.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################################################</span>
+<span class="c1">### Assign arrays of data to x, y, and standard deviations</span>
+<span class="c1">################################################################################</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;mean&quot;</span><span class="p">]</span>
+<span class="n">stdev</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;stdev&quot;</span><span class="p">]</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">### Linear curve fit on the collected x,y data</span>
+<span class="c1">################################################################################</span>
+
+<span class="c1">### Create functions that describe linear line fits</span>
+
+<span class="k">def</span> <span class="nf">linear</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept</span>
+
+<span class="k">def</span> <span class="nf">linear0</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">slope</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> 
+
+<span class="c1">### Perform curve fit using function of choice. Use &#39;linear&#39; or &#39;linear0&#39;</span>
+
+<span class="n">param</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear0</span><span class="p">,</span>             <span class="c1">### use &#39;linear&#39; or &#39;linear0&#39;</span>
+                        <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>                <span class="c1">### The day for the fit</span>
+                        <span class="n">sigma</span> <span class="o">=</span> <span class="n">stdev</span><span class="p">,</span>       <span class="c1">### Array of errors for each data point</span>
+                        <span class="n">absolute_sigma</span><span class="o">=</span><span class="kc">True</span>  <span class="c1">### Errors are values, not factors.</span>
+                        <span class="p">)</span>
+
+<span class="n">perr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">pcov</span><span class="p">))</span>  <span class="c1">### Calculate st_devs for line fit from covariance matrix</span>
+
+
+<span class="c1">### Use with &#39;linear0&#39; curve fit. </span>
+
+<span class="n">slope</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>       <span class="c1">### param is an array and slope is the first (or only) entry</span>
+<span class="n">slope_stdev</span> <span class="o">=</span> <span class="n">perr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1">### param is an array and slope is the first (or only) entry</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Line is y = (</span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">slope_stdev</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">)x&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Line is y = (1635.85 +/- 2.22)x
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-plot-data-with-error-pars-and-line-fit">
+<h2>Step 3: Plot data with error pars and line fit<a class="headerlink" href="#step-3-plot-data-with-error-pars-and-line-fit" title="Permalink to this heading">#</a></h2>
+<p>The code below will plot the mean area for the peaks in our six experiments (with error bars) against the injection volume.  The error bars are created using the standard deviations for each mean. A line is plotted using the line fit data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##################################################</span>
+<span class="c1">### Setup a figure and choose a style for plot</span>
+<span class="c1">##################################################</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">github_styles_location</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>        
+<span class="c1">#plt.style.use(github_styles_location + &quot;S2_classic2.mplstyle&quot;)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  
+
+<span class="c1">########################</span>
+<span class="c1">### Plot the data    ###</span>
+<span class="c1">########################</span>
+
+<span class="c1">### Plot data points</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">96</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">marker</span> <span class="o">=</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">32</span><span class="p">,</span> <span class="n">edgecolors</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+
+
+<span class="c1">### Add error bars (command could be all on one line as above, but is separated for adding comments)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>             <span class="c1">### data</span>
+            <span class="n">yerr</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">stdev</span><span class="p">,</span> <span class="c1">### y errors</span>
+            <span class="n">xerr</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>      <span class="c1">### x errors</span>
+            <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span><span class="p">,</span>     <span class="c1">### Data marker style</span>
+            <span class="n">ecolor</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="c1">### Color of error bars</span>
+            <span class="n">elinewidth</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span> <span class="c1">### Thickness of vertical bar</span>
+            <span class="n">capsize</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>      <span class="c1">### width of cap (in points)</span>
+            <span class="n">capthick</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>   <span class="c1">### thickness of cap line</span>
+            <span class="n">zorder</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">last_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>     <span class="c1">### Convert row index into array and choose largest value</span>
+<span class="n">x_axis</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">last_x</span> <span class="o">*</span> <span class="mf">1.05</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1">### Create x-axis for ploting caluclated line fit</span>
+
+
+<span class="c1">### Plot calculated line</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_axis</span><span class="p">,</span> <span class="n">x_axis</span> <span class="o">*</span> <span class="n">slope</span><span class="p">,</span>    <span class="c1">### x, y calculated data for line</span>
+        <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>      <span class="c1">### solid black line</span>
+        <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">zorder</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">### line thickness and layer (0 is farthest back)</span>
+        <span class="p">)</span>
+
+
+<span class="c1">############################</span>
+<span class="c1">### Set labels and scale </span>
+<span class="c1">############################</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Calibration Plot&quot;</span><span class="p">,</span>
+        <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Peak Area&quot;</span><span class="p">,</span> 
+        <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Injection Volume / $\mu L$&quot;</span><span class="p">,</span>
+        <span class="n">xlim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="n">ylim</span><span class="o">=</span><span class="mi">0</span>
+      <span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.07</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.07</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    <span class="c1"># add 7% empty space around outside of plot area   </span>
+
+<span class="c1">#############################</span>
+<span class="c1">### Output the final plot </span>
+<span class="c1">#############################</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;plot.pdf&quot;</span><span class="p">)</span>   <span class="c1">### use this to save the figure in PDF format</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                <span class="c1">### output the combined plot plots</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Line is y = (</span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">slope_stdev</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">)x&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a0f05086e89c7b7de58d0c9564b3036e0272c8a02ed4422cae88b6743d365706.png" src="../_images/a0f05086e89c7b7de58d0c9564b3036e0272c8a02ed4422cae88b6743d365706.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Line is y = (1635.85 +/- 2.22)x
+</pre></div>
+</div>
+</div>
+</div>
+<section id="step-4-convert-to-preferred-units-and-track-errors">
+<h3>Step 4: Convert to preferred units and track errors<a class="headerlink" href="#step-4-convert-to-preferred-units-and-track-errors" title="Permalink to this heading">#</a></h3>
+<p>The code below will use the <em>uncertainties</em> package in the <em>Python</em> library to perform calculations with error propagation. We won’t have to know how to propagate errors correctly but anyone examining my work will be able to see exactly what I did.</p>
+<p>The <em>uncertainties</em> package is not included in the <em>Python</em> standard library and so must be installed using the code cell below. Only run this cell once. It wont hurt if you run it again; it just wastes time.</p>
+<p>The code cell underneath the install code will import our slope and standard deviation from the line fit and create a ufloat object.  This is a number that includes the uncertainty. Observe the ways I printed it out.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">####################################</span>
+<span class="c1">### Install UNCERTAINTIES package </span>
+<span class="c1">####################################</span>
+
+<span class="c1">#%pip install uncertainties</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">un</span>
+<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>
+<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">umath</span> <span class="k">as</span> <span class="n">um</span>
+
+
+<span class="c1">####################################################################################</span>
+<span class="c1">### Create calibration coefficient as a floating point number with uncertainty</span>
+<span class="c1">####################################################################################</span>
+
+<span class="n">coeff</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">slope_stdev</span><span class="p">)</span>
+
+<span class="c1">##################################</span>
+<span class="c1">### Print out the ufloat value</span>
+<span class="c1">##################################</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">coeff</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The calibration coefficient is </span><span class="si">{</span><span class="n">coeff</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> per microlitre&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The number is </span><span class="si">{</span><span class="n">coeff</span><span class="o">.</span><span class="n">n</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The st_dev is </span><span class="si">{</span><span class="n">coeff</span><span class="o">.</span><span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1635.8+/-2.2
+The calibration coefficient is 1635.85+/-2.22 per microlitre
+The number is 1635.8472793303606
+The st_dev is 2.223118062472124
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now can state the other values. We dont have a population of measurements to determine the standard deviations for these values, we just have “estimated errors” based on experience and manufacturer information.</p>
+<p>The automatic sample <strong>injector</strong> is reported to have an accuracy of <span class="math notranslate nohighlight">\(\pm 0.1 \, \mu L\)</span></p>
+<p>When <strong>weighing</strong> the permethrin sample I used a <strong>balance</strong> with an accuracy of <span class="math notranslate nohighlight">\(\pm 0.1 \, mg\)</span></p>
+<p>The <strong>pipette</strong> that I used to transfer the solvent for the stock solution has an accuracy of <span class="math notranslate nohighlight">\(\pm 0.01 \, mL\)</span></p>
+<p>Observe the features of the <em>uncertanties</em> package that I used to create these ufloat values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##################################</span>
+<span class="c1">### Set values with uncertainties</span>
+<span class="c1">##################################</span>
+
+<span class="n">volume</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat_fromstr</span><span class="p">(</span><span class="s2">&quot;2+/-0.01&quot;</span><span class="p">)</span>    <span class="c1">### volume of stock solution is 2 mL; creating ufloat from text</span>
+<span class="n">mass</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>                   <span class="c1">### mass is 2 mg; creating ufloat from list</span>
+<span class="n">molar_mass</span> <span class="o">=</span> <span class="mf">391.29</span>                       <span class="c1">### molar mass of permethrin is 391.29 g/mole; no uncertainty here</span>
+
+<span class="c1">##################################</span>
+<span class="c1">### convert area/uL to area/mole</span>
+<span class="c1">##################################</span>
+
+<span class="c1">### coeff(A/uL) * 1000uL/1mL  * volume/mass(mL/g) * molwt(g/mole) = A/mole</span>
+
+<span class="n">coeff_Area_mole</span> <span class="o">=</span> <span class="n">coeff</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">volume</span><span class="o">/</span><span class="n">mass</span> <span class="o">*</span> <span class="n">molar_mass</span>
+<span class="n">coeff_Area_mole</span><span class="o">/</span><span class="mi">1000000</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The correlation coefficient is </span><span class="si">{</span><span class="n">coeff_Area_mole</span><span class="o">/</span><span class="mi">1000000</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> /micromole&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The correlation coefficient is 640.09+/-32.18 /micromole
+</pre></div>
+</div>
+</div>
+</div>
+<p>The error above is about 5%.  That is the error in the mass measurement.  Most of the error was in the precision of the ballance. If I had measured 20mg into 20mL I would have a much better standard deviation for my calibration coefficient. Next time I’ll do better.</p>
+<p>The <em>uncertainties</em> ufloat data object handled all the rules of propagating error as we multiplied and divided these values. I did not have to keep track but you now know exactly how I propagated the errors — I delegated it all to the <em>uncertainties</em> package. You will be able to repeat my results by following the method as described. And you can now criticize my approach and correct my work, if necessary.</p>
+<p>I will now write this correlation coefficient down in my lab book for future use.</p>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>The <em>uncertainties</em> package is a great calculator that automatically handles errors for us.</p>
+<p>In this example we were doing simple math. The <em>uncertainties</em> package will handle the propagation of error through log and sin functions and even through derivarions. We only need it for the arithmatic, but it’s great to know that it will be there for us when we really need it.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Permethrin"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-of-line-fits-using-error-propagation">An example of line fits using error propagation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-load-data-and-calculate-means-and-errors">Step 1: Load data and calculate means and errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-perform-linear-fit-with-errors">Step 2: Perform linear fit with errors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-plot-data-with-error-pars-and-line-fit">Step 3: Plot data with error pars and line fit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-convert-to-preferred-units-and-track-errors">Step 4: Convert to preferred units and track errors</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Barry Linkletter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
