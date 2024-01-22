@@ -3,5 +3,8 @@
 
 format: jb-book
 root: start
-chapters:
-    - file: AcidBaseMath
+parts:
+    - caption: Tutorial 2
+      chapters:
+        - file: T2AcidBaseMath
+        - file: T2Exercise
