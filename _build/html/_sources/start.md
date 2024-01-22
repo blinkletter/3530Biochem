@@ -1,4 +1,4 @@
-# Data Interpretation and Modelling for Biochemistry
+# Data Interpretation for Biochemistry
 
 In the tutorial we will be examining experimental data an interpreting it with mathematical models (e.g. curve fits). We will be using a spreadsheet application such as Microsoft *Excel* and we will use *Python*. The is not a programming course and we will not be using *Python* as a program language. We will be using it as a calculator, a graphing calculator.
 
@@ -22,11 +22,12 @@ If you should fall in love with *Python*, I recommend ['Scientific Computing for
 
 In our second tutorial meeting we will be doing basic acid equilibrium problems. We could use a calculator, but that leaves no record of what we did. We would not be able to find our error. We could use a spreadsheet application and that file would contain all our calculations. We will also try using an interactive *Python* notebook. The following links will take you to the *Python* notebooks for this tutorial.
 
-- [Acid Equilibria with *Python*](AcidBaseMath.ipynb)
+- [Acid Equilibria with *Python*](T2AcidBaseMath.ipynb)
 
+This notebook features a few starter code blocks that will solve acid/base equilibria problems. We will demonstrate using both *Excel* and *Python* as a self-documenting calculator.
 
-- [Problem Set Examples](Tutorial2Exercise.ipynb)
+- [Problem Set Examples](T2Exercise.ipynb)
 
-This notebook provides *Python* code for solving some of the problems in the 'Math Ideas' problem set. 
+This notebook provides *Python* code for solving some of the problems in the 'Math Ideas' problem set. Steal this code as you work on the other problems. 
 
 
