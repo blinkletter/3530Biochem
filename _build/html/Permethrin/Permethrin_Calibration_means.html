@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Calibration Curve for HPLC Analysis &#8212; Python for Biochemistry</title>
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -65,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -157,7 +159,7 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 2</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../T2AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../T2Exercise.html">Acid-Base Equilibria Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T2Exercise.html">Problem Set Examples</a></li>
 </ul>
 
     </div>
@@ -354,16 +356,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="calibration-curve-for-hplc-analysis">
-<h1>Calibration Curve for HPLC Analysis<a class="headerlink" href="#calibration-curve-for-hplc-analysis" title="Permalink to this headline">#</a></h1>
-<div class="section" id="an-example-of-line-fits-using-error-propagation">
-<h2>An example of line fits using error propagation<a class="headerlink" href="#an-example-of-line-fits-using-error-propagation" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="calibration-curve-for-hplc-analysis">
+<h1>Calibration Curve for HPLC Analysis<a class="headerlink" href="#calibration-curve-for-hplc-analysis" title="Permalink to this heading">#</a></h1>
+<section id="an-example-of-line-fits-using-error-propagation">
+<h2>An example of line fits using error propagation<a class="headerlink" href="#an-example-of-line-fits-using-error-propagation" title="Permalink to this heading">#</a></h2>
 <p>We have performed a series of injections of a standard solution and seek to create a calibration factor for our analyte. We will also be paying attention to error propagation in my own clumsy way so the errors are properly estimated across all our calculations. In the end, no matter how much I goof up, this notebook will document everything so that others can see exactly what approach I used and correct my work.</p>
 <p>We will plot the mean of the peak area for each injection with error bars based on the standard deviation of the measurements. We will then perform a linear fit that includes the standard deviations and obtain a calibration coefficient with its own standard deviation value.</p>
 <p>This will provide a rigourous and documented source for the calibration coefficent and its standard deviation.</p>
-</div>
-<div class="section" id="step-1-load-data-and-calculate-means-and-errors">
-<h2>Step 1: Load data and calculate means and errors<a class="headerlink" href="#step-1-load-data-and-calculate-means-and-errors" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="step-1-load-data-and-calculate-means-and-errors">
+<h2>Step 1: Load data and calculate means and errors<a class="headerlink" href="#step-1-load-data-and-calculate-means-and-errors" title="Permalink to this heading">#</a></h2>
 <p>The code below creates a data frame from the experimental calibration data and adds a column for the mean and stadard deviation across each row.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -536,9 +538,9 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="step-2-perform-linear-fit-with-errors">
-<h2>Step 2: Perform linear fit with errors<a class="headerlink" href="#step-2-perform-linear-fit-with-errors" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="step-2-perform-linear-fit-with-errors">
+<h2>Step 2: Perform linear fit with errors<a class="headerlink" href="#step-2-perform-linear-fit-with-errors" title="Permalink to this heading">#</a></h2>
 <p>The code below perform a curve fit that includes the errors in each data point (using the standard deviations as the errors). A slope with a standard deviation will be obtained.</p>
 <p>I fit the data to the following linear relationship: $<span class="math notranslate nohighlight">\( y = c \cdot x \)</span><span class="math notranslate nohighlight">\( where \)</span>y<span class="math notranslate nohighlight">\( is the area, \)</span>x<span class="math notranslate nohighlight">\( is the volume injected and \)</span>c<span class="math notranslate nohighlight">\( is the correlation coefficient. Observe that this is a linear line passing through the origin. This equation requires that the \)</span>y$-intercept is zero by definition.</p>
 <div class="cell docutils container">
@@ -589,9 +591,9 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="step-3-plot-data-with-error-pars-and-line-fit">
-<h2>Step 3: Plot data with error pars and line fit<a class="headerlink" href="#step-3-plot-data-with-error-pars-and-line-fit" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="step-3-plot-data-with-error-pars-and-line-fit">
+<h2>Step 3: Plot data with error pars and line fit<a class="headerlink" href="#step-3-plot-data-with-error-pars-and-line-fit" title="Permalink to this heading">#</a></h2>
 <p>The code below will plot the mean area for the peaks in our six experiments (with error bars) against the injection volume.  The error bars are created using the standard deviations for each mean. A line is plotted using the line fit data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -664,14 +666,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/6dd86ab8f83fbc2acd126cd129c8d18df463587cee49c0af906ed0b8265c1312.png" src="../_images/6dd86ab8f83fbc2acd126cd129c8d18df463587cee49c0af906ed0b8265c1312.png" />
+<img alt="../_images/a0f05086e89c7b7de58d0c9564b3036e0272c8a02ed4422cae88b6743d365706.png" src="../_images/a0f05086e89c7b7de58d0c9564b3036e0272c8a02ed4422cae88b6743d365706.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Line is y = (1635.85 +/- 2.22)x
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="step-4-convert-to-preferred-units-and-track-errors">
-<h3>Step 4: Convert to preferred units and track errors<a class="headerlink" href="#step-4-convert-to-preferred-units-and-track-errors" title="Permalink to this headline">#</a></h3>
+<section id="step-4-convert-to-preferred-units-and-track-errors">
+<h3>Step 4: Convert to preferred units and track errors<a class="headerlink" href="#step-4-convert-to-preferred-units-and-track-errors" title="Permalink to this heading">#</a></h3>
 <p>The code below will use the <em>uncertainties</em> package in the <em>Python</em> library to perform calculations with error propagation. We won’t have to know how to propagate errors correctly but anyone examining my work will be able to see exactly what I did.</p>
 <p>The <em>uncertainties</em> package is not included in the <em>Python</em> standard library and so must be installed using the code cell below. Only run this cell once. It wont hurt if you run it again; it just wastes time.</p>
 <p>The code cell underneath the install code will import our slope and standard deviation from the line fit and create a ufloat object.  This is a number that includes the uncertainty. Observe the ways I printed it out.</p>
@@ -712,14 +714,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">un</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">umath</span> <span class="k">as</span> <span class="n">um</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;uncertainties&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1635.8+/-2.2
+The calibration coefficient is 1635.85+/-2.22 per microlitre
+The number is 1635.8472793303606
+The st_dev is 2.223118062472124
 </pre></div>
 </div>
 </div>
@@ -761,14 +759,14 @@ document.write(`
 <p>The error above is about 5%.  That is the error in the mass measurement.  Most of the error was in the precision of the ballance. If I had measured 20mg into 20mL I would have a much better standard deviation for my calibration coefficient. Next time I’ll do better.</p>
 <p>The <em>uncertainties</em> ufloat data object handled all the rules of propagating error as we multiplied and divided these values. I did not have to keep track but you now know exactly how I propagated the errors — I delegated it all to the <em>uncertainties</em> package. You will be able to repeat my results by following the method as described. And you can now criticize my approach and correct my work, if necessary.</p>
 <p>I will now write this correlation coefficient down in my lab book for future use.</p>
-</div>
-</div>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>The <em>uncertainties</em> package is a great calculator that automatically handles errors for us.</p>
 <p>In this example we were doing simple math. The <em>uncertainties</em> package will handle the propagation of error through log and sin functions and even through derivarions. We only need it for the arithmatic, but it’s great to know that it will be there for us when we really need it.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

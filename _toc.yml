@@ -8,3 +8,4 @@ parts:
       chapters:
         - file: T2AcidBaseMath
         - file: T2Exercise
+        - file: TitrModel

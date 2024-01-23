@@ -30,4 +30,8 @@ This notebook features a few starter code blocks that will solve acid/base equil
 
 This notebook provides *Python* code for solving some of the problems in the 'Math Ideas' problem set. Steal this code as you work on the other problems. 
 
+- [Modeling Titrations](TitrModel.ipynb)
+
+This notebook provides *Python* code plotting titrations of weak acids like acetic acid. It is not something that I want you to be able to do. I will be using this to provide a graphical interpretation of buffer behaviour.
+
 

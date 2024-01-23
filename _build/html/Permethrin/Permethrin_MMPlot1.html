@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Michaelis-Menten Plot from HPLC Analysis &#8212; Python for Biochemistry</title>
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -65,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -157,7 +159,7 @@ const thebe_selector_output = ".output, .cell_output"
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 2</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../T2AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="../T2Exercise.html">Acid-Base Equilibria Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T2Exercise.html">Problem Set Examples</a></li>
 </ul>
 
     </div>
@@ -360,16 +362,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="michaelis-menten-plot-from-hplc-analysis">
-<h1>Michaelis-Menten Plot from HPLC Analysis<a class="headerlink" href="#michaelis-menten-plot-from-hplc-analysis" title="Permalink to this headline">#</a></h1>
-<div class="section" id="curve-fits-with-errors-included">
-<h2>Curve Fits with Errors Included<a class="headerlink" href="#curve-fits-with-errors-included" title="Permalink to this headline">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="michaelis-menten-plot-from-hplc-analysis">
+<h1>Michaelis-Menten Plot from HPLC Analysis<a class="headerlink" href="#michaelis-menten-plot-from-hplc-analysis" title="Permalink to this heading">#</a></h1>
+<section id="curve-fits-with-errors-included">
+<h2>Curve Fits with Errors Included<a class="headerlink" href="#curve-fits-with-errors-included" title="Permalink to this heading">#</a></h2>
 <p>We have aliquotes of a stock solution in an enzyme assay. We have five replicates of each enzyme reaction. Below we will calculate the difference between a control and each of the experimental runs. We will get the mean value and standard deviation for the amount of the given diastereomer that is consumed after 3 hours.  I all cases the progress of the reaction is less that 5%.</p>
 <p>We will then plot the michaelis-menten plots to determine the enzyme kinetic parameters. We will need to convert to appropriate units for values for <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span>. I will convert to <span class="math notranslate nohighlight">\(\mu M/min\)</span> for <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(mM\)</span> for <span class="math notranslate nohighlight">\(K_M\)</span>. I will use the *uncertainties<span class="math notranslate nohighlight">\( package in \)</span>Python$ to progate errors so that the final standard deviations can be reported.</p>
 <p>This will provide a rigourous and documented source for the <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> values and their standard deviations. You might not agree with my method but you will know exactly what I did.</p>
-</div>
-<div class="section" id="step-1-load-data-and-calculate-means-and-errors">
-<h2>Step 1: Load data and calculate means and errors<a class="headerlink" href="#step-1-load-data-and-calculate-means-and-errors" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="step-1-load-data-and-calculate-means-and-errors">
+<h2>Step 1: Load data and calculate means and errors<a class="headerlink" href="#step-1-load-data-and-calculate-means-and-errors" title="Permalink to this heading">#</a></h2>
 <p>The code below creates a data frame from the enzyme kinetics experiment and creates a separate data frame for each enzyme (hCE1 and hCE2) as well as the control lanes (C1 and C2).  The difference between the control peak area for PM and each experimental peak area will be calculated. Then a column for the mean and stadard deviation across each row is added. We now have a value for the amount of substrate consumed after 3 hours in terms of peak area.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -845,9 +847,9 @@ These is the five lanes with the CE2 version of the enzyme.
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="step-2-perform-curve-fit-with-errors">
-<h2>Step 2: Perform curve fit with errors<a class="headerlink" href="#step-2-perform-curve-fit-with-errors" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="step-2-perform-curve-fit-with-errors">
+<h2>Step 2: Perform curve fit with errors<a class="headerlink" href="#step-2-perform-curve-fit-with-errors" title="Permalink to this heading">#</a></h2>
 <p>The code below perform a curve fit that includes the errors in each data point (using the standard deviations as the errors). A slope with a standard deviation will be obtained.</p>
 <p>I fit the data to the following linear relationship: $<span class="math notranslate nohighlight">\( y = V_{max}\frac{x}{x + K_M} \)</span><span class="math notranslate nohighlight">\( where \)</span>y<span class="math notranslate nohighlight">\( is the area, \)</span>x<span class="math notranslate nohighlight">\( is the volume of stock solution in each experiment and \)</span>y$ is the area difference after 3 hours.</p>
 <div class="cell docutils container">
@@ -913,9 +915,9 @@ Name: mean, dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="step-3-plot-data-with-error-pars-and-line-fit">
-<h2>Step 3: Plot data with error pars and line fit<a class="headerlink" href="#step-3-plot-data-with-error-pars-and-line-fit" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="step-3-plot-data-with-error-pars-and-line-fit">
+<h2>Step 3: Plot data with error pars and line fit<a class="headerlink" href="#step-3-plot-data-with-error-pars-and-line-fit" title="Permalink to this heading">#</a></h2>
 <p>The code below will plot the mean area for the peak area differences in our five experiments (with error bars) against the stock solution volume.  The error bars are created using the standard deviations for each mean. A Michaelis-Menten is plotted using the curve fit data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -998,16 +1000,16 @@ Name: mean, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/50f2caebdadd35efc747945b1782ed02a351c6a4dec2c381eb9265cbe5e94a67.png" src="../_images/50f2caebdadd35efc747945b1782ed02a351c6a4dec2c381eb9265cbe5e94a67.png" />
+<img alt="../_images/9835fe5560d7498fdb5cb77616ef7301e099c114dca67a9d085019aadb350ba0.png" src="../_images/9835fe5560d7498fdb5cb77616ef7301e099c114dca67a9d085019aadb350ba0.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vmax is (92782.83 +/- 3368.86) Area units/3 hours
 KM is (26.65 +/- 2.37) uL injection volume
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="steps-4-and-5-do-it-all-again-with-hce2">
-<h2>Steps 4 and 5: Do It All Again with hCE2<a class="headerlink" href="#steps-4-and-5-do-it-all-again-with-hce2" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="steps-4-and-5-do-it-all-again-with-hce2">
+<h2>Steps 4 and 5: Do It All Again with hCE2<a class="headerlink" href="#steps-4-and-5-do-it-all-again-with-hce2" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################################################</span>
@@ -1138,15 +1140,15 @@ KM is (26.65 +/- 2.37) uL injection volume
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/adf442486bc7ad4fcd4a26a156ebf7241beed56379b2d0e22c9261603138fc1c.png" src="../_images/adf442486bc7ad4fcd4a26a156ebf7241beed56379b2d0e22c9261603138fc1c.png" />
+<img alt="../_images/d3a5519aa683821edc1e9d4b30c9a928508c43aa73fb0aae41a5b31a24a547d2.png" src="../_images/d3a5519aa683821edc1e9d4b30c9a928508c43aa73fb0aae41a5b31a24a547d2.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Vmax is (45565.80 +/- 823.40) Area units/3 hours
 KM is (8.63 +/- 0.80) uL injection volume
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="step-4-convert-to-preferred-units-and-track-errors">
-<h3>Step 4: Convert to preferred units and track errors<a class="headerlink" href="#step-4-convert-to-preferred-units-and-track-errors" title="Permalink to this headline">#</a></h3>
+<section id="step-4-convert-to-preferred-units-and-track-errors">
+<h3>Step 4: Convert to preferred units and track errors<a class="headerlink" href="#step-4-convert-to-preferred-units-and-track-errors" title="Permalink to this heading">#</a></h3>
 <p>The code below will use the <em>uncertainties</em> package in the <em>Python</em> library to perform calculations with error propagation. We won’t have to know how to propagate errors correctly but anyone examining my work will be able to see exactly what I did.</p>
 <p>The <em>uncertainties</em> package is not included in the <em>Python</em> standard library and so must be installed using the code cell below. Only run this cell once. It wont hurt if you run it again; it just wastes time.</p>
 <p>The code cell underneath the install code will import our slope and standard deviation from the line fit and create a ufloat object.  This is a number that includes the uncertainty. Observe the ways I printed it out.</p>
@@ -1161,8 +1163,8 @@ KM is (8.63 +/- 0.80) uL injection volume
 </div>
 </div>
 </div>
-<div class="section" id="notes-on-errors">
-<h4>Notes on Errors<a class="headerlink" href="#notes-on-errors" title="Permalink to this headline">#</a></h4>
+<section id="notes-on-errors">
+<h4>Notes on Errors<a class="headerlink" href="#notes-on-errors" title="Permalink to this heading">#</a></h4>
 <p>We now can state the other values. We dont have a population of measurements to determine the standard deviations for these values, we just have “estimated errors” based on experience and manufacturer information.</p>
 <p>The automatic sample <strong>injector</strong> is reported to have an accuracy of <span class="math notranslate nohighlight">\(\pm 0.1 \, \mu L\)</span></p>
 <p>When <strong>weighing</strong> the permethrin sample I used a <strong>balance</strong> with an accuracy of <span class="math notranslate nohighlight">\(\pm 0.1 \, mg\)</span></p>
@@ -1191,22 +1193,15 @@ KM is (8.63 +/- 0.80) uL injection volume
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">un</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">umath</span> <span class="k">as</span> <span class="n">um</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;uncertainties&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The calibration coefficient is 640.09+/-32.18 per microlitre
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="converting-initial-area-to-concentration">
-<h3>Converting Initial Area to Concentration<a class="headerlink" href="#converting-initial-area-to-concentration" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+<section id="converting-initial-area-to-concentration">
+<h3>Converting Initial Area to Concentration<a class="headerlink" href="#converting-initial-area-to-concentration" title="Permalink to this heading">#</a></h3>
 <p>The C2 control series is used to define the initial concentration. It is a tube where no enzyme was present during the time of the reaction. We have previously measured that hydrolysis at pH 7.0 is insignificant over the time frame of 3 hours. The amount of one particular diastereomer will be some fraction of the total permethrin concentration.  The orrelation coefficient was calculated fro the total permethrin concentration. (In hindsite I should have treated each of the four peaks separately rather than combining them. The data is still on the computer of the HPLC; perhaps I should go back and recalculate?)</p>
 <p>Rather than dig up my old data, I will move forward with the calibration coefficient and the measured areas in this experiment to determine a new factor that will convert the volume of the permethrin aliquote to concentration in the reaction sample.</p>
 <p>First we note the concentration of the stock solution.  It is 2 g in 1 mL DMSO. that is a high concentration, but it needs to be high so that a minumum amount of DMSO solution is added in each experimental sample. Enzymes prefer water and we want to use the minimum amount of DMSO cosolvent.</p>
@@ -1243,14 +1238,27 @@ KM is (8.63 +/- 0.80) uL injection volume
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">volume_stock</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat_fromstr</span><span class="p">(</span><span class="s2">&quot;1+/-0.01&quot;</span><span class="p">)</span>    <span class="c1">### volume of stock solution is 2 mL; creating ufloat from text</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">mass</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mf">0.0001</span><span class="p">)</span>                   <span class="c1">### mass is 2 g; creating ufloat from list</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">molar_mass</span> <span class="o">=</span> <span class="mf">391.29</span>                       <span class="c1">### molar mass of permethrin is 391.29 g/mole; no uncertainty here</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Concentration of stock solution is 5.11+/-0.05
 
-<span class="ne">NameError</span>: name &#39;un&#39; is not defined
+ Calculated Expected Total Area for all Permethrins
+[654338.2146234252+/-47314.10856215783
+ 1635845.536558563+/-91497.67827952169
+ 2290183.751181988+/-124020.95330219094
+ 3271691.073117126+/-174000.32120314354
+ 9815073.219351375+/-513733.23430243705
+ 16358455.36558563+/-855110.1008191485
+ 32716910.73117126+/-1709281.1206318177]
+
+ Observed Area for a chosen diastereomer
+Vol (/uL)
+2       108994
+5       281063
+7       387970
+10      558531
+30     1671218
+50     2787453
+100    5570797
+Name: C2, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1380,9 +1388,9 @@ Calibration factor: 0.170+/-0.004
 <p>We could have just used the ratio of the expected total peak area to the measured peak area of a disatereomer to get this factor but I chose to use a line fit which gives me the same result and but also serves to include all the experimental initial diastereomer peak areas. The curve fit function will report a standard deviation for the line fit that will be the error for this concentration adjustment factor.</p>
 <p>There are other ways to to this.  I could have calculated the factor for each tube in the control lane and then averaged them to get mean and the standard deviation. either method is acceptable. the key point is that the approach I used above is documented. No matter how bad my explanation of what I did is, the <em>Python</em> code describes exactly what was done.</p>
 <p>feel free to criticize my work. You can see what I did and make it better.</p>
-</div>
-<div class="section" id="calculating-parameters">
-<h3>Calculating Parameters<a class="headerlink" href="#calculating-parameters" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="calculating-parameters">
+<h3>Calculating Parameters<a class="headerlink" href="#calculating-parameters" title="Permalink to this heading">#</a></h3>
 <p>We have values for <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> for this disatereomer of permethrin with each of the two versions of <em>carboxyesterase</em>. The values are expressed in terms of how much of the permethrin stock solution is in each tube and the amount that the peak area was reduced after 3 hours. We can convert these values to more common concentration and rate units.</p>
 <p>Examine the code below.  I am again using the <em>uncertainties</em> package to track error propagation.</p>
 <div class="cell docutils container">
@@ -1438,26 +1446,37 @@ Calibration factor: 0.170+/-0.004
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For hCE1: KM = 0.0232+/-0.0021 mM
+For hCE2: KM = 0.0075+/-0.0007 mM
+For hCE1: Vmax = 4026.4664+/-249.7008 uM/min
+For hCE1: Vmax = 1977.4041+/-105.6392 uM/min
+[E] = (1.395+/-0.024)e-07
+For hCE1: kcat = 481.1+/-31.0 /s
+For hCE2: kcat = 236.2602+/-13.2770 /s
+For hCE1: kcat/KM = 20755918.0156+/-2358801.2620 /s
+</pre></div>
+</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">KM1_mM</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">KM1</span><span class="p">,</span><span class="n">KM1_stdev</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1">### KM = uL injected in reaction. Convert to mM.</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1">### KM = uL * 1 L/10^6 uL * mol/L * 1/mL * 1000mL/L * n</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">KM1_mM</span> <span class="o">=</span> <span class="p">(</span><span class="n">KM1_mM</span><span class="o">/</span><span class="mi">1000000</span><span class="p">)</span> <span class="o">*</span> <span class="n">conc_stock_soln</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="n">volume_reaction</span> <span class="o">*</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">calibration_factor</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">43</span>
+<span class="g g-Whitespace">     </span><span class="mi">40</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;For hCE2: kcat = </span><span class="si">{</span><span class="n">kcat2</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> /s&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">42</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;For hCE1: kcat/KM = </span><span class="si">{</span><span class="n">kcat1</span><span class="o">/</span><span class="p">(</span><span class="n">KM1_mM</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> /s&quot;</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">43</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;For hCE2: kcat/KM = </span><span class="si">{</span><span class="n">kcat2</span><span class="o">/</span><span class="p">(</span><span class="n">KM3_mM</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> /s&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">45</span> <span class="nb">print</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="nb">print</span><span class="p">(</span><span class="n">kcat1</span><span class="o">/</span><span class="p">(</span><span class="n">KM1_mM</span><span class="o">/</span><span class="mi">1000</span><span class="p">))</span>
 
-<span class="ne">NameError</span>: name &#39;un&#39; is not defined
+<span class="ne">NameError</span>: name &#39;KM3_mM&#39; is not defined
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="rinse-and-repeat">
-<h2>Rinse and Repeat<a class="headerlink" href="#rinse-and-repeat" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="rinse-and-repeat">
+<h2>Rinse and Repeat<a class="headerlink" href="#rinse-and-repeat" title="Permalink to this heading">#</a></h2>
 <p>There are four data sets, one for each peak in the HPLC chromatogram. We can alayze all four using this notebook. We can report the exact methiods used in data analysis by providing this notebook as the documentation. the code reveals what we did in precise detail. The truth is there for all to criticize or marvel.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
