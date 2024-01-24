@@ -9,3 +9,6 @@ parts:
         - file: T2AcidBaseMath
         - file: T2Exercise
         - file: TitrModel
+    - caption: Tutorial 3
+      chapters:
+        - file: MM_Intro

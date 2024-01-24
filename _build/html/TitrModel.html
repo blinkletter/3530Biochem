@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modeling Titrations &#8212; Python for Biochemistry</title>
   
   
@@ -44,7 +43,6 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -66,9 +64,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'TitrModel';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Intro to Michaelis-Menten Kinetics" href="MM_Intro.html" />
     <link rel="prev" title="Problem Set Examples" href="T2Exercise.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -163,6 +162,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="T2Exercise.html">Problem Set Examples</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Modeling Titrations</a></li>
 
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="MM_Intro.html">Intro to Michaelis-Menten Kinetics</a></li>
 </ul>
 
     </div>
@@ -370,13 +373,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="modeling-titrations">
-<h1>Modeling Titrations<a class="headerlink" href="#modeling-titrations" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="modeling-titrations">
+<h1>Modeling Titrations<a class="headerlink" href="#modeling-titrations" title="Permalink to this headline">#</a></h1>
 <p>This exercise will introduce you to the ideas needed to interpret mathematical models of chemical systems. We will use the classic titration as our example.</p>
 <p>We can model any chemical system with math and then see if the model fits our experimental data. If we obtain a good fit we may be able to determine the parameters of the system with some accuracy. Let us examine a simple titration of acetic acid.</p>
 <p><em>Note:  You can perform this exercise using Maple or Matlab, both of which are freely available to UPEI students via a site license. I am presenting this using Python because it is free to everyone for all time.</em></p>
-<section id="python-as-a-calculator">
-<h2>Python as a Calculator<a class="headerlink" href="#python-as-a-calculator" title="Permalink to this heading">#</a></h2>
+<div class="section" id="python-as-a-calculator">
+<h2>Python as a Calculator<a class="headerlink" href="#python-as-a-calculator" title="Permalink to this headline">#</a></h2>
 <p>First let us consider the basics. You should explore my notes on <a class="reference external" href="https://blinkletter.github.io/MathWithPython/start.html">Python as a calculator</a> and then work through the <a class="reference external" href="https://blinkletter.github.io/MathWithPython/E1_The_ICE_Table_in_Python.html">example of weak acid dissociation</a> found on those pages.</p>
 <p>Download the Jupyter Notebook for <a class="reference external" href="https://blinkletter.github.io/MathWithPython/E1_The_ICE_Table_in_Python.html">example of weak acid dissociation</a> and solve the following problem: What is the pH of the solution created by adding 2.0 mL of acetic acid to 500 mL of pure water?</p>
 <div class="cell tag_hide-input docutils container">
@@ -397,12 +400,12 @@ document.write(`
 </div>
 </details>
 </div>
-</section>
-<section id="a-simple-titration">
-<h2>A Simple Titration<a class="headerlink" href="#a-simple-titration" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="a-simple-titration">
+<h2>A Simple Titration<a class="headerlink" href="#a-simple-titration" title="Permalink to this headline">#</a></h2>
 <p>Let us take that as a starting point. The pH of the solution is 2.96 (did you use the density of acetic acid to get the correct mass for the calculations?). We need a function that will model the concentration of hydronium ion and the amount of base added as we titrate.</p>
-<section id="the-acid-equilibrium">
-<h3>The Acid Equilibrium<a class="headerlink" href="#the-acid-equilibrium" title="Permalink to this heading">#</a></h3>
+<div class="section" id="the-acid-equilibrium">
+<h3>The Acid Equilibrium<a class="headerlink" href="#the-acid-equilibrium" title="Permalink to this headline">#</a></h3>
 <p>As we learned in the <a class="reference external" href="https://blinkletter.github.io/MathWithPython/E1_The_ICE_Table_in_Python.html">example of weak acid dissociation</a>, the acid equilibrium of acetic acid can be expressed as…</p>
 <div class="math notranslate nohighlight">
 \[AcOH \rightleftharpoons H^+ + AcO^-\]</div>
@@ -413,13 +416,13 @@ document.write(`
 \[HA \rightleftharpoons H + A\]</div>
 <div class="math notranslate nohighlight">
 \[K_a = \frac{[H][A]}{[AH]}\]</div>
-</section>
-<section id="doing-things-backwards">
-<h3>Doing Things Backwards<a class="headerlink" href="#doing-things-backwards" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="doing-things-backwards">
+<h3>Doing Things Backwards<a class="headerlink" href="#doing-things-backwards" title="Permalink to this headline">#</a></h3>
 <p>In all the math that follows you will see that we are building equations that give us the amount of the basic or acidic form of the acid being titrated, not the concentration of hydronium, [H]. This is because the math is simpler with this approach.</p>
-</section>
-<section id="titrating-with-strong-base">
-<h3>Titrating with Strong Base<a class="headerlink" href="#titrating-with-strong-base" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="titrating-with-strong-base">
+<h3>Titrating with Strong Base<a class="headerlink" href="#titrating-with-strong-base" title="Permalink to this headline">#</a></h3>
 <p>The total concentration of acetic acid, <span class="math notranslate nohighlight">\([A]_T\)</span>, in the solution is the combined concentrations of the acid and the conjugate base.</p>
 <div class="math notranslate nohighlight">
 \[[A]_T = [A] + [AH]\]</div>
@@ -461,9 +464,9 @@ document.write(`
 </div>
 </details>
 </div>
-</section>
-<section id="the-titration-plot-for-acetic-acid">
-<h3>The Titration Plot for Acetic Acid<a class="headerlink" href="#the-titration-plot-for-acetic-acid" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="the-titration-plot-for-acetic-acid">
+<h3>The Titration Plot for Acetic Acid<a class="headerlink" href="#the-titration-plot-for-acetic-acid" title="Permalink to this headline">#</a></h3>
 <p>The following code will now plot the results. We start at <span class="math notranslate nohighlight">\(pH = 2.96\)</span>. This values comes from our calculation for adding 2.0 mL of acetic acid to 500 mL of water for an initial concentration of <span class="math notranslate nohighlight">\([A]_T = 0.0699 M\)</span> We can see in the plot that the endpoint occurs very near that value for concentration of NaOH added.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -485,12 +488,12 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/2ebc9927a192e132ff1b593a8f589116851714f771907cddc7332b51da19cb4d.png" src="_images/2ebc9927a192e132ff1b593a8f589116851714f771907cddc7332b51da19cb4d.png" />
+<img alt="_images/a38188b0ce510259fd67ac0d7814bace5e70d31c4ca215f6a61414ebd992aed1.png" src="_images/a38188b0ce510259fd67ac0d7814bace5e70d31c4ca215f6a61414ebd992aed1.png" />
 </div>
 </div>
-</section>
-<section id="phenolphthalein-indicator">
-<h3>Phenolphthalein Indicator<a class="headerlink" href="#phenolphthalein-indicator" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="phenolphthalein-indicator">
+<h3>Phenolphthalein Indicator<a class="headerlink" href="#phenolphthalein-indicator" title="Permalink to this headline">#</a></h3>
 <p>We know that phenolphthalein indicator changes from colorless to pink at pH 8.5. What is the amount of base needed to reach that pH value? We can just do the math with the code below.</p>
 <p>Take note of how vertical the function is at the endpoint. pH changes rapidly in neutral water with the tiniest addition of acid or base. Once we have fully titrated the acetic acid there is nothing to prevent the pH from rising past the <span class="math notranslate nohighlight">\(pK_a\)</span> value of the phenolphthalein indicator.</p>
 <p>The amount of phenolphthalein present is very small and it has no significant effect on the titration. As long as your pH change is rapid in the region of pH = 8 to 9 then this indicator will work well.</p>
@@ -522,17 +525,17 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/37974875604451f2156216c4983c4d1f5faa40ec2c66130f7474da58023c2f01.png" src="_images/37974875604451f2156216c4983c4d1f5faa40ec2c66130f7474da58023c2f01.png" />
+<img alt="_images/3d6aa52a421cc7e4bcb4b09f701e3fee99a8bcd3b8dcbbea6d859c16ffa435bb.png" src="_images/3d6aa52a421cc7e4bcb4b09f701e3fee99a8bcd3b8dcbbea6d859c16ffa435bb.png" />
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The endpoint is reached when the concentration of NaOH added is... 
 0.069922 moles/L
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="not-so-simple">
-<h2>Not So Simple<a class="headerlink" href="#not-so-simple" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="not-so-simple">
+<h2>Not So Simple<a class="headerlink" href="#not-so-simple" title="Permalink to this headline">#</a></h2>
 <p>We are not always starting with a pure solution of acetic acid and water. Imagine I begin with an unknown mixture of acetic acid and sodium acetate. I want to get the total concentration of acetate by titration. The mixture is already partly titrated if significant amounts of the base and the acid forms are present.</p>
 <p>I will add enough strong acid (e.g. HCl) to take the pH well below the <span class="math notranslate nohighlight">\(pK_a\)</span> of acetic acid.  At pH 1.0 the acetic acid is 99.8% in its acidic form. We will also have excess acid. So the amount of titrant will be increased by the amount of strong acid.</p>
 <div class="math notranslate nohighlight">
@@ -578,13 +581,13 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/57f8beee7f57f1441b30b3132ad085a8ded4e88f4615905c0e76e68d449c8ef7.png" src="_images/57f8beee7f57f1441b30b3132ad085a8ded4e88f4615905c0e76e68d449c8ef7.png" />
+<img alt="_images/6d15474d1316731ed30e3827f2cd5642da3578c35e72fd078fc9465ff2967ecc.png" src="_images/6d15474d1316731ed30e3827f2cd5642da3578c35e72fd078fc9465ff2967ecc.png" />
 </div>
 </div>
 <p>The vertical lines in the plot above denote the equivalence points for titrating away the 0.1 moles/L of string acid that was added to bring the pH down to 1.0 and the 0.070 moles/L of aceric acid that was present. This is still a simple system and was modelled by adding together the titration curves of water and of acetic acid.</p>
-</section>
-<section id="a-polyprotic-acid">
-<h2>A Polyprotic Acid<a class="headerlink" href="#a-polyprotic-acid" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="a-polyprotic-acid">
+<h2>A Polyprotic Acid<a class="headerlink" href="#a-polyprotic-acid" title="Permalink to this headline">#</a></h2>
 <p>Many biological molecules have more than one acidic proton with a <span class="math notranslate nohighlight">\(p\rm K_a\)</span> value in the range of a typical aqueous titration.</p>
 <p>Let us consider the titration of phosphoric acid by a very strong base. Phosphoric acid has three acidic protons.</p>
 <div class="math notranslate nohighlight">
@@ -648,12 +651,12 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/5e2aa2d2d15191ce4b3572e0b9cbd4d9a461450bf79f4b4f5c37dd243ae160e3.png" src="_images/5e2aa2d2d15191ce4b3572e0b9cbd4d9a461450bf79f4b4f5c37dd243ae160e3.png" />
+<img alt="_images/5895aa39d9eb22ca677da1c8d1c08ee7a34db93e0b6a840bec9baa46bdb1ccab.png" src="_images/5895aa39d9eb22ca677da1c8d1c08ee7a34db93e0b6a840bec9baa46bdb1ccab.png" />
 </div>
 </div>
-</section>
-<section id="using-the-model">
-<h2>Using the Model<a class="headerlink" href="#using-the-model" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="using-the-model">
+<h2>Using the Model<a class="headerlink" href="#using-the-model" title="Permalink to this headline">#</a></h2>
 <p>Observe in the plot above that the lowest and highest <span class="math notranslate nohighlight">\(p\rm K_a\)</span> values in phosphoric acid are not resolved. The water itself is being titrated below <span class="math notranslate nohighlight">\(p\rm H\)</span> 2 and above <span class="math notranslate nohighlight">\(p\rm H\)</span> 12 and this signal is added to and overwhelms the signal from the phosphoric acid. We cannot easily determine the <span class="math notranslate nohighlight">\(p\rm K_a\)</span>  values for the first and third acid dissociation by visual inspection. But we could fit experimental data to the model and see if we can determine the Ka values and the concentration.</p>
 <p>First we will find some data reported in the literature. I obtained data from a recent paper that described the titration of 25 mL of a 0.04389 M solution of phosphoric acid using a 0.09948 M solution of NaOH. The code below will read in the data from a file.</p>
 <div class="cell tag_hide-input docutils container">
@@ -689,15 +692,15 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/924058be009ba7810fae54b7f7ee2348fb16a3ad3f8256c0e411face743ee509.png" src="_images/924058be009ba7810fae54b7f7ee2348fb16a3ad3f8256c0e411face743ee509.png" />
+<img alt="_images/58f1ae7447c1fa0c67ddd4521caa1d26b1d6076808d36b1b3900df13838b5820.png" src="_images/58f1ae7447c1fa0c67ddd4521caa1d26b1d6076808d36b1b3900df13838b5820.png" />
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.00109725
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="using-the-first-derivative">
-<h2>Using the First Derivative<a class="headerlink" href="#using-the-first-derivative" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="using-the-first-derivative">
+<h2>Using the First Derivative<a class="headerlink" href="#using-the-first-derivative" title="Permalink to this headline">#</a></h2>
 <p>The slope of the line (the first derivative) will help identify the endpoints.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -715,10 +718,10 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1426a58d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x121cbf6d0&gt;]
 </pre></div>
 </div>
-<img alt="_images/e3758f480c0f76bb653f295460e98e26c1a25cee5fc0d96f9fae187e15dd18fd.png" src="_images/e3758f480c0f76bb653f295460e98e26c1a25cee5fc0d96f9fae187e15dd18fd.png" />
+<img alt="_images/b82daad3e8850168482cf74c9d032172a0a05fd056bde8c4e015a3a22dbb06cb.png" src="_images/b82daad3e8850168482cf74c9d032172a0a05fd056bde8c4e015a3a22dbb06cb.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -785,12 +788,12 @@ document.write(`
 -11.782855003516664
 </pre></div>
 </div>
-<img alt="_images/14ab33d38c9fd58104f602313dd49012a4e92bff789b73bc3cf1b10d838114b2.png" src="_images/14ab33d38c9fd58104f602313dd49012a4e92bff789b73bc3cf1b10d838114b2.png" />
+<img alt="_images/c3160f00f9d91e0d5ba83f7aad4d44a9deedc50af52948cfa76f8f4407dda430.png" src="_images/c3160f00f9d91e0d5ba83f7aad4d44a9deedc50af52948cfa76f8f4407dda430.png" />
 </div>
 </div>
-</section>
-<section id="acetate">
-<h2>Acetate<a class="headerlink" href="#acetate" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="acetate">
+<h2>Acetate<a class="headerlink" href="#acetate" title="Permalink to this headline">#</a></h2>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -859,13 +862,13 @@ document.write(`
 [4.81352775]
 </pre></div>
 </div>
-<img alt="_images/66861b6e86814fd39c95167877ac8deacf3210430f71b8d161aa31fb00a9f15d.png" src="_images/66861b6e86814fd39c95167877ac8deacf3210430f71b8d161aa31fb00a9f15d.png" />
+<img alt="_images/318f2ef68f61a9ad4a09ef205ad447be2550cb4cb7f8dac4260dd9827c3ff10d.png" src="_images/318f2ef68f61a9ad4a09ef205ad447be2550cb4cb7f8dac4260dd9827c3ff10d.png" />
 </div>
 </div>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="resources">
-<h1>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h1>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="resources">
+<h1>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">#</a></h1>
 <p>I am not a programmer, I am a user. I learned how to use Python at the most basic level and then turned to helpful resources made available by others. Along the way I made notes that I turned into some resources for myself that you may find useful as well.</p>
 <p><strong>Math with Python</strong>.  These are some pages that I made to help me learn how to perform calculations and do basic modelling with Python. <a class="reference external" href="https://blinkletter.github.io/MathWithPython/start.html">https://blinkletter.github.io/MathWithPython/start.html</a></p>
 <p><strong>Mathematical Python</strong>. An introduction to mathematical computing including:Jupyter notebooks, basic Python programming, and scientific computing with NumPy, SciPy and Matplotlib. <a class="reference external" href="https://patrickwalls.github.io/mathematicalpython/">https://patrickwalls.github.io/mathematicalpython/</a></p>
@@ -883,7 +886,7 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -924,6 +927,15 @@ document.write(`
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Problem Set Examples</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="MM_Intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Intro to Michaelis-Menten Kinetics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
