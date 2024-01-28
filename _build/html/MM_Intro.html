@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Intro to Michaelis-Menten Kinetics &#8212; Python for Biochemistry</title>
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
@@ -64,9 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'MM_Intro';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Modeling Titrations" href="TitrModel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -163,8 +164,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intro to Michaelis-Menten Kinetics</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="MM_Intro_basics.html">Plotting Enzyme Kinetics</a></li>
 </ul>
 
     </div>
@@ -344,8 +345,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="intro-to-michaelis-menten-kinetics">
-<h1>Intro to Michaelis-Menten Kinetics<a class="headerlink" href="#intro-to-michaelis-menten-kinetics" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="intro-to-michaelis-menten-kinetics">
+<h1>Intro to Michaelis-Menten Kinetics<a class="headerlink" href="#intro-to-michaelis-menten-kinetics" title="Permalink to this heading">#</a></h1>
 <p>In this workbook we will introduce simple <em>Python</em> commands for exploring enzyme kinetics.</p>
 <p>First consider the definitions of the Michaelis-Menten system. Enzyme kinetics are not simple first-order kinetics because of the saturadtion of the catalyst that is observed. The MM equation is the rate law for the following scheme.</p>
 <div class="math notranslate nohighlight">
@@ -421,7 +422,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/a8b022330ef94f5f819947e75b11d020075179c59d7a5b70bb15136c1cf75588.png" src="_images/a8b022330ef94f5f819947e75b11d020075179c59d7a5b70bb15136c1cf75588.png" />
+<img alt="_images/9af9d8d06359bbbc9e2dfc44fdbabfcec44bb20d74cf8191cfcdcf28f2cadff8.png" src="_images/9af9d8d06359bbbc9e2dfc44fdbabfcec44bb20d74cf8191cfcdcf28f2cadff8.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -449,7 +450,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/f9b4d7c491cd59b8dee8b8cc80adf6bf2d7d3557ce956078f9a8d1b907104bc7.png" src="_images/f9b4d7c491cd59b8dee8b8cc80adf6bf2d7d3557ce956078f9a8d1b907104bc7.png" />
+<img alt="_images/a119b8be8f15d003fd71478caad8a4b360236cba134bb59801e9ab25ee071541.png" src="_images/a119b8be8f15d003fd71478caad8a4b360236cba134bb59801e9ab25ee071541.png" />
 </div>
 </div>
 <p>nks.</p>
@@ -476,12 +477,13 @@ document.write(`
 <span class="c1">## Create plot with settings</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  
 <span class="n">ax</span><span class="o">.</span><span class="n">margins</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">.07</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">.07</span><span class="p">,</span> <span class="n">tight</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span>
        <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Michaelis-Menten Plot&quot;</span><span class="p">,</span>       
-       <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\nu /\mu M \cdot min^{-1}$&quot;</span><span class="p">,</span> 
-       <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$[S] /mM$&quot;</span><span class="p">,</span>                
-      <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">6</span><span class="p">],</span>                  
-      <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">]</span>
+       <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\nu \ /\mu M \cdot min^{-1}$&quot;</span><span class="p">,</span> 
+       <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$[S] \ /m\!M$&quot;</span><span class="p">,</span>                
+      <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">5.3</span><span class="p">],</span>                  
+      <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span><span class="mi">25</span><span class="p">]</span>
         <span class="p">)</span>
 
 <span class="c1">############</span>
@@ -495,6 +497,8 @@ document.write(`
 <span class="n">y</span> <span class="o">=</span> <span class="n">v_smooth</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="mf">0.4</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;$[\,I\,]=0\ m\!M$&quot;</span><span class="p">)</span>
+
 
 <span class="c1">############</span>
 
@@ -507,11 +511,12 @@ document.write(`
 <span class="n">y</span> <span class="o">=</span> <span class="n">v_inh_smooth</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="o">+</span><span class="mf">0.4</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;$[\,I\,]=0.5\ m\!M$&quot;</span><span class="p">)</span>
+
+
+
 <span class="n">ax</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">Vmax</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidths</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
-
-<span class="n">x</span> <span class="o">=</span> <span class="n">S</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">v_inh</span>
-
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">Vmax</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span><span class="s2">&quot;$V_</span><span class="si">{max}</span><span class="s2">$&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -519,7 +524,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/f964363ac2e079f0cf00618f30a573a8bcafcd24441189a1bf2239a7a676c82b.png" src="_images/f964363ac2e079f0cf00618f30a573a8bcafcd24441189a1bf2239a7a676c82b.png" />
+<img alt="_images/02463adce96c8bd270496b519b26eaa1d103f1f5ce963e93d652861ca5b2c2ca.png" src="_images/02463adce96c8bd270496b519b26eaa1d103f1f5ce963e93d652861ca5b2c2ca.png" />
 </div>
 </div>
 <div class="cell tag_hide-input docutils container">
@@ -538,7 +543,7 @@ document.write(`
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="n">github_location_styles</span> <span class="o">+</span> <span class="s2">&quot;tufte.mplstyle&quot;</span><span class="p">)</span>        
 
 <span class="c1">## Smoother data sets for lines</span>
-<span class="n">S_smooth_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>                <span class="c1"># Make a smooth set of substrate values for plotting the curve smoothly.</span>
+<span class="n">S_smooth_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">S</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>                <span class="c1"># Make a smooth set of substrate values for plotting the curve smoothly.</span>
 <span class="n">v_smooth</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S_smooth_list</span> <span class="o">/</span> <span class="p">(</span><span class="n">KM</span> <span class="o">+</span> <span class="n">S_smooth_list</span><span class="p">)</span>        <span class="c1"># Claulate the rates using this high-resolution list for smooth curves.</span>
 <span class="n">v_inh_smooth</span> <span class="o">=</span> <span class="n">Vmax_with_inhibitor</span> <span class="o">*</span> <span class="n">S_smooth_list</span> <span class="o">/</span> <span class="p">(</span><span class="n">KM_with_inhibitor</span> <span class="o">+</span> <span class="n">S_smooth_list</span><span class="p">)</span>
 
@@ -559,6 +564,8 @@ document.write(`
 <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">v</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linewidths</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="s2">&quot;$[\,I\,]=0\ m\!M$&quot;</span><span class="p">)</span>
+
 
 <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">S_smooth_list</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">v_smooth</span>
@@ -571,14 +578,13 @@ document.write(`
 <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">v_inh</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linewidths</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="s2">&quot;$[\,I\,]=0.5\ m\!M$&quot;</span><span class="p">)</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">S_smooth_list</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">v_inh_smooth</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
 
-<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">S</span>
-<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">v_inh</span>
 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -587,20 +593,10 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/3h/d_p2gtjd78g8c7m6c14chsg00000gq/T/ipykernel_65293/525176567.py:32: RuntimeWarning: divide by zero encountered in true_divide
-  x = 1 / S_smooth_list
-/var/folders/3h/d_p2gtjd78g8c7m6c14chsg00000gq/T/ipykernel_65293/525176567.py:33: RuntimeWarning: divide by zero encountered in true_divide
-  y = 1 / v_smooth
-/var/folders/3h/d_p2gtjd78g8c7m6c14chsg00000gq/T/ipykernel_65293/525176567.py:44: RuntimeWarning: divide by zero encountered in true_divide
-  x = 1 / S_smooth_list
-/var/folders/3h/d_p2gtjd78g8c7m6c14chsg00000gq/T/ipykernel_65293/525176567.py:45: RuntimeWarning: divide by zero encountered in true_divide
-  y = 1 / v_inh_smooth
-</pre></div>
-</div>
-<img alt="_images/05a27f30a78244351025992fb5828454ebf8b1d0b9f3ec2116f23abf3c30d57d.png" src="_images/05a27f30a78244351025992fb5828454ebf8b1d0b9f3ec2116f23abf3c30d57d.png" />
+<img alt="_images/d0c7b3242932226e317952efde602985e5d4b14bb12cef9526fdd738b3200e42.png" src="_images/d0c7b3242932226e317952efde602985e5d4b14bb12cef9526fdd738b3200e42.png" />
 </div>
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -633,15 +629,6 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="TitrModel.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Modeling Titrations</p>
-      </div>
-    </a>
 </div></div>
   
 </div>

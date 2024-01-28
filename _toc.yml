@@ -11,4 +11,4 @@ parts:
         - file: TitrModel
     - caption: Tutorial 3
       chapters:
-        - file: MM_Intro
+        - file: MM_Intro_basics
