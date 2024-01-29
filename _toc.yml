@@ -6,9 +6,10 @@ root: start
 parts:
     - caption: Tutorial 2
       chapters:
-        - file: T2AcidBaseMath
-        - file: T2Exercise
-        - file: TitrModel
+        - file: T2_AcidBaseMath
+        - file: T2_Exercise
+        - file: T2_TitrModel
     - caption: Tutorial 3
       chapters:
-        - file: MM_Intro_basics
+        - file: T3_MM_Intro_fun
+        - file: T3_MM_Intro_basics

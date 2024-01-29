@@ -63,10 +63,10 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'MM_Intro_basics';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'T3_MM_Intro_basics';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Modeling Titrations" href="TitrModel.html" />
+    <link rel="prev" title="Enzyme Kinetics with Inhibitors" href="T3_MM_Intro_fun.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -159,13 +159,14 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 2</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="T2AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
-<li class="toctree-l1"><a class="reference internal" href="T2Exercise.html">Problem Set Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="TitrModel.html">Modeling Titrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T2_AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="T2_Exercise.html">Problem Set Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T2_TitrModel.html">Modeling Titrations</a></li>
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="T3_MM_Intro_fun.html">Enzyme Kinetics with Inhibitors</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Plotting Enzyme Kinetics</a></li>
 </ul>
 
@@ -221,7 +222,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./MM_Intro_basics.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./T3_MM_Intro_basics.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -252,7 +253,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="_sources/MM_Intro_basics.ipynb" target="_blank"
+      <li><a href="_sources/T3_MM_Intro_basics.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -476,7 +477,7 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x143ba7a10&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x10c040610&gt;]
 </pre></div>
 </div>
 <img alt="_images/52387ba305c87ecb83e9856dc328e5b48d2273b5d81ea6d93d85d57f497ea3c6.png" src="_images/52387ba305c87ecb83e9856dc328e5b48d2273b5d81ea6d93d85d57f497ea3c6.png" />
@@ -525,7 +526,7 @@ document.write(`
 <span class="c1">### Display and export the plot</span>
 <span class="c1">######################</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;MM_plot.pdf&quot;</span><span class="p">)</span>    <span class="c1">### Save the image as a pdf file. Now you can use it in a document.</span>
+<span class="c1">#plt.savefig(&quot;MM_plot.pdf&quot;)    ### Save the image as a pdf file. Now you can use it in a document.</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -587,7 +588,7 @@ document.write(`
 <span class="c1">### Display and export the plot</span>
 <span class="c1">#####################</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;LB_plot.pdf&quot;</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&quot;LB_plot.pdf&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -706,7 +707,7 @@ The intercept is 0.88 +/- 0.01
 <span class="c1">### Install UNCERTAINTIES package </span>
 <span class="c1">####################################</span>
 
-<span class="c1">#!pip install uncertainties    Remove # to install in Colab. Add it back to avoid installing again and again.</span>
+<span class="c1">#!pip install uncertainties  # to install in Colab. Add it back to avoid installing again and again.</span>
 
 <span class="c1">####################################</span>
 <span class="c1">### Import versions of NumPy and Math that use uncertainty </span>
@@ -832,7 +833,7 @@ The stderr for Vmax is 0.011
 <span class="c1">### Display and export the plot</span>
 <span class="c1">#####################</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;LB_plot.pdf&quot;</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&quot;LB_plot.pdf&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -922,7 +923,7 @@ The stderr for Vmax is 0.011
 <span class="c1">### Display and export the plot</span>
 <span class="c1">#####################</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;MM_plot.pdf&quot;</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&quot;MM_plot.pdf&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1069,7 +1070,7 @@ The KM is 5.002+/-0.079
 <span class="c1">### Display and export the plot</span>
 <span class="c1">#####################</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;MM_plot_err.pdf&quot;</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&quot;MM_plot_err.pdf&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1200,7 +1201,7 @@ The KM is 5.614+/-1.098
 <span class="c1">### Display and export the plot</span>
 <span class="c1">#####################</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;LB_plot_err.pdf&quot;</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&quot;LB_plot_err.pdf&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1312,11 +1313,7 @@ LB KM    3.658+/-0
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    
-
-
-
-<span class="c1">########################################################################</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################################################</span>
 <span class="c1">### Copied the code from above for the LB linear fit. Cut and paste is your friend.</span>
 <span class="c1">########################################################################</span>
 
@@ -1422,7 +1419,7 @@ LB KM    3.658+/-0
 <span class="c1">### Display and export the plot</span>
 <span class="c1">#####################</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;EH_plot_err.pdf&quot;</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&quot;EH_plot_err.pdf&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1451,11 +1448,7 @@ The KM is 4.397+/-1.525 mM
 <span class="expanded">Hide code cell source</span>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    
-
-
-
-<span class="c1">########################################################################</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">########################################################################</span>
 <span class="c1">### Copied the code from above for the LB linear fit. Cut and paste is your friend.</span>
 <span class="c1">########################################################################</span>
 
@@ -1561,7 +1554,7 @@ The KM is 4.397+/-1.525 mM
 <span class="c1">### Display and export the plot</span>
 <span class="c1">#####################</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;HW_plot_err.pdf&quot;</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&quot;HW_plot_err.pdf&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1673,12 +1666,12 @@ HW KM    6.643+/-0
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="TitrModel.html"
+       href="T3_MM_Intro_fun.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Modeling Titrations</p>
+        <p class="prev-next-title">Enzyme Kinetics with Inhibitors</p>
       </div>
     </a>
 </div></div>
