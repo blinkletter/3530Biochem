@@ -22,15 +22,15 @@ If you should fall in love with *Python*, I recommend ['Scientific Computing for
 
 In our second tutorial meeting we will be doing basic acid equilibrium problems. We could use a calculator, but that leaves no record of what we did. We would not be able to find our error. We could use a spreadsheet application and that file would contain all our calculations. We will also try using an interactive *Python* notebook. The following links will take you to the *Python* notebooks for this tutorial.
 
-- [Acid Equilibria with *Python*](T2_AcidBaseMath.ipynb)
+- [Acid Equilibria with *Python*](T02/T2_AcidBaseMath.ipynb)
 
 This notebook features a few starter code blocks that will solve acid/base equilibria problems. We will demonstrate using both *Excel* and *Python* as a self-documenting calculator.
 
-- [Problem Set Examples](T2_Exercise.ipynb)
+- [Problem Set Examples](T02/T2_Exercise.ipynb)
 
 This notebook provides *Python* code for solving some of the problems in the 'Math Ideas' problem set. Steal this code as you work on the other problems. 
 
-- [Modeling Titrations](T2_TitrModel.ipynb)
+- [Modeling Titrations](T02/T2_TitrModel.ipynb)
 
 This notebook provides *Python* code plotting titrations of weak acids like acetic acid. It is not something that I want you to be able to do. I will be using this to provide a graphical interpretation of buffer behaviour.
 
@@ -38,10 +38,10 @@ This notebook provides *Python* code plotting titrations of weak acids like acet
 
 In our third tutorial meeting we will be exporing enzyme kinetics. We will observe the consequences of inhibitors and have some fun curve fitting plots.
 
-- [Inhibitors in Action](T3_MM_Intro_fun.ipynb)
+- [Inhibitors in Action](T03/T3_MM_Intro_fun.ipynb)
 
 Change the dissociation constants for inhibitors and see what happens.
 
-- [The Abominable Plot](T3_MM_Intro_basics.ipynb)
+- [The Abominable Plot](T03/T3_MM_Intro_basics.ipynb)
 
 Solve a textbook problem while exploring just how bad the lineweaver-Burke plot is. There are better options.

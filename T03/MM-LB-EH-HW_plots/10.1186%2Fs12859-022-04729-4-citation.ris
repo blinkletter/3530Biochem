@@ -1,0 +1,15 @@
+TY  - JOUR
+AU  - Aledo, Juan Carlos
+PY  - 2022
+DA  - 2022/05/16
+TI  - renz: An R package for the analysis of enzyme kinetic data
+JO  - BMC Bioinformatics
+SP  - 182
+VL  - 23
+IS  - 1
+AB  - Complex enzymatic models are required for analyzing kinetic data derived under conditions that may not satisfy the assumptions associated with Michaelis–Menten kinetics. To analyze these data, several software packages have been developed. However, the complexity introduced by these programs is often dispensable when analyzing data conforming to the canonical Michaelis–Menten model. In these cases, the sophisticated routines of these packages become inefficient and unnecessarily intricated for the intended purpose, reason for which most users resort to general-purpose graphing programs. However, this approach, in addition of being time-consuming, is prone to human error, and can lead to misleading estimates of kinetic parameters, particularly when unweighted regression analyses of transformed kinetic data are performed.
+SN  - 1471-2105
+UR  - https://doi.org/10.1186/s12859-022-04729-4
+DO  - 10.1186/s12859-022-04729-4
+ID  - Aledo2022
+ER  - 

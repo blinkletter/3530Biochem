@@ -1,0 +1,1060 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problem Set Examples &#8212; Python for Biochemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'T02/T2_Exercise';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Modeling Titrations" href="T2_TitrModel.html" />
+    <link rel="prev" title="Acid Equilibria with Python" href="T2_AcidBaseMath.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../start.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/plot.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/plot.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../start.html">
+                    Data Interpretation for Biochemistry
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 2</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="T2_AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Problem Set Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T2_TitrModel.html">Modeling Titrations</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T03/T3_MM_Intro_fun.html">Enzyme Kinetics with Inhibitors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T03/T3_MM_Intro_basics_functions.html">Plotting Enzyme Kinetics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./T02/T2_Exercise.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/T02/T2_Exercise.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Problem Set Examples</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-from-math-ideas">Problem 1 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-from-math-ideas">Problem 2 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-from-math-ideas">Problem 3 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-from-math-ideas">Problem 4 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-from-math-ideas">Problem 5 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-6-from-math-ideas">Problem 6 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-7-from-math-ideas">Problem 7 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-8-from-math-ideas">Problem 8 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-9-from-math-ideas">Problem 9 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-10-from-math-ideas">Problem 10 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-buffer-for-the-assignment">Making a Buffer for the Assignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-buffer">Making the Buffer</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="problem-set-examples">
+<h1>Problem Set Examples<a class="headerlink" href="#problem-set-examples" title="Permalink to this headline">#</a></h1>
+<p>This is a <em>Jupyter</em> notebook using interactive <em>Python</em>.</p>
+<p>We can use this notebook as a calculator. The benefit is that all <strong>our calculations can be documented</strong> so that we can easily find errors or make changes without starting from the beginning. I recommend using <em>Python</em> notebooks for all your math. There are thousands of tools available through <em>Python</em> and we can go from the simple math of this notebook all the way to powerful data science and AI projects.</p>
+<p>We will demonstrate the problems from the “<strong>Math Ideas for Biochemistry - Part 1</strong>” document available on the moodle site. Observe how the <em>Python</em> code serves as the information on the method used. Now you can check my work and fix my mistakes. I make no promises that these answers are correct. It is your job to confirm them.</p>
+<div class="section" id="problem-1-from-math-ideas">
+<h2>Problem 1 from Math Ideas<a class="headerlink" href="#problem-1-from-math-ideas" title="Permalink to this headline">#</a></h2>
+<p>The molecular mass of glucose is <span class="math notranslate nohighlight">\(180.2 \frac{g}{mole}\)</span>. A sugar cube has a mass of <span class="math notranslate nohighlight">\(4.3\)</span> grams. What is the concentration of a solution of glucose when 3 sugar cubes are dissolve in a total volume of <span class="math notranslate nohighlight">\(150\)</span> mL of water?</p>
+<p><strong>Solution</strong></p>
+<p>This is a straightforward concentration problem. Observe the answer in the code below.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mw</span> <span class="o">=</span> <span class="mf">180.2</span>   <span class="c1">#### g/mole</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mf">4.3</span>      <span class="c1">#### g</span>
+<span class="n">v</span> <span class="o">=</span> <span class="mf">0.150</span>    <span class="c1">#### L</span>
+
+<span class="n">moles</span> <span class="o">=</span> <span class="n">m</span> <span class="o">/</span> <span class="n">mw</span>
+<span class="n">conc</span> <span class="o">=</span> <span class="n">moles</span> <span class="o">/</span> <span class="n">v</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration of glucose is </span><span class="si">{</span><span class="n">conc</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
+
+<span class="c1">### THIS ANSWER IS WRONG. READ THE QUESTION CAREFULLY AND FIND MY ERROR. </span>
+<span class="c1">### The fact that my math was documented as python code allowed you to</span>
+<span class="c1">### find my mistake before the spaceship crashed. Small errors are just as bad </span>
+<span class="c1">### as big errors when you want to go to Mars. Both will result in your</span>
+<span class="c1">### billion-dollar spaceship being in a billion pieces.</span>
+<span class="c1">### There are no part marks on Mars.</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The concentration of glucose is 0.16 moles/L
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-2-from-math-ideas">
+<h2>Problem 2 from Math Ideas<a class="headerlink" href="#problem-2-from-math-ideas" title="Permalink to this headline">#</a></h2>
+<p>The equilibrium constant, <span class="math notranslate nohighlight">\(\rm K_{eq}\)</span>, for <span class="math notranslate nohighlight">\(\beta\)</span>-glucose converting to <span class="math notranslate nohighlight">\(\alpha\)</span>-glucose is <span class="math notranslate nohighlight">\(0.56\)</span>. I observe that the concentration of <span class="math notranslate nohighlight">\(\alpha\)</span>-glucose in a sample is <span class="math notranslate nohighlight">\(1.2\)</span> mM. What is the concentration of <span class="math notranslate nohighlight">\(\beta\)</span>-glucose if this system has reached equilibrium?</p>
+<p><strong>Solution</strong></p>
+<p>Use the equilibrium constant to solve the problem. The answer is documented in the code below. I don’t have to explain anything as every step is described in the code. That is one great strength of recording you math in a language like <em>Python</em>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Keq</span> <span class="o">=</span> <span class="mf">0.56</span>
+<span class="n">conc_alpha_glucose</span> <span class="o">=</span> <span class="mf">0.0012</span> <span class="c1"># moles/L</span>
+
+<span class="c1">### Equilibrium equation rearranged to solve for beta glucose</span>
+
+<span class="n">conc_beta_glucose</span> <span class="o">=</span> <span class="n">conc_alpha_glucose</span> <span class="o">/</span> <span class="n">Keq</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration of beta-glucose at equilibrium will be </span><span class="si">{</span><span class="n">conc_beta_glucose</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration of beta-glucose at equilibrium will be </span><span class="si">{</span><span class="n">conc_beta_glucose</span><span class="si">:</span><span class="s2">0.9f</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration of beta-glucose at equilibrium will be </span><span class="si">{</span><span class="n">conc_beta_glucose</span><span class="si">:</span><span class="s2">0.3g</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration of beta-glucose at equilibrium will be </span><span class="si">{</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">conc_beta_glucose</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> millimoles/L&quot;</span><span class="p">)</span>
+
+<span class="c1">### What have you learned about printing numbers from the code above? Delete the &quot;f&quot; at the start of </span>
+<span class="c1">### the print command and see what happens. Change the numbers in :0.2f, etc. What does :10.10f do?</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The concentration of beta-glucose at equilibrium will be 2.14e-03 moles/L
+The concentration of beta-glucose at equilibrium will be 0.002142857 moles/L
+The concentration of beta-glucose at equilibrium will be 0.00214 moles/L
+The concentration of beta-glucose at equilibrium will be 2.14 millimoles/L
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-3-from-math-ideas">
+<h2>Problem 3 from Math Ideas<a class="headerlink" href="#problem-3-from-math-ideas" title="Permalink to this headline">#</a></h2>
+<p>What is the free energy potential for a mixture of <span class="math notranslate nohighlight">\(\beta\)</span>-glucose and <span class="math notranslate nohighlight">\(\alpha\)</span>-glucose at equilibrium?</p>
+<p><strong>Solution</strong></p>
+<p>By definition, when we are at equilibrium the difference in energy between the population of products and the population of reactants is zero.</p>
+</div>
+<div class="section" id="problem-4-from-math-ideas">
+<h2>Problem 4 from Math Ideas<a class="headerlink" href="#problem-4-from-math-ideas" title="Permalink to this headline">#</a></h2>
+<p>What is the free energy potential, <span class="math notranslate nohighlight">\(\Delta G\)</span>, of a solution of <span class="math notranslate nohighlight">\(0.1\)</span> M <span class="math notranslate nohighlight">\(\alpha\)</span>-glucose and <span class="math notranslate nohighlight">\(0.4\)</span> M <span class="math notranslate nohighlight">\(\beta\)</span>-glucose? If we are not at equilibrium, which direction will the process move to reach equilibrium. What would be the concentrations in this system after it reaches equilibrium? If I add a catalyst, how will it change the equilibrium?</p>
+<p><strong>Solution</strong></p>
+<p>The free energy of a system, <span class="math notranslate nohighlight">\(\Delta G\)</span>, depends on the difference in free energy at the standard state, <span class="math notranslate nohighlight">\(\Delta G^{\circ}\)</span>, and the concentrations of reactants (the reaction quotient, <span class="math notranslate nohighlight">\(Q\)</span>)</p>
+<div class="math notranslate nohighlight">
+\[\Delta G = \Delta G^{\circ} + RT\ln Q\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[Q = \frac{[products]}{[reactants]}\]</div>
+<p>First obtain the standard free energy difference, <span class="math notranslate nohighlight">\(\Delta G^{\circ}\)</span>, using the equilibrium constnat reported above. The use the concentrations observed in this case to calculate the free energy difference, <span class="math notranslate nohighlight">\(\Delta G\)</span>, in these conditions. When temperature is not reported always use <span class="math notranslate nohighlight">\(25\)</span> <span class="math notranslate nohighlight">\(^{\circ} C\)</span>.</p>
+<p>If the answer below is correct (check my work!) then the system is not at equilibrium and will proceed toward product as it moves to reach equilibrium.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1">### get standard free energy difference from Keq in problem 2</span>
+
+<span class="n">Keq</span> <span class="o">=</span> <span class="mf">0.56</span>   <span class="c1">### note that Q = Keq when we are at equilibrium</span>
+<span class="n">d_G</span> <span class="o">=</span> <span class="mi">0</span>      <span class="c1">### the free energy difference is zero at equilibrium</span>
+
+<span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>  <span class="c1"># J / (K * mole) gas constant</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">273</span> <span class="o">+</span> <span class="mi">25</span>  <span class="c1"># 25 degrees C in kelvin = 298K</span>
+
+<span class="c1">### rearrange the equation to solve for standard free energy. </span>
+
+<span class="n">Q</span> <span class="o">=</span> <span class="n">Keq</span>
+<span class="n">d_G_standard</span> <span class="o">=</span> <span class="o">-</span><span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The standard difference in free energy is </span><span class="si">{</span><span class="n">d_G_standard</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">+0.2f</span><span class="si">}</span><span class="s2"> kJ/mole&quot;</span><span class="p">)</span>
+
+<span class="n">conc_alpha_glucose</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1">### moles/L</span>
+<span class="n">conc_beta_glucose</span> <span class="o">=</span> <span class="mf">0.4</span>   <span class="c1">### moles/L</span>
+
+<span class="n">Q</span> <span class="o">=</span> <span class="n">conc_alpha_glucose</span> <span class="o">/</span> <span class="n">conc_beta_glucose</span>  <span class="c1">### alpha is product, beta is reactant</span>
+
+<span class="n">d_G</span> <span class="o">=</span> <span class="n">d_G_standard</span> <span class="o">+</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The difference in observed free energy at the concentrations given is </span><span class="si">{</span><span class="n">d_G</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">+0.2f</span><span class="si">}</span><span class="s2"> kJ/mole&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The standard difference in free energy is +1.44 kJ/mole
+The difference in observed free energy at the concentrations given is -2.00 kJ/mole
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-5-from-math-ideas">
+<h2>Problem 5 from Math Ideas<a class="headerlink" href="#problem-5-from-math-ideas" title="Permalink to this headline">#</a></h2>
+<p>The specific optical rotation of <span class="math notranslate nohighlight">\(+\alpha\)</span>-glucose is <span class="math notranslate nohighlight">\(112\frac{degrees}{dm\cdot M}\)</span>. What is the observed optical rotation observed using a polarimeter for a solution with a concentration of <span class="math notranslate nohighlight">\(5.3\)</span> mM? Assume that we are using the standard <span class="math notranslate nohighlight">\(10\)</span> cm (one dm) sample tube.</p>
+<p><strong>Solution</strong></p>
+<p>This is an example of straightforward dimensional analysis. Examine the code below and correct any errors.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sp_opt_rotation</span> <span class="o">=</span> <span class="mi">112</span>   <span class="c1">### degrees per decimeter per molar</span>
+<span class="n">conc</span> <span class="o">=</span> <span class="mf">5.3</span>              <span class="c1">### millimolar. We will need to convert this to molar</span>
+<span class="n">conc</span> <span class="o">=</span> <span class="n">conc</span> <span class="o">/</span> <span class="mi">1000</span>      <span class="c1">### we convert millimoles to moles to get mole/L</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">1</span>                   <span class="c1">### decimeters. often ignored in these calculations</span>
+
+<span class="n">obs_rotation</span> <span class="o">=</span> <span class="n">sp_opt_rotation</span> <span class="o">*</span> <span class="n">conc</span> <span class="o">*</span> <span class="n">d</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The observed optical rotation is </span><span class="si">{</span><span class="n">obs_rotation</span><span class="si">:</span><span class="s2">+0.2f</span><span class="si">}</span><span class="s2"> degrees&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The observed optical rotation is +0.59 degrees
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-6-from-math-ideas">
+<h2>Problem 6 from Math Ideas<a class="headerlink" href="#problem-6-from-math-ideas" title="Permalink to this headline">#</a></h2>
+<p>How many microlitres are there in a millilitre? How many grams are there in a kilogram? What is <span class="math notranslate nohighlight">\(10\)</span> <span class="math notranslate nohighlight">\(\mu M\)</span> in units of Molar? What is <span class="math notranslate nohighlight">\(7\)</span> <span class="math notranslate nohighlight">\(\frac{kJ}{mole}\)</span> in units of <span class="math notranslate nohighlight">\(\frac{J}{mole}\)</span>?</p>
+<p><strong>Solution</strong></p>
+<p>This is all unit conversions. I will leave you to answer this on your own.</p>
+</div>
+<div class="section" id="problem-7-from-math-ideas">
+<h2>Problem 7 from Math Ideas<a class="headerlink" href="#problem-7-from-math-ideas" title="Permalink to this headline">#</a></h2>
+<p>I am observing the initial rate of a reaction at a wavelength of <span class="math notranslate nohighlight">\(280\)</span> nm. The molar extinction coefficient, <span class="math notranslate nohighlight">\(e_{280}\)</span>, of the starting material at <span class="math notranslate nohighlight">\(280\)</span> nm is <span class="math notranslate nohighlight">\(7000\)</span> <span class="math notranslate nohighlight">\(M^{-1}\)</span> (for a <span class="math notranslate nohighlight">\(1\)</span> cm cuvette). The initial absorbance of the reaction mixture is <span class="math notranslate nohighlight">\(0.87\)</span> AU. After one minute, the absorbance is <span class="math notranslate nohighlight">\(0.82\)</span> AU. (Assume that our reactant is the only molecule that absorbs light at <span class="math notranslate nohighlight">\(280\)</span> nm).</p>
+<ol class="arabic simple">
+<li><p>What is the initial concentration of the starting material?</p></li>
+<li><p>What is the concentration after one minute?</p></li>
+<li><p>What is the initial rate of reaction based on those two data points?</p></li>
+<li><p>What is the first order rate constant for the disappearance of the observed reactant (assuming a first order reaction)?</p></li>
+<li><p>Is the initial rate method appropriate in this case?</p></li>
+</ol>
+<p><strong>Solution</strong></p>
+<p>Examine the code below for the answers. I am presenting each part of the question is a separate block of code. After examining the results comment on wether the initial rate method will be accurate in this case. Is the concentration change small relative to the initial concentration? Do you think the initial rate will be close to the tangent of the integrated rate equation at t=0?</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e_280</span> <span class="o">=</span> <span class="mi">7000</span>  <span class="c1">### per molar</span>
+<span class="n">A_0</span> <span class="o">=</span> <span class="mf">0.87</span>    <span class="c1">### initial absorbance</span>
+
+<span class="n">conc_0</span> <span class="o">=</span> <span class="n">A_0</span> <span class="o">/</span> <span class="n">e_280</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The initial concentration is </span><span class="si">{</span><span class="n">conc_0</span><span class="si">:</span><span class="s2">0.9f</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The initial concentration is </span><span class="si">{</span><span class="n">conc_0</span> <span class="o">*</span> <span class="mi">1000</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> millimoles/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The initial concentration is 0.000124286 moles/L
+The initial concentration is 0.1243 millimoles/L
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A_t</span> <span class="o">=</span> <span class="mf">0.82</span>     <span class="c1">### absorbance at time point (one minute)</span>
+
+<span class="n">conc_t</span> <span class="o">=</span> <span class="n">A_t</span> <span class="o">/</span> <span class="n">e_280</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration after one minute is </span><span class="si">{</span><span class="n">conc_t</span> <span class="o">*</span> <span class="mi">1000</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> millimoles/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The concentration after one minute is 0.1171 millimoles/L
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="mi">1</span>       <span class="c1">### time is 1 minute</span>
+
+<span class="n">init_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">A_t</span> <span class="o">-</span> <span class="n">A_0</span><span class="p">)</span> <span class="o">/</span> <span class="n">time</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The initial rate of change in concentration is </span><span class="si">{</span><span class="n">init_rate</span> <span class="o">*</span> <span class="mi">1000</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> millimoles/L.min&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The initial rate of change in concentration is -50.00 millimoles/L.min
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_order_rate_const</span> <span class="o">=</span> <span class="o">-</span><span class="n">init_rate</span> <span class="o">/</span> <span class="n">A_0</span>  <span class="c1">### initial rate / initial concentration</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate constant is </span><span class="si">{</span><span class="n">first_order_rate_const</span><span class="si">}</span><span class="s2"> per minute&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate constant is </span><span class="si">{</span><span class="n">first_order_rate_const</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> per minute&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate constant is </span><span class="si">{</span><span class="n">first_order_rate_const</span><span class="si">:</span><span class="s2">0.3g</span><span class="si">}</span><span class="s2"> per minute&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate constant is </span><span class="si">{</span><span class="n">first_order_rate_const</span><span class="si">:</span><span class="s2">0.3e</span><span class="si">}</span><span class="s2"> per minute&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate constant is </span><span class="si">{</span><span class="n">first_order_rate_const</span><span class="o">/</span><span class="mi">60</span><span class="si">:</span><span class="s2">0.3e</span><span class="si">}</span><span class="s2"> per second&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The rate constant is 0.05747126436781615 per minute
+The rate constant is 0.057 per minute
+The rate constant is 0.0575 per minute
+The rate constant is 5.747e-02 per minute
+The rate constant is 9.579e-04 per second
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-8-from-math-ideas">
+<h2>Problem 8 from Math Ideas<a class="headerlink" href="#problem-8-from-math-ideas" title="Permalink to this headline">#</a></h2>
+<p>I add 10 mL of 0.1 M HCl to 170 mL of pure water. What is the <em>p</em>H of this new solution?</p>
+<p><strong>Solution</strong></p>
+<p>This is a simple <span class="math notranslate nohighlight">\(\rm c_1v_1 = c_2v_2\)</span> problem with the addition of converting your answer to <span class="math notranslate nohighlight">\(\rm pH\)</span>.</p>
+<p>The initial colume, <span class="math notranslate nohighlight">\(\rm c_1\)</span>, is 10 mL. The final volume, <span class="math notranslate nohighlight">\(\rm C_2\)</span>, will be 180 mL (170 mL + 10 mL). The initial concentration of HCl is 0.1 M. HCl is a very strong acid and will be 100% dissociated, so we can say that the hydronium ion concentration will be the concentration of HCl.</p>
+<p>Examine the <em>Python</em> commands below. Observe how they are no different than using a calculator.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>    <span class="c1"># import additional math tools</span>
+
+<span class="n">v1</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># mL</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">v1</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># convert mL to L</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># moles/L</span>
+
+<span class="n">volumeWater</span> <span class="o">=</span> <span class="mi">170</span> <span class="c1"># mL</span>
+
+<span class="n">v2</span> <span class="o">=</span> <span class="n">volumeWater</span> <span class="o">+</span> <span class="n">v1</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">v2</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># convert mL to L</span>
+
+<span class="n">c2</span> <span class="o">=</span> <span class="n">v1</span> <span class="o">*</span> <span class="n">c1</span> <span class="o">/</span> <span class="n">v2</span>
+
+<span class="n">pH</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the pH is </span><span class="si">{</span><span class="n">pH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the pH is 2.23
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-9-from-math-ideas">
+<h2>Problem 9 from Math Ideas<a class="headerlink" href="#problem-9-from-math-ideas" title="Permalink to this headline">#</a></h2>
+<p>I have 230 mL of a solution of pure water with enough HCl added to make the <em>p</em>H equal to 4.5. I add 10 mL of a 0.15 M NaOH solution. What is the <em>p</em>H now?</p>
+<p><strong>Solution</strong></p>
+<p>We have a volume and concentration for an HCl solution. <span class="math notranslate nohighlight">\(\rm [HCl] = [H^+]\)</span> and we can get <span class="math notranslate nohighlight">\(\rm [H^+]\)</span> from the <span class="math notranslate nohighlight">\(\rm pH\)</span> value.</p>
+<p>Obtain the number of moles of HCl present, subtract the number of moles of NaOH added, and then divide by the new volume to get the concentration of HCl remaining. Then convert to <span class="math notranslate nohighlight">\(\rm pH\)</span>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pH</span> <span class="o">=</span> <span class="mf">4.5</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="mi">230</span> <span class="c1"># mL</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">v1</span><span class="o">/</span><span class="mi">1000</span> <span class="c1"># convert mL to L</span>
+<span class="n">c1</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">pH</span><span class="p">)</span> <span class="c1"># Units will be moles/L</span>
+
+<span class="n">moles_HCl</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">v1</span>
+
+<span class="n">volumeNaOHsolution</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># mL</span>
+<span class="n">volumeNaOHsolution</span> <span class="o">=</span> <span class="n">volumeNaOHsolution</span><span class="o">/</span><span class="mi">1000</span> <span class="c1"># convert mL to L</span>
+<span class="n">concNaOHsolution</span> <span class="o">=</span> <span class="mf">0.15</span> <span class="c1"># moles/L</span>
+
+<span class="n">molesNaOH</span> <span class="o">=</span> <span class="n">volumeNaOHsolution</span> <span class="o">*</span> <span class="n">concNaOHsolution</span>
+
+<span class="n">molesBase</span> <span class="o">=</span> <span class="n">molesNaOH</span> <span class="o">-</span> <span class="n">moles_HCl</span>
+
+<span class="n">concBase</span> <span class="o">=</span> <span class="n">molesBase</span> <span class="o">/</span> <span class="p">(</span><span class="n">v1</span> <span class="o">+</span> <span class="n">volumeNaOHsolution</span><span class="p">)</span>
+
+<span class="n">pOH</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">concBase</span><span class="p">)</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="mi">14</span> <span class="o">-</span> <span class="n">pOH</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the pH is </span><span class="si">{</span><span class="n">pH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the pH is 11.79
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="problem-10-from-math-ideas">
+<h2>Problem 10 from Math Ideas<a class="headerlink" href="#problem-10-from-math-ideas" title="Permalink to this headline">#</a></h2>
+<p>I have 230 mL of a solution of 0.2 M acetic acid and have added enough sodium hydroxide solution to set the <span class="math notranslate nohighlight">\(\rm pH\)</span> to 4.5. The <span class="math notranslate nohighlight">\(\rm pK_a\)</span> of acetic acid is 4.7.</p>
+<ol class="arabic simple">
+<li><p>What are the concentrations of acetate ion and acetic acid in this solution?</p></li>
+<li><p>I add 10 mL of a 0.15 M NaOH solution. What is the <span class="math notranslate nohighlight">\(\rm pH\)</span> now?</p></li>
+</ol>
+<p><strong>Solution</strong></p>
+<p>Calculate the moles of Acetic acid (the acidic for, HOAc) in the sample and compare it to the moles of NaOH to be added.  We will see that there will be an excess of NaOH. So I subtract [HOAc] from [NaOH] to get the concentration of hydroxide ion in the new solution. I then obtained the <span class="math notranslate nohighlight">\(\rm pOH\)</span>, and from that, the <span class="math notranslate nohighlight">\(\rm pH\)</span></p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pHsolution</span> <span class="o">=</span> <span class="mf">4.5</span>
+<span class="n">volumeSolution</span> <span class="o">=</span> <span class="mi">230</span> <span class="c1"># mL</span>
+<span class="n">volumeSolution</span> <span class="o">=</span> <span class="n">volumeSolution</span><span class="o">/</span><span class="mi">1000</span> <span class="c1"># convert mL to L</span>
+<span class="n">concAceticAcid</span> <span class="o">=</span> <span class="mf">0.2</span> <span class="c1"># moles/L</span>
+<span class="n">molesAceticAcid</span> <span class="o">=</span> <span class="n">concAceticAcid</span> <span class="o">*</span> <span class="n">volumeSolution</span>
+
+<span class="n">pKaAceticAcid</span> <span class="o">=</span> <span class="mf">4.7</span>
+
+<span class="c1"># Use Henderson-Hasselbalch</span>
+<span class="c1"># pH = pKa + log10(A/HA)</span>
+<span class="c1">#</span>
+<span class="c1"># A/HA = 10**(pH - pKa)</span>
+
+<span class="n">A_HA_ratio</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">pHsolution</span> <span class="o">-</span> <span class="n">pKaAceticAcid</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the A/AH ratio is </span><span class="si">{</span><span class="n">A_HA_ratio</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">moleFractionA</span> <span class="o">=</span> <span class="n">A_HA_ratio</span><span class="o">/</span><span class="p">(</span><span class="n">A_HA_ratio</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">moleFractionHA</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="n">A_HA_ratio</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">volumeNaOHsolution</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># mL</span>
+<span class="n">volumeNaOHsolution</span> <span class="o">=</span> <span class="n">volumeNaOHsolution</span><span class="o">/</span><span class="mi">1000</span> <span class="c1"># convert mL to L</span>
+<span class="n">concNaOHsolution</span> <span class="o">=</span> <span class="mf">0.15</span> <span class="c1"># moles/L</span>
+
+<span class="n">molesNaOH</span> <span class="o">=</span> <span class="n">volumeNaOHsolution</span> <span class="o">*</span> <span class="n">concNaOHsolution</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;molesNaOH = </span><span class="si">{</span><span class="n">molesNaOH</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">molesA</span> <span class="o">=</span> <span class="n">molesAceticAcid</span> <span class="o">*</span> <span class="n">moleFractionA</span>
+<span class="n">molesHA</span> <span class="o">=</span> <span class="n">molesAceticAcid</span> <span class="o">*</span> <span class="n">moleFractionHA</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;molesA = </span><span class="si">{</span><span class="n">molesA</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;molesHA = </span><span class="si">{</span><span class="n">molesHA</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;It will take </span><span class="si">{</span><span class="n">molesHA</span><span class="o">/</span><span class="n">concNaOHsolution</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> mL of NaOH solution to overcome the buffer completely&quot;</span><span class="p">)</span>
+
+<span class="n">molesA</span> <span class="o">=</span> <span class="n">molesA</span> <span class="o">+</span> <span class="n">molesNaOH</span>
+<span class="n">molesHA</span> <span class="o">=</span> <span class="n">molesHA</span> <span class="o">-</span> <span class="n">molesNaOH</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After NaOH molesA = </span><span class="si">{</span><span class="n">molesA</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After NaOH molesHA = </span><span class="si">{</span><span class="n">molesHA</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">A_HA_ratio</span> <span class="o">=</span> <span class="n">molesA</span><span class="o">/</span><span class="n">molesHA</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After NaOH the A/AH ratio is = </span><span class="si">{</span><span class="n">A_HA_ratio</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="n">pH</span> <span class="o">=</span> <span class="n">pKaAceticAcid</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">A_HA_ratio</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the pH is </span><span class="si">{</span><span class="n">pH</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the A/AH ratio is 0.631
+molesNaOH = 0.0015
+molesA = 0.018
+molesHA = 0.028
+It will take 188.0 mL of NaOH solution to overcome the buffer completely
+After NaOH molesA = 0.019
+After NaOH molesHA = 0.027
+After NaOH the A/AH ratio is = 0.723
+
+the pH is 4.56
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="making-a-buffer-for-the-assignment">
+<h2>Making a Buffer for the Assignment<a class="headerlink" href="#making-a-buffer-for-the-assignment" title="Permalink to this headline">#</a></h2>
+<p>The math below involves making a buffer for a biochemical experiment. In this example, I will be using HEPES buffer. It is an organic molecule that is compatible with cells and the acidic form has a <span class="math notranslate nohighlight">\(\rm pK_a\)</span> value of <span class="math notranslate nohighlight">\(7.43\)</span>. I will purchase a bottle of crystaline <a class="reference external" href="https://www.sigmaaldrich.com/CA/en/substance/hepes238307365459">HEPES (the acidic form)</a> and a bottle of crystaline <a class="reference external" href="https://www.sigmaaldrich.com/CA/en/substance/hepessodiumsalt2602975277393">HEPES sodium salt (the basic form)</a>. I want to make a <span class="math notranslate nohighlight">\(1.5\)</span> L volume with a total HEPES concentration of <span class="math notranslate nohighlight">\(200\)</span> mM and a <span class="math notranslate nohighlight">\(\rm pH\)</span> of <span class="math notranslate nohighlight">\(7.15\)</span>.</p>
+<p>We know the <span class="math notranslate nohighlight">\(\rm pH\)</span>, the <span class="math notranslate nohighlight">\(\rm pK_a\)</span> of the acid form of HEPES and the molar mass of both materials (just click on the links in the above paragraph to get more information about both).</p>
+<p>We can get the needed ratio of the two forms, the value of <span class="math notranslate nohighlight">\(\frac{[A]}{[HA]}\)</span> required if <span class="math notranslate nohighlight">\(\rm pH = 7.15\)</span> by using the Hendersson-Haselbalch equation.</p>
+<div class="math notranslate nohighlight">
+\[pH = pK_a + \log{\frac{[A]}{[HA]}}\]</div>
+<p>and we want the total concentration of both forms of HEPES to be <span class="math notranslate nohighlight">\(200\)</span> mM so we can say that</p>
+<div class="math notranslate nohighlight">
+\[[A]+[HA]=0.200\]</div>
+<p>The code below will serve as a calculator for our math.  Observe how what you do is recorded in the text of the code itself. You can come back to this code and change some numbers to use it again. Feel free to <strong>steal it</strong> and modify it for your own needs.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################################################################</span>
+<span class="c1">#### Set up variables. Change these if I want something different</span>
+<span class="c1">#######################################################################</span>
+
+<span class="n">pH</span> <span class="o">=</span> <span class="mf">7.15</span>             <span class="c1">#### chosen pH</span>
+<span class="n">pKa</span> <span class="o">=</span> <span class="mf">7.45</span>            <span class="c1">#### pKa value of acid form of buffer. I looked it up on wikipedia</span>
+  
+<span class="n">MolMass_HA</span> <span class="o">=</span> <span class="mf">238.30</span>   <span class="c1">#### g/mole. Molar mass of acidic form. I looked it up in the specification sheet available from the vendor</span>
+<span class="n">MolMass_A</span> <span class="o">=</span> <span class="mf">260.29</span>    <span class="c1">#### g/mole. Molar mass of sodium salt of HEPES (basic form). I looked it up in the specification sheet available from the vendor</span>
+  
+<span class="n">Total_Conc</span> <span class="o">=</span> <span class="mf">0.200</span>    <span class="c1">#### mole/L.  Desired total concentration.</span>
+  
+<span class="n">Volume</span> <span class="o">=</span> <span class="mf">1.5</span>          <span class="c1">#### L. Volume of buffer solution.</span>
+
+<span class="c1">#######################################################################</span>
+<span class="c1">#### Calculate A/HA ratio</span>
+<span class="c1">#######################################################################</span>
+
+<span class="n">ratio_A_HA</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="n">pH</span> <span class="o">-</span> <span class="n">pKa</span><span class="p">)</span>            <span class="c1">### Reorganized HH eqn to solve for A/HA</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ratio of A/HA is </span><span class="si">{</span><span class="n">ratio_A_HA</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1">#######################################################################</span>
+<span class="c1">#### Calculate A and HA concentrations</span>
+<span class="c1">#######################################################################</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">ratio_A_HA</span>       <span class="c1">#### so that the code below will be easier to read</span>
+
+<span class="n">percent_A</span> <span class="o">=</span>  <span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span>  <span class="c1">#### Convert ratio to mole fraction (percent)</span>
+<span class="n">percent_HA</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">r</span><span class="p">)</span>
+
+<span class="n">conc_HA</span> <span class="o">=</span> <span class="n">Total_Conc</span> <span class="o">*</span> <span class="n">percent_HA</span>   <span class="c1">#### the fraction of total conc is the conc of each.</span>
+<span class="n">conc_A</span> <span class="o">=</span> <span class="n">Total_Conc</span> <span class="o">*</span> <span class="n">percent_A</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Concentration of A is </span><span class="si">{</span><span class="n">conc_A</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Concentration of HA is </span><span class="si">{</span><span class="n">conc_HA</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total concentration of HA + A is </span><span class="si">{</span><span class="n">conc_HA</span><span class="o">+</span><span class="n">conc_A</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>   <span class="c1">#### Check. Just in case.</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1">#######################################################################</span>
+<span class="c1">#### Calculate A and HA amounts</span>
+<span class="c1">#######################################################################</span>
+
+<span class="n">mass_of_A</span> <span class="o">=</span> <span class="n">conc_A</span> <span class="o">*</span> <span class="n">Volume</span> <span class="o">*</span> <span class="n">MolMass_A</span>       <span class="c1">#### moles = conc * volume.  mass = moles * molar_mass</span>
+<span class="n">mass_of_HA</span> <span class="o">=</span> <span class="n">conc_HA</span> <span class="o">*</span> <span class="n">Volume</span> <span class="o">*</span> <span class="n">MolMass_HA</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mass of A in </span><span class="si">{</span><span class="n">Volume</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">L is </span><span class="si">{</span><span class="n">mass_of_A</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> grams&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mass of HA in </span><span class="si">{</span><span class="n">Volume</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">L is </span><span class="si">{</span><span class="n">mass_of_HA</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> grams&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ratio of A/HA is 0.501
+
+Concentration of A is 0.067 moles/L
+Concentration of HA is 0.133 moles/L
+Total concentration of HA + A is 0.200 moles/L
+
+Mass of A in 1.5L is 26.07 grams
+Mass of HA in 1.5L is 47.62 grams
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="making-the-buffer">
+<h3>Making the Buffer<a class="headerlink" href="#making-the-buffer" title="Permalink to this headline">#</a></h3>
+<p>We see from the math above that I will need <span class="math notranslate nohighlight">\(47.62\)</span> grams of the HEPES acid and <span class="math notranslate nohighlight">\(26.07\)</span> grams of its sodium salt dissolved in a final volume of <span class="math notranslate nohighlight">\(1.5\)</span> litres. Now I just have to write up a recipe. Take note of how the code above is just calculation steps that are recorded as <em>Python</em> commands and can be checked and corrected easily by the reader. Try seeing what the calculations are in a printout of an Excel preadsheet. How does this compare.</p>
+<p>In you recipe you will describe your calculations using the math typesetting tool of your choice, such as the equation editor built into your word processor. <em>Python</em> is your calculator, not your word processor.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./T02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="T2_AcidBaseMath.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Acid Equilibria with <em>Python</em></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="T2_TitrModel.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Modeling Titrations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-from-math-ideas">Problem 1 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-from-math-ideas">Problem 2 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-3-from-math-ideas">Problem 3 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-4-from-math-ideas">Problem 4 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-5-from-math-ideas">Problem 5 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-6-from-math-ideas">Problem 6 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-7-from-math-ideas">Problem 7 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-8-from-math-ideas">Problem 8 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-9-from-math-ideas">Problem 9 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-10-from-math-ideas">Problem 10 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-a-buffer-for-the-assignment">Making a Buffer for the Assignment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#making-the-buffer">Making the Buffer</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Barry Linkletter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

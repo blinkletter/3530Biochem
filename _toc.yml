@@ -6,11 +6,12 @@ root: start
 parts:
     - caption: Tutorial 2
       chapters:
-        - file: T2_AcidBaseMath
-        - file: T2_Exercise
-        - file: T2_TitrModel
+        - file: T02/T2_AcidBaseMath
+        - file: T02/T2_Exercise
+        - file: T02/T2_TitrModel
     - caption: Tutorial 3
       chapters:
-        - file: T3_MM_Intro_fun
-        - file: T3_MM_Intro_basics_functions
+        - file: T03/T3_Galactsidase_enzyme_kinetics.ipynb
+        - file: T03/T3_MM_Intro_fun
+        - file: T03/T3_MM_Intro_basics_functions
 

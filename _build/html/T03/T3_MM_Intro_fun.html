@@ -1,0 +1,773 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enzyme Kinetics with Inhibitors &#8212; Python for Biochemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'T03/T3_MM_Intro_fun';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Plotting Enzyme Kinetics" href="T3_MM_Intro_basics_functions.html" />
+    <link rel="prev" title="Modeling Titrations" href="../T02/T2_TitrModel.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../start.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/plot.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/plot.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../start.html">
+                    Data Interpretation for Biochemistry
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T02/T2_AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T02/T2_Exercise.html">Problem Set Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T02/T2_TitrModel.html">Modeling Titrations</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Enzyme Kinetics with Inhibitors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T3_MM_Intro_basics_functions.html">Plotting Enzyme Kinetics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./T03/T3_MM_Intro_fun.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/T03/T3_MM_Intro_fun.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Enzyme Kinetics with Inhibitors</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-effect-of-inhibitors">The Effect of Inhibitors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inhibition-model">The Inhibition Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncompetitive-inhibition">Uncompetitive Inhibition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-inhibition">Mixed Inhibition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fun-with-plotting">Fun with Plotting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michaelis-menten-plots-with-inhibition">Michaelis-Menten Plots with Inhibition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lineweaver-burke-plots-with-inhibition">Lineweaver-Burke Plots with Inhibition</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="enzyme-kinetics-with-inhibitors">
+<h1>Enzyme Kinetics with Inhibitors<a class="headerlink" href="#enzyme-kinetics-with-inhibitors" title="Permalink to this headline">#</a></h1>
+<p>In this workbook we will introduce simple <em>Python</em> commands for exploring enzyme kinetics with inhibition.</p>
+<p>So the famous Michaelis-menten equation is</p>
+<div class="math notranslate nohighlight">
+\[ \nu = V_{max} \frac{[S]}{K_M + [S]} \]</div>
+<div class="section" id="the-effect-of-inhibitors">
+<h2>The Effect of Inhibitors<a class="headerlink" href="#the-effect-of-inhibitors" title="Permalink to this headline">#</a></h2>
+<p>The terms <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> can be affected by the presence of inhibitors. So perhaps we should refer to the values as “observed values”; changed from the true values by inhibitors (or activators).</p>
+<div class="math notranslate nohighlight">
+\[ \nu = V_{max}^{obs} \frac{[S]}{K_M^{obs} + [S]} \]</div>
+<p>You will have learned that competitve inhibitors compete for the active site and affect the apparent affinity for the substrate but do not change the chemistry of the enzyme and so do not affect <span class="math notranslate nohighlight">\(k_{cat}\)</span>. As a result, the value for <span class="math notranslate nohighlight">\(V_{max}\)</span> will be unchanged. In the case of a <strong>competitive inhibitor</strong> we observe <span class="math notranslate nohighlight">\(V_{max}\)</span> is unchanged and that…</p>
+<div class="math notranslate nohighlight">
+\[K_{M}^{obs} = K_{M}\cdot \left(1+\frac{[I]}{K_I}\right)\]</div>
+<p>…where <span class="math notranslate nohighlight">\(K_i\)</span> is the dissociation constant for the inhibitor and enzyme and <span class="math notranslate nohighlight">\([I]\)</span> is the concentration of the inhibitor.</p>
+<p>In the case of a <strong>non-competitve inhibitor</strong> we observe <span class="math notranslate nohighlight">\(K_M\)</span> is unchanged and that…</p>
+<div class="math notranslate nohighlight">
+\[V_{max}^{obs} = \frac{V_{max}}{1+\frac{[I]}{K_I}}\]</div>
+<p>These are the only two cases we will discuss in this course.</p>
+</div>
+<div class="section" id="the-inhibition-model">
+<h2>The Inhibition Model<a class="headerlink" href="#the-inhibition-model" title="Permalink to this headline">#</a></h2>
+<p>The model used to derive the above equations is shown below.</p>
+<a class="center reference internal image-reference" href="T03/images/T3_scheme1.png"><img alt="T03/images/T3_scheme1.png" class="center" src="T03/images/T3_scheme1.png" style="width: 400px;" /></a>
+<p>In the case of competitive inhibition, the inhibitor must bind to the active site. It cannot bind to the <span class="math notranslate nohighlight">\(E\cdot S\)</span> complex because it competes for the active site with the substrate. In this case the <span class="math notranslate nohighlight">\(K_u\)</span> dissociation constant can be considered to be unimportant.</p>
+<p>In the case of non-competitive inhibition, the inhibitor binds at another site and we assume that it binds to either <span class="math notranslate nohighlight">\(E\)</span> or the <span class="math notranslate nohighlight">\(E\cdot S\)</span> complex equally well. In that case we can say that <span class="math notranslate nohighlight">\(K_c = K_u\)</span> and that both of these values represent <span class="math notranslate nohighlight">\(K_I\)</span>.</p>
+</div>
+<div class="section" id="uncompetitive-inhibition">
+<h2>Uncompetitive Inhibition<a class="headerlink" href="#uncompetitive-inhibition" title="Permalink to this headline">#</a></h2>
+<p>There is a third option, <strong>uncompetitive inhibition</strong>. In this case the inhibitor requires the presence of inhibitor to bind to the enzyme. In this case we would say that <span class="math notranslate nohighlight">\(k_c\)</span> is unimportant and that <span class="math notranslate nohighlight">\(K_u\)</span> is the only <span class="math notranslate nohighlight">\(K_I\)</span> value.</p>
+<p>In this case both <span class="math notranslate nohighlight">\(K_M\)</span> and <span class="math notranslate nohighlight">\(V_{max}\)</span> are affected and we observe that</p>
+<p>\begin{array}{cl}
+V_{max}^{obs} = \frac{V_{max}}{1+\frac{[I]}{K_I}}  &amp; K_M^{obs} = \frac{K_M}{1+\frac{[I]}{K_I}}
+\end{array}</p>
+</div>
+<div class="section" id="mixed-inhibition">
+<h2>Mixed Inhibition<a class="headerlink" href="#mixed-inhibition" title="Permalink to this headline">#</a></h2>
+<p>In many cases the binding of an inhibitor to an enzyme can occur in such a way that it binds to a site other than the active site and that binding is affected by the presence of substrate, but not eliminated. In this case we observe that <span class="math notranslate nohighlight">\(K_c\)</span> and <span class="math notranslate nohighlight">\(K_u\)</span> are importamnt and that <span class="math notranslate nohighlight">\(K_c \ne K_u\)</span>. This is the case of <strong>mixed inhibition</strong>. The Michaelis-menten equation can be derived in this situation…</p>
+<div class="math notranslate nohighlight">
+\[ \nu = \frac{V_{max}}{1+\frac{[I]}{K_u}} \frac{[S]}{K_M\frac{1+\frac{[I]}{K_c}}{1+\frac{[I]}{K_u}} + [S]} \]</div>
+<p>This is, in fact, the general equation. It will result in the observations of competitive, non-competitive and uncompetive inhibition if we respectively state that…</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ddb90d8f-3bb6-4a35-940f-5d89c2965bb8">
+<span class="eqno">(1)<a class="headerlink" href="#equation-ddb90d8f-3bb6-4a35-940f-5d89c2965bb8" title="Permalink to this equation">#</a></span>\[\begin{align}
+k_u &amp;= \infty \\
+k_c &amp;= k_u \\
+k_c &amp;= \infty
+\end{align}\]</div>
+</div>
+<div class="section" id="fun-with-plotting">
+<h2>Fun with Plotting<a class="headerlink" href="#fun-with-plotting" title="Permalink to this headline">#</a></h2>
+<p>Let us explore the consequences for adding an inhibitor. We will observe the behaviour of the Michaelis-Menten plot and the abominable Lineweaver-Burke plot as we use competetive and non-competitive inhibitors. We can also explore uncompetitive and mixed inhibition.</p>
+<p>The code below will plot both the MM and the LB equation for three concentrations of inhibitor. By setting the values of <span class="math notranslate nohighlight">\(V_{max}\)</span>, <span class="math notranslate nohighlight">\(K_M\)</span>, <span class="math notranslate nohighlight">\([I]\)</span>, <span class="math notranslate nohighlight">\(K_u\)</span> and <span class="math notranslate nohighlight">\(K_c\)</span> we can explore all the cases above.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">########################</span>
+<span class="c1">## Demonstrating Inhibitors</span>
+<span class="c1">########################</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/3530Biochem/main/data/&quot;</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/3530Biochem/main/images/&quot;</span>
+<span class="n">image_path</span> <span class="o">=</span> <span class="s2">&quot;./images/&quot;</span>
+
+<span class="n">github_styles_location</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/LFER-QSAR/main/styles/&quot;</span>
+<span class="n">style</span> <span class="o">=</span> <span class="s2">&quot;S2_classic2.mplstyle&quot;</span>
+<span class="c1">#style = &quot;tufte.mplstyle&quot;</span>
+
+<span class="n">S_conc</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">50</span><span class="p">]</span>  <span class="c1">### mM</span>
+<span class="n">S_conc_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>  <span class="c1">### for curve in plot</span>
+
+<span class="n">Vmax</span> <span class="o">=</span> <span class="mi">1</span>                 <span class="c1">### uM/min</span>
+<span class="n">KM</span> <span class="o">=</span> <span class="mi">5</span>                   <span class="c1">### mM</span>
+
+
+<span class="c1">##########################################################</span>
+<span class="c1">### CHANGE THESE VALUES. Have Fun!</span>
+<span class="c1">##########################################################</span>
+
+<span class="n">I_conc</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.3</span><span class="p">]</span>     <span class="c1">### uM</span>
+
+<span class="n">Kc</span> <span class="o">=</span> <span class="mf">0.1</span>   <span class="c1">### uM     </span>
+<span class="n">Ku</span> <span class="o">=</span> <span class="mf">0.1</span>   <span class="c1">### uM</span>
+<span class="c1">#Ku = np.inf</span>
+<span class="c1">#Kc = np.inf</span>
+
+
+<span class="c1">##########################################################</span>
+<span class="c1">##########################################################</span>
+
+<span class="n">I_conc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">I_conc</span><span class="p">)</span>
+<span class="n">S_conc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">S_conc</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">MMcalc</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">Kc</span><span class="p">,</span> <span class="n">Ku</span><span class="p">):</span>
+    <span class="n">Vmax_app</span> <span class="o">=</span> <span class="n">Vmax</span><span class="o">/</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">I</span><span class="o">/</span><span class="n">Ku</span><span class="p">)</span>
+    <span class="n">KM_app</span> <span class="o">=</span> <span class="n">KM</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">I</span><span class="o">/</span><span class="n">Kc</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">I</span><span class="o">/</span><span class="n">Ku</span><span class="p">)</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">Vmax_app</span> <span class="o">*</span> <span class="n">S</span> <span class="o">/</span> <span class="p">(</span><span class="n">S</span> <span class="o">+</span> <span class="n">KM_app</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">Vmax_app</span><span class="p">,</span> <span class="n">KM_app</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="section" id="michaelis-menten-plots-with-inhibition">
+<h3>Michaelis-Menten Plots with Inhibition<a class="headerlink" href="#michaelis-menten-plots-with-inhibition" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">######################</span>
+<span class="c1">### Create an empty plot</span>
+<span class="c1">#####################</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           <span class="c1">### Reset default style - no needed but just in case.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  <span class="c1">### establish a figure with size 5x4</span>
+
+<span class="c1">######################</span>
+<span class="c1">### Add some style</span>
+<span class="c1">######################</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>         <span class="c1">### y-axis limits are min = 0, max = whatever</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">52</span><span class="p">)</span>         <span class="c1">### x-axis limits are min = 0, max = whatever</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu\ \ /\,nM\: s^{-1}$&quot;</span><span class="p">)</span>   <span class="c1">### The $ indicates &quot;math typesetting language&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$[S]\ \ /\,\mu M$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Michaelis-Menten Plot&quot;</span><span class="p">)</span>
+
+<span class="c1">######################</span>
+<span class="c1">### Plot the data for each [I]</span>
+<span class="c1">#####################</span>
+
+<span class="k">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">I_conc</span><span class="p">:</span>
+    <span class="n">rates</span><span class="p">,</span> <span class="n">Vmax_app</span><span class="p">,</span> <span class="n">KM_app</span> <span class="o">=</span> <span class="n">MMcalc</span><span class="p">(</span><span class="n">S_conc</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">Kc</span><span class="p">,</span> <span class="n">Ku</span><span class="p">)</span>
+    <span class="n">rate_line</span><span class="p">,</span> <span class="n">Vmax_app</span><span class="p">,</span> <span class="n">KM_app</span> <span class="o">=</span> <span class="n">MMcalc</span><span class="p">(</span><span class="n">S_conc_line</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">Kc</span><span class="p">,</span> <span class="n">Ku</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;When [I] = </span><span class="si">{</span><span class="n">I</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM, Vmax(app) = </span><span class="si">{</span><span class="n">Vmax_app</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">, KM(app) = </span><span class="si">{</span><span class="n">KM_app</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="n">S_conc</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">rates</span>
+    
+    <span class="n">x_line</span> <span class="o">=</span> <span class="n">S_conc_line</span>
+    <span class="n">y_line</span> <span class="o">=</span> <span class="n">rate_line</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>     
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_line</span><span class="p">,</span> <span class="n">y_line</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="s2">&quot;$[I] = $ &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">I</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">Kc</span> <span class="o">==</span> <span class="n">Ku</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Noncompetitive, Ki = </span><span class="si">{</span><span class="n">Kc</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">Ku</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Competitive, Ki = </span><span class="si">{</span><span class="n">Kc</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">Kc</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unompetitive, Ki = </span><span class="si">{</span><span class="n">Kc</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">Ku</span> <span class="o">!=</span> <span class="n">Kc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mixed, Kc = </span><span class="si">{</span><span class="n">Kc</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM, Ku = </span><span class="si">{</span><span class="n">Ku</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: No cases fit&quot;</span><span class="p">)</span>
+
+
+
+<span class="c1">######################</span>
+<span class="c1">### Display and export the plot</span>
+<span class="c1">######################</span>
+
+<span class="c1">#plt.savefig(&quot;MM_plot.pdf&quot;)    ### Save the image as a pdf file. Now you can use it in a document.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>When [I] = 0.0 uM, Vmax(app) = 1.00, KM(app) = 5.00
+When [I] = 0.1 uM, Vmax(app) = 0.50, KM(app) = 5.00
+When [I] = 0.3 uM, Vmax(app) = 0.25, KM(app) = 5.00
+Noncompetitive, Ki = 0.1 uM
+</pre></div>
+</div>
+<img alt="../_images/383d7e2adccb95ea08039b0232dd065281b12d3cbe2b1a5c4eb436fd18e1cfc0.png" src="../_images/383d7e2adccb95ea08039b0232dd065281b12d3cbe2b1a5c4eb436fd18e1cfc0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="lineweaver-burke-plots-with-inhibition">
+<h3>Lineweaver-Burke Plots with Inhibition<a class="headerlink" href="#lineweaver-burke-plots-with-inhibition" title="Permalink to this headline">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">######################</span>
+<span class="c1">### Create an empty plot</span>
+<span class="c1">#####################</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           <span class="c1">### Reset default style - no needed but just in case.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  <span class="c1">### establish a figure with size 5x4</span>
+
+<span class="c1">######################</span>
+<span class="c1">### Add some style</span>
+<span class="c1">######################</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>         <span class="c1">### y-axis limits are min = 0, max = whatever</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>         <span class="c1">### x-axis limits are min = 0, max = whatever</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu\ \ /\,nM\: s^{-1}$&quot;</span><span class="p">)</span>   <span class="c1">### The $ indicates &quot;math typesetting language&quot;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$[S]\ \ /\,\mu M$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Michaelis-Menten Plot&quot;</span><span class="p">)</span>
+
+<span class="c1">######################</span>
+<span class="c1">### Plot the data for each [I]</span>
+<span class="c1">#####################</span>
+
+<span class="n">S_conc_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">S_conc_line</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">I</span> <span class="ow">in</span> <span class="n">I_conc</span><span class="p">:</span>
+    <span class="n">rates</span><span class="p">,</span> <span class="n">Vmax_app</span><span class="p">,</span> <span class="n">KM_app</span> <span class="o">=</span> <span class="n">MMcalc</span><span class="p">(</span><span class="n">S_conc</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">Kc</span><span class="p">,</span> <span class="n">Ku</span><span class="p">)</span>
+    <span class="n">rate_line</span><span class="p">,</span> <span class="n">Vmax_app</span><span class="p">,</span> <span class="n">KM_app</span> <span class="o">=</span> <span class="n">MMcalc</span><span class="p">(</span><span class="n">S_conc_line</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">Kc</span><span class="p">,</span> <span class="n">Ku</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;When [I] = </span><span class="si">{</span><span class="n">I</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM, Vmax(app) = </span><span class="si">{</span><span class="n">Vmax_app</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">, KM(app) = </span><span class="si">{</span><span class="n">KM_app</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">S_conc</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">rates</span>
+    
+    <span class="n">x_line</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">S_conc_line</span>
+    <span class="n">y_line</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">rate_line</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>     
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_line</span><span class="p">,</span> <span class="n">y_line</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">+</span><span class="mf">.15</span> <span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">),</span><span class="s2">&quot;$[I] = $ &quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">I</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">Kc</span> <span class="o">==</span> <span class="n">Ku</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Noncompetitive, Ki = </span><span class="si">{</span><span class="n">Kc</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">Ku</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Competitive, Ki = </span><span class="si">{</span><span class="n">Kc</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">Kc</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unompetitive, Ki = </span><span class="si">{</span><span class="n">Kc</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">Ku</span> <span class="o">!=</span> <span class="n">Kc</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mixed, Kc = </span><span class="si">{</span><span class="n">Kc</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM, Ku = </span><span class="si">{</span><span class="n">Ku</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> uM&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: No cases fit&quot;</span><span class="p">)</span>
+
+
+<span class="c1">######################</span>
+<span class="c1">### Display and export the plot</span>
+<span class="c1">######################</span>
+
+<span class="c1">#plt.savefig(&quot;LB_plot.pdf&quot;)    ### Save the image as a pdf file. Now you can use it in a document.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>When [I] = 0.0 uM, Vmax(app) = 1.00, KM(app) = 5.00
+When [I] = 0.1 uM, Vmax(app) = 0.50, KM(app) = 5.00
+When [I] = 0.3 uM, Vmax(app) = 0.25, KM(app) = 5.00
+Noncompetitive, Ki = 0.1 uM
+</pre></div>
+</div>
+<img alt="../_images/2108694d3e83e48e1df22fbe8d2659564248dacf1fec4fa695994856627c69ff.png" src="../_images/2108694d3e83e48e1df22fbe8d2659564248dacf1fec4fa695994856627c69ff.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./T03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../T02/T2_TitrModel.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modeling Titrations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="T3_MM_Intro_basics_functions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Plotting Enzyme Kinetics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-effect-of-inhibitors">The Effect of Inhibitors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-inhibition-model">The Inhibition Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uncompetitive-inhibition">Uncompetitive Inhibition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixed-inhibition">Mixed Inhibition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fun-with-plotting">Fun with Plotting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#michaelis-menten-plots-with-inhibition">Michaelis-Menten Plots with Inhibition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lineweaver-burke-plots-with-inhibition">Lineweaver-Burke Plots with Inhibition</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Barry Linkletter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

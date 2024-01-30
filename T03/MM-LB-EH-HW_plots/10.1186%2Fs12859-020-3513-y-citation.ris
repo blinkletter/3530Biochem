@@ -1,0 +1,17 @@
+TY  - JOUR
+AU  - Olp, Michael D.
+AU  - Kalous, Kelsey S.
+AU  - Smith, Brian C.
+PY  - 2020
+DA  - 2020/05/14
+TI  - ICEKAT: an interactive online tool for calculating initial rates from continuous enzyme kinetic traces
+JO  - BMC Bioinformatics
+SP  - 186
+VL  - 21
+IS  - 1
+AB  - Continuous enzyme kinetic assays are often used in high-throughput applications, as they allow rapid acquisition of large amounts of kinetic data and increased confidence compared to discontinuous assays. However, data analysis is often rate-limiting in high-throughput enzyme assays, as manual inspection and selection of a linear range from individual kinetic traces is cumbersome and prone to user error and bias. Currently available software programs are specialized and designed for the analysis of complex enzymatic models. Despite the widespread use of initial rate determination for processing kinetic data sets, no simple and automated program existed for rapid analysis of initial rates from continuous enzyme kinetic traces.
+SN  - 1471-2105
+UR  - https://doi.org/10.1186/s12859-020-3513-y
+DO  - 10.1186/s12859-020-3513-y
+ID  - Olp2020
+ER  - 
