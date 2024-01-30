@@ -66,7 +66,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'T3_MM_Intro_basics';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Enzyme Kinetics with Inhibitors" href="T3_MM_Intro_fun.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,9 +164,9 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="T3_MM_Intro_fun.html">Enzyme Kinetics with Inhibitors</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Plotting Enzyme Kinetics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T3_MM_Intro_basics_functions.html">Plotting Enzyme Kinetics</a></li>
 </ul>
 
     </div>
@@ -476,12 +475,6 @@ document.write(`
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x10c040610&gt;]
-</pre></div>
-</div>
-<img alt="_images/52387ba305c87ecb83e9856dc328e5b48d2273b5d81ea6d93d85d57f497ea3c6.png" src="_images/52387ba305c87ecb83e9856dc328e5b48d2273b5d81ea6d93d85d57f497ea3c6.png" />
-</div>
 </div>
 </section>
 <section id="plotting-the-data">
@@ -532,9 +525,6 @@ document.write(`
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/0d5f70272b48aa4d1905290a17ee125bf729d4f38908dc259960e3ac950efc5a.png" src="_images/0d5f70272b48aa4d1905290a17ee125bf729d4f38908dc259960e3ac950efc5a.png" />
-</div>
 </div>
 </section>
 <section id="a-double-reciprocol-plot">
@@ -594,9 +584,6 @@ document.write(`
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/b9bfa74c3e3e3e1a45ce5ec1392d55708a33f72908b9421599990683990f41c2.png" src="_images/b9bfa74c3e3e3e1a45ce5ec1392d55708a33f72908b9421599990683990f41c2.png" />
-</div>
 </div>
 </section>
 </section>
@@ -684,12 +671,6 @@ document.write(`
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The slope is 4.57 +/- 0.02
-The intercept is 0.88 +/- 0.01
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="handling-uncertainties">
@@ -762,19 +743,6 @@ The intercept is 0.88 +/- 0.01
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The slope is 4.57+/-0.02
-The intercept is 0.88+/-0.01
-
-The Vmax is 1.141+/-0.011 uM/s
-The KM is 5.220+/-0.054 mM
-
-We can separate the uncertain value into its nominal value and its stderr
-The nominal value for Vmax is 1.141
-The stderr for Vmax is 0.011
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="include-the-curve-fit-in-the-plot">
@@ -839,9 +807,6 @@ The stderr for Vmax is 0.011
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<img alt="_images/c1a1674e6facf672d8d8b01122fd3418dcb4a07e89568a57b0145f8f543b2d53.png" src="_images/c1a1674e6facf672d8d8b01122fd3418dcb4a07e89568a57b0145f8f543b2d53.png" />
-</div>
 </div>
 </section>
 </section>
@@ -929,13 +894,6 @@ The stderr for Vmax is 0.011
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 1.123+/-0.005
-The KM is 5.002+/-0.079
-</pre></div>
-</div>
-<img alt="_images/929142da54227228678fbb33787dc52f6c9d0d8e19c222f8004214595d636cf8.png" src="_images/929142da54227228678fbb33787dc52f6c9d0d8e19c222f8004214595d636cf8.png" />
-</div>
 </div>
 </section>
 <section id="the-abomination-of-lb">
@@ -1076,13 +1034,6 @@ The KM is 5.002+/-0.079
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 1.117+/-0.066
-The KM is 5.614+/-1.098
-</pre></div>
-</div>
-<img alt="_images/faee59384b8064704b961086ee5191fef6cdb5a9a944491eeaa34e77b57819ad.png" src="_images/faee59384b8064704b961086ee5191fef6cdb5a9a944491eeaa34e77b57819ad.png" />
-</div>
 </div>
 </section>
 <section id="random-error-in-lb-plots">
@@ -1207,13 +1158,6 @@ The KM is 5.614+/-1.098
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 0.998+/-0.072 uM/s
-The KM is 3.658+/-0.309 mM
-</pre></div>
-</div>
-<img alt="_images/0044e7bda8cafccdc1c1ca23f3de235bcbe5ee12674760debb99a5ff47e042dc.png" src="_images/0044e7bda8cafccdc1c1ca23f3de235bcbe5ee12674760debb99a5ff47e042dc.png" />
-</div>
 </div>
 </section>
 </section>
@@ -1262,21 +1206,6 @@ The KM is 3.658+/-0.309 mM
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.12]
-[5.61]
-
-MM Vmax  1.117+/-0
-MM KM    5.614+/-0
-
-[1.]
-[3.66]
-
-LB Vmax  0.998+/-0
-LB KM    3.658+/-0
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="other-linear-methods">
@@ -1425,13 +1354,6 @@ LB KM    3.658+/-0
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 1.009+/-0.157 uM/s
-The KM is 4.397+/-1.525 mM
-</pre></div>
-</div>
-<img alt="_images/938f03314ac9360cf4d5591f9cf82279078f082aa6dd3b01d2f4be0a38e090c6.png" src="_images/938f03314ac9360cf4d5591f9cf82279078f082aa6dd3b01d2f4be0a38e090c6.png" />
-</div>
 </div>
 </section>
 <section id="hanes-woolf">
@@ -1560,13 +1482,6 @@ The KM is 4.397+/-1.525 mM
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 1.206+/-0.029 uM/s
-The KM is 6.643+/-0.607 mM
-</pre></div>
-</div>
-<img alt="_images/61a1334cc7235a6f1fdc7c1cf02ec9f0589564e3b72cac8cbe5dadf6b15c1779.png" src="_images/61a1334cc7235a6f1fdc7c1cf02ec9f0589564e3b72cac8cbe5dadf6b15c1779.png" />
-</div>
 </div>
 </section>
 </section>
@@ -1615,21 +1530,6 @@ The KM is 6.643+/-0.607 mM
 </div>
 </div>
 </details>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1.01]
-[4.4]
-
-EH Vmax  1.009+/-0
-EH KM    4.397+/-0
-
-[1.21]
-[6.64]
-
-HW Vmax  1.206+/-0
-HW KM    6.643+/-0
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
@@ -1665,15 +1565,6 @@ HW KM    6.643+/-0
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="T3_MM_Intro_fun.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Enzyme Kinetics with Inhibitors</p>
-      </div>
-    </a>
 </div></div>
   
 </div>

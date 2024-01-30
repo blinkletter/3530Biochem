@@ -12,4 +12,5 @@ parts:
     - caption: Tutorial 3
       chapters:
         - file: T3_MM_Intro_fun
-        - file: T3_MM_Intro_basics
+        - file: T3_MM_Intro_basics_functions
+        
