@@ -12,6 +12,10 @@ parts:
     - caption: Tutorial 3
       chapters:
         - file: T03/T3_Galactsidase_enzyme_kinetics.ipynb
-        - file: T03/T3_MM_Intro_fun
         - file: T03/T3_MM_Intro_basics_functions
+    - caption: Tutorial 4
+      chapters:
+        - file: T04/T4_InhibitionA.ipynb
+        - file: T04/T4_MM_Intro_fun
+
 

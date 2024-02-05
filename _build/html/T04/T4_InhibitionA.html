@@ -1,0 +1,1018 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Drug Interaction and Enzyme Kinetics &#8212; Python for Biochemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'T04/T4_InhibitionA';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example: Enzyme Kinetics with Inhibitors" href="T4_MM_Intro_fun.html" />
+    <link rel="prev" title="Plotting Enzyme Kinetics" href="../T03/T3_MM_Intro_basics_functions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../start.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/plot.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/plot.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../start.html">
+                    Data Interpretation for Biochemistry
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T02/T2_AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T02/T2_Exercise.html">Problem Set Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T02/T2_TitrModel.html">Modeling Titrations</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T03/T3_Galactsidase_enzyme_kinetics.html">Enzyme Kinetics Four Ways for Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T03/T3_MM_Intro_basics_functions.html">Plotting Enzyme Kinetics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 4</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Drug Interaction and Enzyme Kinetics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T4_MM_Intro_fun.html">Example: Enzyme Kinetics with Inhibitors</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./T04/T4_InhibitionA.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/T04/T4_InhibitionA.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Drug Interaction and Enzyme Kinetics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first">IMPORTANT! Go to the end of this notebook and execute the final code block FIRST.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-data">Setting Up the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-analysis">Example Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data">Load the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-dataframe">Edit the DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-rates-at-each-concentration">Calculate Rates at Each Concentration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michaelis-menten-plot">Michaelis-Menten Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lineweaver-burke">Lineweaver-Burke</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-half-done">You are Half Done</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-this-first">RUN THIS FIRST</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="drug-interaction-and-enzyme-kinetics">
+<h1>Drug Interaction and Enzyme Kinetics<a class="headerlink" href="#drug-interaction-and-enzyme-kinetics" title="Permalink to this heading">#</a></h1>
+<p>In this workbook we will introduce <em>Python</em> commands for importing and manipulating data. then we will curve fit and plot using what we learned in the previous tutorial.</p>
+<section id="important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first">
+<h2>IMPORTANT! Go to the end of this notebook and execute the final code block FIRST.<a class="headerlink" href="#important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first" title="Permalink to this heading">#</a></h2>
+<p>The last block of code contains the definitions for the functions used in this document.</p>
+</section>
+<section id="setting-up-the-data">
+<h2>Setting Up the Data<a class="headerlink" href="#setting-up-the-data" title="Permalink to this heading">#</a></h2>
+<p>The code below will print out the data file that we are using as text. Examine it and decide your next steps.</p>
+<p>Choose from one of the following data files and modify the code below to access it…</p>
+<ul class="simple">
+<li><p>Data-0.csv</p></li>
+<li><p>Data-1.csv</p></li>
+<li><p>Data-2.csv</p></li>
+<li><p>Data-3.csv</p></li>
+<li><p>Data-4.csv</p></li>
+<li><p>Data-5.csv</p></li>
+<li><p>Data-6.csv</p></li>
+<li><p>Data-7.csv</p></li>
+<li><p>Data-8.csv</p></li>
+<li><p>Data-9.csv</p></li>
+</ul>
+</section>
+<section id="example-analysis">
+<h2>Example Analysis<a class="headerlink" href="#example-analysis" title="Permalink to this heading">#</a></h2>
+<p>In the following example I will obtain the <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> values in the case of warfarin with cyp450 and again with the presence of a potential inhibitor.</p>
+<p>First let us examine the raw text data file with our eyes…</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">########################</span>
+<span class="c1">## Triclofenac B</span>
+<span class="c1">########################</span>
+
+
+
+<span class="c1">############################################</span>
+<span class="c1">### Identify the data file and examine it</span>
+<span class="c1">############################################</span>
+
+<span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;Data-B.csv&quot;</span>       <span class="c1">### You will need to change this name</span>
+
+<span class="n">file_url</span> <span class="o">=</span> <span class="n">github_data_location</span> <span class="o">+</span> <span class="n">data_file</span>   <span class="c1">### The data is on a web site so I add the web site to the file name here</span>
+
+<span class="n">page</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span>  <span class="c1">### pull in a file from the web (github in this case)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">page</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>               <span class="c1">### print out the text contents of the web page file.</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># Triclofenac B interaction with warfarin metabolism
+# [cytP450] = 0.0000000010 moles/L
+# Experiment 1 - No inhibitor          
+&quot;[warfarin] (uM)&quot;,        2.8,             4.6,             6.4,             9.1,              17.9,              26.9
+&quot;time (min)&quot;,            &quot;[product /nM]&quot;, &quot;[product /nM]&quot;, &quot;[product /nM]&quot;, &quot;[product /nM]&quot;, &quot;[product /nM]&quot;, &quot;[product /nM]&quot;
+1.0,                        5.2,             8.9,            11.1,            13.2,            15.9,            20.4
+2.0,                       10.8,            17.9,            21.1,            23.9,            32.4,            40.3
+3.0,                       16.0,            24.9,            31.7,            38.8,            53.3,            55.4
+4.0,                       24.3,            35.5,            39.1,            48.2,            61.1,            70.8
+5.0,                       26.2,            40.4,            46.6,            58.1,            76.7,            88.8
+7.0,                       41.6,            58.7,            68.0,            86.4,           107.5,           133.3
+8.0,                       42.5,            66.6,            78.8,           102.3,           125.8,           149.3
+# Experiment 2 - Inhibitor = Triclofenac B
+# [Inhibitor] = 2 mM
+&quot;[warfarin] (uM)&quot;,        1.0,             1.9,             4.6,             6.4,             10.0,            13.6
+&quot;time (min)&quot;,            &quot;[product /nM]&quot;, &quot;[product /nM]&quot;, &quot;[product /nM]&quot;, &quot;[product /nM]&quot;, &quot;[product /nM]&quot;, &quot;[product /nM]&quot;
+1.0,                        1.1,             2.2,             4.4,             5.1,             6.1,             7.2
+2.0,                        2.4,             4.1,             7.7,             9.7,            13.9,            15.6
+3.0,                        3.4,             6.2,            11.7,            15.8,            20.8,            22.4
+4.0,                        4.3,             8.6,            16.6,            20.7,            23.5,            27.6
+5.0,                        5.7,            10.6,            22.6,            26.9,            32.8,            37.4
+7.0,                        7.5,            13.7,            26.2,            37.6,            49.6,            47.5
+8.0,                        9.6,            16.5,            31.5,            41.9,            55.0,            54.5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-the-data">
+<h2>Load the Data<a class="headerlink" href="#load-the-data" title="Permalink to this heading">#</a></h2>
+<p>We see that the data is organized in a format.  There are comments describing conditions and information about the format. this will enable you ro interpret the data. There are also lines of data organized in columns.</p>
+<p>We will import this text fime into a data structure called a ‘dataframe’. This is the <em>Python</em> version of a spreadsheet. The dataframe has tools built into it for manipulating the data. If you examine the code at the very end of the spreadsheet you will see examples of this.</p>
+<p>Below we us the Pandas package (loaded in as ‘pd’) and the Pandas.read_csv() function to parse the data file and create the dataframe object. The dataframe is then printed out for your inspection.</p>
+<p>Note that I manually entered some data that was in the comments, such as the concentration of the potential inhibitor and the enzyme concentration. You can use this data later to calculate the dissociation conatnat for inhibition, <span class="math notranslate nohighlight">\(K_i\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#######################</span>
+<span class="c1">## Facts from data file comments</span>
+<span class="c1">#######################</span>
+
+<span class="n">conc_enzyme</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">## nanomole/L </span>
+<span class="n">conc_inh</span> <span class="o">=</span> <span class="mi">2</span>    <span class="c1">## millimole/L</span>
+<span class="n">name_inh</span> <span class="o">=</span> <span class="s2">&quot;triclofenac B&quot;</span>
+<span class="n">name_substrate</span> <span class="o">=</span> <span class="s2">&quot;warfarin&quot;</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">### Read data set. The fields are separated by commas; comments are ignored </span>
+<span class="c1">################################################################################</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> 
+                 <span class="n">delimiter</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="p">,</span> 
+                 <span class="n">skipinitialspace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+                 <span class="n">header</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                 <span class="n">index_col</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                 <span class="n">comment</span> <span class="o">=</span> <span class="s2">&quot;#&quot;</span><span class="p">)</span> 
+<span class="n">display</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="edit-the-dataframe">
+<h2>Edit the DataFrame<a class="headerlink" href="#edit-the-dataframe" title="Permalink to this heading">#</a></h2>
+<p>The dataframe has two sets of data in it.  the code below will separate the two chuncks of data and create two new dataframes. You will need to change the numbers in the slices if your data has a different number of lines that the set presented here.</p>
+<p>The final dataframes are a seris of columns. there is a column for the time of measurements and columns for the amount of product formed at each time point. Each column is the result of an experiment with a different concentration of the substrate and these concentration values are listed at the top of each column. In a Pandas dataframe the ‘header’ is the title of each column. I can access each column using the header value. You can see examples of this in the code at the end of this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################################################</span>
+<span class="c1">### Separate the two groups of data and set up the dataframe for convenient access </span>
+<span class="c1">################################################################################</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>           <span class="c1">### copy the dataframe to a generic name so I can easily reuse the code below</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>               <span class="c1">### slice rows 0 to 8 into a new dataframe</span>
+
+<span class="n">df_no_inh</span> <span class="o">=</span> <span class="n">trim_and_format_data</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>  <span class="c1">### will strip away unwanted rows and columns and set up column headers and index column</span>
+
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>           <span class="c1">### copy the dataframe again</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">9</span><span class="p">:]</span>                <span class="c1">### slice rows 9 to the end into a new dataframe</span>
+
+<span class="n">df_inh</span> <span class="o">=</span> <span class="n">trim_and_format_data</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>     <span class="c1">### will strip away unwanted rows and columns and set up column headers and index column</span>
+
+<span class="c1">################################################################################</span>
+<span class="c1">### We now have dataframes with the data in rows labeled by the time points</span>
+<span class="c1">### and each column labelled by the substrate concentration</span>
+<span class="c1">################################################################################</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data for warfarin only no inhibitor&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_no_inh</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data for warfarin with drup -- potential inhibitor&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_inh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="calculate-rates-at-each-concentration">
+<h3>Calculate Rates at Each Concentration<a class="headerlink" href="#calculate-rates-at-each-concentration" title="Permalink to this heading">#</a></h3>
+<p>The experiment will enable us to calculate the reaction rate at a given concentration by taking the slope of the plot of concentration vs. time for the appearance of product. The function ‘get_slopes_and_plot_them_all’ will take a dataframe, curve fit each column agains time to get the slopes, plot all data and slopes, and finaly return the list of slopes and a list of the concentrations of the substrate.</p>
+<p>You now have a set of rates and a set of concentrations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################################################</span>
+<span class="c1">### Take a dataframe of product concentrations vs time at different substrate</span>
+<span class="c1">### concentrations and get slopes of each experiment and plot them all</span>
+<span class="c1">### on a single graph</span>
+<span class="c1">################################################################################</span>
+
+<span class="n">concs</span><span class="p">,</span> <span class="n">rates</span> <span class="o">=</span> <span class="n">get_slopes_and_plot_them_all</span><span class="p">(</span><span class="n">df_no_inh</span><span class="p">,</span>
+                                            <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Change in concentration vs. Time&quot;</span><span class="p">,</span> 
+                                            <span class="n">xaxis</span> <span class="o">=</span> <span class="s2">&quot;$t /min$&quot;</span><span class="p">,</span> 
+                                            <span class="n">yaxis</span> <span class="o">=</span> <span class="s2">&quot;$\Delta [P] / \mu M$&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">concs</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rates</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="michaelis-menten-plot">
+<h2>Michaelis-Menten Plot<a class="headerlink" href="#michaelis-menten-plot" title="Permalink to this heading">#</a></h2>
+<p>We will use a slightly modified vesrion of the MM_Plot() function from the previous tutorial.  This one has added error bars to the plot and uses the errors in the line fit (points with large errors are weighted less in the curve_fit algorithm).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">concs</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="n">rates</span>
+
+<span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span> <span class="o">=</span> <span class="n">MM_Plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="se">\n</span><span class="s2">Km = </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lineweaver-burke">
+<h2>Lineweaver-Burke<a class="headerlink" href="#lineweaver-burke" title="Permalink to this heading">#</a></h2>
+<p>We all hate it, but it is the one form of linearization that your textbook discusses so we will present it here. The Linear_Plot function from the previous tutorial has been modified to use errors as well. We will get the slope and intercept and calculate <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">concs</span> 
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">rates</span>    
+
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">Linear_Plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
+                               <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;Lineweaver Something or Other&quot;</span><span class="p">,</span> 
+                               <span class="n">xaxis</span> <span class="o">=</span> <span class="s2">&quot;1 / x-axis&quot;</span><span class="p">,</span> 
+                               <span class="n">yaxis</span> <span class="o">=</span> <span class="s2">&quot;$1</span><span class="se">\\</span><span class="s2">, /</span><span class="se">\\</span><span class="s2">, </span><span class="se">\\</span><span class="s2">nu$&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Slope = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="se">\n</span><span class="s2">Intercept = </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1">### An exampe of the &#39;\n&#39; to make a new line</span>
+
+<span class="n">Vmax</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">intercept</span>
+<span class="n">KM</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">Vmax</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="se">\n</span><span class="s2">Km = </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="you-are-half-done">
+<h2>You are Half Done<a class="headerlink" href="#you-are-half-done" title="Permalink to this heading">#</a></h2>
+<p>Now record the values yopu have calculated and download any plots you wish to present in your report. Then repeat the above with the other dataframe for the inhibited experiment. You will now have all the data that you need to finish the assignment.</p>
+</section>
+<section id="run-this-first">
+<h2>RUN THIS FIRST<a class="headerlink" href="#run-this-first" title="Permalink to this heading">#</a></h2>
+<p>Execute the final bock in this notebook below to establish all the functions and tools required in the code above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">############################################</span>
+<span class="c1">###  Import packages and set up variables</span>
+<span class="c1">############################################</span>
+
+<span class="kn">from</span> <span class="nn">os</span> <span class="kn">import</span> <span class="n">system</span>                    <span class="c1">## import tools to access the file sytsem directly</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       <span class="c1">## import the tools of NumPy but use a shorter name</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>                      <span class="c1">## import tools for data handling</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">requests</span>                          <span class="c1">## tools to access web content</span>
+
+<span class="c1">## fancy plot style sheet</span>
+<span class="n">github_location_styles</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/LFER-QSAR/main/styles/&quot;</span>
+<span class="c1">#plt.style.use(github_location_styles + &quot;tufte.mplstyle&quot;)        </span>
+
+<span class="n">github_data_location</span><span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/3530Biochem/main/T04/data/&quot;</span>
+<span class="c1">#github_data_location= &quot;./data/&quot;</span>
+
+<span class="c1">####################################</span>
+<span class="c1">### Install UNCERTAINTIES package </span>
+<span class="c1">####################################</span>
+
+<span class="c1">#!pip install uncertainties  # to install in Colab. Add it back to avoid installing again and again.</span>
+
+<span class="c1">####################################</span>
+<span class="c1">### Import versions of NumPy and Math that use uncertainty </span>
+<span class="c1">####################################</span>
+
+<span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">un</span>
+<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>
+<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">umath</span> <span class="k">as</span> <span class="n">um</span>
+
+
+<span class="c1">########################################################################</span>
+<span class="k">def</span> <span class="nf">trim_and_format_data</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>             <span class="c1">### had to reset the index to give a first line with index &#39;0&#39;</span>
+    <span class="c1">#display(df)                               ### uncomment to check whats happening to the dataframe</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;index&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1">### drop the former index column that was created by the reset </span>
+    <span class="c1">#display(df)</span>
+    
+    <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Time (min)&quot;</span>                    <span class="c1">### Put the word &#39;Time&quot; in the top corner - you&#39;ll see whey soon</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>                 <span class="c1">### drop the second row that is all text labels</span>
+    <span class="c1">#display(df)</span>
+    
+    <span class="c1">################################################################################</span>
+    <span class="c1">### We now have a dataframe with the data in rows labeled as 2 through 8.</span>
+    <span class="c1">### Row 0 is the concentrations of substrate. Let us uses these to index the dataframe</span>
+    <span class="c1">################################################################################</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>         <span class="c1">### Set the contents of the first row to be the column headers</span>
+    <span class="c1">#display(df)</span>
+    
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>      <span class="c1">### drop the first row that is now set as the column headers</span>
+
+    <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>             <span class="c1">### again, had to reset the index to give a first line with index &#39;0&#39;</span>
+    <span class="c1">#display(df)                               ### uncomment to check whats happening to the dataframe</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;index&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1">### drop the former index column that was created by the reset </span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>    <span class="c1">### copy the resulting editted dataframe to a more useful name</span>
+
+<span class="k">def</span> <span class="nf">get_slopes_and_plot_them_all</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;Enter Title Here&quot;</span><span class="p">,</span> <span class="n">xaxis</span> <span class="o">=</span> <span class="s2">&quot;x-axis&quot;</span><span class="p">,</span> <span class="n">yaxis</span> <span class="o">=</span> <span class="s2">&quot;y-axis&quot;</span><span class="p">):</span>
+    
+    <span class="k">def</span> <span class="nf">linear_zero</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">slope</span><span class="p">):</span>  <span class="c1">### Take x values, slope and intercept and return the y values</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           <span class="c1">### Reset default style - not needed, but just in case.</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  <span class="c1">### Establish a figure with size 5x4</span>
+    
+    <span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;Time (min)&quot;</span><span class="p">)</span>   <span class="c1">### Pop (remove) the &#39;time&#39; column and assign it to x</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>      <span class="c1">### For some reason all data was text. x now converted to floating point.</span>
+    
+    <span class="n">list_slopes</span> <span class="o">=</span> <span class="p">[]</span>                <span class="c1">### create an empty list for slopes at each concentration</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>            <span class="c1">### Get each column name one-at-a-time in turn</span>
+
+        <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>                   <span class="c1">### Get each column of concentrations and convert to floating point</span>
+        <span class="n">slope</span><span class="p">,</span> <span class="n">cov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear_zero</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>   <span class="c1">### two objects are returned</span>
+
+        <span class="n">x_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">50</span><span class="p">)</span>       <span class="c1">### Make line for curve fit</span>
+        
+        <span class="n">perr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">cov</span><span class="p">))</span>            <span class="c1">### convert covariance matrix to stdev values</span>
+        <span class="n">stdev_slope</span> <span class="o">=</span> <span class="n">perr</span>                      <span class="c1">### pull out the two stdev values </span>
+        <span class="n">slope_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="n">stdev_slope</span><span class="p">)</span>  <span class="c1">### create a value with uncertainty built in</span>
+        <span class="n">list_slopes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">slope_u</span><span class="p">)</span>             <span class="c1">### add slope value to the list</span>
+    
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>                                <span class="c1">### Plot each column against time</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span><span class="n">linear_zero</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">slope</span><span class="p">),</span><span class="s2">&quot;k-&quot;</span><span class="p">)</span>   <span class="c1">### Plot the line   </span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.6</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">i</span><span class="p">)</span>          <span class="c1">### label each line on the plot</span>
+    
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">yaxis</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xaxis</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">MultiPlot</span><span class="o">.</span><span class="n">pdf</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="n">concs</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>                <span class="c1">### Convert list of conc from column header to array of floating point</span>
+    <span class="n">list_slopes_n</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">list_slopes</span><span class="p">)</span>   <span class="c1">### Rates is a list of uncertainty values</span>
+    <span class="n">list_slopes_s</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">list_slopes</span><span class="p">)</span>         <span class="c1">### separate them into lists of nominal values and std deviations                           </span>
+    <span class="n">rates</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">uarray</span><span class="p">(</span><span class="n">list_slopes_n</span><span class="p">,</span> <span class="n">list_slopes_s</span><span class="p">)</span>  <span class="c1">### create an array of uncertainty values using Uncertainties.uNumPy.uarray()</span>
+
+    <span class="k">return</span><span class="p">(</span><span class="n">concs</span><span class="p">,</span> <span class="n">rates</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">MM_Plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+
+    <span class="c1">####################################</span>
+    <span class="c1">### Define the MM equation for the curve fit as a function</span>
+    <span class="c1">####################################</span>
+
+    <span class="k">def</span> <span class="nf">MMplot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span><span class="p">):</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S</span> <span class="o">/</span> <span class="p">(</span><span class="n">S</span> <span class="o">+</span> <span class="n">KM</span><span class="p">)</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+        
+    <span class="c1">####################################</span>
+    <span class="c1">### Perform the curve fit</span>
+    <span class="c1">####################################</span>
+    
+    <span class="n">y_stdev</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>   <span class="c1">### y is a set of uncertainty values. Extract the two parts</span>
+    <span class="n">y</span>       <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">params</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">MMplot</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>          <span class="c1">## two objects are returned</span>
+                              <span class="n">sigma</span> <span class="o">=</span> <span class="n">y_stdev</span><span class="p">,</span>       <span class="c1">## include stdevs in curve fit</span>
+                              <span class="n">absolute_sigma</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1">## errors are values, not relative.</span>
+    
+    <span class="c1">####################################</span>
+    <span class="c1">### Interpret the results</span>
+    <span class="c1">####################################</span>
+    
+    <span class="n">v_max</span><span class="p">,</span> <span class="n">KM</span> <span class="o">=</span> <span class="n">params</span>   <span class="c1">### pull out the two values in the params object</span>
+    
+    <span class="n">perr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">stats</span><span class="p">))</span>          <span class="c1">### convert covariance matrix to stdev values</span>
+    <span class="n">stdev_v_max</span><span class="p">,</span> <span class="n">stdev_KM</span> <span class="o">=</span> <span class="n">perr</span>            <span class="c1">### pull out the two stdev values </span>
+    
+    <span class="n">v_max_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">v_max</span><span class="p">,</span><span class="n">stdev_v_max</span><span class="p">)</span>  <span class="c1">### create a value with uncertainty built in</span>
+    <span class="n">KM_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">KM</span><span class="p">,</span><span class="n">stdev_KM</span><span class="p">)</span>
+    
+    <span class="c1">################################</span>
+    <span class="c1">### make a list of x values from zero to the end of the line</span>
+    <span class="c1">################################</span>
+    
+    <span class="n">x_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
+    
+    <span class="c1">################################</span>
+    <span class="c1">### Feed that list into the function for the line fit</span>
+    <span class="c1">################################</span>
+    
+    <span class="n">y_fit</span> <span class="o">=</span> <span class="n">MMplot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span><span class="n">v_max</span><span class="p">,</span><span class="n">KM</span><span class="p">)</span>
+    
+    <span class="c1">######################</span>
+    <span class="c1">### Create an empty plot</span>
+    <span class="c1">#####################</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  
+    
+    <span class="c1">######################</span>
+    <span class="c1">### Plot the data and the curve fit line</span>
+    <span class="c1">#####################</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">y_stdev</span><span class="p">,</span>
+                 <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+                 <span class="n">elinewidth</span> <span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">capsize</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>   
+                                                                                                     
+    <span class="c1">######################</span>
+    <span class="c1">### Add some style</span>
+    <span class="c1">#####################</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu$&quot;</span><span class="p">)</span>  
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$[S]$&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Michaelis-Menten Plot&quot;</span><span class="p">)</span>
+    
+    <span class="c1">######################</span>
+    <span class="c1">### Display and export the plot</span>
+    <span class="c1">######################</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;MM_plot.pdf&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">v_max_u</span><span class="p">,</span> <span class="n">KM_u</span>
+
+<span class="k">def</span> <span class="nf">Linear_Plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;Enter Title Here&quot;</span><span class="p">,</span> <span class="n">xaxis</span> <span class="o">=</span> <span class="s2">&quot;x-axis&quot;</span><span class="p">,</span> <span class="n">yaxis</span> <span class="o">=</span> <span class="s2">&quot;y-axis&quot;</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">linear</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">):</span>  <span class="c1">### Take x values, slope and intercept and return the y values</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept</span>
+        <span class="k">return</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+
+
+    <span class="n">y_stdev</span> <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">std_devs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>   <span class="c1">### y is a set of uncertainty values. Extract the two parts</span>
+    <span class="n">y</span>       <span class="o">=</span> <span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">params</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>          <span class="c1">## two objects are returned</span>
+                              <span class="n">sigma</span> <span class="o">=</span> <span class="n">y_stdev</span><span class="p">,</span>       <span class="c1">## include stdevs in curve fit</span>
+                              <span class="n">absolute_sigma</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1">## errors are values, not relative.</span>
+    
+ 
+
+
+
+    <span class="n">params</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>   <span class="c1">## two objects are returned</span>
+    
+    <span class="c1">####################################</span>
+    <span class="c1">### Interpret the results</span>
+    <span class="c1">####################################</span>
+    
+    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">params</span>   <span class="c1">### pull out the two values in the params object</span>
+    
+    <span class="n">perr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">stats</span><span class="p">))</span>        <span class="c1">### convert covariance matrix to stdev values</span>
+    <span class="n">stdev_slope</span><span class="p">,</span> <span class="n">stdev_intercept</span> <span class="o">=</span> <span class="n">perr</span>   <span class="c1">### pull out the two stdev values </span>
+    
+    <span class="n">slope_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="n">stdev_slope</span><span class="p">)</span>               <span class="c1">## create a value with uncertainty built in</span>
+    <span class="n">intercept_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span><span class="n">stdev_intercept</span><span class="p">)</span>  
+    
+        
+    <span class="c1">################################</span>
+    <span class="c1">### make a list of x values from zero to the end of the line</span>
+    <span class="c1">################################</span>
+    
+    <span class="n">x_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1">## 100 points from 0 to the highest value on LB plot x-axis</span>
+    
+    <span class="c1">################################</span>
+    <span class="c1">### Feed that list into the function for the line fit</span>
+    <span class="c1">################################</span>
+    
+    <span class="n">y_fit</span> <span class="o">=</span> <span class="n">linear</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">)</span>
+    
+    <span class="c1">######################</span>
+    <span class="c1">### Create an empty plot</span>
+    <span class="c1">#####################</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  
+    
+    <span class="c1">######################</span>
+    <span class="c1">### Plot the data and the curve fit line</span>
+    <span class="c1">#####################</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">,</span> <span class="n">markersize</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">yerr</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">y_stdev</span><span class="p">,</span>
+             <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span><span class="p">,</span>
+             <span class="n">elinewidth</span> <span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">capsize</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>   
+
+    <span class="c1">######################</span>
+    <span class="c1">### Add some style</span>
+    <span class="c1">#####################</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">yaxis</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xaxis</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+    
+    <span class="c1">######################</span>
+    <span class="c1">### Display and export the plot</span>
+    <span class="c1">#####################</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;Linear_plot.pdf&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">slope_u</span><span class="p">,</span> <span class="n">intercept_u</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./T04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../T03/T3_MM_Intro_basics_functions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Plotting Enzyme Kinetics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="T4_MM_Intro_fun.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Example: Enzyme Kinetics with Inhibitors</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first">IMPORTANT! Go to the end of this notebook and execute the final code block FIRST.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-data">Setting Up the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-analysis">Example Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data">Load the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-the-dataframe">Edit the DataFrame</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-rates-at-each-concentration">Calculate Rates at Each Concentration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#michaelis-menten-plot">Michaelis-Menten Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lineweaver-burke">Lineweaver-Burke</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#you-are-half-done">You are Half Done</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-this-first">RUN THIS FIRST</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Barry Linkletter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

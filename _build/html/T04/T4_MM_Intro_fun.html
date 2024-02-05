@@ -3,12 +3,13 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Enzyme Kinetics with Inhibitors &#8212; Python for Biochemistry</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Example: Enzyme Kinetics with Inhibitors &#8212; Python for Biochemistry</title>
   
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -61,13 +63,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'T03/T3_MM_Intro_fun';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'T04/T4_MM_Intro_fun';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Plotting Enzyme Kinetics" href="T3_MM_Intro_basics_functions.html" />
-    <link rel="prev" title="Modeling Titrations" href="../T02/T2_TitrModel.html" />
+    <link rel="prev" title="Drug Interaction and Enzyme Kinetics" href="T4_InhibitionA.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -164,9 +165,14 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T03/T3_Galactsidase_enzyme_kinetics.html">Enzyme Kinetics Four Ways for Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T03/T3_MM_Intro_basics_functions.html">Plotting Enzyme Kinetics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 4</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Enzyme Kinetics with Inhibitors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="T3_MM_Intro_basics_functions.html">Plotting Enzyme Kinetics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T4_InhibitionA.html">Drug Interaction and Enzyme Kinetics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Example: Enzyme Kinetics with Inhibitors</a></li>
 </ul>
 
     </div>
@@ -221,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./T03/T3_MM_Intro_fun.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./T04/T4_MM_Intro_fun.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -252,7 +258,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/T03/T3_MM_Intro_fun.ipynb" target="_blank"
+      <li><a href="../_sources/T04/T4_MM_Intro_fun.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -334,7 +340,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Enzyme Kinetics with Inhibitors</h1>
+    <h1>Example: Enzyme Kinetics with Inhibitors</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -364,14 +370,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="enzyme-kinetics-with-inhibitors">
-<h1>Enzyme Kinetics with Inhibitors<a class="headerlink" href="#enzyme-kinetics-with-inhibitors" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="example-enzyme-kinetics-with-inhibitors">
+<h1>Example: Enzyme Kinetics with Inhibitors<a class="headerlink" href="#example-enzyme-kinetics-with-inhibitors" title="Permalink to this heading">#</a></h1>
 <p>In this workbook we will introduce simple <em>Python</em> commands for exploring enzyme kinetics with inhibition.</p>
 <p>So the famous Michaelis-menten equation is</p>
 <div class="math notranslate nohighlight">
 \[ \nu = V_{max} \frac{[S]}{K_M + [S]} \]</div>
-<div class="section" id="the-effect-of-inhibitors">
-<h2>The Effect of Inhibitors<a class="headerlink" href="#the-effect-of-inhibitors" title="Permalink to this headline">#</a></h2>
+<section id="the-effect-of-inhibitors">
+<h2>The Effect of Inhibitors<a class="headerlink" href="#the-effect-of-inhibitors" title="Permalink to this heading">#</a></h2>
 <p>The terms <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> can be affected by the presence of inhibitors. So perhaps we should refer to the values as “observed values”; changed from the true values by inhibitors (or activators).</p>
 <div class="math notranslate nohighlight">
 \[ \nu = V_{max}^{obs} \frac{[S]}{K_M^{obs} + [S]} \]</div>
@@ -383,37 +389,37 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[V_{max}^{obs} = \frac{V_{max}}{1+\frac{[I]}{K_I}}\]</div>
 <p>These are the only two cases we will discuss in this course.</p>
-</div>
-<div class="section" id="the-inhibition-model">
-<h2>The Inhibition Model<a class="headerlink" href="#the-inhibition-model" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="the-inhibition-model">
+<h2>The Inhibition Model<a class="headerlink" href="#the-inhibition-model" title="Permalink to this heading">#</a></h2>
 <p>The model used to derive the above equations is shown below.</p>
-<a class="center reference internal image-reference" href="T03/images/T3_scheme1.png"><img alt="T03/images/T3_scheme1.png" class="center" src="T03/images/T3_scheme1.png" style="width: 400px;" /></a>
+<a class="center reference internal image-reference" href="../_images/T4_scheme1.png"><img alt="../_images/T4_scheme1.png" class="center" src="../_images/T4_scheme1.png" style="width: 400px;" /></a>
 <p>In the case of competitive inhibition, the inhibitor must bind to the active site. It cannot bind to the <span class="math notranslate nohighlight">\(E\cdot S\)</span> complex because it competes for the active site with the substrate. In this case the <span class="math notranslate nohighlight">\(K_u\)</span> dissociation constant can be considered to be unimportant.</p>
 <p>In the case of non-competitive inhibition, the inhibitor binds at another site and we assume that it binds to either <span class="math notranslate nohighlight">\(E\)</span> or the <span class="math notranslate nohighlight">\(E\cdot S\)</span> complex equally well. In that case we can say that <span class="math notranslate nohighlight">\(K_c = K_u\)</span> and that both of these values represent <span class="math notranslate nohighlight">\(K_I\)</span>.</p>
-</div>
-<div class="section" id="uncompetitive-inhibition">
-<h2>Uncompetitive Inhibition<a class="headerlink" href="#uncompetitive-inhibition" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="uncompetitive-inhibition">
+<h2>Uncompetitive Inhibition<a class="headerlink" href="#uncompetitive-inhibition" title="Permalink to this heading">#</a></h2>
 <p>There is a third option, <strong>uncompetitive inhibition</strong>. In this case the inhibitor requires the presence of inhibitor to bind to the enzyme. In this case we would say that <span class="math notranslate nohighlight">\(k_c\)</span> is unimportant and that <span class="math notranslate nohighlight">\(K_u\)</span> is the only <span class="math notranslate nohighlight">\(K_I\)</span> value.</p>
 <p>In this case both <span class="math notranslate nohighlight">\(K_M\)</span> and <span class="math notranslate nohighlight">\(V_{max}\)</span> are affected and we observe that</p>
 <p>\begin{array}{cl}
 V_{max}^{obs} = \frac{V_{max}}{1+\frac{[I]}{K_I}}  &amp; K_M^{obs} = \frac{K_M}{1+\frac{[I]}{K_I}}
 \end{array}</p>
-</div>
-<div class="section" id="mixed-inhibition">
-<h2>Mixed Inhibition<a class="headerlink" href="#mixed-inhibition" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="mixed-inhibition">
+<h2>Mixed Inhibition<a class="headerlink" href="#mixed-inhibition" title="Permalink to this heading">#</a></h2>
 <p>In many cases the binding of an inhibitor to an enzyme can occur in such a way that it binds to a site other than the active site and that binding is affected by the presence of substrate, but not eliminated. In this case we observe that <span class="math notranslate nohighlight">\(K_c\)</span> and <span class="math notranslate nohighlight">\(K_u\)</span> are importamnt and that <span class="math notranslate nohighlight">\(K_c \ne K_u\)</span>. This is the case of <strong>mixed inhibition</strong>. The Michaelis-menten equation can be derived in this situation…</p>
 <div class="math notranslate nohighlight">
 \[ \nu = \frac{V_{max}}{1+\frac{[I]}{K_u}} \frac{[S]}{K_M\frac{1+\frac{[I]}{K_c}}{1+\frac{[I]}{K_u}} + [S]} \]</div>
 <p>This is, in fact, the general equation. It will result in the observations of competitive, non-competitive and uncompetive inhibition if we respectively state that…</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ddb90d8f-3bb6-4a35-940f-5d89c2965bb8">
-<span class="eqno">(1)<a class="headerlink" href="#equation-ddb90d8f-3bb6-4a35-940f-5d89c2965bb8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bba015c5-a2cd-4859-ba1e-3a4bcf6b3f6b">
+<span class="eqno">(1)<a class="headerlink" href="#equation-bba015c5-a2cd-4859-ba1e-3a4bcf6b3f6b" title="Permalink to this equation">#</a></span>\[\begin{align}
 k_u &amp;= \infty \\
 k_c &amp;= k_u \\
 k_c &amp;= \infty
 \end{align}\]</div>
-</div>
-<div class="section" id="fun-with-plotting">
-<h2>Fun with Plotting<a class="headerlink" href="#fun-with-plotting" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="fun-with-plotting">
+<h2>Fun with Plotting<a class="headerlink" href="#fun-with-plotting" title="Permalink to this heading">#</a></h2>
 <p>Let us explore the consequences for adding an inhibitor. We will observe the behaviour of the Michaelis-Menten plot and the abominable Lineweaver-Burke plot as we use competetive and non-competitive inhibitors. We can also explore uncompetitive and mixed inhibition.</p>
 <p>The code below will plot both the MM and the LB equation for three concentrations of inhibitor. By setting the values of <span class="math notranslate nohighlight">\(V_{max}\)</span>, <span class="math notranslate nohighlight">\(K_M\)</span>, <span class="math notranslate nohighlight">\([I]\)</span>, <span class="math notranslate nohighlight">\(K_u\)</span> and <span class="math notranslate nohighlight">\(K_c\)</span> we can explore all the cases above.</p>
 <div class="cell tag_hide-input docutils container">
@@ -473,8 +479,8 @@ k_c &amp;= \infty
 </div>
 </details>
 </div>
-<div class="section" id="michaelis-menten-plots-with-inhibition">
-<h3>Michaelis-Menten Plots with Inhibition<a class="headerlink" href="#michaelis-menten-plots-with-inhibition" title="Permalink to this headline">#</a></h3>
+<section id="michaelis-menten-plots-with-inhibition">
+<h3>Michaelis-Menten Plots with Inhibition<a class="headerlink" href="#michaelis-menten-plots-with-inhibition" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -554,9 +560,9 @@ Noncompetitive, Ki = 0.1 uM
 <img alt="../_images/383d7e2adccb95ea08039b0232dd065281b12d3cbe2b1a5c4eb436fd18e1cfc0.png" src="../_images/383d7e2adccb95ea08039b0232dd065281b12d3cbe2b1a5c4eb436fd18e1cfc0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="lineweaver-burke-plots-with-inhibition">
-<h3>Lineweaver-Burke Plots with Inhibition<a class="headerlink" href="#lineweaver-burke-plots-with-inhibition" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="lineweaver-burke-plots-with-inhibition">
+<h3>Lineweaver-Burke Plots with Inhibition<a class="headerlink" href="#lineweaver-burke-plots-with-inhibition" title="Permalink to this heading">#</a></h3>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -637,9 +643,9 @@ Noncompetitive, Ki = 0.1 uM
 <img alt="../_images/2108694d3e83e48e1df22fbe8d2659564248dacf1fec4fa695994856627c69ff.png" src="../_images/2108694d3e83e48e1df22fbe8d2659564248dacf1fec4fa695994856627c69ff.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -654,7 +660,7 @@ Noncompetitive, Ki = 0.1 uM
         },
         kernelOptions: {
             name: "python3",
-            path: "./T03"
+            path: "./T04"
         },
         predefinedOutput: true
     }
@@ -673,22 +679,13 @@ Noncompetitive, Ki = 0.1 uM
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../T02/T2_TitrModel.html"
+       href="T4_InhibitionA.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Modeling Titrations</p>
+        <p class="prev-next-title">Drug Interaction and Enzyme Kinetics</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="T3_MM_Intro_basics_functions.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Plotting Enzyme Kinetics</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   
