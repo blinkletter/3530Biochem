@@ -1,8 +1,8 @@
 ﻿# Tenoxicam interaction with warfarin metabolism
 # [cytP450] = 0.0000000010 moles/L
 # Experiment 1 - No inhibitor          
-"[warfarin] (uM)",        2.7,             4.5,             6.3,             9,              18,              27
-"time (min)",            "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]"
+"[warfarin] (mM)",        2.7,             4.5,             6.3,             9,              18,              27
+"time (min)",            "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]"
 1.0,                        5.1,             8.8,            11.0,            13.1,            15.8,            20.3
 2.0,                       10.7,            17.8,            21.0,            23.8,            32.3,            40.2
 3.0,                       15.9,            24.8,            31.6,            38.7,            53.2,            55.3
@@ -12,8 +12,8 @@
 8.0,                       42.4,            66.5,            78.7,           102.2,           125.7,           149.2
 # Experiment 2 - Inhibitor = Tenoxicam
 # [Inhibitor] = 2 mM
-"[warfarin] (uM)",        0.9,             1.8,             4.5,             6.3,             9.9,            13.5
-"time (min)",            "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]"
+"[warfarin] (mM)",        0.9,             1.8,             4.5,             6.3,             9.9,            13.5
+"time (min)",            "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]"
 1.0,                        1.0,             2.1,             4.3,             5.0,             6.0,             7.1
 2.0,                        2.3,             4.0,             7.6,             9.6,            13.8,            15.5
 3.0,                        3.3,             6.1,            11.6,            15.7,            20.7,            22.3

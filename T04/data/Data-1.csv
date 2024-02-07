@@ -1,8 +1,8 @@
 ﻿# Diclofenac interaction with warfarin metabolism
 # [cytP450] = 0.0000000010 moles/L
 # Experiment 1 - No inhibitor          
-"[warfarin] (uM)",        0.12,            0.2,             0.28,            0.4,             0.8,             1.2
-"time (min)",            "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]"
+"[warfarin] (mM)",        0.12,            0.2,             0.28,            0.4,             0.8,             1.2
+"time (min)",            "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]"
 1.0,                        4.0,             6.7,             6.9,            10.0,            12.3,            13.7
 2.0,                        8.3,            12.7,             16.7,           19.0,            24.2,            29.6
 3.0,                       12.9,            18.8,             21.3,           27.4,            39.2,            38.3
@@ -12,8 +12,8 @@
 8.0,                       33.9,            54.0,             64.4,           76.1,            97.2,           115.9
 # Experiment 2 - Inhibitor = Diclofenac
 # [Inhibitor] = 3 mM
-"[warfarin] (uM)",        0.14,            0.28,            0.7,             0.98,            1.54,            2.1
-"time (min)",            "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]", "[product /nM]"
+"[warfarin] (mM)",        0.14,            0.28,            0.7,             0.98,            1.54,            2.1
+"time (min)",            "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]", "[product /uM]"
 1.0,                        1.8,             3.0,             6.3,             7.1,             8.8,            12.0
 2.0,                        3.6,             6.0,            13.5,            15.5,            19.9,            23.6
 3.0,                        4.7,             9.4,            19.6,            22.7,            27.7,            33.3
