@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Enzyme Kinetics Four Ways for Report &#8212; Python for Biochemistry</title>
   
   
@@ -44,7 +43,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Plotting Enzyme Kinetics" href="T3_MM_Intro_basics_functions.html" />
     <link rel="prev" title="Modeling Titrations" href="../T02/T2_TitrModel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -172,6 +170,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../T04/T4_InhibitionA.html">Drug Interaction and Enzyme Kinetics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../T04/T4_MM_Intro_fun.html">Example: Enzyme Kinetics with Inhibitors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T04/Tutorial_4_exercises_Answers.html">Answers for Questions 5 to 10</a></li>
 </ul>
 
     </div>
@@ -366,16 +365,16 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="enzyme-kinetics-four-ways-for-report">
-<h1>Enzyme Kinetics Four Ways for Report<a class="headerlink" href="#enzyme-kinetics-four-ways-for-report" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="enzyme-kinetics-four-ways-for-report">
+<h1>Enzyme Kinetics Four Ways for Report<a class="headerlink" href="#enzyme-kinetics-four-ways-for-report" title="Permalink to this headline">#</a></h1>
 <p>This is an example of the kind of math you will need to do for the assignment.</p>
-<section id="important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first">
-<h2>IMPORTANT! Go to the end of this notebook and execute the final code block FIRST.<a class="headerlink" href="#important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first" title="Permalink to this heading">#</a></h2>
+<div class="section" id="important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first">
+<h2>IMPORTANT! Go to the end of this notebook and execute the final code block FIRST.<a class="headerlink" href="#important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first" title="Permalink to this headline">#</a></h2>
 <p>The last block of code contains the definitions for the functions used in this document.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SN</span> <span class="o">=</span> <span class="mi">329644</span>     <span class="c1">## Which data set should I use?</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I will use data set: v</span><span class="si">{</span><span class="n">SN</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">7</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I will use data set: v</span><span class="si">{</span><span class="n">SN</span> <span class="o">%</span> <span class="mi">7</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1">##########################################################</span>
 <span class="c1">### Create Data set conc (mM), delta AU</span>
@@ -406,9 +405,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="michaelis-menten-plot">
-<h2>Michaelis-Menten Plot<a class="headerlink" href="#michaelis-menten-plot" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="michaelis-menten-plot">
+<h2>Michaelis-Menten Plot<a class="headerlink" href="#michaelis-menten-plot" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##########################################################</span>
@@ -437,9 +436,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="lineweaver-burke-plot">
-<h2>Lineweaver Burke Plot<a class="headerlink" href="#lineweaver-burke-plot" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="lineweaver-burke-plot">
+<h2>Lineweaver Burke Plot<a class="headerlink" href="#lineweaver-burke-plot" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##########################################################</span>
@@ -476,9 +475,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="eadie-hofstee-plot">
-<h2>Eadie-Hofstee Plot<a class="headerlink" href="#eadie-hofstee-plot" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="eadie-hofstee-plot">
+<h2>Eadie-Hofstee Plot<a class="headerlink" href="#eadie-hofstee-plot" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##########################################################</span>
@@ -489,9 +488,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="hanes-woolf-plot">
-<h2>Hanes-Woolf Plot<a class="headerlink" href="#hanes-woolf-plot" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="hanes-woolf-plot">
+<h2>Hanes-Woolf Plot<a class="headerlink" href="#hanes-woolf-plot" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##########################################################</span>
@@ -502,9 +501,9 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-<section id="run-this-first">
-<h2>RUN THIS FIRST<a class="headerlink" href="#run-this-first" title="Permalink to this heading">#</a></h2>
+</div>
+<div class="section" id="run-this-first">
+<h2>RUN THIS FIRST<a class="headerlink" href="#run-this-first" title="Permalink to this headline">#</a></h2>
 <p>Execute the final bock in this notebook below to establish all the functions and tools required in the code above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -516,7 +515,7 @@ document.write(`
 <span class="c1">### Install UNCERTAINTIES package </span>
 <span class="c1">####################################</span>
 
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>uncertainties<span class="w">  </span>#<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;Uncertainties&#39;</span><span class="w"> </span>package<span class="w"> </span><span class="k">in</span><span class="w"> </span>Colab.<span class="w"> </span>
+<span class="o">!</span>pip install uncertainties  # to install <span class="s1">&#39;Uncertainties&#39;</span> package <span class="k">in</span> Colab. 
 
 <span class="c1">####################################</span>
 <span class="c1">### Import versions of NumPy and Math that use uncertainty </span>
@@ -670,8 +669,8 @@ document.write(`
 </div>
 </div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
