@@ -17,5 +17,6 @@ parts:
       chapters:
         - file: T04/T4_InhibitionA.ipynb
         - file: T04/T4_MM_Intro_fun
+        - file: T04/Tutorial_4_exercises_Answers.ipynb
 
 
