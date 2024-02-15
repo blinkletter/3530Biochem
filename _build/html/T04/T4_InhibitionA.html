@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Drug Interaction and Enzyme Kinetics &#8212; Python for Biochemistry</title>
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -67,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Example: Enzyme Kinetics with Inhibitors" href="T4_MM_Intro_fun.html" />
     <link rel="prev" title="Plotting Enzyme Kinetics" href="../T03/T3_MM_Intro_basics_functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -373,15 +375,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="drug-interaction-and-enzyme-kinetics">
-<h1>Drug Interaction and Enzyme Kinetics<a class="headerlink" href="#drug-interaction-and-enzyme-kinetics" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="drug-interaction-and-enzyme-kinetics">
+<h1>Drug Interaction and Enzyme Kinetics<a class="headerlink" href="#drug-interaction-and-enzyme-kinetics" title="Permalink to this heading">#</a></h1>
 <p>In this workbook we will introduce <em>Python</em> commands for importing and manipulating data. then we will curve fit and plot using what we learned in the previous tutorial.</p>
-<div class="section" id="important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first">
-<h2>IMPORTANT! Go to the end of this notebook and execute the final code block FIRST.<a class="headerlink" href="#important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first" title="Permalink to this headline">#</a></h2>
+<section id="important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first">
+<h2>IMPORTANT! Go to the end of this notebook and execute the final code block FIRST.<a class="headerlink" href="#important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first" title="Permalink to this heading">#</a></h2>
 <p>The last block of code contains the definitions for the functions used in this document.</p>
-</div>
-<div class="section" id="setting-up-the-data">
-<h2>Setting Up the Data<a class="headerlink" href="#setting-up-the-data" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="setting-up-the-data">
+<h2>Setting Up the Data<a class="headerlink" href="#setting-up-the-data" title="Permalink to this heading">#</a></h2>
 <p>The code below will print out the data file that we are using as text. Examine it and decide your next steps.</p>
 <p>Choose from one of the following data files and modify the code below to access it…</p>
 <ul class="simple">
@@ -396,9 +398,9 @@ document.write(`
 <li><p>Data-8.csv</p></li>
 <li><p>Data-9.csv</p></li>
 </ul>
-</div>
-<div class="section" id="example-analysis">
-<h2>Example Analysis<a class="headerlink" href="#example-analysis" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="example-analysis">
+<h2>Example Analysis<a class="headerlink" href="#example-analysis" title="Permalink to this heading">#</a></h2>
 <p>In the following example I will obtain the <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> values in the case of warfarin with cyp450 and again with the presence of a potential inhibitor.</p>
 <p>First let us examine the raw text data file with our eyes…</p>
 <div class="cell tag_hide-input docutils container">
@@ -427,9 +429,9 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="load-the-data">
-<h2>Load the Data<a class="headerlink" href="#load-the-data" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="load-the-data">
+<h2>Load the Data<a class="headerlink" href="#load-the-data" title="Permalink to this heading">#</a></h2>
 <p>We see that the data is organized in a format.  There are comments describing conditions and information about the format. This will enable you to interpret the data. There are also lines of data organized in columns.</p>
 <p>We will import this text fime into a data structure called a ‘dataframe’. This is the <em>Python</em> version of a spreadsheet. The dataframe has tools built into it for manipulating the data. If you examine the code at the very end of the spreadsheet you will see examples of this.</p>
 <p>Below we us the Pandas package (loaded in as ‘pd’) and the Pandas.read_csv() function to parse the data file and create the dataframe object. The dataframe is then printed out for your inspection.</p>
@@ -460,9 +462,9 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="edit-the-dataframe">
-<h2>Edit the DataFrame<a class="headerlink" href="#edit-the-dataframe" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="edit-the-dataframe">
+<h2>Edit the DataFrame<a class="headerlink" href="#edit-the-dataframe" title="Permalink to this heading">#</a></h2>
 <p>The dataframe has two sets of data in it.  the code below will separate the two chuncks of data and create two new dataframes. You will need to change the numbers in the slices if your data has a different number of lines that the set presented here.</p>
 <p>The final dataframes are a seris of columns. there is a column for the time of measurements and columns for the amount of product formed at each time point. Each column is the result of an experiment with a different concentration of the substrate and these concentration values are listed at the top of each column. In a Pandas dataframe the ‘header’ is the title of each column. I can access each column using the header value. You can see examples of this in the code at the end of this notebook.</p>
 <div class="cell docutils container">
@@ -496,8 +498,8 @@ document.write(`
 </div>
 </div>
 </div>
-<div class="section" id="calculate-rates-at-each-concentration">
-<h3>Calculate Rates at Each Concentration<a class="headerlink" href="#calculate-rates-at-each-concentration" title="Permalink to this headline">#</a></h3>
+<section id="calculate-rates-at-each-concentration">
+<h3>Calculate Rates at Each Concentration<a class="headerlink" href="#calculate-rates-at-each-concentration" title="Permalink to this heading">#</a></h3>
 <p>The experiment will enable us to calculate the reaction rate at a given concentration by taking the slope of the plot of concentration vs. time for the appearance of product. The function ‘get_slopes_and_plot_them_all’ will take a dataframe, curve fit each column agains time to get the slopes, plot all data and slopes, and finaly return the list of slopes and a list of the concentrations of the substrate.</p>
 <p>You now have a set of rates and a set of concentrations.</p>
 <div class="cell docutils container">
@@ -519,10 +521,10 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="michaelis-menten-plot">
-<h2>Michaelis-Menten Plot<a class="headerlink" href="#michaelis-menten-plot" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="michaelis-menten-plot">
+<h2>Michaelis-Menten Plot<a class="headerlink" href="#michaelis-menten-plot" title="Permalink to this heading">#</a></h2>
 <p>We will use a slightly modified vesrion of the MM_Plot() function from the previous tutorial.  This one has added error bars to the plot and uses the errors in the line fit (points with large errors are weighted less in the curve_fit algorithm).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -536,9 +538,9 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="lineweaver-burke">
-<h2>Lineweaver-Burke<a class="headerlink" href="#lineweaver-burke" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="lineweaver-burke">
+<h2>Lineweaver-Burke<a class="headerlink" href="#lineweaver-burke" title="Permalink to this heading">#</a></h2>
 <p>We all hate it, but it is the one form of linearization that your textbook discusses so we will present it here. The Linear_Plot function from the previous tutorial has been modified to use errors as well. We will get the slope and intercept and calculate <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -560,13 +562,13 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="you-are-half-done">
-<h2>You are Half Done<a class="headerlink" href="#you-are-half-done" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="you-are-half-done">
+<h2>You are Half Done<a class="headerlink" href="#you-are-half-done" title="Permalink to this heading">#</a></h2>
 <p>Now record the values you have calculated and download any plots you wish to present in your report. Then repeat the above with the other dataframe for the inhibited experiment. You will now have all the data that you need to finish the assignment.</p>
-</div>
-<div class="section" id="run-this-first">
-<h2>RUN THIS FIRST<a class="headerlink" href="#run-this-first" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="run-this-first">
+<h2>RUN THIS FIRST<a class="headerlink" href="#run-this-first" title="Permalink to this heading">#</a></h2>
 <p>Execute the final bock in this notebook below to establish all the functions and tools required in the code above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -592,7 +594,7 @@ document.write(`
 <span class="c1">### Install UNCERTAINTIES package </span>
 <span class="c1">####################################</span>
 
-<span class="o">!</span>pip install uncertainties  # to install <span class="k">in</span> Colab. Add it back to avoid installing again and again.
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>uncertainties<span class="w">  </span>#<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span><span class="k">in</span><span class="w"> </span>Colab.<span class="w"> </span>Add<span class="w"> </span>it<span class="w"> </span>back<span class="w"> </span>to<span class="w"> </span>avoid<span class="w"> </span>installing<span class="w"> </span>again<span class="w"> </span>and<span class="w"> </span>again.
 
 <span class="c1">####################################</span>
 <span class="c1">### Import versions of NumPy and Math that use uncertainty </span>
@@ -850,8 +852,8 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

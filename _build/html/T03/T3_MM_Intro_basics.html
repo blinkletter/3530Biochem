@@ -3,11 +3,12 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Plotting Enzyme Kinetics &#8212; Python for Biochemistry</title>
   
   
@@ -43,6 +44,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -65,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -386,8 +388,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="plotting-enzyme-kinetics">
-<h1>Plotting Enzyme Kinetics<a class="headerlink" href="#plotting-enzyme-kinetics" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="plotting-enzyme-kinetics">
+<h1>Plotting Enzyme Kinetics<a class="headerlink" href="#plotting-enzyme-kinetics" title="Permalink to this heading">#</a></h1>
 <p>In this workbook we will introduce simple <em>Python</em> commands for plotting enzyme kinetics.</p>
 <p>The famous Michaelis-menten equation is…</p>
 <div class="math notranslate nohighlight">
@@ -397,8 +399,8 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[ \frac{1}{\nu} = \frac{1}{V_{max}} + \frac{K_M}{V_{max}}\frac{1}{[S]} \]</div>
 <p>Below we will plot a data set from problem 7.7 in the textbook.</p>
-<div class="section" id="setting-up-the-data">
-<h2>Setting Up the Data<a class="headerlink" href="#setting-up-the-data" title="Permalink to this headline">#</a></h2>
+<section id="setting-up-the-data">
+<h2>Setting Up the Data<a class="headerlink" href="#setting-up-the-data" title="Permalink to this heading">#</a></h2>
 <p>The code below creates assignments for variables states in the problem and makes an array of the experimental data.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -459,9 +461,9 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="a-simple-plot">
-<h2>A Simple Plot<a class="headerlink" href="#a-simple-plot" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="a-simple-plot">
+<h2>A Simple Plot<a class="headerlink" href="#a-simple-plot" title="Permalink to this heading">#</a></h2>
 <p>We now have a set of x and y data. We know what x and y are because we can examine the code and see (x is the substrate concentration, y is the rate of the enzyme-catalyzed reaction.)</p>
 <p>Plotting is easy in <em>Python</em>. We will use the <em>MatPlotLib</em> package. It is a very powerful plotting tool. Within it is the <em>MatPlotLib.PyPlot</em> sublibrary, which provides tools that are simple to use for plotting.</p>
 <p>The code below will plot the x,y data we established above.</p>
@@ -480,12 +482,12 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="plotting-the-data">
-<h2>Plotting the Data<a class="headerlink" href="#plotting-the-data" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="plotting-the-data">
+<h2>Plotting the Data<a class="headerlink" href="#plotting-the-data" title="Permalink to this heading">#</a></h2>
 <p>Perhaps the above plot is a little too basic? We could add some style using commands built into the <em>MatPlotLib.PyPlot</em> system. Remember we have named <em>PyPlot</em> as “<em>plt</em>” in the code below (see the very first two lines of code in the block above)</p>
-<div class="section" id="a-michaelis-menten-plot">
-<h3>A Michaelis-Menten Plot<a class="headerlink" href="#a-michaelis-menten-plot" title="Permalink to this headline">#</a></h3>
+<section id="a-michaelis-menten-plot">
+<h3>A Michaelis-Menten Plot<a class="headerlink" href="#a-michaelis-menten-plot" title="Permalink to this heading">#</a></h3>
 <p>Below is code to plot the x,y data. You can use this code top plot any x,y data. Just steal it and change it to suit you. The first command resets all the defaults so that any changes you make are starting from the same place every time.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -530,9 +532,9 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="a-double-reciprocol-plot">
-<h3>A Double Reciprocol Plot<a class="headerlink" href="#a-double-reciprocol-plot" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="a-double-reciprocol-plot">
+<h3>A Double Reciprocol Plot<a class="headerlink" href="#a-double-reciprocol-plot" title="Permalink to this heading">#</a></h3>
 <p>We can plot the Lineweaver-Burke plot by taking the reciprocals of our data and just steal the code as above. I changed style details (title, axis labels, axis ranges)</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -589,15 +591,15 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-</div>
-<div class="section" id="linear-curve-fitting">
-<h2>Linear Curve Fitting<a class="headerlink" href="#linear-curve-fitting" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="linear-curve-fitting">
+<h2>Linear Curve Fitting<a class="headerlink" href="#linear-curve-fitting" title="Permalink to this heading">#</a></h2>
 <p>Various <em>Python</em> tools can perform least squares fits to a given function. There are many ways to do this. We will consider only one way. We will use the tools in the <em>SciPy</em> package.</p>
 <p><em>SciPy</em> is a library of tools for scientific computing. One set of tools is the <em>SciPy.Optimize</em> sublibrary. It provides many tools for statistical analysis of data. We will be using the <em>SciPy.Optimize.Curve_Fit</em> function.</p>
 <p>First we must define a function to which we will fit a set of x,y data. Then we can send that function and the x,y sata to the <em>Curve_Fit</em> function. We will get back two data objects. One will be the best values of the parameters (e.g. slope and intercept) and the other is a set of statistical information.</p>
-<div class="section" id="define-functions">
-<h3>Define Functions<a class="headerlink" href="#define-functions" title="Permalink to this headline">#</a></h3>
+<section id="define-functions">
+<h3>Define Functions<a class="headerlink" href="#define-functions" title="Permalink to this heading">#</a></h3>
 <p>In the code below I will define two functions. A linear function, with slope and intercept, and a function that describes the Michaelis-Menten model, with <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span>.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -626,9 +628,9 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="perform-linear-curve-fit">
-<h3>Perform Linear Curve Fit<a class="headerlink" href="#perform-linear-curve-fit" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="perform-linear-curve-fit">
+<h3>Perform Linear Curve Fit<a class="headerlink" href="#perform-linear-curve-fit" title="Permalink to this heading">#</a></h3>
 <p>The code below will fit the Lineweaver-Burke double reciprocol plot data to a linear function. We will then get the parameters for the lone and the standard error calculated by the <em>SciPy.optimize.curve_fit</em> function.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -676,9 +678,9 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="handling-uncertainties">
-<h3>Handling Uncertainties<a class="headerlink" href="#handling-uncertainties" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="handling-uncertainties">
+<h3>Handling Uncertainties<a class="headerlink" href="#handling-uncertainties" title="Permalink to this heading">#</a></h3>
 <p>The curve fit function estimated the error in your data based on the scatter from the line of the curve fit. But <span class="math notranslate nohighlight">\(K_M\)</span> and <span class="math notranslate nohighlight">\(V_{max}\)</span> are reciprocals of these values. How do you handle error propagation in reciprocals? I don’t know either, but <em>Python</em> can import tools that do.</p>
 <p>We will need to install the <em>Uncertainties</em> package, which is not part of the standard library. In Colab you will need to install it by “uncommenting the line of code below</p>
 <div class="cell tag_hide-input docutils container">
@@ -748,9 +750,9 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="include-the-curve-fit-in-the-plot">
-<h3>Include the Curve Fit in the Plot<a class="headerlink" href="#include-the-curve-fit-in-the-plot" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="include-the-curve-fit-in-the-plot">
+<h3>Include the Curve Fit in the Plot<a class="headerlink" href="#include-the-curve-fit-in-the-plot" title="Permalink to this heading">#</a></h3>
 <p>Let us now add the line that represents the curve fit to the plot.  We will steal the code for plotting the data and then add a plot of the line created using the parameters from the <em>curve_fit</em> function results. The code below will repeat the data plot and add the extra line.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -812,10 +814,10 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-</div>
-<div class="section" id="curve-fit-the-mm-data">
-<h2>Curve Fit the MM Data<a class="headerlink" href="#curve-fit-the-mm-data" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="curve-fit-the-mm-data">
+<h2>Curve Fit the MM Data<a class="headerlink" href="#curve-fit-the-mm-data" title="Permalink to this heading">#</a></h2>
 <p>We will now steal the code above and reuse it. We will change the function that we feed to the <em>curve_fit</em> tool to the MMplot() function we defined for the Michaelis-Menten model. We will also make some other changes as needed. For example, this function uses <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> directly and we will not need to do any extra math. And we must use the original data, not the reciprocal data.</p>
 <p>The code below will make a Michaelis-Menten plot of the data, curve fit it to the MMfit function that describes the model, report the parameters along with their stderr values and plot the curve using the parameteds determines in the curve fit. Everything we did above</p>
 <div class="cell tag_hide-input docutils container">
@@ -899,13 +901,13 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="the-abomination-of-lb">
-<h2>The Abomination of LB<a class="headerlink" href="#the-abomination-of-lb" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="the-abomination-of-lb">
+<h2>The Abomination of LB<a class="headerlink" href="#the-abomination-of-lb" title="Permalink to this heading">#</a></h2>
 <p>The Lineweaver-Burke plot is a statistician’s nightmare. In the above exercise we determined the <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> for the enzyme/substrate pair presented in the problem given. Let us take the exact same data and apply a slight error to the measured rate of the catalyzed reaction. Every time you run the code in the blocks below you will get a new role of the dice. How often does the Lineweaver-Burke plot come close to the values reported above compared to the curve fit of the Michaelis-Menten data.</p>
 <p>You can change the magnitude of the error by editing the code. Have some fun.</p>
-<div class="section" id="random-error-in-mm-plots">
-<h3>Random Error in MM Plots<a class="headerlink" href="#random-error-in-mm-plots" title="Permalink to this headline">#</a></h3>
+<section id="random-error-in-mm-plots">
+<h3>Random Error in MM Plots<a class="headerlink" href="#random-error-in-mm-plots" title="Permalink to this heading">#</a></h3>
 <p>The code below will apply an amount of random error to the data in the problem and then I will steal all the code for the MM curve fit and plot from above and use it again.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1039,9 +1041,9 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="random-error-in-lb-plots">
-<h3>Random Error in LB Plots<a class="headerlink" href="#random-error-in-lb-plots" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="random-error-in-lb-plots">
+<h3>Random Error in LB Plots<a class="headerlink" href="#random-error-in-lb-plots" title="Permalink to this heading">#</a></h3>
 <p>The code below will apply an amount of random error to the data in the problem and then I will steal all the code for the LB linear fit and plot from above and use it again.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1163,10 +1165,10 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-</div>
-<div class="section" id="summary-of-results">
-<h2>Summary of Results<a class="headerlink" href="#summary-of-results" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="summary-of-results">
+<h2>Summary of Results<a class="headerlink" href="#summary-of-results" title="Permalink to this heading">#</a></h2>
 <p>We have been collecting the results of each execution of the code blocks above. Now we can get the average value and the standard deviation for the values we have observed in each plot. How do they compare?</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1211,12 +1213,12 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="other-linear-methods">
-<h2>Other Linear Methods<a class="headerlink" href="#other-linear-methods" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="other-linear-methods">
+<h2>Other Linear Methods<a class="headerlink" href="#other-linear-methods" title="Permalink to this heading">#</a></h2>
 <p>There are two other common approaches to linearizing the Michaelis-Menten equation: The Eadie-Hofstee plot and the Hanes-Woolf plot.</p>
-<div class="section" id="eadie-hofstee">
-<h3>Eadie-Hofstee<a class="headerlink" href="#eadie-hofstee" title="Permalink to this headline">#</a></h3>
+<section id="eadie-hofstee">
+<h3>Eadie-Hofstee<a class="headerlink" href="#eadie-hofstee" title="Permalink to this heading">#</a></h3>
 <p>The Eadie-Hofstee plot is…</p>
 <div class="math notranslate nohighlight">
 \[ \nu = -K_M\frac{\nu}{[S]} + Vmax \]</div>
@@ -1359,9 +1361,9 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-<div class="section" id="hanes-woolf">
-<h3>Hanes-Woolf<a class="headerlink" href="#hanes-woolf" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="hanes-woolf">
+<h3>Hanes-Woolf<a class="headerlink" href="#hanes-woolf" title="Permalink to this heading">#</a></h3>
 <p>The Hanes-Woolf plot is…</p>
 <div class="math notranslate nohighlight">
 \[ \frac{[S]}{\nu} = \frac{1}{V_{max}}[S] + \frac{K_M}{V_{max}} \]</div>
@@ -1487,10 +1489,10 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-</div>
-<div class="section" id="id1">
-<h2>Summary of Results<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+<section id="id1">
+<h2>Summary of Results<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>We have been collecting the results of each execution of the code blocks above. Now we can get the average value and the standard deviation for the values we have observed in each plot. How do they compare?</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -1535,8 +1537,8 @@ document.write(`
 </div>
 </details>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
