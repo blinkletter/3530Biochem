@@ -710,6 +710,80 @@ The combined delta G for the two coupled processes is -6.67 kJ/mole
 </div>
 <p>So the process of proton flow powering ATP synthesis in this mitochondrion is not at equilibrium and will proceed in the direction of ATP synthesis. ATP is always being made as long as we maintain this steady state.</p>
 <p>ATP<sup>3-</sup> is transported out of the mitochondrion in exchange for ADP<sup>2-</sup> via a cotransport protein.  The negative voltage gradient greatly favours this exchange. It is a net export of negative charge toward the positive side of the membrane. As a result ATP is constantly being removed as it is made. The cytosolic ATP/ADP ratio is much higher than inside the mitochondrion as a result.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">icn3dpy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;mmdbid=6hjr&#39;</span><span class="p">)</span>
+<span class="n">view</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="icn3dviewer1709686974570484" style="position: relative; width: 640px; min-height: 530px; height: auto">
+        <p id="icn3dwarning1709686974570484" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
+        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
+        </div>
+<script>
+
+var loadScriptAsync = function(uri){
+  return new Promise((resolve, reject) => {
+    var tag = document.createElement('script');
+    tag.src = uri;
+    //tag.async = true;
+    tag.onload = () => {
+      resolve();
+    };
+  var firstScriptTag = document.getElementsByTagName('link')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+var loadCssAsync = function(uri){
+  return new Promise((resolve, reject) => {
+var tag = document.createElement('link');
+tag.rel = 'stylesheet';
+tag.href = uri;
+//tag.async = true;
+tag.onload = () => {
+  resolve();
+};
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+  });
+};
+
+if(typeof js === 'undefined') {
+  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
+  
+  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.13.2.min.css");
+  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
+}
+
+var viewer1709686974570484 = null;
+var warn = document.getElementById("icn3dwarning1709686974570484");
+if(warn) {
+    warn.parentNode.removeChild(warn);
+}
+
+css1
+.then(function() { return css2; })
+.then(function() { return js; })
+.then(function() {
+cfg = {divid: "icn3dviewer1709686974570484", idname: "mmdbid", idvalue: "6hjr", mmdbid: "6hjr", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: '', };
+viewer1709686974570484 = new icn3d.iCn3DUI(cfg);
+viewer1709686974570484.show3DStructure(cfg.pdb);
+});
+</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x107304b50&gt;
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
