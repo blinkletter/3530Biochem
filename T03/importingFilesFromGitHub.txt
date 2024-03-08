@@ -13,3 +13,8 @@ or
 import sys
 sys.path.append('/3530Biochem/T03')
 from IMPORTCODE import MM_Plot
+
+BASH KERNAL
+
+!pip install bash_kernel
+!python -m bash_kernel.install
