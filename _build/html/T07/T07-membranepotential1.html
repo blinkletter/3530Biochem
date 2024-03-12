@@ -3,12 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chemical Potential &#8212; Python for Biochemistry</title>
   
   
@@ -44,7 +43,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Answers for Questions 5 to 10" href="../T04/Tutorial_4_exercises_Answers.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -163,11 +161,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../T02/T2_Exercise.html">Problem Set Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../T02/T2_TitrModel.html">Modeling Titrations</a></li>
 
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../T03/T3_Galactsidase_enzyme_kinetics.html">Enzyme Kinetics Four Ways for Report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../T03/T3_MM_Intro_basics_functions.html">Plotting Enzyme Kinetics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 4</span></p>
 <ul class="nav bd-sidenav">
@@ -371,6 +364,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-a-real-mitochondrion">In a Real Mitochondrion</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-you-need-to-solve-for-x">When You Need to Solve for X</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Membrane Potential</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Chemical Potential</a></li>
 </ul>
             </nav>
         </div>
@@ -382,14 +378,14 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chemical-potential">
-<h1>Chemical Potential<a class="headerlink" href="#chemical-potential" title="Permalink to this heading">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="chemical-potential">
+<h1>Chemical Potential<a class="headerlink" href="#chemical-potential" title="Permalink to this headline">#</a></h1>
 <p>Chemical potential is the energy difference between two observable situations. Like the energy difference between you on a rooftop and on the ground.That energy can be calculated. It can be accessed by allowing the system to proceed toward its destination. Just jump. The potential energy will be released as heat (although some of the energy will have been used to break your bones.)</p>
-<p>There are two kinds of potential energy, standard and observed. Standard potential energy is the nergy difference between two situations in the standard state. For that rooftop example we might always use a standard mass. For chemistry, we use standard concentrations and the standard state is when all reactants and products are present in a concentration of 1 mole/L.</p>
-<section id="free-energy-difference-in-glycolysis">
-<h2>Free Energy Difference in Glycolysis<a class="headerlink" href="#free-energy-difference-in-glycolysis" title="Permalink to this heading">#</a></h2>
-<section id="using-the-standard-state">
-<h3>Using the Standard State<a class="headerlink" href="#using-the-standard-state" title="Permalink to this heading">#</a></h3>
+<p>There are two kinds of potential energy, standard and observed. Standard potential energy is the energy difference between two situations in the standard state. For that rooftop example we might always use a standard mass. For chemistry, we use standard concentrations and the standard state is when all reactants and products are present in a concentration of 1 mole/L.</p>
+<div class="section" id="free-energy-difference-in-glycolysis">
+<h2>Free Energy Difference in Glycolysis<a class="headerlink" href="#free-energy-difference-in-glycolysis" title="Permalink to this headline">#</a></h2>
+<div class="section" id="using-the-standard-state">
+<h3>Using the Standard State<a class="headerlink" href="#using-the-standard-state" title="Permalink to this headline">#</a></h3>
 <p>Let us take the example of the isomerization of glucose-6-phosphate to fructose-6-phosphae in the glycolysis pathway. The standard free energy difference, <span class="math notranslate nohighlight">\(\Delta G^{\circ}\)</span> is the energy difference between reactants and products when everything is at 1 M concentration. It is known to be 1.67 kJ/mole.</p>
 <p>The observed free energy difference, <span class="math notranslate nohighlight">\(\Delta G\)</span>, is what is observed when concentrations are not all perfectly 1 M. Let us consider the reaction above.</p>
 <div class="math notranslate nohighlight">
@@ -435,9 +431,9 @@ document.write(`
 </div>
 </div>
 <p>Observe that the observed free energy difference, <span class="math notranslate nohighlight">\(\Delta G\)</span>, is identical to the standard free energy difference, <span class="math notranslate nohighlight">\(\Delta G^{\circ}\)</span>, when we are at the standard state. This is the definition of standard free energy difference. When we are at the standard state, we are not at equilibrium in this case.</p>
-</section>
-<section id="using-known-concentrations">
-<h3>Using Known Concentrations<a class="headerlink" href="#using-known-concentrations" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="using-known-concentrations">
+<h3>Using Known Concentrations<a class="headerlink" href="#using-known-concentrations" title="Permalink to this headline">#</a></h3>
 <p>It is commonly reported in textbooks that [G6P] = 0.083 mM and [F6P] = 0.014 mM. Let us calculate the observed <span class="math notranslate nohighlight">\(\Delta G\)</span> when these conditions exist. Condider the code below.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -469,13 +465,13 @@ document.write(`
 </div>
 </div>
 <p>In cellular conditions (red blood cells) the observed free energy difference is slightly negative. The system is not at equilibrium and will proceed toward product to reach equilibrium. Change the values above and see what results you get. How much do you need to increase the concentration of product or decrease the reactant to reach something near perfect equilibrium (<span class="math notranslate nohighlight">\(\Delta G = 0\)</span>)?</p>
-</section>
-</section>
-<section id="membrane-potential">
-<h2>Membrane Potential<a class="headerlink" href="#membrane-potential" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="membrane-potential">
+<h2>Membrane Potential<a class="headerlink" href="#membrane-potential" title="Permalink to this headline">#</a></h2>
 <p>We have seen that free energy in a situation depends on the standard free energy difference combined with the actual concentrations in the real world (no system ever has all concentrations at 1 M). The potential energy held back by a membrane is the same as the potential energy held back by the floor you are standing on. You want to fall down, but the floor is holding you at a given altitude. Molecules want to flow from greater to lesser concentrations but can be held back by a barrier.</p>
-<section id="concentration-gradients">
-<h3>Concentration Gradients<a class="headerlink" href="#concentration-gradients" title="Permalink to this heading">#</a></h3>
+<div class="section" id="concentration-gradients">
+<h3>Concentration Gradients<a class="headerlink" href="#concentration-gradients" title="Permalink to this headline">#</a></h3>
 <p>Movement across a membrane is a chemical reaction. The standard free energy difference is zero when concentrations are equal on both sides. But when concentrations are different we have a ‘concentration gradient.’ The energy difference is the ‘membrane potential.’ It is a difference in free energy due to the different concentrations. We use the same free energy equation as above. But <span class="math notranslate nohighlight">\(\Delta G^{\circ} = 0\)</span> for membranes becasue the molecule is not changing, only ist concentrations. The concentration term of the equation will be all that matters.</p>
 <p>We will consider a situation where we have glucose outside and inside of a red blood cell. We will always place ourselve on the ‘outside’ point of view so the starting position (reactant) is outside. What is the observed free energy difference for the following reaction?</p>
 <div class="math notranslate nohighlight">
@@ -515,10 +511,10 @@ document.write(`
 </div>
 <p>We see that the system is not at equilibrium and will proceed forward. The energy difference is not large, as expected, since the concentrations are similar.</p>
 <p>Change the numbers. What is the concentration in the cell was consumed and became low. Why does it explode if you set one of the concentrations to zero?</p>
-</section>
-</section>
-<section id="the-mitochondrial-membrane">
-<h2>The Mitochondrial Membrane<a class="headerlink" href="#the-mitochondrial-membrane" title="Permalink to this heading">#</a></h2>
+</div>
+</div>
+<div class="section" id="the-mitochondrial-membrane">
+<h2>The Mitochondrial Membrane<a class="headerlink" href="#the-mitochondrial-membrane" title="Permalink to this headline">#</a></h2>
 <p>Voltage is a measure of electrical potential energy. It is like then height of your roof. The higher it is, the more potential energy you have relative to the ground when standing there. Cell membranes usually have a voltage potential because ions are being forced across and this charge separation will create that voltage difference.</p>
 <p>In the mitochondrion, protons are being pumped from the matrix to the intermembrane space. The membrane is impermeable to ions so negative charges, like chloride ion or hydroxide, cannot flow the other way to relax and neutralize the charge difference. So a charge gradient, or voltage potential, will be created.</p>
 <p>Let us consider the energy potential, <span class="math notranslate nohighlight">\(\Delta G\)</span>, across the membrane in a mitochondrion. First we will use a charge gradient of zero volts. Then we will use a charge gradient of -0.13V, which is one of the many values quoted for the mitochondrial membrane.</p>
@@ -526,8 +522,8 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[ \Delta G = RT\ln{Q} + nFE \]</div>
 <p>where n is the charge on the molecule, F is the faraday constant, and E is the electrostatic potential, or <span class="math notranslate nohighlight">\(\Delta V\)</span>.</p>
-<section id="imagine-no-charge">
-<h3>Imagine No Charge<a class="headerlink" href="#imagine-no-charge" title="Permalink to this heading">#</a></h3>
+<div class="section" id="imagine-no-charge">
+<h3>Imagine No Charge<a class="headerlink" href="#imagine-no-charge" title="Permalink to this headline">#</a></h3>
 <p>Let us begin with imagining a mitochondrial membrane with not electrical potential, where <span class="math notranslate nohighlight">\(E=0\)</span> Volts. Consider the code below.</p>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">
@@ -566,9 +562,9 @@ document.write(`
 </div>
 </div>
 <p>The system is not at equilibrium and protons will flow spontaneously into the matrix if only there was some way to do so. However, 5.7 kJ/mole is not enough potential energy to spin ATP synthase. Is there something missing? Yes, the added energy of the electrical potential.</p>
-</section>
-<section id="add-electrical-potential">
-<h3>Add Electrical Potential<a class="headerlink" href="#add-electrical-potential" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="add-electrical-potential">
+<h3>Add Electrical Potential<a class="headerlink" href="#add-electrical-potential" title="Permalink to this headline">#</a></h3>
 <p>Now let us repeat the above and set the membrane voltage to -0.13 V. We are “standing” outside the matrix, looking in. The concentration aoutside is the starting position (reactant) and the concentration inside is the ending position (product). The charge is more positive outside and less so inside. So moving from out to in would be a negative change in charge, hence the negative potential from that point of view. Pick a place to stand and stay there and all you math will work.</p>
 <p>Consider the code below.</p>
 <div class="cell tag_hide-input docutils container">
@@ -597,9 +593,9 @@ document.write(`
 </div>
 </div>
 <p>That is a much, much greater energy difference between the two sides of the membrane. The majority of the energy is due to the added energy of positively charged protons in the voltage potential across the membrane. We see ions used in many important transmembrane systems such as nerve signalling and secondary transport systems. The added oomph from cell membrane voltage potentials makes ions very useful in transport events.</p>
-</section>
-<section id="making-atp">
-<h3>Making ATP<a class="headerlink" href="#making-atp" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="making-atp">
+<h3>Making ATP<a class="headerlink" href="#making-atp" title="Permalink to this headline">#</a></h3>
 <p>It takes 10 protons to complete one full turn of ATP synthase. Every third of a turn and ATP is produced (on average). So 3.3 protons are needed to cross the membrane for each ATP.</p>
 <p>The <span class="math notranslate nohighlight">\(\Delta G^{\circ}\)</span> for ATP formation from ADP and phosphate is about +33 kJ/mole. And we have stated that 3.3 protons pass through in the process of making an ATP. Consider the code below…</p>
 <div class="cell tag_hide-input docutils container">
@@ -631,9 +627,9 @@ The Delta G for ADP + Pi ---&gt; ATP is -27.2 kJ/mole
 </div>
 <p>There is a large free energy difference assuming the ATP reaction is at standard conditions. That’s unlikely, but one thing we can expect is that the concentration of ATP should be greater that ATP if we are to move toward equilibrium. ATP will be synthesized, but what is the actual observed value for the combine proton transport and ATP synthesis in a mitochondrion?</p>
 <p>First one must recognize that this is not a simple question. The <span class="math notranslate nohighlight">\(\delta G\)</span> for the reaction is dependant of the concentrations of ATP, ADP and phosphate ion. It is also dependant on magnesium ion concentration and pH as these are actually both very much associated with phosphate chemistry. The value for the standard free energy difference of ATP synthesis varies between +25 and +39 kJ/mole depending on the conditions in the cell or mitochondrion. The value of <span class="math notranslate nohighlight">\(\Delta G^{\circ} = 33\)</span> kJ/mole is a consensus value (otherwise known as a ballpark figure.)</p>
-</section>
-<section id="in-a-real-mitochondrion">
-<h3>In a Real Mitochondrion<a class="headerlink" href="#in-a-real-mitochondrion" title="Permalink to this heading">#</a></h3>
+</div>
+<div class="section" id="in-a-real-mitochondrion">
+<h3>In a Real Mitochondrion<a class="headerlink" href="#in-a-real-mitochondrion" title="Permalink to this headline">#</a></h3>
 <p>Values for concentrations of ATP, ADP and phosphate are difficult to find. I did find one example that used phosphorous NMR to estimate these concentrations in heart mitochondria that had been isolated and placed in test tube in the publication below.</p>
 <p>“The relation between the internal phosphorylation potential and the proton motive force in mitochondria during ATP synthesis and hydrolysis.” S. Ogawa, T.M. Lee, <em>J. Biol. Chem.</em>, <strong>1984</strong>, <em>259</em>, 10004-10011. <a class="reference external" href="https://doi.org/10.1016/S0021-9258(18)90918-X">https://doi.org/10.1016/S0021-9258(18)90918-X</a></p>
 <p>The authors reported the values in nanomoles/mg of mitochondrial. They also reported how many mg of mitochondria were used and their estimate of the internal volume of the mitochondria per mg. I guestimated from these reported values that, in the ‘steady state’ measurements made by the authors, the concentration of ATP was 5.8 mM, phosphate was 10 mM and ADP was 1.45 mM. The calculations for these values are below.</p>
@@ -710,83 +706,187 @@ The combined delta G for the two coupled processes is -6.67 kJ/mole
 </div>
 <p>So the process of proton flow powering ATP synthesis in this mitochondrion is not at equilibrium and will proceed in the direction of ATP synthesis. ATP is always being made as long as we maintain this steady state.</p>
 <p>ATP<sup>3-</sup> is transported out of the mitochondrion in exchange for ADP<sup>2-</sup> via a cotransport protein.  The negative voltage gradient greatly favours this exchange. It is a net export of negative charge toward the positive side of the membrane. As a result ATP is constantly being removed as it is made. The cytosolic ATP/ADP ratio is much higher than inside the mitochondrion as a result.</p>
-<div class="cell docutils container">
+</div>
+</div>
+<div class="section" id="when-you-need-to-solve-for-x">
+<h2>When You Need to Solve for X<a class="headerlink" href="#when-you-need-to-solve-for-x" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="id1">
+<h2>Membrane Potential<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>What is the equilibrium concentration for potassium ion in a voltage gradient of –0.10 V when we start with 100 mM K<sup>+</sup> ions inside and out?</p>
+<p>Let us start with the Nernst equation for membrane potential…</p>
+<div class="math notranslate nohighlight">
+\[ \Delta G = RT\ln{\frac{K^+_{in}}{K^+_{out}}}+nFE \]</div>
+<p>… where E is the voltage gradient, or <span class="math notranslate nohighlight">\(\Delta V\)</span>.</p>
+<p>We know everything except the final concentration. We do know that to reach the final concentrations an amount of potassium ion, x, must flow from one side to the other. So we could say…</p>
+<div class="math notranslate nohighlight">
+\[ \Delta G = 8.314\cdot 298\ln{\frac{0.10-x}{0.10+x}}+1\cdot 96500 \cdot (-0.10) \]</div>
+<p>We must now solve for x. This is simple to do using the rules of algebra and you should practice. You can check you answer using the tools of <em>Python</em>. The <em>SymPy</em> library has many options to solve for x. Consider the code below.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">icn3dpy</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>    <span class="c1">### create x as a &#39;symbol&#39;, not a variable</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">298</span>         <span class="c1">### degrees K</span>
+<span class="n">F</span> <span class="o">=</span> <span class="mi">96500</span>       <span class="c1">### J / V</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>       <span class="c1">### J / mole.K</span>
+<span class="n">n</span> <span class="o">=</span> <span class="o">+</span><span class="mi">1</span>          <span class="c1">### charge on an ion</span>
+<span class="n">Cin_0</span> <span class="o">=</span> <span class="mf">0.100</span>   <span class="c1">### initial interior concentration</span>
+<span class="n">Cout_0</span> <span class="o">=</span> <span class="mf">0.100</span>  <span class="c1">### initial experior concentration</span>
+<span class="n">E</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.10</span>       <span class="c1">### Volts</span>
+<span class="n">dG</span> <span class="o">=</span> <span class="mi">0</span>          <span class="c1">### Equilibrium condition</span>
+
+<span class="n">rhs</span> <span class="o">=</span> <span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="o">*</span><span class="n">sym</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">Cin_0</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">Cout_0</span> <span class="o">+</span> <span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="n">n</span><span class="o">*</span><span class="n">F</span><span class="o">*</span><span class="n">E</span>   <span class="c1">### must use sym.log, not np.log for ln.</span>
+<span class="n">lhs</span> <span class="o">=</span> <span class="n">dG</span>
+
+<span class="n">eq</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span>     <span class="c1">### The equation to solve </span>
+<span class="n">display</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span>               <span class="c1">### Display the equation</span>
+
+<span class="p">[</span><span class="n">answer</span><span class="p">]</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">Cin</span> <span class="o">=</span> <span class="n">Cin_0</span> <span class="o">-</span> <span class="n">answer</span>
+<span class="n">Cout</span> <span class="o">=</span> <span class="n">Cout_0</span> <span class="o">+</span> <span class="n">answer</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The change in concentration is </span><span class="si">{</span><span class="n">answer</span><span class="si">:</span><span class="s2">+0.3f</span><span class="si">}</span><span class="s2"> M&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final K+ concentration inside is </span><span class="si">{</span><span class="n">Cin</span><span class="si">:</span><span class="s2">+0.3f</span><span class="si">}</span><span class="s2"> M&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final K+ concentration outside is </span><span class="si">{</span><span class="n">Cout</span><span class="si">:</span><span class="s2">+0.3f</span><span class="si">}</span><span class="s2"> M&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">view</span> <span class="o">=</span> <span class="n">icn3dpy</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s1">&#39;mmdbid=6hjr&#39;</span><span class="p">)</span>
-<span class="n">view</span>
-</pre></div>
-</div>
-</div>
+</details>
 <div class="cell_output docutils container">
-<div class="output text_html"><div id="icn3dviewer1709686974570484" style="position: relative; width: 640px; min-height: 530px; height: auto">
-        <p id="icn3dwarning1709686974570484" style="background-color:#ffcccc;color:black">You appear to be running in JupyterLab (or JavaScript failed to load for some other reason).  You need to install the extension: <br>
-        <tt>jupyter labextension install jupyterlab_3dmol</tt></p>
-        </div>
-<script>
-
-var loadScriptAsync = function(uri){
-  return new Promise((resolve, reject) => {
-    var tag = document.createElement('script');
-    tag.src = uri;
-    //tag.async = true;
-    tag.onload = () => {
-      resolve();
-    };
-  var firstScriptTag = document.getElementsByTagName('link')[0];
-  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  });
-};
-
-var loadCssAsync = function(uri){
-  return new Promise((resolve, reject) => {
-var tag = document.createElement('link');
-tag.rel = 'stylesheet';
-tag.href = uri;
-//tag.async = true;
-tag.onload = () => {
-  resolve();
-};
-var firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-  });
-};
-
-if(typeof js === 'undefined') {
-  js = loadScriptAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/es5/icn3d_all_full.min.js");
-  
-  css1 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui-1.13.2.min.css");
-  css2 = loadCssAsync("https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d.css");
-}
-
-var viewer1709686974570484 = null;
-var warn = document.getElementById("icn3dwarning1709686974570484");
-if(warn) {
-    warn.parentNode.removeChild(warn);
-}
-
-css1
-.then(function() { return css2; })
-.then(function() { return js; })
-.then(function() {
-cfg = {divid: "icn3dviewer1709686974570484", idname: "mmdbid", idvalue: "6hjr", mmdbid: "6hjr", width: "640px", height: "480px", mobilemenu: 1, notebook: 1, command: '', };
-viewer1709686974570484 = new icn3d.iCn3DUI(cfg);
-viewer1709686974570484.show3DStructure(cfg.pdb);
-});
-</script></div><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;icn3dpy.view at 0x107304b50&gt;
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 0 = 2477.572 \log{\left(\frac{0.1 - x}{x + 0.1} \right)} - 9650.0\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The change in concentration is -0.096 M
+The final K+ concentration inside is +0.196 M
+The final K+ concentration outside is +0.004 M
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-</section>
-</section>
+</div>
+<div class="section" id="id2">
+<h2>Chemical Potential<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>We can solve the same kind of question for chemical potential. Let us examine the case of unequal particles on either side of the equation.</p>
+<p>Consider the aldolase reaction.</p>
+<div class="math notranslate nohighlight">
+\[ F6P \rightarrow G3P + DHAP, \  \Delta G^{\circ} = + 22\;kJ/mole \]</div>
+<p>Let us consider the equilibrium in two cases; an imaginary case where F6P gives a single product called I6P (imaginary -6-carbon product), an the observed case where two products result. In both cases we will start with 200 <span class="math notranslate nohighlight">\(\mu\!\)</span> M F6P and no product. What is the equilibrium condition in each case?</p>
+<p>We will need to solve the following two relationships…</p>
+<div class="math notranslate nohighlight">
+\[ \Delta G = \Delta G^{\circ} +RT\ln{\frac{[I6P]_0 + x}{[F6P]_0 - x}} \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ \Delta G = \Delta G^{\circ} +RT\ln{\frac{([G3P]_0 + x)([DHAP]_0 + x)}{[F6P]_0 - x}} \]</div>
+<p>Consider the code below…</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>    <span class="c1">### create x as a &#39;symbol&#39;, not a variable</span>
+
+<span class="n">dG_standard</span> <span class="o">=</span> <span class="mi">22000</span>     <span class="c1">### kJ/mole</span>
+<span class="n">G3P_0</span> <span class="o">=</span> <span class="mi">0</span>               <span class="c1">### mole/L</span>
+<span class="n">DHAP_0</span> <span class="o">=</span> <span class="mi">0</span>              <span class="c1">### mole/L</span>
+<span class="n">F6P_0</span> <span class="o">=</span> <span class="mf">0.200</span>           <span class="c1">### mole/L</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">298</span>         <span class="c1">### degrees K</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>       <span class="c1">### J / mole.K</span>
+<span class="n">dG</span> <span class="o">=</span> <span class="mi">0</span>          <span class="c1">### equilibrium condition</span>
+
+<span class="n">rhs</span> <span class="o">=</span> <span class="n">dG_standard</span> <span class="o">+</span> <span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="o">*</span><span class="n">sym</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">G3P_0</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">DHAP_0</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">F6P_0</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span> <span class="c1">### must use sym.log, not np.log for ln.</span>
+<span class="n">lhs</span> <span class="o">=</span> <span class="n">dG</span>
+
+<span class="n">eq</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span>     <span class="c1">### The equation to solve </span>
+<span class="n">display</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span>               <span class="c1">### Display the equation</span>
+
+<span class="n">answer</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">answer</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The change in concentration is </span><span class="si">{</span><span class="n">a</span> <span class="o">*</span> <span class="mi">1000</span><span class="si">:</span><span class="s2">+0.2f</span><span class="si">}</span><span class="s2"> mM&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final F6P concentration inside is </span><span class="si">{</span><span class="p">(</span><span class="n">F6P_0</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">+0.2f</span><span class="si">}</span><span class="s2"> M&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final G3P concentration inside is </span><span class="si">{</span><span class="p">(</span><span class="n">G3P_0</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">+0.2f</span><span class="si">}</span><span class="s2"> M&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final DHAP concentration inside is </span><span class="si">{</span><span class="p">(</span><span class="n">DHAP_0</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">+0.2f</span><span class="si">}</span><span class="s2"> M&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 0 = 2477.572 \log{\left(\frac{x^{2}}{0.2 - x} \right)} + 22000\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.00534625238307295, 0.00520706106980664]
+The change in concentration is +5.21 mM
+The final F6P concentration inside is +194.79 M
+The final G3P concentration inside is +5.21 M
+The final DHAP concentration inside is +5.21 M
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span> <span class="k">as</span> <span class="nn">sym</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">symbols</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>    <span class="c1">### create x as a &#39;symbol&#39;, not a variable</span>
+
+<span class="n">dG_standard</span> <span class="o">=</span> <span class="mi">22000</span>     <span class="c1">### kJ/mole</span>
+<span class="n">I6P_0</span> <span class="o">=</span> <span class="mi">0</span>               <span class="c1">### mole/L</span>
+<span class="n">F6P_0</span> <span class="o">=</span> <span class="mf">0.200</span>           <span class="c1">### mole/L</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">298</span>         <span class="c1">### degrees K</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>       <span class="c1">### J / mole.K</span>
+<span class="n">dG</span> <span class="o">=</span> <span class="mi">0</span>          <span class="c1">### equilibrium condition</span>
+
+<span class="n">rhs</span> <span class="o">=</span> <span class="n">dG_standard</span> <span class="o">+</span> <span class="n">R</span><span class="o">*</span><span class="n">T</span><span class="o">*</span><span class="n">sym</span><span class="o">.</span><span class="n">log</span><span class="p">((</span><span class="n">I6P_0</span> <span class="o">+</span> <span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">F6P_0</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span> <span class="c1">### must use sym.log, not np.log for ln.</span>
+<span class="n">lhs</span> <span class="o">=</span> <span class="n">dG</span>
+
+<span class="n">eq</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">Eq</span><span class="p">(</span><span class="n">lhs</span><span class="p">,</span> <span class="n">rhs</span><span class="p">)</span>     <span class="c1">### The equation to solve </span>
+<span class="n">display</span><span class="p">(</span><span class="n">eq</span><span class="p">)</span>               <span class="c1">### Display the equation</span>
+
+<span class="n">answer</span> <span class="o">=</span> <span class="n">sym</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">answer</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The change in concentration is </span><span class="si">{</span><span class="n">a</span> <span class="o">*</span> <span class="mi">1000</span><span class="si">:</span><span class="s2">+0.2f</span><span class="si">}</span><span class="s2"> mM&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final F6P concentration inside is </span><span class="si">{</span><span class="p">(</span><span class="n">F6P_0</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">+0.2f</span><span class="si">}</span><span class="s2"> M&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final I6P concentration inside is </span><span class="si">{</span><span class="p">(</span><span class="n">I6P_0</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">+0.2f</span><span class="si">}</span><span class="s2"> M&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\displaystyle 0 = 2477.572 \log{\left(\frac{x}{0.2 - x} \right)} + 22000\]</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.78343883481920e-5]
+The change in concentration is +0.03 mM
+The final F6P concentration inside is +199.97 M
+The final I6P concentration inside is +0.03 M
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -862,6 +962,9 @@ viewer1709686974570484.show3DStructure(cfg.pdb);
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#in-a-real-mitochondrion">In a Real Mitochondrion</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-you-need-to-solve-for-x">When You Need to Solve for X</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Membrane Potential</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Chemical Potential</a></li>
 </ul>
   </nav></div>
 
