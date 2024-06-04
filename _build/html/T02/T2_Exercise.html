@@ -3,61 +3,60 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Problem Set Examples &#8212; Python for Biochemistry</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -67,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Modeling Titrations" href="T2_TitrModel.html" />
     <link rel="prev" title="Acid Equilibria with Python" href="T2_AcidBaseMath.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -75,19 +74,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,12 +112,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -129,9 +140,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="../start.html">
+  
   
   
   
@@ -141,12 +154,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/plot.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/plot.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/plot.png" class="logo__image only-light" alt="Python for Biochemistry - Home"/>
+    <script>document.write(`<img src="../_static/plot.png" class="logo__image only-dark" alt="Python for Biochemistry - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -187,7 +211,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -196,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -309,20 +333,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -372,15 +398,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="problem-set-examples">
-<h1>Problem Set Examples<a class="headerlink" href="#problem-set-examples" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="problem-set-examples">
+<h1>Problem Set Examples<a class="headerlink" href="#problem-set-examples" title="Permalink to this heading">#</a></h1>
 <p>This is a <em>Jupyter</em> notebook using interactive <em>Python</em>.</p>
 <p>We can use this notebook as a calculator. The benefit is that all <strong>our calculations can be documented</strong> so that we can easily find errors or make changes without starting from the beginning. I recommend using <em>Python</em> notebooks for all your math. There are thousands of tools available through <em>Python</em> and we can go from the simple math of this notebook all the way to powerful data science and AI projects.</p>
 <p>We will demonstrate the problems from the “<strong>Math Ideas for Biochemistry - Part 1</strong>” document available on the moodle site. Observe how the <em>Python</em> code serves as the information on the method used. Now you can check my work and fix my mistakes. I make no promises that these answers are correct. It is your job to confirm them.</p>
-<div class="section" id="problem-1-from-math-ideas">
-<h2>Problem 1 from Math Ideas<a class="headerlink" href="#problem-1-from-math-ideas" title="Permalink to this headline">#</a></h2>
+<section id="problem-1-from-math-ideas">
+<h2>Problem 1 from Math Ideas<a class="headerlink" href="#problem-1-from-math-ideas" title="Permalink to this heading">#</a></h2>
 <p>The molecular mass of glucose is <span class="math notranslate nohighlight">\(180.2 \frac{g}{mole}\)</span>. A sugar cube has a mass of <span class="math notranslate nohighlight">\(4.3\)</span> grams. What is the concentration of a solution of glucose when 3 sugar cubes are dissolve in a total volume of <span class="math notranslate nohighlight">\(150\)</span> mL of water?</p>
 <p><strong>Solution</strong></p>
 <p>This is a straightforward concentration problem. Observe the answer in the code below.</p>
@@ -416,9 +442,9 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="problem-2-from-math-ideas">
-<h2>Problem 2 from Math Ideas<a class="headerlink" href="#problem-2-from-math-ideas" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="problem-2-from-math-ideas">
+<h2>Problem 2 from Math Ideas<a class="headerlink" href="#problem-2-from-math-ideas" title="Permalink to this heading">#</a></h2>
 <p>The equilibrium constant, <span class="math notranslate nohighlight">\(\rm K_{eq}\)</span>, for <span class="math notranslate nohighlight">\(\beta\)</span>-glucose converting to <span class="math notranslate nohighlight">\(\alpha\)</span>-glucose is <span class="math notranslate nohighlight">\(0.56\)</span>. I observe that the concentration of <span class="math notranslate nohighlight">\(\alpha\)</span>-glucose in a sample is <span class="math notranslate nohighlight">\(1.2\)</span> mM. What is the concentration of <span class="math notranslate nohighlight">\(\beta\)</span>-glucose if this system has reached equilibrium?</p>
 <p><strong>Solution</strong></p>
 <p>Use the equilibrium constant to solve the problem. The answer is documented in the code below. I don’t have to explain anything as every step is described in the code. That is one great strength of recording you math in a language like <em>Python</em>.</p>
@@ -439,7 +465,7 @@ document.write(`
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration of beta-glucose at equilibrium will be </span><span class="si">{</span><span class="n">conc_beta_glucose</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration of beta-glucose at equilibrium will be </span><span class="si">{</span><span class="n">conc_beta_glucose</span><span class="si">:</span><span class="s2">0.9f</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration of beta-glucose at equilibrium will be </span><span class="si">{</span><span class="n">conc_beta_glucose</span><span class="si">:</span><span class="s2">0.3g</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration of beta-glucose at equilibrium will be </span><span class="si">{</span><span class="mi">1000</span> <span class="o">*</span> <span class="n">conc_beta_glucose</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> millimoles/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration of beta-glucose at equilibrium will be </span><span class="si">{</span><span class="mi">1000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">conc_beta_glucose</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> millimoles/L&quot;</span><span class="p">)</span>
 
 <span class="c1">### What have you learned about printing numbers from the code above? Delete the &quot;f&quot; at the start of </span>
 <span class="c1">### the print command and see what happens. Change the numbers in :0.2f, etc. What does :10.10f do?</span>
@@ -456,15 +482,15 @@ The concentration of beta-glucose at equilibrium will be 2.14 millimoles/L
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="problem-3-from-math-ideas">
-<h2>Problem 3 from Math Ideas<a class="headerlink" href="#problem-3-from-math-ideas" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="problem-3-from-math-ideas">
+<h2>Problem 3 from Math Ideas<a class="headerlink" href="#problem-3-from-math-ideas" title="Permalink to this heading">#</a></h2>
 <p>What is the free energy potential for a mixture of <span class="math notranslate nohighlight">\(\beta\)</span>-glucose and <span class="math notranslate nohighlight">\(\alpha\)</span>-glucose at equilibrium?</p>
 <p><strong>Solution</strong></p>
 <p>By definition, when we are at equilibrium the difference in energy between the population of products and the population of reactants is zero.</p>
-</div>
-<div class="section" id="problem-4-from-math-ideas">
-<h2>Problem 4 from Math Ideas<a class="headerlink" href="#problem-4-from-math-ideas" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="problem-4-from-math-ideas">
+<h2>Problem 4 from Math Ideas<a class="headerlink" href="#problem-4-from-math-ideas" title="Permalink to this heading">#</a></h2>
 <p>What is the free energy potential, <span class="math notranslate nohighlight">\(\Delta G\)</span>, of a solution of <span class="math notranslate nohighlight">\(0.1\)</span> M <span class="math notranslate nohighlight">\(\alpha\)</span>-glucose and <span class="math notranslate nohighlight">\(0.4\)</span> M <span class="math notranslate nohighlight">\(\beta\)</span>-glucose? If we are not at equilibrium, which direction will the process move to reach equilibrium. What would be the concentrations in this system after it reaches equilibrium? If I add a catalyst, how will it change the equilibrium?</p>
 <p><strong>Solution</strong></p>
 <p>The free energy of a system, <span class="math notranslate nohighlight">\(\Delta G\)</span>, depends on the difference in free energy at the standard state, <span class="math notranslate nohighlight">\(\Delta G^{\circ}\)</span>, and the concentrations of reactants (the reaction quotient, <span class="math notranslate nohighlight">\(Q\)</span>)</p>
@@ -518,9 +544,9 @@ The difference in observed free energy at the concentrations given is -2.00 kJ/m
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="problem-5-from-math-ideas">
-<h2>Problem 5 from Math Ideas<a class="headerlink" href="#problem-5-from-math-ideas" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="problem-5-from-math-ideas">
+<h2>Problem 5 from Math Ideas<a class="headerlink" href="#problem-5-from-math-ideas" title="Permalink to this heading">#</a></h2>
 <p>The specific optical rotation of <span class="math notranslate nohighlight">\(+\alpha\)</span>-glucose is <span class="math notranslate nohighlight">\(112\frac{degrees}{dm\cdot M}\)</span>. What is the observed optical rotation observed using a polarimeter for a solution with a concentration of <span class="math notranslate nohighlight">\(5.3\)</span> mM? Assume that we are using the standard <span class="math notranslate nohighlight">\(10\)</span> cm (one dm) sample tube.</p>
 <p><strong>Solution</strong></p>
 <p>This is an example of straightforward dimensional analysis. Examine the code below and correct any errors.</p>
@@ -549,15 +575,15 @@ The difference in observed free energy at the concentrations given is -2.00 kJ/m
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="problem-6-from-math-ideas">
-<h2>Problem 6 from Math Ideas<a class="headerlink" href="#problem-6-from-math-ideas" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="problem-6-from-math-ideas">
+<h2>Problem 6 from Math Ideas<a class="headerlink" href="#problem-6-from-math-ideas" title="Permalink to this heading">#</a></h2>
 <p>How many microlitres are there in a millilitre? How many grams are there in a kilogram? What is <span class="math notranslate nohighlight">\(10\)</span> <span class="math notranslate nohighlight">\(\mu M\)</span> in units of Molar? What is <span class="math notranslate nohighlight">\(7\)</span> <span class="math notranslate nohighlight">\(\frac{kJ}{mole}\)</span> in units of <span class="math notranslate nohighlight">\(\frac{J}{mole}\)</span>?</p>
 <p><strong>Solution</strong></p>
 <p>This is all unit conversions. I will leave you to answer this on your own.</p>
-</div>
-<div class="section" id="problem-7-from-math-ideas">
-<h2>Problem 7 from Math Ideas<a class="headerlink" href="#problem-7-from-math-ideas" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="problem-7-from-math-ideas">
+<h2>Problem 7 from Math Ideas<a class="headerlink" href="#problem-7-from-math-ideas" title="Permalink to this heading">#</a></h2>
 <p>I am observing the initial rate of a reaction at a wavelength of <span class="math notranslate nohighlight">\(280\)</span> nm. The molar extinction coefficient, <span class="math notranslate nohighlight">\(e_{280}\)</span>, of the starting material at <span class="math notranslate nohighlight">\(280\)</span> nm is <span class="math notranslate nohighlight">\(7000\)</span> <span class="math notranslate nohighlight">\(M^{-1}\)</span> (for a <span class="math notranslate nohighlight">\(1\)</span> cm cuvette). The initial absorbance of the reaction mixture is <span class="math notranslate nohighlight">\(0.87\)</span> AU. After one minute, the absorbance is <span class="math notranslate nohighlight">\(0.82\)</span> AU. (Assume that our reactant is the only molecule that absorbs light at <span class="math notranslate nohighlight">\(280\)</span> nm).</p>
 <ol class="arabic simple">
 <li><p>What is the initial concentration of the starting material?</p></li>
@@ -581,7 +607,7 @@ The difference in observed free energy at the concentrations given is -2.00 kJ/m
 <span class="n">conc_0</span> <span class="o">=</span> <span class="n">A_0</span> <span class="o">/</span> <span class="n">e_280</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The initial concentration is </span><span class="si">{</span><span class="n">conc_0</span><span class="si">:</span><span class="s2">0.9f</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The initial concentration is </span><span class="si">{</span><span class="n">conc_0</span> <span class="o">*</span> <span class="mi">1000</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> millimoles/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The initial concentration is </span><span class="si">{</span><span class="n">conc_0</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> millimoles/L&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -604,7 +630,7 @@ The initial concentration is 0.1243 millimoles/L
 
 <span class="n">conc_t</span> <span class="o">=</span> <span class="n">A_t</span> <span class="o">/</span> <span class="n">e_280</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration after one minute is </span><span class="si">{</span><span class="n">conc_t</span> <span class="o">*</span> <span class="mi">1000</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> millimoles/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration after one minute is </span><span class="si">{</span><span class="n">conc_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> millimoles/L&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -626,7 +652,7 @@ The initial concentration is 0.1243 millimoles/L
 
 <span class="n">init_rate</span> <span class="o">=</span> <span class="p">(</span><span class="n">A_t</span> <span class="o">-</span> <span class="n">A_0</span><span class="p">)</span> <span class="o">/</span> <span class="n">time</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The initial rate of change in concentration is </span><span class="si">{</span><span class="n">init_rate</span> <span class="o">*</span> <span class="mi">1000</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> millimoles/L.min&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The initial rate of change in concentration is </span><span class="si">{</span><span class="n">init_rate</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> millimoles/L.min&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -665,9 +691,9 @@ The rate constant is 9.579e-04 per second
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="problem-8-from-math-ideas">
-<h2>Problem 8 from Math Ideas<a class="headerlink" href="#problem-8-from-math-ideas" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="problem-8-from-math-ideas">
+<h2>Problem 8 from Math Ideas<a class="headerlink" href="#problem-8-from-math-ideas" title="Permalink to this heading">#</a></h2>
 <p>I add 10 mL of 0.1 M HCl to 170 mL of pure water. What is the <em>p</em>H of this new solution?</p>
 <p><strong>Solution</strong></p>
 <p>This is a simple <span class="math notranslate nohighlight">\(\rm c_1v_1 = c_2v_2\)</span> problem with the addition of converting your answer to <span class="math notranslate nohighlight">\(\rm pH\)</span>.</p>
@@ -706,9 +732,9 @@ The rate constant is 9.579e-04 per second
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="problem-9-from-math-ideas">
-<h2>Problem 9 from Math Ideas<a class="headerlink" href="#problem-9-from-math-ideas" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="problem-9-from-math-ideas">
+<h2>Problem 9 from Math Ideas<a class="headerlink" href="#problem-9-from-math-ideas" title="Permalink to this heading">#</a></h2>
 <p>I have 230 mL of a solution of pure water with enough HCl added to make the <em>p</em>H equal to 4.5. I add 10 mL of a 0.15 M NaOH solution. What is the <em>p</em>H now?</p>
 <p><strong>Solution</strong></p>
 <p>We have a volume and concentration for an HCl solution. <span class="math notranslate nohighlight">\(\rm [HCl] = [H^+]\)</span> and we can get <span class="math notranslate nohighlight">\(\rm [H^+]\)</span> from the <span class="math notranslate nohighlight">\(\rm pH\)</span> value.</p>
@@ -751,9 +777,9 @@ The rate constant is 9.579e-04 per second
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="problem-10-from-math-ideas">
-<h2>Problem 10 from Math Ideas<a class="headerlink" href="#problem-10-from-math-ideas" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="problem-10-from-math-ideas">
+<h2>Problem 10 from Math Ideas<a class="headerlink" href="#problem-10-from-math-ideas" title="Permalink to this heading">#</a></h2>
 <p>I have 230 mL of a solution of 0.2 M acetic acid and have added enough sodium hydroxide solution to set the <span class="math notranslate nohighlight">\(\rm pH\)</span> to 4.5. The <span class="math notranslate nohighlight">\(\rm pK_a\)</span> of acetic acid is 4.7.</p>
 <ol class="arabic simple">
 <li><p>What are the concentrations of acetate ion and acetic acid in this solution?</p></li>
@@ -834,9 +860,9 @@ the pH is 4.56
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="making-a-buffer-for-the-assignment">
-<h2>Making a Buffer for the Assignment<a class="headerlink" href="#making-a-buffer-for-the-assignment" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="making-a-buffer-for-the-assignment">
+<h2>Making a Buffer for the Assignment<a class="headerlink" href="#making-a-buffer-for-the-assignment" title="Permalink to this heading">#</a></h2>
 <p>The math below involves making a buffer for a biochemical experiment. In this example, I will be using HEPES buffer. It is an organic molecule that is compatible with cells and the acidic form has a <span class="math notranslate nohighlight">\(\rm pK_a\)</span> value of <span class="math notranslate nohighlight">\(7.43\)</span>. I will purchase a bottle of crystaline <a class="reference external" href="https://www.sigmaaldrich.com/CA/en/substance/hepes238307365459">HEPES (the acidic form)</a> and a bottle of crystaline <a class="reference external" href="https://www.sigmaaldrich.com/CA/en/substance/hepessodiumsalt2602975277393">HEPES sodium salt (the basic form)</a>. I want to make a <span class="math notranslate nohighlight">\(1.5\)</span> L volume with a total HEPES concentration of <span class="math notranslate nohighlight">\(200\)</span> mM and a <span class="math notranslate nohighlight">\(\rm pH\)</span> of <span class="math notranslate nohighlight">\(7.15\)</span>.</p>
 <p>We know the <span class="math notranslate nohighlight">\(\rm pH\)</span>, the <span class="math notranslate nohighlight">\(\rm pK_a\)</span> of the acid form of HEPES and the molar mass of both materials (just click on the links in the above paragraph to get more information about both).</p>
 <p>We can get the needed ratio of the two forms, the value of <span class="math notranslate nohighlight">\(\frac{[A]}{[HA]}\)</span> required if <span class="math notranslate nohighlight">\(\rm pH = 7.15\)</span> by using the Hendersson-Haselbalch equation.</p>
@@ -920,13 +946,13 @@ Mass of HA in 1.5L is 47.62 grams
 </div>
 </div>
 </div>
-<div class="section" id="making-the-buffer">
-<h3>Making the Buffer<a class="headerlink" href="#making-the-buffer" title="Permalink to this headline">#</a></h3>
+<section id="making-the-buffer">
+<h3>Making the Buffer<a class="headerlink" href="#making-the-buffer" title="Permalink to this heading">#</a></h3>
 <p>We see from the math above that I will need <span class="math notranslate nohighlight">\(47.62\)</span> grams of the HEPES acid and <span class="math notranslate nohighlight">\(26.07\)</span> grams of its sodium salt dissolved in a final volume of <span class="math notranslate nohighlight">\(1.5\)</span> litres. Now I just have to write up a recipe. Take note of how the code above is just calculation steps that are recorded as <em>Python</em> commands and can be checked and corrected easily by the reader. Try seeing what the calculations are in a printout of an Excel preadsheet. How does this compare.</p>
 <p>In you recipe you will describe your calculations using the math typesetting tool of your choice, such as the equation editor built into your word processor. <em>Python</em> is your calculator, not your word processor.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -953,11 +979,10 @@ Mass of HA in 1.5L is 47.62 grams
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="T2_AcidBaseMath.html"
@@ -977,10 +1002,7 @@ Mass of HA in 1.5L is 47.62 grams
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -988,6 +1010,7 @@ Mass of HA in 1.5L is 47.62 grams
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1030,6 +1053,7 @@ By Barry Linkletter
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -1056,8 +1080,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
