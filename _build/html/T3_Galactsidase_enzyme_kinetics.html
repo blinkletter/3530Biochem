@@ -3,69 +3,70 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Enzyme Kinetics Four Ways for Report &#8212; Python for Biochemistry</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'T3_Galactsidase_enzyme_kinetics';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Plotting Enzyme Kinetics" href="T3_MM_Intro_basics_functions.html" />
+    <link rel="prev" title="Modeling Titrations" href="T02/T2_TitrModel.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -73,19 +74,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -107,12 +112,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -127,9 +140,11 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
   
 
 <a class="navbar-brand logo" href="start.html">
+  
   
   
   
@@ -139,12 +154,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/plot.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/plot.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/plot.png" class="logo__image only-light" alt="Python for Biochemistry - Home"/>
+    <script>document.write(`<img src="_static/plot.png" class="logo__image only-dark" alt="Python for Biochemistry - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -160,6 +186,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="T02/T2_Exercise.html">Problem Set Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="T02/T2_TitrModel.html">Modeling Titrations</a></li>
 
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Enzyme Kinetics Four Ways for Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T3_MM_Intro_basics_functions.html">Plotting Enzyme Kinetics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 4</span></p>
 <ul class="nav bd-sidenav">
@@ -185,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -194,7 +225,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -307,20 +338,22 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -362,15 +395,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <div class="tex2jax_ignore mathjax_ignore section" id="enzyme-kinetics-four-ways-for-report">
-<h1>Enzyme Kinetics Four Ways for Report<a class="headerlink" href="#enzyme-kinetics-four-ways-for-report" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="enzyme-kinetics-four-ways-for-report">
+<h1>Enzyme Kinetics Four Ways for Report<a class="headerlink" href="#enzyme-kinetics-four-ways-for-report" title="Permalink to this heading">#</a></h1>
 <p>This is an example of the kind of math you will need to do for the assignment.</p>
-<div class="section" id="set-up">
-<h2>Set Up<a class="headerlink" href="#set-up" title="Permalink to this headline">#</a></h2>
+<section id="set-up">
+<h2>Set Up<a class="headerlink" href="#set-up" title="Permalink to this heading">#</a></h2>
 <p>The first block of code below loads in all the <em>Python</em> code tools needed. <em>SciPy</em>, <em>NumPy</em> and <em>MatPlotLib</em> are part of the <em>Python</em> standard library. They are enormous collections of code that have been written by hundreds of dedicated people and made freely available for us to use.</p>
-<p><em>Uncertainties</em> is a common and useful library that provides code for using values that include errors (number <span class="math notranslate nohighlight">\(\pm\)</span> standard deviation). It is not part of the standard library (yet) and is available via the <em>Python</em> package index (<span class="xref myst">PyPI.org</span>). It must be installed into you instance of Google Colab using the <code class="docutils literal notranslate"><span class="pre">pip</span></code> command.</p>
+<p><em>Uncertainties</em> is a common and useful library that provides code for using values that include errors (number <span class="math notranslate nohighlight">\(\pm\)</span> standard deviation). It is not part of the standard library (yet) and is available via the <em>Python</em> package index (<a class="reference internal" href="#PyPI.org"><span class="xref myst">PyPI.org</span></a>). It must be installed into you instance of Google Colab using the <code class="docutils literal notranslate"><span class="pre">pip</span></code> command.</p>
 <p><em>BiochemToolbox</em> is a file of poorly written <em>Python</em> code hacked together from stolen snippets of code found from all over the wild, wild web. I stole all my code and so that is why I invite you to steal mine. It is loaded into the Google Colab insance and imported in the code below. Enter <code class="docutils literal notranslate"><span class="pre">help(BT)</span></code> to access documentation on the contents of the <em>BiochemToolbox</em> library.</p>
 <p>Run the code block below to set up everything for this notebook</p>
 <div class="cell docutils container">
@@ -381,27 +414,22 @@ document.write(`
 
 <span class="c1">#!pip install uncertainties  ### to install &#39;Uncertainties&#39; package in Colab. </span>
 
-<span class="o">!</span>wget https://raw.githubusercontent.com/blinkletter/3530Biochem/main/BiochemToolbox.py
+<span class="c1">#!wget https://raw.githubusercontent.com/blinkletter/3530Biochem/main/BiochemToolbox.py</span>
 <span class="kn">import</span> <span class="nn">BiochemToolbox</span> <span class="k">as</span> <span class="nn">BT</span>
 
 <span class="c1">#help(BT)   ### uncomment to learn about the tools in BiochemToolbox</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: command not found: wget
-</pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="enter-data">
-<h2>Enter Data<a class="headerlink" href="#enter-data" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="enter-data">
+<h2>Enter Data<a class="headerlink" href="#enter-data" title="Permalink to this heading">#</a></h2>
 <p>There are many ways to enter data. In this example we will enter it as a list of data pairs (a list of lists). We will convert the list to a <em>NumPy</em> array and then “slice” the columns of the array into a set of x and y values for concentration and rate.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SN</span> <span class="o">=</span> <span class="mi">329644</span>     <span class="c1">## Which data set should I use?</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I will use data set: v</span><span class="si">{</span><span class="n">SN</span> <span class="o">%</span> <span class="mi">7</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I will use data set: v</span><span class="si">{</span><span class="n">SN</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">7</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1">##########################################################</span>
 <span class="c1">### Create Data set of conc (mM) and delta AU</span>
@@ -435,9 +463,9 @@ document.write(`
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="michaelis-menten-plot">
-<h2>Michaelis-Menten Plot<a class="headerlink" href="#michaelis-menten-plot" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="michaelis-menten-plot">
+<h2>Michaelis-Menten Plot<a class="headerlink" href="#michaelis-menten-plot" title="Permalink to this heading">#</a></h2>
 <p>The code below will input the data into the <code class="docutils literal notranslate"><span class="pre">MM_Plot</span></code> function from <em>BiochemToolbox</em>. It will create a plot, export a pdf file of that plot and return values with uncertainty for <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span>. You can enter <code class="docutils literal notranslate"><span class="pre">help(BT.MM_Plot)</span></code> for documentation on this function.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -471,9 +499,9 @@ The KM is 3.495+/-0.367
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="lineweaver-burke-plot">
-<h2>Lineweaver Burke Plot<a class="headerlink" href="#lineweaver-burke-plot" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="lineweaver-burke-plot">
+<h2>Lineweaver Burke Plot<a class="headerlink" href="#lineweaver-burke-plot" title="Permalink to this heading">#</a></h2>
 <p>the code block below will use the <code class="docutils literal notranslate"><span class="pre">Linear_Plot</span></code> function in <em>BiochemTools</em>
 to perform a line fit. The function will plot the data with the line fit and return the slope and intercept.</p>
 <p>We can the use these values to calculate the <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> using the Lineweaver-Burke plot.</p>
@@ -527,9 +555,9 @@ The KM is 0.495+/-0.273
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="eadie-hofstee-plot">
-<h2>Eadie-Hofstee Plot<a class="headerlink" href="#eadie-hofstee-plot" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="eadie-hofstee-plot">
+<h2>Eadie-Hofstee Plot<a class="headerlink" href="#eadie-hofstee-plot" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##########################################################</span>
@@ -540,9 +568,9 @@ The KM is 0.495+/-0.273
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="hanes-woolf-plot">
-<h2>Hanes-Woolf Plot<a class="headerlink" href="#hanes-woolf-plot" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="hanes-woolf-plot">
+<h2>Hanes-Woolf Plot<a class="headerlink" href="#hanes-woolf-plot" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##########################################################</span>
@@ -553,8 +581,8 @@ The KM is 0.495+/-0.273
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -581,16 +609,30 @@ The KM is 0.495+/-0.273
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
+    <a class="left-prev"
+       href="T02/T2_TitrModel.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modeling Titrations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="T3_MM_Intro_basics_functions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Plotting Enzyme Kinetics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
-
                 </footer>
               
             </div>
@@ -598,6 +640,7 @@ The KM is 0.495+/-0.273
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -632,6 +675,7 @@ By Barry Linkletter
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
       © Copyright 2024.
@@ -658,8 +702,8 @@ By Barry Linkletter
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>
