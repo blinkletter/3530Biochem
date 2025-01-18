@@ -67,7 +67,7 @@ def MM_curve_fit(x,y):
     return(v_max_u, KM_u)     
 
 def MM_Plot(x, y, x_lim = (None,None), y_lim = (None,None),
-            title = "", x_label = "", y_label = "", file_name = "Plot.pdf" ):
+            title = "", x_label = "", y_label = "", file_name = "plot.pdf" ):
     r"""A function to make a MM plot and return the MM parameters
 
     This function will take an x,y set of values for substrate concentration 
@@ -166,7 +166,6 @@ def MM_Plot(x, y, x_lim = (None,None), y_lim = (None,None),
 
     return v_max, KM
 
-
 def linear(x, slope, intercept):  ### Take x values, slope and intercept and return the y values
     """Linear line calculation of slope and intercept.
     
@@ -181,7 +180,6 @@ def linear(x, slope, intercept):  ### Take x values, slope and intercept and ret
         The calculated y values
     """
     return(slope * x + intercept)
-
 
 def line_curve_fit(x,y):
     """A function to fit x,y data to a linear equation
@@ -218,11 +216,8 @@ def line_curve_fit(x,y):
     
     return(slope_u, intercept_u)
 
-
-
-
 def Linear_Plot(x, y, x_lim = (None,None), y_lim = (None,None),
-            title = "", x_label = "", y_label = "", file_name = "Plot.pdf" ):
+            title = "", x_label = "", y_label = "", file_name = "plot.pdf" ):
     r"""A function to make a linear plot and return the fit parameters
 
     This function will take an x,y set of values and a set of style 
