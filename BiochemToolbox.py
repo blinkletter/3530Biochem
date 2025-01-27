@@ -10,7 +10,8 @@ this library.
 
 from scipy.optimize import curve_fit      ## import tools
 import numpy as np                       
-from matplotlib import pyplot as plt     
+from matplotlib import pyplot as plt   
+from sklearn.metrics import r2_score
 
 import uncertainties as un               ## import Uncertainties tool
 from uncertainties import unumpy as unp
