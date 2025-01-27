@@ -63,8 +63,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'T3_Galactsidase_enzyme_kinetics';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Plotting Enzyme Kinetics" href="T3_MM_Intro_basics_functions.html" />
-    <link rel="prev" title="Modeling Titrations" href="T02/T2_TitrModel.html" />
+    <link rel="next" title="Step-by-Step Code Examples" href="T3_Step_by_Step_Examples.html" />
+    <link rel="prev" title="Problem Set Examples" href="T02/T2_Exercise.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -149,14 +149,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/plot.png" class="logo__image only-light" alt="Python for Biochemistry - Home"/>
-    <script>document.write(`<img src="_static/plot.png" class="logo__image only-dark" alt="Python for Biochemistry - Home"/>`);</script>
   
+    <p class="title logo__title">Python for Biochemistry</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -184,13 +178,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="T02/T2_AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="T02/T2_Exercise.html">Problem Set Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="T02/T2_TitrModel.html">Modeling Titrations</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Enzyme Kinetics Four Ways for Report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="T3_MM_Intro_basics_functions.html">Plotting Enzyme Kinetics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T3_Step_by_Step_Examples.html">Step-by-Step Code Examples</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 4</span></p>
 <ul class="nav bd-sidenav">
@@ -412,8 +404,10 @@ document.write(`
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 
+<span class="c1">### uncomment line below in Colab.</span>
 <span class="c1">#!pip install uncertainties  ### to install &#39;Uncertainties&#39; package in Colab. </span>
 
+<span class="c1">### uncomment line below in Colab.</span>
 <span class="c1">#!wget https://raw.githubusercontent.com/blinkletter/3530Biochem/main/BiochemToolbox.py</span>
 <span class="kn">import</span> <span class="nn">BiochemToolbox</span> <span class="k">as</span> <span class="nn">BT</span>
 
@@ -430,6 +424,14 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">SN</span> <span class="o">=</span> <span class="mi">329644</span>     <span class="c1">## Which data set should I use?</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;I will use data set: v</span><span class="si">{</span><span class="n">SN</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">7</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">e420</span> <span class="o">=</span> <span class="mf">5.5</span> <span class="c1"># AU/mM/cm</span>
+<span class="n">E_conc</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># micromolar</span>
+
+<span class="c1">### TO DO: Both of the above values are incorrect. Change them </span>
+<span class="c1">###        to the values reported in your instructions</span>
+
+<span class="c1">### TO DO: Change the data below using your assigned data set</span>
 
 <span class="c1">##########################################################</span>
 <span class="c1">### Create Data set of conc (mM) and delta AU</span>
@@ -454,6 +456,10 @@ document.write(`
 
 <span class="n">conc</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>        <span class="c1">### mM     - all rows, column 0</span>
 <span class="n">rate</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>        <span class="c1">### AU / min    - all rows, column 1</span>
+                         
+<span class="c1">### TO DO: convert the rate from units of AU/min to micromoles/min</span>
+
+<span class="n">rate</span> <span class="o">=</span> <span class="n">rate</span><span class="o">/</span><span class="p">(</span><span class="n">e420</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mf">1E6</span>
 </pre></div>
 </div>
 </div>
@@ -477,7 +483,7 @@ document.write(`
 <span class="n">V_max</span><span class="p">,</span> <span class="n">KM</span> <span class="o">=</span> <span class="n">BT</span><span class="o">.</span><span class="n">MM_Plot</span><span class="p">(</span><span class="n">conc</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span>                 <span class="c1">### Call MM_Plot function.</span>
                         <span class="n">x_lim</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span>       <span class="c1">### Fill in the options</span>
                         <span class="n">y_lim</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span>       <span class="c1">### to suit your needs.</span>
-                        <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+                        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
                         <span class="n">x_label</span> <span class="o">=</span> <span class="s2">&quot;x-axis&quot;</span><span class="p">,</span>
                         <span class="n">y_label</span> <span class="o">=</span> <span class="s2">&quot;y-axis&quot;</span><span class="p">,</span>
                         <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;Plot.pdf&quot;</span><span class="p">)</span>    
@@ -488,13 +494,22 @@ document.write(`
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The Vmax is </span><span class="si">{</span><span class="n">V_max</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The KM is </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1">### TO DO: Calculate kcat - use units of micromolar per minute</span>
+<span class="c1">### TO DO: Calculate kcat/KM - use units of per second</span>
+
+<span class="n">kcat</span> <span class="o">=</span> <span class="n">V_max</span><span class="o">/</span><span class="p">(</span><span class="n">E_conc</span><span class="o">/</span><span class="mf">1E6</span><span class="p">)</span><span class="o">/</span><span class="mf">1E6</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kcat</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kcat</span><span class="o">/</span><span class="p">(</span><span class="n">KM</span><span class="o">/</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mi">60</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/bab3bc9aebc23157a2cf918ad4933110166eb633bb3096fab7b72816e99c83dc.png" src="_images/bab3bc9aebc23157a2cf918ad4933110166eb633bb3096fab7b72816e99c83dc.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 0.266+/-0.008
+<img alt="_images/ea3b26e433fd6080df682008d261ac0a52deeffedac52bf8967f322887fad2ba.png" src="_images/ea3b26e433fd6080df682008d261ac0a52deeffedac52bf8967f322887fad2ba.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 48.375+/-1.523
 The KM is 3.495+/-0.367
+4.84+/-0.15
+(8.3+/-0.9)e+04
 </pre></div>
 </div>
 </div>
@@ -524,7 +539,7 @@ to perform a line fit. The function will plot the data with the line fit and ret
 <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">BT</span><span class="o">.</span><span class="n">Linear_Plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span>
                                   <span class="n">x_lim</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span>
                                   <span class="n">y_lim</span> <span class="o">=</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span><span class="kc">None</span><span class="p">),</span>
-                                  <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;Enter Title Here&quot;</span><span class="p">,</span>
+                                  <span class="n">title</span> <span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
                                   <span class="n">x_label</span> <span class="o">=</span> <span class="s2">&quot;x-axis&quot;</span><span class="p">,</span>
                                   <span class="n">y_label</span> <span class="o">=</span> <span class="s2">&quot;y-axis&quot;</span><span class="p">,</span>
                                   <span class="n">file_name</span> <span class="o">=</span> <span class="s2">&quot;Plot.pdf&quot;</span><span class="p">)</span>        
@@ -545,11 +560,11 @@ to perform a line fit. The function will plot the data with the line fit and ret
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/46b9570d1f5b9885f93da894644c4bef06434d942ccf308ba5a89fdfdcc9db93.png" src="_images/46b9570d1f5b9885f93da894644c4bef06434d942ccf308ba5a89fdfdcc9db93.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The slope is 5.453+/-0.812
-The intercept is 11.026+/-5.862
+<img alt="_images/8d2b54adb91d832f4812c076dca2de3d74bde09703594752d2e3cd225d8dcd90.png" src="_images/8d2b54adb91d832f4812c076dca2de3d74bde09703594752d2e3cd225d8dcd90.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The slope is 0.030+/-0.004
+The intercept is 0.061+/-0.032
 
-The Vmax is 0.091+/-0.048
+The Vmax is 16.490+/-8.767
 The KM is 0.495+/-0.273
 </pre></div>
 </div>
@@ -615,20 +630,20 @@ The KM is 0.495+/-0.273
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="T02/T2_TitrModel.html"
+       href="T02/T2_Exercise.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Modeling Titrations</p>
+        <p class="prev-next-title">Problem Set Examples</p>
       </div>
     </a>
     <a class="right-next"
-       href="T3_MM_Intro_basics_functions.html"
+       href="T3_Step_by_Step_Examples.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Plotting Enzyme Kinetics</p>
+        <p class="prev-next-title">Step-by-Step Code Examples</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

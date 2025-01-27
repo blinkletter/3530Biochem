@@ -63,8 +63,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'T3_MM_Intro_basics_functions';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="T3_bGalactosidase.html" />
-    <link rel="prev" title="Enzyme Kinetics Four Ways for Report" href="T3_Galactsidase_enzyme_kinetics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -127,6 +125,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -149,14 +149,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/plot.png" class="logo__image only-light" alt="Python for Biochemistry - Home"/>
-    <script>document.write(`<img src="_static/plot.png" class="logo__image only-dark" alt="Python for Biochemistry - Home"/>`);</script>
   
+    <p class="title logo__title">Python for Biochemistry</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -184,13 +178,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="T02/T2_AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="T02/T2_Exercise.html">Problem Set Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="T02/T2_TitrModel.html">Modeling Titrations</a></li>
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="T3_Galactsidase_enzyme_kinetics.html">Enzyme Kinetics Four Ways for Report</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Plotting Enzyme Kinetics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T3_Step_by_Step_Examples.html">Step-by-Step Code Examples</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 4</span></p>
 <ul class="nav bd-sidenav">
@@ -380,7 +372,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first">IMPORTANT! Go to the end of this notebook and execute the final code block FIRST.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-tools">Set Up Tools.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-data">Setting Up the Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-plot">A Simple Plot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data">Plotting the Data</a><ul class="nav section-nav flex-column">
@@ -408,7 +400,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Summary of Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-this-first">RUN THIS FIRST</a></li>
 </ul>
             </nav>
         </div>
@@ -431,8 +422,29 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[ \frac{1}{\nu} = \frac{1}{V_{max}} + \frac{K_M}{V_{max}}\frac{1}{[S]} \]</div>
 <p>Below we will plot a data set from problem 7.7 in the textbook.</p>
-<section id="important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first">
-<h2>IMPORTANT! Go to the end of this notebook and execute the final code block FIRST.<a class="headerlink" href="#important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first" title="Permalink to this heading">#</a></h2>
+<section id="set-up-tools">
+<h2>Set Up Tools.<a class="headerlink" href="#set-up-tools" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="c1">### uncomment line below in Colab.</span>
+<span class="c1">#!pip install uncertainties  ### to install &#39;Uncertainties&#39; package in Colab. </span>
+
+<span class="c1">### uncomment line below in Colab.</span>
+<span class="c1">#!wget https://raw.githubusercontent.com/blinkletter/3530Biochem/main/enzyme_toolbox.py</span>
+
+<span class="kn">import</span> <span class="nn">enzyme_toolbox</span> <span class="k">as</span> <span class="nn">ET</span>
+
+<span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">un</span>
+<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>
+<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">umath</span> <span class="k">as</span> <span class="n">um</span>
+</pre></div>
+</div>
+</div>
+</div>
 <p>The last block of code contains the definitions for the functions used in this document.</p>
 </section>
 <section id="setting-up-the-data">
@@ -512,10 +524,10 @@ document.write(`
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1084c8e50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1138f6fd0&gt;]
 </pre></div>
 </div>
-<img alt="_images/ba7ae901b33617bc2a64d267420bf0bca5395b08f28e4dd7fbcc063fdcd474e0.png" src="_images/ba7ae901b33617bc2a64d267420bf0bca5395b08f28e4dd7fbcc063fdcd474e0.png" />
+<img alt="_images/9af37a24a160477e05ea7755368b6211df6cca05ba110ce120b40aaf1992549f.png" src="_images/9af37a24a160477e05ea7755368b6211df6cca05ba110ce120b40aaf1992549f.png" />
 </div>
 </div>
 </section>
@@ -539,13 +551,13 @@ document.write(`
 <span class="n">x</span> <span class="o">=</span> <span class="n">conc_penicillin</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">rate</span>
 
-<span class="n">MM_Make_Plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ET</span><span class="o">.</span><span class="n">MM_Make_Plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/0d5f70272b48aa4d1905290a17ee125bf729d4f38908dc259960e3ac950efc5a.png" src="_images/0d5f70272b48aa4d1905290a17ee125bf729d4f38908dc259960e3ac950efc5a.png" />
+<img alt="_images/6541640eabab28d85b82f66bf37821bf702e2a26b9cce3f5a6000d20ab7cfc26.png" src="_images/6541640eabab28d85b82f66bf37821bf702e2a26b9cce3f5a6000d20ab7cfc26.png" />
 </div>
 </div>
 </section>
@@ -566,13 +578,13 @@ document.write(`
 <span class="n">x</span> <span class="o">=</span> <span class="n">conc_penicillin</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">rate</span>
 
-<span class="n">LB_Make_Plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ET</span><span class="o">.</span><span class="n">LB_Make_Plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/5a770ff56117775d4efc9cb37e9cdb142ab2522fdf62fb096e10230cedc91c3e.png" src="_images/5a770ff56117775d4efc9cb37e9cdb142ab2522fdf62fb096e10230cedc91c3e.png" />
+<img alt="_images/fa40b3735f578d24f93fb9df573692e5f8163fc6b3d65d67c6617ade9f3265c1.png" src="_images/fa40b3735f578d24f93fb9df573692e5f8163fc6b3d65d67c6617ade9f3265c1.png" />
 </div>
 </div>
 </section>
@@ -604,7 +616,7 @@ document.write(`
 <span class="c1">### define a Michaelis-Menten function</span>
 <span class="c1">####################################</span>
 
-<span class="k">def</span> <span class="nf">MMplot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">MMplotFun</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span><span class="p">):</span>
     <span class="n">v</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S</span> <span class="o">/</span> <span class="p">(</span><span class="n">S</span> <span class="o">+</span> <span class="n">KM</span><span class="p">)</span>
     <span class="k">return</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 </pre></div>
@@ -742,13 +754,13 @@ The KM is 5.220+/-0.054 mM
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">conc_penicillin</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">rate</span>
 
-<span class="n">Make_LB_Plot_With_Line</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Make_LB_Plot_With_Line</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="_images/bc1d996f7889eb08ce00212d68b3d25d042306f4184896c2025c9455b87470a9.png" src="_images/bc1d996f7889eb08ce00212d68b3d25d042306f4184896c2025c9455b87470a9.png" />
+<img alt="_images/36aea76052b65247bd259b9ee2e83980191806820ac656f02dc2ace54bb2ccb5.png" src="_images/36aea76052b65247bd259b9ee2e83980191806820ac656f02dc2ace54bb2ccb5.png" />
 </div>
 </div>
 </section>
@@ -771,7 +783,7 @@ The KM is 5.220+/-0.054 mM
 <span class="n">x</span> <span class="o">=</span> <span class="n">conc_penicillin</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">rate</span>
 
-<span class="n">params</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">MMplot</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>   <span class="c1">## two objects are returned</span>
+<span class="n">params</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">ET</span><span class="o">.</span><span class="n">MMplotFun</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>   <span class="c1">## two objects are returned</span>
 
 <span class="c1">####################################</span>
 <span class="c1">### Interpret the results</span>
@@ -792,7 +804,7 @@ The KM is 5.220+/-0.054 mM
 <span class="c1">### Present the plot with the curve fit line</span>
 <span class="c1">####################################</span>
 
-<span class="n">Make_MM_Plot_With_Line</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">ET</span><span class="o">.</span><span class="n">Make_MM_Plot_With_Line</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 
 <span class="c1">####################################</span>
 <span class="c1">### Record the results for later</span>
@@ -809,7 +821,7 @@ The KM is 5.220+/-0.054 mM
 The KM is 5.002+/-0.079
 </pre></div>
 </div>
-<img alt="_images/929142da54227228678fbb33787dc52f6c9d0d8e19c222f8004214595d636cf8.png" src="_images/929142da54227228678fbb33787dc52f6c9d0d8e19c222f8004214595d636cf8.png" />
+<img alt="_images/47945274b3b501ae1cd50436ea4964d1c598c15696f15ae1614adf9c8601646e.png" src="_images/47945274b3b501ae1cd50436ea4964d1c598c15696f15ae1614adf9c8601646e.png" />
 </div>
 </div>
 </section>
@@ -863,19 +875,22 @@ The KM is 5.002+/-0.079
 
 <span class="n">experimental_error</span> <span class="o">=</span> <span class="mf">0.05</span>   <span class="c1">### error will be +/- this value</span>
 
-<span class="n">Make_MM_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">experimental_error</span><span class="p">,</span> 
+<span class="n">v_max</span><span class="p">,</span> <span class="n">KM</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Make_MM_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">experimental_error</span><span class="p">,</span> 
                         <span class="n">list_MM_Vmax</span><span class="p">,</span> <span class="n">list_MM_KM</span><span class="p">,</span> 
                         <span class="n">true_v_max</span><span class="p">,</span> <span class="n">true_KM</span><span class="p">)</span>
+
+<span class="n">list_MM_Vmax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">v_max</span><span class="p">))</span>
+<span class="n">list_MM_KM</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">KM</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 1.114+/-0.058
-The KM is 5.734+/-0.976
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 1.117+/-0.066
+The KM is 5.614+/-1.098
 </pre></div>
 </div>
-<img alt="_images/0d81447720b0e560f726ee6661eed0c88284df1b1a8dcc22de498e41a204fe0b.png" src="_images/0d81447720b0e560f726ee6661eed0c88284df1b1a8dcc22de498e41a204fe0b.png" />
+<img alt="_images/e7cd5e21cc68cbdfe2270b62942f0280df4f6fea7c185674e3b4edd4a56c1fc3.png" src="_images/e7cd5e21cc68cbdfe2270b62942f0280df4f6fea7c185674e3b4edd4a56c1fc3.png" />
 </div>
 </div>
 </section>
@@ -898,19 +913,23 @@ The KM is 5.734+/-0.976
 
 <span class="n">experimental_error</span> <span class="o">=</span> <span class="mf">0.05</span>   <span class="c1">### error will be +/- this value</span>
 
-<span class="n">Make_LB_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">experimental_error</span><span class="p">,</span> 
+<span class="n">v_max</span><span class="p">,</span> <span class="n">KM</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Make_LB_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">experimental_error</span><span class="p">,</span> 
                         <span class="n">list_LB_Vmax</span><span class="p">,</span> <span class="n">list_LB_KM</span><span class="p">,</span> 
                         <span class="n">true_slope</span><span class="p">,</span> <span class="n">true_intercept</span><span class="p">)</span>
+
+
+<span class="n">list_LB_Vmax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">v_max</span><span class="p">))</span>
+<span class="n">list_LB_KM</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">KM</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 1.319+/-0.107 uM/s
-The KM is 7.574+/-0.644 mM
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 0.998+/-0.072 uM/s
+The KM is 3.658+/-0.309 mM
 </pre></div>
 </div>
-<img alt="_images/b9c27b88ad730e0102c368250309038824b378ecba896843982e392a20f19b0c.png" src="_images/b9c27b88ad730e0102c368250309038824b378ecba896843982e392a20f19b0c.png" />
+<img alt="_images/dc5ccd4aa39b38838de9fc3e16fd58c399d3c68edbfcb6d5bf6111a178051232.png" src="_images/dc5ccd4aa39b38838de9fc3e16fd58c399d3c68edbfcb6d5bf6111a178051232.png" />
 </div>
 </div>
 </section>
@@ -961,11 +980,11 @@ The KM is 7.574+/-0.644 mM
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MM Vmax  1.122+/-0.051
-MM KM    5.166+/-0.668
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MM Vmax  1.117+/-0
+MM KM    5.614+/-0
 
-LB Vmax  1.043+/-0.172
-LB KM    4.293+/-1.784
+LB Vmax  0.998+/-0
+LB KM    3.658+/-0
 </pre></div>
 </div>
 </div>
@@ -1014,19 +1033,22 @@ LB KM    4.293+/-1.784
 
 <span class="n">experimental_error</span> <span class="o">=</span> <span class="mf">0.05</span>   <span class="c1">### error will be +/- this value</span>
 
-<span class="n">Make_EH_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">experimental_error</span><span class="p">,</span> 
+<span class="n">v_max</span><span class="p">,</span> <span class="n">KM</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Make_EH_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">experimental_error</span><span class="p">,</span> 
                         <span class="n">list_EH_Vmax</span><span class="p">,</span> <span class="n">list_EH_KM</span><span class="p">,</span> 
                         <span class="n">true_v_max</span><span class="p">,</span> <span class="n">true_KM</span><span class="p">)</span>
+
+<span class="n">list_EH_Vmax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">v_max</span><span class="p">))</span>
+<span class="n">list_EH_KM</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">KM</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 1.118+/-0.046 uM/s
-The KM is 4.928+/-0.407 mM
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 1.009+/-0.157 uM/s
+The KM is 4.397+/-1.525 mM
 </pre></div>
 </div>
-<img alt="_images/90c6fe12d7dffbce72a5697b47f0a7f09dc04850ca3b10218b1ed8cfe7b4bbdf.png" src="_images/90c6fe12d7dffbce72a5697b47f0a7f09dc04850ca3b10218b1ed8cfe7b4bbdf.png" />
+<img alt="_images/8ad6a7228e9e038a408e1fdf4cb0de7d811e8cadfcf87acf9fd5e01a2877e083.png" src="_images/8ad6a7228e9e038a408e1fdf4cb0de7d811e8cadfcf87acf9fd5e01a2877e083.png" />
 </div>
 </div>
 </section>
@@ -1054,19 +1076,22 @@ The KM is 4.928+/-0.407 mM
 
 <span class="n">experimental_error</span> <span class="o">=</span> <span class="mf">0.05</span>   <span class="c1">### error will be +/- this value</span>
 
-<span class="n">Make_HW_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">experimental_error</span><span class="p">,</span> 
+<span class="n">v_max</span><span class="p">,</span> <span class="n">KM</span> <span class="o">=</span> <span class="n">ET</span><span class="o">.</span><span class="n">Make_HW_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">experimental_error</span><span class="p">,</span> 
                         <span class="n">list_HW_Vmax</span><span class="p">,</span> <span class="n">list_HW_KM</span><span class="p">,</span> 
                         <span class="n">true_v_max</span><span class="p">,</span> <span class="n">true_KM</span><span class="p">)</span>
+
+<span class="n">list_HW_Vmax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">v_max</span><span class="p">))</span>
+<span class="n">list_HW_KM</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">KM</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 1.190+/-0.035 uM/s
-The KM is 5.773+/-0.732 mM
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 1.206+/-0.029 uM/s
+The KM is 6.643+/-0.607 mM
 </pre></div>
 </div>
-<img alt="_images/18ebe20fa7946f04a7325fcd3aef5c19db9e16343ff81367f995ebbd6e936809.png" src="_images/18ebe20fa7946f04a7325fcd3aef5c19db9e16343ff81367f995ebbd6e936809.png" />
+<img alt="_images/e32e9b9bc5693174f84fac35c858982fca67ab5374524cd83a7cce6ba0ef1ed2.png" src="_images/e32e9b9bc5693174f84fac35c858982fca67ab5374524cd83a7cce6ba0ef1ed2.png" />
 </div>
 </div>
 </section>
@@ -1113,643 +1138,11 @@ The KM is 5.773+/-0.732 mM
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EH Vmax  1.090+/-0.085
-EH KM    4.824+/-1.141
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>EH Vmax  1.009+/-0
+EH KM    4.397+/-0
 
-HW Vmax  1.134+/-0.055
-HW KM    5.485+/-1.157
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="run-this-first">
-<h2>RUN THIS FIRST<a class="headerlink" href="#run-this-first" title="Permalink to this heading">#</a></h2>
-<p>Execute the final bock in this notebook below to establish all the functions and tools required in the code above.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       <span class="c1">## import the tools of NumPy but use a shorter name</span>
-
-
-<span class="c1">####################################</span>
-<span class="c1">### Install UNCERTAINTIES package </span>
-<span class="c1">####################################</span>
-
-<span class="c1">#!pip install uncertainties  # to install in Colab. Add it back to avoid installing again and again.</span>
-
-<span class="c1">####################################</span>
-<span class="c1">### Import versions of NumPy and Math that use uncertainty </span>
-<span class="c1">####################################</span>
-
-<span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">un</span>
-<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>
-<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">umath</span> <span class="k">as</span> <span class="n">um</span>
-
-<span class="k">def</span> <span class="nf">MM_Make_Plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="c1">######################</span>
-    <span class="c1">### Create an empty plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           <span class="c1">### Reset default style - no needed but just in case.</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  <span class="c1">### establish a figure with size 5x4</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Plot the data</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>      <span class="c1">### &#39;k&#39; is black, &#39;o&#39; is &#39;circles&#39;, &#39;-&#39; is solid line. </span>
-                              <span class="c1">### Try &quot;g.&quot;, &quot;ko-&quot;, &quot;ro--&quot;, &quot;b^-&quot;</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Add some style</span>
-    <span class="c1">######################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>         <span class="c1">### y-axis limits are min = 0, max = whatever</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>         <span class="c1">### x-axis limits are min = 0, max = whatever</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu\ \ /\,nM\: s^{-1}$&quot;</span><span class="p">)</span>   <span class="c1">### The $ indicates &quot;math typesetting language&quot;</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$[S]\ \ /\,\mu M$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Michaelis-Menten Plot&quot;</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Display and export the plot</span>
-    <span class="c1">######################</span>
-    
-    <span class="c1">#plt.savefig(&quot;MM_plot.pdf&quot;)    ### Save the image as a pdf file. Now you can use it in a document.</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    
-<span class="k">def</span> <span class="nf">LB_Make_Plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="c1">######################</span>
-    <span class="c1">### reciprocol calculations</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">x</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">y</span>
-    
-    <span class="c1">####################################################</span>
-    <span class="c1">### Steal code above and re-use it</span>
-    <span class="c1">####################################################</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Create an empty plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           <span class="c1">### Reset default style - no needed but just in case.</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  <span class="c1">### establish a figure with size 5x4</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Plot the data</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Add some style</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\frac</span><span class="si">{1}</span><span class="s2">{\nu\ /nM\; s^{-1}}$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\frac</span><span class="si">{1}</span><span class="s2">{[S]\ /\mu M}$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$1/(\nu\ /nM\; s^{-1})$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$1/([S]\ /\mu M)$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lineweaver-Burke Plot&quot;</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Display and export the plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="c1">#plt.savefig(&quot;LB_plot.pdf&quot;)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">Make_LB_Plot_With_Line</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">x</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">y</span>
-    
-    <span class="c1">### linear(x,slope, intercept) returns y</span>
-    <span class="n">params</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>   <span class="c1">## two objects are returned</span>
-    
-    <span class="c1">####################################</span>
-    <span class="c1">### Interpret the results</span>
-    <span class="c1">####################################</span>
-    
-    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">params</span>   <span class="c1">### pull out the two values in the params object</span>
-    
-    <span class="c1">################################</span>
-    <span class="c1">### make a list of x values from zero to the end of the line</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">x_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1">## 100 points from 0 to the highest value on LB plot x-axis</span>
-    
-    <span class="c1">################################</span>
-    <span class="c1">### Feed that list into the function for the line fit</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">y_fit</span> <span class="o">=</span> <span class="n">linear</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span><span class="n">slope</span><span class="p">,</span><span class="n">intercept</span><span class="p">)</span>
-    
-    <span class="c1">################################</span>
-    <span class="c1">### Steal the plot code from above and add a line to plot the calculated line fit</span>
-    <span class="c1">################################</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Create an empty plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Plot the data</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>
-                                   <span class="c1">###########################</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>   <span class="c1">### This is the extra line</span>
-                                   <span class="c1">###########################</span>
-    <span class="c1">######################</span>
-    <span class="c1">### Add some style</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$1\,/\,(\nu\ /nM\; s^{-1})$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$1\,/\;([S]\ /\mu M)$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lineweaver-Burke Plot&quot;</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Display and export the plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="c1">#plt.savefig(&quot;LB_plot.pdf&quot;)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">Make_MM_Plot_With_Line</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
-
-    <span class="n">params</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">MMplot</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>   <span class="c1">## two objects are returned</span>
-
-    <span class="c1">####################################</span>
-    <span class="c1">### Interpret the results</span>
-    <span class="c1">####################################</span>
-    
-    <span class="n">v_max</span><span class="p">,</span> <span class="n">KM</span> <span class="o">=</span> <span class="n">params</span>   <span class="c1">### pull out the two values in the params object</span>
-    
-    <span class="c1">################################</span>
-    <span class="c1">### make a list of x values from zero to the end of the line</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">x_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1">## 100 points from 0 to the highest value on LB plot x-axis</span>
-    
-    <span class="c1">################################</span>
-    <span class="c1">### Feed that list into the function for the line fit</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">y_fit</span> <span class="o">=</span> <span class="n">MMplot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span><span class="n">v_max</span><span class="p">,</span><span class="n">KM</span><span class="p">)</span>
-    
-    <span class="c1">################################</span>
-    <span class="c1">### Steal the plot code from above and add a line to plot the calculated line fit</span>
-    <span class="c1">################################</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Create an empty plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Plot the data and the curve fit line</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>   
-                                   
-    <span class="c1">######################</span>
-    <span class="c1">### Add some style</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu\ \ /\,nM\: s^{-1}$&quot;</span><span class="p">)</span>   <span class="c1">### The $ indicates &quot;math typesetting language&quot;</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$[S]\ \ /\,\mu M$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Michaelis-Menten Plot&quot;</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Display and export the plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="c1">#plt.savefig(&quot;MM_plot.pdf&quot;)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">Make_MM_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">Vmax_list</span><span class="p">,</span> <span class="n">KM_list</span><span class="p">,</span> <span class="n">true_v_max</span><span class="p">,</span> <span class="n">true_KM</span><span class="p">):</span>
-        
-    <span class="c1">### We start with the x,y data entered at the top of this document</span>
-    <span class="c1">### Set an error range and then randomly add or subtract the error</span>
-    
-    
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span>   <span class="c1">## We want to copy the orginal data so that every time we rerun this</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>   <span class="c1">##  block of code we are starting agaion with the unchanged original data</span>
-    
-    
-    <span class="n">number_of_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y2</span><span class="p">)</span>
-    <span class="n">random_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">number_of_points</span><span class="p">)</span> <span class="o">*</span> <span class="n">err</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">random_values</span>
-    
-    <span class="c1">########################################################################</span>
-    <span class="c1">### Code for MM Plot from Above. Stolen and reused.</span>
-    <span class="c1">########################################################################</span>
-    
-    <span class="c1">####################################</span>
-    <span class="c1">### Perform the curve fit</span>
-    <span class="c1">####################################</span>
-    
-    <span class="n">params</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">MMplot</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>   <span class="c1">## two objects are returned</span>
-    
-    <span class="c1">####################################</span>
-    <span class="c1">### Interpret the results</span>
-    <span class="c1">####################################</span>
-    
-    <span class="n">v_max</span><span class="p">,</span> <span class="n">KM</span> <span class="o">=</span> <span class="n">params</span>   <span class="c1">### pull out the two values in the params object</span>
-    
-    <span class="n">perr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">stats</span><span class="p">))</span>        <span class="c1">### convert covariance matrix to stdev values</span>
-    <span class="n">stdev_v_max</span><span class="p">,</span> <span class="n">stdev_KM</span> <span class="o">=</span> <span class="n">perr</span>          <span class="c1">### pull out the two stdev values </span>
-    
-    <span class="n">v_max_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">v_max</span><span class="p">,</span><span class="n">stdev_v_max</span><span class="p">)</span>  <span class="c1">## create a value with uncertainty built in</span>
-    <span class="n">KM_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">KM</span><span class="p">,</span><span class="n">stdev_KM</span><span class="p">)</span>  
-    
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The Vmax is </span><span class="si">{</span><span class="n">v_max_u</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The KM is </span><span class="si">{</span><span class="n">KM_u</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
-    
-    <span class="c1">######################################</span>
-    <span class="c1">### Collect results each time this code is run</span>
-    <span class="c1">######################################</span>
-    
-    <span class="n">Vmax_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v_max</span><span class="p">)</span>
-    <span class="n">KM_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">KM</span><span class="p">)</span>
-    
-    <span class="c1">################################</span>
-    <span class="c1">### make a list of x values from zero to the end of the line</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">x_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x2</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span> 
-    
-    <span class="c1">################################</span>
-    <span class="c1">### Feed that list into the function for the line fit</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">y_fit</span> <span class="o">=</span> <span class="n">MMplot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span><span class="n">v_max</span><span class="p">,</span><span class="n">KM</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Create an empty plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Plot the data and the curve fit line</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>   
-                                                               <span class="c1">######################################</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">MMplot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">true_v_max</span><span class="p">,</span> <span class="n">true_KM</span><span class="p">),</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>  <span class="c1">### Add in &quot;ghost line&quot; for original data</span>
-                                                               <span class="c1">######################################</span>
-    <span class="c1">######################</span>
-    <span class="c1">### Add some style</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu\ \ /\,nM\: s^{-1}$&quot;</span><span class="p">)</span>  
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$[S]\ \ /\,\mu M$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Michaelis-Menten Plot&quot;</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Display and export the plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="c1">#plt.savefig(&quot;MM_plot_err.pdf&quot;)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">Make_LB_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">Vmax_list</span><span class="p">,</span> <span class="n">KM_list</span><span class="p">,</span> <span class="n">true_slope</span><span class="p">,</span> <span class="n">true_intercept</span><span class="p">):</span>
-    <span class="c1">### We start with the x,y data entered at the top of this document</span>
-    <span class="c1">### Set an error range and then randomly add or subtract the error</span>
-    
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span>   <span class="c1">## We want to copy the orginal data so that every time we rerun this</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>   <span class="c1">##  block of code we are starting agaion with the unchanged original data    </span>
-    
-    <span class="n">number_of_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">random_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">number_of_points</span><span class="p">)</span> <span class="o">*</span> <span class="n">err</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">random_values</span>
-    
-    <span class="c1">########################################################################</span>
-    <span class="c1">### Code for MM Plot from Above. Stolen and reused.</span>
-    <span class="c1">########################################################################</span>
-    
-    
-    <span class="c1">####################################</span>
-    <span class="c1">### Perform the curve fit</span>
-    <span class="c1">####################################</span>
-    
-    <span class="n">x2_lb</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">x2</span>
-    <span class="n">y2_lb</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">y2</span>
-    
-    
-    
-    <span class="n">params</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x2_lb</span><span class="p">,</span> <span class="n">y2_lb</span><span class="p">)</span>   <span class="c1">## two objects are returned</span>
-    
-    <span class="c1">####################################</span>
-    <span class="c1">### Interpret the results</span>
-    <span class="c1">####################################</span>
-    
-    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">params</span>   <span class="c1">### pull out the two values in the params object</span>
-    
-    <span class="n">perr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">stats</span><span class="p">))</span>        <span class="c1">### convert covariance matrix to stdev values</span>
-    <span class="n">stdev_slope</span><span class="p">,</span> <span class="n">stdev_intercept</span> <span class="o">=</span> <span class="n">perr</span>   <span class="c1">### pull out the two stdev values </span>
-    
-    <span class="n">slope_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="n">stdev_slope</span><span class="p">)</span>               <span class="c1">## create a value with uncertainty built in</span>
-    <span class="n">intercept_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span><span class="n">stdev_intercept</span><span class="p">)</span>  
-    
-    <span class="n">v_max</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">intercept_u</span>
-    <span class="n">KM</span> <span class="o">=</span> <span class="n">v_max</span> <span class="o">*</span> <span class="n">slope_u</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The Vmax is </span><span class="si">{</span><span class="n">v_max</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> uM/s&quot;</span><span class="p">)</span>         <span class="c1">## Observe that the single variable now combines the value and the uncertainty</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The KM is </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> mM&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
-    
-    <span class="n">list_LB_Vmax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">v_max</span><span class="p">))</span>
-    <span class="n">list_LB_KM</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">KM</span><span class="p">))</span>
-    
-    
-    <span class="c1">################################</span>
-    <span class="c1">### make a list of x values from zero to the end of the line</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">x_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x2_lb</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1">## 100 points from 0 to the highest value on LB plot x-axis</span>
-    
-    <span class="c1">################################</span>
-    <span class="c1">### Feed that list into the function for the line fit</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">y_fit</span> <span class="o">=</span> <span class="n">linear</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Create an empty plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Plot the data and the curve fit line</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2_lb</span><span class="p">,</span> <span class="n">y2_lb</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>   
-                                                                      <span class="c1">######################################</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">linear</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">true_slope</span><span class="p">,</span> <span class="n">true_intercept</span><span class="p">),</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>  <span class="c1">### Add in &quot;ghost line&quot; for original data</span>
-                                                                      <span class="c1">######################################</span>
-    <span class="c1">######################</span>
-    <span class="c1">### Add some style</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$1\,/\,(\nu\ /nM\; s^{-1})$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$1\,/\;([S]\ /\mu M)$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lineweaver-Burke Plot&quot;</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Display and export the plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="c1">#plt.savefig(&quot;LB_plot_err.pdf&quot;)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">Make_EH_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">Vmax_list</span><span class="p">,</span> <span class="n">KM_list</span><span class="p">,</span> <span class="n">true_v_max</span><span class="p">,</span> <span class="n">true_KM</span><span class="p">):</span>
-    <span class="c1">### We start with the x,y data entered at the top of this document</span>
-    <span class="c1">### Set an error range and then randomly add or subtract the error</span>
-    
-    <span class="n">experimental_error</span> <span class="o">=</span> <span class="mf">0.05</span>   <span class="c1">### error will be +/- this value</span>
-    
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span>   <span class="c1">## We want to copy the orginal data so that every time we rerun this</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>     <span class="c1">##  block of code we are starting agaion with the unchanged original data</span>
-    
-    
-    
-    <span class="n">number_of_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">random_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">number_of_points</span><span class="p">)</span> <span class="o">*</span> <span class="n">err</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">random_values</span>
-    
-    <span class="c1">########################################################################</span>
-    <span class="c1">### Code for MM Plot from Above. Stolen and reused.</span>
-    <span class="c1">########################################################################</span>
-    
-    
-    <span class="c1">####################################</span>
-    <span class="c1">### Perform the curve fit</span>
-    <span class="c1">####################################</span>
-    
-    <span class="n">x2_eh</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">/</span> <span class="n">x2</span>
-    <span class="n">y2_eh</span> <span class="o">=</span> <span class="n">y2</span>
-    
-    
-    
-    <span class="n">params</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x2_eh</span><span class="p">,</span> <span class="n">y2_eh</span><span class="p">)</span>   <span class="c1">## two objects are returned</span>
-    
-    <span class="c1">####################################</span>
-    <span class="c1">### Interpret the results</span>
-    <span class="c1">####################################</span>
-    
-    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">params</span>   <span class="c1">### pull out the two values in the params object</span>
-    
-    <span class="n">perr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">stats</span><span class="p">))</span>        <span class="c1">### convert covariance matrix to stdev values</span>
-    <span class="n">stdev_slope</span><span class="p">,</span> <span class="n">stdev_intercept</span> <span class="o">=</span> <span class="n">perr</span>   <span class="c1">### pull out the two stdev values </span>
-    
-    <span class="n">slope_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="n">stdev_slope</span><span class="p">)</span>               <span class="c1">## create a value with uncertainty built in</span>
-    <span class="n">intercept_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span><span class="n">stdev_intercept</span><span class="p">)</span>  
-    
-    <span class="n">v_max</span> <span class="o">=</span> <span class="n">intercept_u</span>
-    <span class="n">KM</span> <span class="o">=</span> <span class="o">-</span> <span class="n">slope_u</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The Vmax is </span><span class="si">{</span><span class="n">v_max</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> uM/s&quot;</span><span class="p">)</span>         <span class="c1">## Observe that the single variable now combines the value and the uncertainty</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The KM is </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> mM&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
-    
-    <span class="n">list_EH_Vmax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">v_max</span><span class="p">))</span>
-    <span class="n">list_EH_KM</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">KM</span><span class="p">))</span>
-    
-    
-    <span class="c1">################################</span>
-    <span class="c1">### make a list of x values from zero to the end of the line</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">x_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x2_eh</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1">## 100 points from 0 to the highest value on LB plot x-axis</span>
-    
-    <span class="c1">################################</span>
-    <span class="c1">### Feed that list into the function for the line fit</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">y_fit</span> <span class="o">=</span> <span class="n">linear</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Create an empty plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Plot the data and the curve fit line</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2_eh</span><span class="p">,</span> <span class="n">y2_eh</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>   
-                                                                      <span class="c1">######################################</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">linear</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="o">-</span><span class="n">true_KM</span><span class="p">,</span> <span class="n">true_v_max</span><span class="p">),</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>  <span class="c1">### Add in &quot;ghost line&quot; for original data</span>
-                                                                      <span class="c1">######################################</span>
-    <span class="c1">######################</span>
-    <span class="c1">### Add some style</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\nu\,/\;[S]$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Eadie-Hofstee Plot&quot;</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Display and export the plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="c1">#plt.savefig(&quot;EH_plot_err.pdf&quot;)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="k">def</span> <span class="nf">Make_HW_Plot_with_Error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">err</span><span class="p">,</span> <span class="n">Vmax_list</span><span class="p">,</span> <span class="n">KM_list</span><span class="p">,</span> <span class="n">true_v_max</span><span class="p">,</span> <span class="n">true_KM</span><span class="p">):</span>
-    <span class="c1">### We start with the x,y data entered at the top of this document</span>
-    <span class="c1">### Set an error range and then randomly add or subtract the error</span>
-    
-    
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span>   <span class="c1">## We want to copy the orginal data so that every time we rerun this</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>     <span class="c1">##  block of code we are starting agaion with the unchanged original data</span>
-    
-    <span class="n">true_v_max</span> <span class="o">=</span> <span class="mf">1.123</span>   <span class="c1">### Results of MM curve fit</span>
-    <span class="n">true_KM</span> <span class="o">=</span> <span class="mf">5.002</span>
-    
-    
-    <span class="n">number_of_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="n">random_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">number_of_points</span><span class="p">)</span> <span class="o">*</span> <span class="n">err</span>
-    <span class="n">y2</span> <span class="o">=</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">random_values</span>
-    
-    <span class="c1">########################################################################</span>
-    <span class="c1">### Code for MM Plot from Above. Stolen and reused.</span>
-    <span class="c1">########################################################################</span>
-    
-    
-    <span class="c1">####################################</span>
-    <span class="c1">### Perform the curve fit</span>
-    <span class="c1">####################################</span>
-    
-    <span class="n">x2_hw</span> <span class="o">=</span> <span class="n">x2</span>
-    <span class="n">y2_hw</span> <span class="o">=</span> <span class="n">x2</span> <span class="o">/</span> <span class="n">y2</span>
-    
-    
-    
-    <span class="n">params</span><span class="p">,</span> <span class="n">stats</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">linear</span><span class="p">,</span> <span class="n">x2_hw</span><span class="p">,</span> <span class="n">y2_hw</span><span class="p">)</span>   <span class="c1">## two objects are returned</span>
-    
-    <span class="c1">####################################</span>
-    <span class="c1">### Interpret the results</span>
-    <span class="c1">####################################</span>
-    
-    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">params</span>   <span class="c1">### pull out the two values in the params object</span>
-    
-    <span class="n">perr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">stats</span><span class="p">))</span>        <span class="c1">### convert covariance matrix to stdev values</span>
-    <span class="n">stdev_slope</span><span class="p">,</span> <span class="n">stdev_intercept</span> <span class="o">=</span> <span class="n">perr</span>   <span class="c1">### pull out the two stdev values </span>
-    
-    <span class="n">slope_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span><span class="n">stdev_slope</span><span class="p">)</span>               <span class="c1">## create a value with uncertainty built in</span>
-    <span class="n">intercept_u</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">ufloat</span><span class="p">(</span><span class="n">intercept</span><span class="p">,</span><span class="n">stdev_intercept</span><span class="p">)</span>  
-    
-    <span class="n">v_max</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">slope_u</span>
-    <span class="n">KM</span> <span class="o">=</span> <span class="n">intercept_u</span> <span class="o">/</span> <span class="n">slope_u</span>
-    
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The Vmax is </span><span class="si">{</span><span class="n">v_max</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> uM/s&quot;</span><span class="p">)</span>         <span class="c1">## Observe that the single variable now combines the value and the uncertainty</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The KM is </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> mM&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
-    
-    <span class="n">list_HW_Vmax</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">v_max</span><span class="p">))</span>
-    <span class="n">list_HW_KM</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">unp</span><span class="o">.</span><span class="n">nominal_values</span><span class="p">(</span><span class="n">KM</span><span class="p">))</span>
-    
-    
-    <span class="c1">################################</span>
-    <span class="c1">### make a list of x values from zero to the end of the line</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">x_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x2_hw</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1">## 100 points from 0 to the highest value on LB plot x-axis</span>
-    
-    <span class="c1">################################</span>
-    <span class="c1">### Feed that list into the function for the line fit</span>
-    <span class="c1">################################</span>
-    
-    <span class="n">y_fit</span> <span class="o">=</span> <span class="n">linear</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Create an empty plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">rcdefaults</span><span class="p">()</span>           
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>  
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Plot the data and the curve fit line</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2_hw</span><span class="p">,</span> <span class="n">y2_hw</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>   
-                                                                      <span class="c1">######################################</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">linear</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">true_v_max</span><span class="p">,</span> <span class="n">true_KM</span><span class="o">/</span><span class="n">true_v_max</span><span class="p">),</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>  <span class="c1">### Add in &quot;ghost line&quot; for original data</span>
-                                                                      <span class="c1">######################################</span>
-    <span class="c1">######################</span>
-    <span class="c1">### Add some style</span>
-    <span class="c1">#####################</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
-    
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$[S] \; / \; \nu$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$[S]$&quot;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hanes-Woolf Plot&quot;</span><span class="p">)</span>
-    
-    <span class="c1">######################</span>
-    <span class="c1">### Display and export the plot</span>
-    <span class="c1">#####################</span>
-    
-    <span class="c1">#plt.savefig(&quot;HW_plot_err.pdf&quot;)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    
-<span class="k">def</span> <span class="nf">print_stats</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">stats</span><span class="p">):</span>
-    <span class="c1">####################################</span>
-    <span class="c1">### Print the two objects that are returned</span>
-    <span class="c1">####################################</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the params object contains...&quot;</span><span class="p">)</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;which is the slope and the intercept&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;the stats object contains...&quot;</span><span class="p">)</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;which is the covariance matrix and can be used to calculate </span><span class="se">\n</span><span class="s2">the standard deviations in the parameters.&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">()</span>
-
-
-    
+HW Vmax  1.206+/-0
+HW KM    6.643+/-0
 </pre></div>
 </div>
 </div>
@@ -1787,24 +1180,6 @@ HW KM    5.485+/-1.157
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="T3_Galactsidase_enzyme_kinetics.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Enzyme Kinetics Four Ways for Report</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="T3_bGalactosidase.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">&lt;no title&gt;</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1821,7 +1196,7 @@ HW KM    5.485+/-1.157
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#important-go-to-the-end-of-this-notebook-and-execute-the-final-code-block-first">IMPORTANT! Go to the end of this notebook and execute the final code block FIRST.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-tools">Set Up Tools.</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-data">Setting Up the Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-plot">A Simple Plot</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data">Plotting the Data</a><ul class="nav section-nav flex-column">
@@ -1849,7 +1224,6 @@ HW KM    5.485+/-1.157
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Summary of Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#run-this-first">RUN THIS FIRST</a></li>
 </ul>
   </nav></div>
 

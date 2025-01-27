@@ -30,18 +30,11 @@ This notebook features a few starter code blocks that will solve acid/base equil
 
 This notebook provides *Python* code for solving some of the problems in the 'Math Ideas' problem set. Steal this code as you work on the other problems. 
 
-- [Modeling Titrations](T02/T2_TitrModel.ipynb)
-
-This notebook provides *Python* code plotting titrations of weak acids like acetic acid. It is not something that I want you to be able to do. I will be using this to provide a graphical interpretation of buffer behaviour.
-
 ## Tutorial 3
 
 In our third tutorial meeting we will be exporing enzyme kinetics. We will observe the consequences of inhibitors and have some fun curve fitting plots.
 
-- [Inhibitors in Action](T03/T3_MM_Intro_fun.ipynb)
+- [Enzyme Kinetics Starter Notebook](T3_Galactsidase_enzyme_kinetics)
 
 Change the dissociation constants for inhibitors and see what happens.
 
-- [The Abominable Plot](T03/T3_MM_Intro_basics.ipynb)
-
-Solve a textbook problem while exploring just how bad the lineweaver-Burke plot is. There are better options.

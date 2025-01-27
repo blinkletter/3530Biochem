@@ -1,0 +1,1049 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Step-by-Step Code Examples &#8212; Python for Biochemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'T3_Step_by_Step_Examples';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Drug Interaction and Enzyme Kinetics" href="T04/T4_InhibitionA.html" />
+    <link rel="prev" title="Enzyme Kinetics Four Ways for Report" href="T3_Galactsidase_enzyme_kinetics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="start.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python for Biochemistry</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="start.html">
+                    Data Interpretation for Biochemistry
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="T02/T2_AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="T02/T2_Exercise.html">Problem Set Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="T3_Galactsidase_enzyme_kinetics.html">Enzyme Kinetics Four Ways for Report</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Step-by-Step Code Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="T04/T4_InhibitionA.html">Drug Interaction and Enzyme Kinetics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T04/T4_MM_Intro_fun.html">Example: Enzyme Kinetics with Inhibitors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T04/Tutorial_4_exercises_Answers.html">Answers for Questions 5 to 10</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 7</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="T07/T07-membranepotential1.html">Chemical Potential</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./T3_Step_by_Step_Examples.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/T3_Step_by_Step_Examples.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Step-by-Step Code Examples</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-quick-plot">A Quick Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curve-fitting">Curve Fitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-curve-fit">Plot The Curve Fit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-plots">Linear Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steal-a-curve-fit">Steal a Curve Fit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eadie-hofstee">Eadie-Hofstee</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hanes-wolfe">Hanes-Wolfe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steal-it-all-and-compare">Steal It All and Compare</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="step-by-step-code-examples">
+<h1>Step-by-Step Code Examples<a class="headerlink" href="#step-by-step-code-examples" title="Permalink to this heading">#</a></h1>
+<p>This notebook will take you step by step through the <em>Python</em> commands that are used in the <code class="docutils literal notranslate"><span class="pre">BiochemToolbox.py</span></code> library. If you choose to explore this optional resource then you will be better able to interpret what I have done in the library.</p>
+<p>You can use the <em>Enzyme Kinetics Four Ways for Report</em> notebook to make your plots simply by setting up the correct x and y variables (e.g. for Lineweaver-Burke just set x = 1/S and y = 1/rate). You could also use this document to do that as well. However, I recommend just stealing the code in the <em>Enzyme Kinetics Four Ways for Report</em> notebook and making your exercise a simple as possible.</p>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">#</a></h2>
+<p>First we must import any tools that are needed. We will be using the <em>NumPy</em> library for math operations and to provide the array data structure for storing our numbers. The <em>MatPlotLib</em> library will provide tools for plotting. The <em>SciPy</em> library provides tools for data analysis. The <em>SciKit-Learn</em> library provides more data analysis tools (mostly for machine learning - we will use a tool that calculates the <span class="math notranslate nohighlight">\(r^2\)</span> score for a curve fit). The <em>Uncertainties</em> library allows us to use numbers that include uncertainty and to automatically take care of error propagation.  The Uncertainties package is noit included in Colab and so we must install it.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                       
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
+
+<span class="c1">### uncomment line below in Colab.</span>
+<span class="c1">#!pip install uncertainties  ### to install &#39;Uncertainties&#39; package in Colab. </span>
+
+<span class="kn">import</span> <span class="nn">uncertainties</span> <span class="k">as</span> <span class="nn">un</span>
+<span class="kn">from</span> <span class="nn">uncertainties</span> <span class="kn">import</span> <span class="n">unumpy</span> <span class="k">as</span> <span class="n">unp</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<p>Now we must enter the data. there are many ways to do this. Here I will just make two lists; one for x and one for y. I must convert these lists to <em>NumPy</em> arrays to do math with them. Multiplying a list by 5 will just get me five lists. Multiplying an array by 5 will apply that operation to each number in the array.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">conc</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mf">2.50</span><span class="p">,</span> <span class="mf">5.00</span><span class="p">,</span> <span class="mf">8.00</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">30.0</span><span class="p">]</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.008</span><span class="p">,</span> <span class="mf">0.010</span><span class="p">,</span> <span class="mf">0.021</span><span class="p">,</span> <span class="mf">0.042</span><span class="p">,</span> <span class="mf">0.067</span><span class="p">,</span> <span class="mf">0.105</span><span class="p">,</span> <span class="mf">0.160</span><span class="p">,</span> <span class="mf">0.171</span><span class="p">,</span> <span class="mf">0.232</span><span class="p">,</span> <span class="mf">0.241</span><span class="p">]</span>
+
+<span class="n">conc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">conc</span><span class="p">)</span>     <span class="c1"># convert lists to arrays</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rate</span><span class="p">)</span>
+
+<span class="n">e420</span> <span class="o">=</span> <span class="mf">5.5</span> <span class="c1"># AU/mM/cm</span>
+<span class="n">E_conc</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># micromolar</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">rate</span><span class="o">/</span><span class="p">(</span><span class="n">e420</span><span class="o">*</span><span class="mi">1000</span><span class="p">)</span><span class="o">*</span><span class="mf">1E6</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="a-quick-plot">
+<h2>A Quick Plot<a class="headerlink" href="#a-quick-plot" title="Permalink to this heading">#</a></h2>
+<p>We can now quickly visualize the data using the <em>PyPlot</em> sublibrary of <em>MatPlotLib</em>. We named it as <code class="docutils literal notranslate"><span class="pre">plt</span></code> as is standard practice in the <em>Python</em> world.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">conc</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rate</span>      <span class="c1"># I like to always use x and y in plot commands. Then I never need to change the plot command.</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>    <span class="c1"># plot using black (&quot;k&quot;) circles (&quot;o&quot;)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x12f5f5710&gt;]
+</pre></div>
+</div>
+<img alt="_images/228cd562888918072dc0770cdcd4db2f70e41236e888aedf84b4cfd5b5cb01a2.png" src="_images/228cd562888918072dc0770cdcd4db2f70e41236e888aedf84b4cfd5b5cb01a2.png" />
+</div>
+</div>
+</section>
+<section id="curve-fitting">
+<h2>Curve Fitting<a class="headerlink" href="#curve-fitting" title="Permalink to this heading">#</a></h2>
+<p>Whether is is a straight line function or the Michaelis-Menten function we can obtain parameters that give a best fit using the curve_fit function in the <em>SciPy</em> library. The function will return an array of the parameters and an array of statistical information. We will use the <em>Uncertainties</em> package to convert that to a set of floating point numbers that include information about their uncertainty (standard errors and correlation information.)</p>
+<p>In the code below you will see a function defined. Here we will use the Michaelis-Menten function but you can use any function. So this code could be stolen and repurposed to fit a linear function. The final result is an array of uncertain numbers that represent the best fit parameters.</p>
+<p>The <strong>Michaelis-Menten</strong> equation that we are using as the fit function is… $<span class="math notranslate nohighlight">\(\nu = V_{max}\frac{[S]}{K_M + [S]}\)</span>$</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">MMfunction</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span><span class="p">):</span>  <span class="c1"># This function takes a value of concentration and calculates rate</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S</span> <span class="o">/</span> <span class="p">(</span><span class="n">KM</span> <span class="o">+</span> <span class="n">S</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="n">param</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">MMfunction</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>   <span class="c1"># Perform the curve fit and get parameters and covariance</span>
+
+<span class="n">y_calc</span> <span class="o">=</span> <span class="n">MMfunction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span>              <span class="c1"># calculate predicted rates based on best fit parameters</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_calc</span><span class="p">)</span>                   <span class="c1"># calculate r^2 score for experimental vs calculated rates</span>
+
+<span class="n">uparam</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">correlated_values</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>  <span class="c1"># Convert results to ufloat (uncertain floats)</span>
+<span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span> <span class="o">=</span> <span class="n">uparam</span>                           <span class="c1"># get the reults from the uparam list</span>
+
+<span class="c1">### Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;CURVE FIT REPORT&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KM = </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CURVE FIT REPORT
+Vmax = 48.3862+/-1.4904
+KM = 3.4994+/-0.3593
+rsq = 0.9937
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-the-curve-fit">
+<h2>Plot The Curve Fit<a class="headerlink" href="#plot-the-curve-fit" title="Permalink to this heading">#</a></h2>
+<p>We can plot the curve fit along with the data. First we will create a list of values from zero to the maximum concentration. We will use this as a list of concentrations to calculate a list of predicetd rates according to the best fit results. We will plot this calculated line and the data on the same plot.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x_forline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">max_x</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">MMfunction</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>   <span class="c1"># plot using red (&quot;r&quot;) line (&quot;-&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>                     <span class="c1"># plot using black (&quot;k&quot;) circles (&quot;o&quot;)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="_images/83257756fb3089522abe514a4f0bab22f37aac27aeabecf4370bb6db18742f9e.png" src="_images/83257756fb3089522abe514a4f0bab22f37aac27aeabecf4370bb6db18742f9e.png" />
+</div>
+</div>
+</section>
+<section id="linear-plots">
+<h2>Linear Plots<a class="headerlink" href="#linear-plots" title="Permalink to this heading">#</a></h2>
+<p>In MS Excel we favour linear plots because it was designed for business where everything is a straight line going up or you will be fired. However, functions that describe the natural are seldome linear. Sometimes, through algebraic manipulation, one can convert a function to a linear form. Such is the case with the Lineweaver-Burke version of the Michailis-Menten equation.</p>
+<p>We will set <span class="math notranslate nohighlight">\(x = \frac{1}{conc}\)</span> and <span class="math notranslate nohighlight">\(y = \frac{1}{rate}\)</span> and then fit the data to a linear function to obtain the best fit parameters for slope and intercept. There are many, many tools in <em>Python</em> that will fit a staight line. We will steal the code above and change it to serve our purposes.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">conc</span>    <span class="c1"># data for Lineweaver-Burke plot</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">rate</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="steal-a-curve-fit">
+<h2>Steal a Curve Fit<a class="headerlink" href="#steal-a-curve-fit" title="Permalink to this heading">#</a></h2>
+<p>Observe the code below. It is the same code used above. I changed the function to one that describes a linear function. I then had to calculate <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> from the slope and intercept. Other than that it is the same code. Never re-invent a wheel. Steal and give credit.</p>
+<p>Remember, stealing is not copying. If you copy something you will not learn anything. If you steal something you will be repurposing it to accomplish a goal. Steal the tools, do not copy the ideas.</p>
+<p>The <strong>Lineweaver-Burke</strong> equation that we are using as the fit function is… $<span class="math notranslate nohighlight">\(\frac{1}{\nu} = \frac{K_M}{V_{max}}\frac{1}{[S]}+\frac{1}{V_{max}}\)</span>$</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Copy curve fit code and change function</span>
+ 
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">):</span>  <span class="c1"># This function takes a value of x and calculates y</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">param</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c1"># Perform the curve fit and get parameters and covariance</span>
+
+<span class="n">y_calc</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span>                  <span class="c1"># calculate predicted rates based on best fit parameters</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_calc</span><span class="p">)</span>                   <span class="c1"># calculate r^2 score for experimental vs calculated rates</span>
+
+<span class="n">uparam</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">correlated_values</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>  <span class="c1"># Convert results to ufloat (uncertain floats)</span>
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">uparam</span>                   <span class="c1"># get the reults from the uparam list</span>
+
+<span class="n">Vmax</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">intercept</span>
+<span class="n">KM</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">slope</span>
+
+<span class="c1">### Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LINEAR FIT REPORT&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KM = </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">max_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x_forline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">max_x</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>   <span class="c1"># plot using red (&quot;r&quot;) line (&quot;-&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>                     <span class="c1"># plot using black (&quot;k&quot;) circles (&quot;o&quot;)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINEAR FIT REPORT
+Vmax = 19.1926+/-8.8928
+KM = 0.6888+/-0.3570
+rsq = 0.9351
+</pre></div>
+</div>
+<img alt="_images/c34239bd4496afacd5194462d36ae8fa567141cb95dd5ab2c18735d767e55116.png" src="_images/c34239bd4496afacd5194462d36ae8fa567141cb95dd5ab2c18735d767e55116.png" />
+</div>
+</div>
+</section>
+<section id="eadie-hofstee">
+<h2>Eadie-Hofstee<a class="headerlink" href="#eadie-hofstee" title="Permalink to this heading">#</a></h2>
+<p>I will steal all the code above again but modify it so that the slope and intercept give me the parameters for the Eadie-Hofstee version of the Michaelis-Menten equation.</p>
+<p>The <strong>Eadie-Hofstee</strong> equation that we are using as the fit function is… $<span class="math notranslate nohighlight">\(\nu = K_M \frac{\nu}{[S]} + V_{max}\)</span>$</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">rate</span><span class="o">/</span><span class="n">conc</span>    <span class="c1"># data for eadie-Hofstee plot</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rate</span>
+
+<span class="c1">### Copy curve fit code and change function</span>
+ 
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">):</span>  <span class="c1"># This function takes a value of x and calculates y</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">param</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c1"># Perform the curve fit and get parameters and covariance</span>
+
+<span class="n">y_calc</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span>                  <span class="c1"># calculate predicted rates based on best fit parameters</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_calc</span><span class="p">)</span>                   <span class="c1"># calculate r^2 score for experimental vs calculated rates</span>
+
+<span class="n">uparam</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">correlated_values</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>  <span class="c1"># Convert results to ufloat (uncertain floats)</span>
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">uparam</span>                   <span class="c1"># get the reults from the uparam list</span>
+
+<span class="n">Vmax</span> <span class="o">=</span> <span class="n">intercept</span>
+<span class="n">KM</span> <span class="o">=</span> <span class="n">slope</span>
+
+<span class="c1">### Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LINEAR FIT REPORT&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KM = </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">max_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x_forline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">max_x</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>   <span class="c1"># plot using red (&quot;r&quot;) line (&quot;-&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>                     <span class="c1"># plot using black (&quot;k&quot;) circles (&quot;o&quot;)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINEAR FIT REPORT
+Vmax = 38.0007+/-4.0832
+KM = -1.6935+/-0.2958
+rsq = 0.8038
+</pre></div>
+</div>
+<img alt="_images/febde29b75f1b11f114faa0f672a359592f9c22f5ddbee836e884d99081f2eac.png" src="_images/febde29b75f1b11f114faa0f672a359592f9c22f5ddbee836e884d99081f2eac.png" />
+</div>
+</div>
+</section>
+<section id="hanes-wolfe">
+<h2>Hanes-Wolfe<a class="headerlink" href="#hanes-wolfe" title="Permalink to this heading">#</a></h2>
+<p>I will steal all the code above again but modify it so that the slope and intercept give me the parameters for the Hanes-Wolfe version of the Michaelis-Menten equation.</p>
+<p>The <strong>Hanes-Wolfe</strong> equation that we are using as the fit function is… $<span class="math notranslate nohighlight">\(\frac{[S]}{\nu} = \frac{1}{V_{max}}[S] + \frac{K_M}{V_{max}}\)</span>$</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">conc</span>    <span class="c1"># data for eadie-Hofstee plot</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">conc</span><span class="o">/</span><span class="n">rate</span>
+
+<span class="c1">### Copy curve fit code and change function</span>
+ 
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">):</span>  <span class="c1"># This function takes a value of x and calculates y</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">param</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c1"># Perform the curve fit and get parameters and covariance</span>
+
+<span class="n">y_calc</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span>                  <span class="c1"># calculate predicted rates based on best fit parameters</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_calc</span><span class="p">)</span>                   <span class="c1"># calculate r^2 score for experimental vs calculated rates</span>
+
+<span class="n">uparam</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">correlated_values</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>  <span class="c1"># Convert results to ufloat (uncertain floats)</span>
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">uparam</span>                   <span class="c1"># get the reults from the uparam list</span>
+
+<span class="n">Vmax</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">slope</span>
+<span class="n">KM</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">intercept</span>
+
+<span class="c1">### Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LINEAR FIT REPORT&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KM = </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">max_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x_forline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">max_x</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>   <span class="c1"># plot using red (&quot;r&quot;) line (&quot;-&quot;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>                     <span class="c1"># plot using black (&quot;k&quot;) circles (&quot;o&quot;)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LINEAR FIT REPORT
+Vmax = 47.6342+/-1.1961
+KM = 2.8885+/-0.3433
+rsq = 0.9950
+</pre></div>
+</div>
+<img alt="_images/dd4e273096a802f58cfaafa3fd788a4f262e00c69842b5b1f9f54ae150351500.png" src="_images/dd4e273096a802f58cfaafa3fd788a4f262e00c69842b5b1f9f54ae150351500.png" />
+</div>
+</div>
+</section>
+<section id="steal-it-all-and-compare">
+<h2>Steal It All and Compare<a class="headerlink" href="#steal-it-all-and-compare" title="Permalink to this heading">#</a></h2>
+<p>Let us now repeat all the analyses above to determine <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span>. We will then plot the data in a Micahelis-Menten plot and then plot the lines prediceted using <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> from each method.</p>
+<p>I will simply copy the code above and paste it into the blcok below. thats all, cut and paste. Always try to write code so that it is easily re-used. The best code to steal is your own code.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">conc</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rate</span>      <span class="c1"># I like to always use x and y in plot commands. Then I never need to change the plot command.</span>
+
+<span class="k">def</span> <span class="nf">MMfunction</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span><span class="p">):</span>  <span class="c1"># This function takes a value of concentration and calculates rate</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S</span> <span class="o">/</span> <span class="p">(</span><span class="n">KM</span> <span class="o">+</span> <span class="n">S</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="n">param</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">MMfunction</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>   <span class="c1"># Perform the curve fit and get parameters and covariance</span>
+
+<span class="n">y_calc</span> <span class="o">=</span> <span class="n">MMfunction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span>              <span class="c1"># calculate predicted rates based on best fit parameters</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_calc</span><span class="p">)</span>                   <span class="c1"># calculate r^2 score for experimental vs calculated rates</span>
+
+<span class="n">uparam</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">correlated_values</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>  <span class="c1"># Convert results to ufloat (uncertain floats)</span>
+<span class="n">Vmax</span><span class="p">,</span> <span class="n">KM</span> <span class="o">=</span> <span class="n">uparam</span>                           <span class="c1"># get the reults from the uparam list</span>
+
+<span class="c1">### Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;MICHAELIS-MENTEN CURVE FIT REPORT - Red&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KM = </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">max_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">conc</span><span class="p">)</span>
+<span class="n">x_forline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">max_x</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">MMfunction</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">Vmax</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">KM</span><span class="o">.</span><span class="n">n</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>   <span class="c1"># plot using red (&quot;r&quot;) line (&quot;-&quot;)</span>
+
+<span class="c1">################################################################################</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">conc</span>    <span class="c1"># data for Lineweaver-Burke plot</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">rate</span>
+
+<span class="c1">### Copy curve fit code and change function</span>
+ 
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">):</span>  <span class="c1"># This function takes a value of x and calculates y</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">param</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c1"># Perform the curve fit and get parameters and covariance</span>
+
+<span class="n">y_calc</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span>                  <span class="c1"># calculate predicted rates based on best fit parameters</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_calc</span><span class="p">)</span>                   <span class="c1"># calculate r^2 score for experimental vs calculated rates</span>
+
+<span class="n">uparam</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">correlated_values</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>  <span class="c1"># Convert results to ufloat (uncertain floats)</span>
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">uparam</span>                   <span class="c1"># get the reults from the uparam list</span>
+
+<span class="n">Vmax</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">intercept</span>
+<span class="n">KM</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">slope</span>
+
+<span class="c1">### Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LB LINEAR FIT REPORT - Blue&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KM = </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">max_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">conc</span><span class="p">)</span>
+<span class="n">x_forline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">max_x</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">MMfunction</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">Vmax</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">KM</span><span class="o">.</span><span class="n">n</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="s2">&quot;b-&quot;</span><span class="p">)</span>   <span class="c1"># plot using blue (&quot;b&quot;) line (&quot;-&quot;)</span>
+
+<span class="c1">################################################################################</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">rate</span><span class="o">/</span><span class="n">conc</span>    <span class="c1"># data for eadie-Hofstee plot</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rate</span>
+
+<span class="c1">### Copy curve fit code and change function</span>
+ 
+<span class="n">param</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c1"># Perform the curve fit and get parameters and covariance</span>
+
+<span class="n">y_calc</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span>                  <span class="c1"># calculate predicted rates based on best fit parameters</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_calc</span><span class="p">)</span>                   <span class="c1"># calculate r^2 score for experimental vs calculated rates</span>
+
+<span class="n">uparam</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">correlated_values</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>  <span class="c1"># Convert results to ufloat (uncertain floats)</span>
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">uparam</span>                   <span class="c1"># get the reults from the uparam list</span>
+
+<span class="n">Vmax</span> <span class="o">=</span> <span class="n">intercept</span>
+<span class="n">KM</span> <span class="o">=</span> <span class="o">-</span><span class="n">slope</span>
+
+<span class="c1">### Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EH LINEAR FIT REPORT - Green&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KM = </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">max_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">conc</span><span class="p">)</span>
+<span class="n">x_forline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">max_x</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">MMfunction</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">Vmax</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">KM</span><span class="o">.</span><span class="n">n</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="s2">&quot;g-&quot;</span><span class="p">)</span>   <span class="c1"># plot using red (&quot;r&quot;) line (&quot;-&quot;)</span>
+
+
+<span class="c1">################################################################################</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">conc</span>    <span class="c1"># data for eadie-Hofstee plot</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">conc</span><span class="o">/</span><span class="n">rate</span>
+
+<span class="c1">### Copy curve fit code and change function</span>
+ 
+<span class="k">def</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">):</span>  <span class="c1"># This function takes a value of x and calculates y</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">intercept</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">param</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>       <span class="c1"># Perform the curve fit and get parameters and covariance</span>
+
+<span class="n">y_calc</span> <span class="o">=</span> <span class="n">function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span>                  <span class="c1"># calculate predicted rates based on best fit parameters</span>
+<span class="n">rsq</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_calc</span><span class="p">)</span>                   <span class="c1"># calculate r^2 score for experimental vs calculated rates</span>
+
+<span class="n">uparam</span> <span class="o">=</span> <span class="n">un</span><span class="o">.</span><span class="n">correlated_values</span><span class="p">(</span><span class="n">param</span><span class="p">,</span> <span class="n">pcov</span><span class="p">)</span>  <span class="c1"># Convert results to ufloat (uncertain floats)</span>
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">uparam</span>                   <span class="c1"># get the reults from the uparam list</span>
+
+<span class="n">Vmax</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">slope</span>
+<span class="n">KM</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">intercept</span>
+
+<span class="c1">### Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;HW LINEAR FIT REPORT - Cyan&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Vmax = </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KM = </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;rsq = </span><span class="si">{</span><span class="n">rsq</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">max_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">conc</span><span class="p">)</span>
+<span class="n">x_forline</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">max_x</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">MMfunction</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">Vmax</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">KM</span><span class="o">.</span><span class="n">n</span><span class="p">)</span> 
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_forline</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">,</span> <span class="s2">&quot;c-&quot;</span><span class="p">)</span>   <span class="c1"># plot using cyan (&quot;c&quot;) line (&quot;-&quot;)</span>
+
+<span class="c1">################################################################################</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">conc</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="s2">&quot;ko&quot;</span><span class="p">)</span>                     <span class="c1"># plot using black (&quot;k&quot;) circles (&quot;o&quot;)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MICHAELIS-MENTEN CURVE FIT REPORT - Red
+Vmax = 48.3862+/-1.4904
+KM = 3.4994+/-0.3593
+rsq = 0.9937
+
+LB LINEAR FIT REPORT - Blue
+Vmax = 19.1926+/-8.8928
+KM = 0.6888+/-0.3570
+rsq = 0.9351
+
+EH LINEAR FIT REPORT - Green
+Vmax = 38.0007+/-4.0832
+KM = 1.6935+/-0.2958
+rsq = 0.8038
+
+HW LINEAR FIT REPORT - Cyan
+Vmax = 47.6342+/-1.1961
+KM = 2.8885+/-0.3433
+rsq = 0.9950
+</pre></div>
+</div>
+<img alt="_images/a8fcf506b2c54c5634e2a94d5301e246a181bfa7267debd892a04b047d093197.png" src="_images/a8fcf506b2c54c5634e2a94d5301e246a181bfa7267debd892a04b047d093197.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="T3_Galactsidase_enzyme_kinetics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Enzyme Kinetics Four Ways for Report</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="T04/T4_InhibitionA.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Drug Interaction and Enzyme Kinetics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-quick-plot">A Quick Plot</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curve-fitting">Curve Fitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-curve-fit">Plot The Curve Fit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-plots">Linear Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steal-a-curve-fit">Steal a Curve Fit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eadie-hofstee">Eadie-Hofstee</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hanes-wolfe">Hanes-Wolfe</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#steal-it-all-and-compare">Steal It All and Compare</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Barry Linkletter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

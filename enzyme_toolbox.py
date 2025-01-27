@@ -174,7 +174,6 @@ def Make_LB_Plot_With_Line(x,y):
 
     return(slope, intercept)
 
-
 def Make_MM_Plot_With_Line(x,y):
 
     params, stats = curve_fit(MMplotFun, x, y)   ## two objects are returned
@@ -234,7 +233,6 @@ def Make_MM_Plot_With_Line(x,y):
     plt.show()
 
     return(v_max, KM)
-
 
 def Make_MM_Plot_with_Error(x, y, err, Vmax_list, KM_list, true_v_max, true_KM):
         
@@ -523,7 +521,6 @@ def Make_EH_Plot_with_Error(x, y, err, Vmax_list, KM_list, true_v_max, true_KM):
     plt.show()
 
     return(v_max, KM)
-
 
 def Make_HW_Plot_with_Error(x, y, err, Vmax_list, KM_list, true_v_max, true_KM):
     ### We start with the x,y data entered at the top of this document
