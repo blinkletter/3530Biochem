@@ -566,11 +566,11 @@ temperature at which the standard free energy potential, <span class="math notra
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At T = 0K, standard deltaG is </span><span class="si">{</span><span class="n">delta_G</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> kJ/mole&quot;</span><span class="p">)</span>
 
 <span class="c1"># Other temperatures</span>
-<span class="n">T</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">+</span> <span class="mf">273.13</span>
 <span class="n">delta_G</span> <span class="o">=</span> <span class="n">delta_H</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="n">delta_S</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2">K, standard deltaG is </span><span class="si">{</span><span class="n">delta_G</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> kJ/mole&quot;</span><span class="p">)</span>
 
-<span class="n">T</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">25</span>  <span class="o">+</span> <span class="mf">273.13</span>
 <span class="n">delta_G</span> <span class="o">=</span> <span class="n">delta_H</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="n">delta_S</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2">K, standard deltaG is </span><span class="si">{</span><span class="n">delta_G</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> kJ/mole&quot;</span><span class="p">)</span>
 
@@ -584,8 +584,8 @@ temperature at which the standard free energy potential, <span class="math notra
 </details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At T = 0K, standard deltaG is 12.0 kJ/mole
-At T = 100K, standard deltaG is 8.4 kJ/mole
-At T = 25K, standard deltaG is 11.1 kJ/mole
+At T = 373.13K, standard deltaG is -1.4 kJ/mole
+At T = 298.13K, standard deltaG is 1.3 kJ/mole
 The temperature for standard deltaG = 0 is 333.3K
 </pre></div>
 </div>
@@ -601,8 +601,8 @@ energy, <span class="math notranslate nohighlight">\(E_a = 28\)</span> kJ/mol, t
 <div class="math notranslate nohighlight">
 \[k = Ae^{-\frac{E_a}{RT}}\]</div>
 <p>We will assume T = 298K. The most simple way to answer this is to calculate the rate constant at the two values of <span class="math notranslate nohighlight">\(E_a\)</span>. Or you can show that…</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1175e484-3799-4177-b3ad-a6222fea5f10">
-<span class="eqno">(1)<a class="headerlink" href="#equation-1175e484-3799-4177-b3ad-a6222fea5f10" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9e69adea-8a2f-4653-9e1c-81b19525ccbf">
+<span class="eqno">(1)<a class="headerlink" href="#equation-9e69adea-8a2f-4653-9e1c-81b19525ccbf" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{k_{E_a/3}}{k_{E_a}} &amp;= \frac{Ae^{-\frac{E_a/3}{RT}}}{Ae^{-\frac{E_a}{RT}}} \\
 \frac{k_{E_a/3}}{k_{E_a}} &amp;= e^{-{E_a/3}+{E_a}} = e^{{\frac{2}{3}E_a}} 
 \end{align}\]</div>
@@ -747,8 +747,8 @@ centrations are small).</p>
 <div class="math notranslate nohighlight">
 \[\nu_0 = k_{cat}[E]_t\frac{[S]_t}{K_M + [S]_t}\]</div>
 <p>When <span class="math notranslate nohighlight">\([S]_t = K_M\)</span> we see that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fed57376-9162-4902-ba1c-cf51f5141374">
-<span class="eqno">(2)<a class="headerlink" href="#equation-fed57376-9162-4902-ba1c-cf51f5141374" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-af1a080a-3f62-4a4c-be0f-d0981885532d">
+<span class="eqno">(2)<a class="headerlink" href="#equation-af1a080a-3f62-4a4c-be0f-d0981885532d" title="Permalink to this equation">#</a></span>\[\begin{align}
 \nu_0 &amp;= k_{cat}[E]_t\frac{[S]_t}{K_M + small} \\
 \nu_0 &amp;= k_{cat}[E]_t\frac{[S]_t}{K_M} \\
 \nu_0 &amp;= \frac{k_{cat}}{K_M}[E]_t[S]_t
@@ -883,8 +883,8 @@ Michaelis-Menten equation when the enzyme is always active (<span class="math no
 <div class="math notranslate nohighlight">
 \[Y = \frac{\alpha (1+\alpha)^{n-1}}{(1+\alpha)^{n} + L}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha = [S]_t/K_R\)</span> and <span class="math notranslate nohighlight">\(L\)</span> is the equilibrium constant between the active (<span class="math notranslate nohighlight">\(R\)</span>) and inactive states (<span class="math notranslate nohighlight">\(T\)</span>) and <span class="math notranslate nohighlight">\(L = T/R\)</span>. If <span class="math notranslate nohighlight">\(L=0\)</span> then…</p>
-<div class="amsmath math notranslate nohighlight" id="equation-aa8bac4d-d9d5-4889-bb0d-6b55e977fe8b">
-<span class="eqno">(3)<a class="headerlink" href="#equation-aa8bac4d-d9d5-4889-bb0d-6b55e977fe8b" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-74ad0d10-4834-4116-85b0-314545136079">
+<span class="eqno">(3)<a class="headerlink" href="#equation-74ad0d10-4834-4116-85b0-314545136079" title="Permalink to this equation">#</a></span>\[\begin{align}
 Y &amp;= \frac{\alpha (1+\alpha)^{n-1}}{(1+\alpha)^{n} + 0} \\
 Y &amp;= \frac{\alpha}{1+\alpha} \\
 Y &amp;= \frac{\frac{[S]_t}{K_R}}{1+\frac{[S]_t}{K_R}} \\
