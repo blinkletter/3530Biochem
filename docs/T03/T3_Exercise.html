@@ -1,0 +1,1220 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Problem Set 2 Examples &#8212; Python for Biochemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'T03/T3_Exercise';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Drug Interaction and Enzyme Kinetics" href="../T04/T4_InhibitionA.html" />
+    <link rel="prev" title="Step-by-Step Code Examples" href="../T3_Step_by_Step_Examples.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../start.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python for Biochemistry</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../start.html">
+                    Data Interpretation for Biochemistry
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T02/T2_AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T02/T2_Exercise.html">Problem Set Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T3_Galactsidase_enzyme_kinetics.html">Enzyme Kinetics Four Ways for Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T3_Step_by_Step_Examples.html">Step-by-Step Code Examples</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Problem Set 2 Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T04/T4_InhibitionA.html">Drug Interaction and Enzyme Kinetics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T04/T4_MM_Intro_fun.html">Example: Enzyme Kinetics with Inhibitors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T04/Tutorial_4_exercises_Answers.html">Answers for Questions 5 to 10</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 7</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T07/T07-membranepotential1.html">Chemical Potential</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./T03/T3_Exercise.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/T03/T3_Exercise.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Problem Set 2 Examples</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-11-from-math-ideas-2">Problem 11 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-12-from-math-ideas-2">Problem 12 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-13-from-math-ideas">Problem 13 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-14-from-math-ideas">Problem 14 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-15-from-math-ideas">Problem 15 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-16-from-math-ideas">Problem 16 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-17-from-math-ideas">Problem 17 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-18-from-math-ideas">Problem 18 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-19-from-math-ideas">Problem 19 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-20-from-math-ideas">Problem 20 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-21-from-math-ideas-2">Problem 21 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-22-from-math-ideas-2">Problem 22 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-23-from-math-ideas-2">Problem 23 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-24-from-math-ideas-2">Problem 24 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-25-from-math-ideas-2">Problem 25 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-26-from-math-ideas-2">Problem 26 from Math Ideas 2</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="problem-set-2-examples">
+<h1>Problem Set 2 Examples<a class="headerlink" href="#problem-set-2-examples" title="Permalink to this heading">#</a></h1>
+<p>This is a <em>Jupyter</em> notebook using interactive <em>Python</em>.</p>
+<p>We can use this notebook as a calculator. The benefit is that all <strong>our calculations can be documented</strong> so that we can easily find errors or make changes without starting from the beginning. I recommend using <em>Python</em> notebooks for all your math. There are thousands of tools available through <em>Python</em> and we can go from the simple math of this notebook all the way to powerful data science and AI projects.</p>
+<p>We will demonstrate the problems from the “<strong>Math Ideas for Biochemistry - Part 2</strong>” document available on the moodle site. Observe how the <em>Python</em> code serves as the information on the method used. Now you can check my work and fix my mistakes. I make no promises that these answers are correct. It is your job to confirm them.</p>
+<section id="problem-11-from-math-ideas-2">
+<h2>Problem 11 from Math Ideas 2<a class="headerlink" href="#problem-11-from-math-ideas-2" title="Permalink to this heading">#</a></h2>
+<p>I am observing the rate of a reaction. What happens when. ..</p>
+<ol class="arabic simple">
+<li><p>I double the concentrations of the reactant in a first-order reaction?</p></li>
+<li><p>I double the conc. of one of the reactants in a second-order reaction?</p></li>
+<li><p>I double the conc. of both reactants in a second-order reactio</p></li>
+</ol>
+<p><strong>Solution</strong></p>
+<p>Doubling the concentration of a reactant should increase the reaction rate by that much. In a first order reaction we see that for</p>
+<div class="math notranslate nohighlight">
+\[S \overset{k}{\longrightarrow} P\]</div>
+<p>the rate is described by the rate law</p>
+<div class="math notranslate nohighlight">
+\[ \frac{dP}{dt} = k[S]^1 \]</div>
+<p>and the rate will increase proportinally with increase in [S]. So doubling reactant concentration will double the rate.</p>
+<p>For a second order reaction we see the same idea but have two reactants in the rate law. For the reaction described by</p>
+<div class="math notranslate nohighlight">
+\[S + C \overset{k}{\longrightarrow} P\]</div>
+<p>the rate is described by the rate law</p>
+<div class="math notranslate nohighlight">
+\[ \frac{dP}{dt} = k[C]^1[S]^1 \]</div>
+<p>and the rate will increase proportinally with increase in [S]. So doubling the concentration of S will double the rate.</p>
+<p>Doubling the concentration of both C and S will result in quadruple the rate.</p>
+<p>Below is a demonstration…</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rate constant</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">1E4</span>
+
+<span class="c1"># concentrations</span>
+<span class="n">S</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mf">0.02</span>
+
+<span class="c1"># Calculations for first order</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">S</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For a first order reaction...&quot;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate is </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">S</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">S</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate after doubling concentration is </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Calculations for second order</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">S</span> <span class="o">*</span> <span class="n">C</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For a second order reaction...&quot;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate is </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">S</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">S</span> <span class="o">*</span> <span class="n">C</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate after doubling concentration of one reactant is </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">C</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">S</span> <span class="o">*</span> <span class="n">C</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate after doubling concentration of both reactants is </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For a first order reaction...
+The rate is 100.00
+The rate after doubling concentration is 200.00
+
+For a second order reaction...
+The rate is 4.00
+The rate after doubling concentration of one reactant is 8.00
+The rate after doubling concentration of both reactants is 16.00
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-12-from-math-ideas-2">
+<h2>Problem 12 from Math Ideas 2<a class="headerlink" href="#problem-12-from-math-ideas-2" title="Permalink to this heading">#</a></h2>
+<p>What is a zero-order reaction?</p>
+<p><strong>Solution</strong></p>
+<p>A zero-order reaction has a rate that is independant of reactant concentration. For</p>
+<div class="math notranslate nohighlight">
+\[S \overset{k}{\longrightarrow} P\]</div>
+<p>the rate is described by the rate law</p>
+<div class="math notranslate nohighlight">
+\[ \frac{dP}{dt} = k[S]^0 = k \]</div>
+<p>and the rate will not change with change in [S].</p>
+<p>Consider the example below</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rate constant</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">1E4</span>
+
+<span class="c1"># concentrations</span>
+<span class="n">S</span> <span class="o">=</span> <span class="mf">0.01</span>
+
+<span class="c1"># Calculations for first order</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">S</span><span class="o">**</span><span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;For a zero order reaction...&quot;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate is </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">S</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">S</span><span class="o">**</span><span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate after doubling concentration is </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For a zero order reaction...
+The rate is 10000.00
+The rate after doubling concentration is 10000.00
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-13-from-math-ideas">
+<h2>Problem 13 from Math Ideas<a class="headerlink" href="#problem-13-from-math-ideas" title="Permalink to this heading">#</a></h2>
+<p>The change in standard enthalpy, <span class="math notranslate nohighlight">\(\Delta H^\circ\)</span>, for a reaction is <span class="math notranslate nohighlight">\(+12\)</span> kJ/mol. The
+change in standard entropy, <span class="math notranslate nohighlight">\(\Delta S^\circ\)</span>, is <span class="math notranslate nohighlight">\(+36\)</span> J/mol K. What is the change in
+standard free energy at absolute zero? At <span class="math notranslate nohighlight">\(100\ ^\circ C\)</span>? At <span class="math notranslate nohighlight">\(25\ ^\circ C\)</span>? Calculate the
+temperature at which the standard free energy potential, <span class="math notranslate nohighlight">\(\Delta G^\circ\)</span>, is zero.</p>
+<p><strong>Solution</strong></p>
+<p>Apply the definition of</p>
+<div class="math notranslate nohighlight">
+\[\Delta G^\circ = \Delta H^\circ - T \Delta S^\circ\]</div>
+<p>Consider the calculations below.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delta_H</span> <span class="o">=</span> <span class="mi">12000</span>   <span class="c1"># converted to Joules per moles</span>
+<span class="n">delta_S</span> <span class="o">=</span> <span class="mi">36</span>      <span class="c1"># Joules per mole per degree K</span>
+
+<span class="c1"># Absolute zero</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">delta_G</span> <span class="o">=</span> <span class="n">delta_H</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="n">delta_S</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At T = 0K, standard deltaG is </span><span class="si">{</span><span class="n">delta_G</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> kJ/mole&quot;</span><span class="p">)</span>
+
+<span class="c1"># Other temperatures</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">delta_G</span> <span class="o">=</span> <span class="n">delta_H</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="n">delta_S</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2">K, standard deltaG is </span><span class="si">{</span><span class="n">delta_G</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> kJ/mole&quot;</span><span class="p">)</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mi">25</span>
+<span class="n">delta_G</span> <span class="o">=</span> <span class="n">delta_H</span> <span class="o">-</span> <span class="n">T</span> <span class="o">*</span> <span class="n">delta_S</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At T = </span><span class="si">{</span><span class="n">T</span><span class="si">}</span><span class="s2">K, standard deltaG is </span><span class="si">{</span><span class="n">delta_G</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> kJ/mole&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set delta_G = 0 and solve for T</span>
+
+<span class="n">T_0</span> <span class="o">=</span> <span class="n">delta_H</span> <span class="o">/</span> <span class="n">delta_S</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The temperature for standard deltaG = 0 is </span><span class="si">{</span><span class="n">T_0</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">K&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At T = 0K, standard deltaG is 12.0 kJ/mole
+At T = 100K, standard deltaG is 8.4 kJ/mole
+At T = 25K, standard deltaG is 11.1 kJ/mole
+The temperature for standard deltaG = 0 is 333.3K
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-14-from-math-ideas">
+<h2>Problem 14 from Math Ideas<a class="headerlink" href="#problem-14-from-math-ideas" title="Permalink to this heading">#</a></h2>
+<p>How much faster or slower will a reaction be if I reduce the activation
+energy, <span class="math notranslate nohighlight">\(E_a = 28\)</span> kJ/mol, to one third of its value?</p>
+<p><strong>Solution</strong></p>
+<p>Use the Arrhenius equation for the rate constant</p>
+<div class="math notranslate nohighlight">
+\[k = Ae^{-\frac{E_a}{RT}}\]</div>
+<p>We will assume T = 298K. The most simple way to answer this is to calculate the rate constant at the two values of <span class="math notranslate nohighlight">\(E_a\)</span>. Or you can show that…</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9920d381-cf44-40f8-9665-8a664d8d9117">
+<span class="eqno">(1)<a class="headerlink" href="#equation-9920d381-cf44-40f8-9665-8a664d8d9117" title="Permalink to this equation">#</a></span>\[\begin{align}
+\frac{k_{E_a/3}}{k_{E_a}} &amp;= \frac{Ae^{-\frac{E_a/3}{RT}}}{Ae^{-\frac{E_a}{RT}}} \\
+\frac{k_{E_a/3}}{k_{E_a}} &amp;= e^{-{E_a/3}+{E_a}} = e^{{\frac{2}{3}E_a}} 
+\end{align}\]</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1">### calulate one rate and then the other and get the ration</span>
+<span class="n">Ea</span> <span class="o">=</span> <span class="mi">28000</span>   <span class="c1">### converted to Joules per mole</span>
+
+<span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>    <span class="c1">### J/mol K</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">298</span>      <span class="c1">### degrees Kelvin</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">1E12</span>     <span class="c1">### A typical value for A  (It will cancel out anyway)</span>
+
+<span class="c1">### rearrange the equation to solve for standard free energy. </span>
+
+<span class="n">k_normal</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">Ea</span> <span class="o">/</span> <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span>
+<span class="n">k_changed</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">Ea</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">R</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span>
+
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">k_changed</span> <span class="o">/</span> <span class="n">k_normal</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The changed rate is </span><span class="si">{</span><span class="n">ratio</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> times faster&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The changed rate is 1871.1 times faster
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-15-from-math-ideas">
+<h2>Problem 15 from Math Ideas<a class="headerlink" href="#problem-15-from-math-ideas" title="Permalink to this heading">#</a></h2>
+<p>I have performed a Lineweaver-Burke plot in an enzyme kinetics experiment. The concentration of substrate was measured in mM and the
+rate in μM/s. The line equation reported from my spreadsheet was <span class="math notranslate nohighlight">\(𝑦=0.0064𝑥+0.0018\)</span>.</p>
+<ol class="arabic simple">
+<li><p>What are the <span class="math notranslate nohighlight">\(K_M\)</span> and <span class="math notranslate nohighlight">\(V_{max}\)</span> for this experiment?</p></li>
+<li><p>The concentration of enzyme was 10 nM. What is the value for <span class="math notranslate nohighlight">\(k_{cat}\)</span>?</p></li>
+<li><p>What is the turnover number?</p></li>
+</ol>
+<p><strong>Solution</strong></p>
+<p>Using the Lineweaver-Burke equation we can convert the slope and intercept to <span class="math notranslate nohighlight">\(K_M\)</span> and <span class="math notranslate nohighlight">\(V_{max}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\frac{1}{\nu_0} = \frac{K_M}{V_{max}}\frac{1}{[S]_t} + \frac{1}{V_{max}} \]</div>
+<p>and we define</p>
+<div class="math notranslate nohighlight">
+\[V_{max} = k_{cat}[E]_t\]</div>
+<p>Consider the calculations below. Pay attention to the units.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope</span> <span class="o">=</span> <span class="mf">0.0064</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="mf">0.0018</span>
+
+<span class="n">Vmax</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">intercept</span>
+<span class="n">KM</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">slope</span>
+
+<span class="c1"># Units are reported in the data</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The value of V_max is </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> micromolar per second&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The value of K_M is </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> mM&quot;</span><span class="p">)</span>
+
+<span class="n">E_conc</span> <span class="o">=</span> <span class="mf">10E-9</span>     <span class="c1">### converted to molar</span>
+<span class="n">Vmax</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">/</span> <span class="mf">1E6</span>  <span class="c1">### from micromolar per second to molar per second</span>
+
+<span class="n">k_cat</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">/</span> <span class="n">E_conc</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The k_cat value is </span><span class="si">{</span><span class="n">k_cat</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> per second&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;k_cat is the turnover number - trick question! Blame me but never change me.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value of V_max is 555.6 micromolar per second
+The value of K_M is 3.6 mM
+The k_cat value is 5.56e+04 per second
+k_cat is the turnover number - trick question! Blame me but never change me.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-16-from-math-ideas">
+<h2>Problem 16 from Math Ideas<a class="headerlink" href="#problem-16-from-math-ideas" title="Permalink to this heading">#</a></h2>
+<p>Using the Michaelis-Menten equation, show the observed initial rate, <span class="math notranslate nohighlight">\(\nu_0\)</span>,
+is equal to half of <span class="math notranslate nohighlight">\(V_{max}\)</span> when the concentration of substrate has the same
+value as <span class="math notranslate nohighlight">\(K_M\)</span>.</p>
+<p><strong>Solution</strong></p>
+<p>This is revealed by the Michaelis-Menten equation</p>
+<div class="math notranslate nohighlight">
+\[\nu_0 = V_{max}\frac{[S]_t}{K_M + [S]_t}\]</div>
+<p>When <span class="math notranslate nohighlight">\([S]_t = K_M\)</span> we see that</p>
+<div class="math notranslate nohighlight">
+\[\nu_0 = V_{max}\frac{K_M}{K_M + K_M}\]</div>
+<p>Consider example below.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Vmax</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">KM</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">S</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S</span><span class="o">/</span><span class="p">(</span><span class="n">KM</span><span class="o">+</span><span class="n">S</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The Vmax is </span><span class="si">{</span><span class="n">Vmax</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;KM is </span><span class="si">{</span><span class="n">KM</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate then [S] = </span><span class="si">{</span><span class="n">S</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">v</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Vmax is 10
+KM is 3
+The rate then [S] = 3 is 5.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-17-from-math-ideas">
+<h2>Problem 17 from Math Ideas<a class="headerlink" href="#problem-17-from-math-ideas" title="Permalink to this heading">#</a></h2>
+<p>Show by using the Michaelis-Menten equation that <span class="math notranslate nohighlight">\(k_{cat}/K_M\)</span> is the second
+order rate constant for an enzyme-catalyzed reaction (when substrate con-
+centrations are small).</p>
+<p><strong>Solution</strong></p>
+<p>This is revealed by the Michaelis-Menten equation</p>
+<div class="math notranslate nohighlight">
+\[\nu_0 = k_{cat}[E]_t\frac{[S]_t}{K_M + [S]_t}\]</div>
+<p>When <span class="math notranslate nohighlight">\([S]_t = K_M\)</span> we see that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-99628e6c-8b6b-4195-8d53-380cb34ece01">
+<span class="eqno">(2)<a class="headerlink" href="#equation-99628e6c-8b6b-4195-8d53-380cb34ece01" title="Permalink to this equation">#</a></span>\[\begin{align}
+\nu_0 &amp;= k_{cat}[E]_t\frac{[S]_t}{K_M + small} \\
+\nu_0 &amp;= k_{cat}[E]_t\frac{[S]_t}{K_M} \\
+\nu_0 &amp;= \frac{k_{cat}}{K_M}[E]_t[S]_t
+\end{align}\]</div>
+</section>
+<section id="problem-18-from-math-ideas">
+<h2>Problem 18 from Math Ideas<a class="headerlink" href="#problem-18-from-math-ideas" title="Permalink to this heading">#</a></h2>
+<p>I have performed a Lineweaver-Burke plot in an enzyme kinetics experiment. The concentration of substrate was measured in mM and the
+rate in μM/s. The line equation reported from my spreadsheet was <span class="math notranslate nohighlight">\(𝑦=
+0.0064𝑥+0.0018\)</span>. I repeat the experiment by adding 2 μM of a known
+inhibitor for my enzyme. The new results gave a line equation of <span class="math notranslate nohighlight">\(𝑦=
+0.028𝑥+0.0018\)</span>.</p>
+<ol class="arabic simple">
+<li><p>What is the <span class="math notranslate nohighlight">\(K_M\)</span> and <span class="math notranslate nohighlight">\(V_{max}\)</span> of the first experiment?</p></li>
+<li><p>What is the observed <span class="math notranslate nohighlight">\(K_M\)</span> and <span class="math notranslate nohighlight">\(V_{max}\)</span> of the inhibited experiment?</p></li>
+<li><p>What mode of inhibition is being demonstrated here?</p></li>
+<li><p>What is the dissociation constant for this inhibitor (<span class="math notranslate nohighlight">\(K_I\)</span>)?</p></li>
+</ol>
+<p><strong>Solution</strong></p>
+<p>We will use the example shown in problem 15 above to get <span class="math notranslate nohighlight">\(K_M\)</span> and <span class="math notranslate nohighlight">\(V_{max}\)</span> in both cases.</p>
+<p>I observe that <span class="math notranslate nohighlight">\(K_M\)</span> changes and that this is a competitive inhibitor.</p>
+<div class="math notranslate nohighlight">
+\[K_M^{app} = K_M\left({1 + \frac{[I]}{K_I}}\right)\]</div>
+<p>and so</p>
+<div class="math notranslate nohighlight">
+\[K_I = \frac{[I]}{\frac{K_M^{app}}{K_M}-1}\]</div>
+<p>Examine the <em>Python</em> commands below. Observe how they are no different than using a calculator.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Steal the code from problem 15 and use it. Never reinvent a wheel.</span>
+
+<span class="n">slope</span> <span class="o">=</span> <span class="mf">0.0064</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="mf">0.0018</span>
+
+<span class="n">Vmax</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">intercept</span>
+<span class="n">KM</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">slope</span>
+
+<span class="c1"># Units are reported in the data</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The value of V_max is </span><span class="si">{</span><span class="n">Vmax</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> micromolar per second&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The value of K_M is </span><span class="si">{</span><span class="n">KM</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> mM&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1">### Steal it again.</span>
+
+<span class="n">slope</span> <span class="o">=</span> <span class="mf">0.028</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="mf">0.0018</span>
+
+<span class="n">Vmax2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">intercept</span>
+<span class="n">KM2</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">slope</span>
+
+<span class="c1"># Units are reported in the data</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Inhibited experiment&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The value of V_max is </span><span class="si">{</span><span class="n">Vmax2</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> micromolar per second&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The value of K_M is </span><span class="si">{</span><span class="n">KM2</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2"> mM&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">conc_I</span> <span class="o">=</span> <span class="mi">2</span>     <span class="c1"># micromolar</span>
+<span class="n">conc_I</span> <span class="o">=</span> <span class="n">conc_I</span> <span class="o">/</span> <span class="mi">1000</span>  <span class="c1"># convert micromolar to millimolar. Same units as K_M</span>
+
+<span class="n">KI</span> <span class="o">=</span> <span class="n">conc_I</span> <span class="o">/</span> <span class="p">(</span><span class="n">KM2</span><span class="o">/</span><span class="n">KM</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The K_I value is </span><span class="si">{</span><span class="n">KI</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> mM or </span><span class="si">{</span><span class="n">KI</span><span class="o">*</span><span class="mi">1000</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2"> micromolar&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The value of V_max is 555.6 micromolar per second
+The value of K_M is 3.6 mM
+
+Inhibited experiment
+The value of V_max is 555.6 micromolar per second
+The value of K_M is 15.6 mM
+
+The K_I value is 5.93e-04 mM or 0.59 micromolar
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-19-from-math-ideas">
+<h2>Problem 19 from Math Ideas<a class="headerlink" href="#problem-19-from-math-ideas" title="Permalink to this heading">#</a></h2>
+<p>Does it matter if my concentration units and rate units do not match
+in Michaelis-Menten Kinetics? Could I get acceptable results if I used
+slugs/quart (Imperial units for Brexit!) for concentration of substrate and
+lumens/m<sup>2</sup>s (it glows!) for the rate measurement? Prove your answer
+with an examination of the equations involved.</p>
+<p><strong>Solution</strong></p>
+<p>This is revealed by the Michaelis-Menten equation</p>
+<div class="math notranslate nohighlight">
+\[\nu_0 = V_{max}\frac{[S]_t}{K_M + [S]_t}\]</div>
+<p>The units of the <span class="math notranslate nohighlight">\(\frac{[S]_t}{K_M + [S]_t}\)</span> cancel out and do not affect the units for rate.</p>
+</section>
+<section id="problem-20-from-math-ideas">
+<h2>Problem 20 from Math Ideas<a class="headerlink" href="#problem-20-from-math-ideas" title="Permalink to this heading">#</a></h2>
+<p>What is the fraction of active sites occupied when the rate of an enzyme-
+catalyzed reaction is observed to be at 75% of <span class="math notranslate nohighlight">\(V_{max}\)</span>?</p>
+<p><strong>Solution</strong></p>
+<p>This is revealed by the Michaelis-Menten equation</p>
+<div class="math notranslate nohighlight">
+\[\nu_0 = V_{max}\frac{[S]_t}{K_M + [S]_t}\]</div>
+<p>If we are at 75% of the maximum rate then 75% of the active sites are occupied by substrate.</p>
+</section>
+<section id="problem-21-from-math-ideas-2">
+<h2>Problem 21 from Math Ideas 2<a class="headerlink" href="#problem-21-from-math-ideas-2" title="Permalink to this heading">#</a></h2>
+<p>Express the Michaelis-Menten equation in the same form as the equation
+for cooperative kinetics by having it express the fraction of occupied sites
+rather that the initial rate.</p>
+<p><strong>Solution</strong></p>
+<p>For simple cooperative kinetics we observe that <span class="math notranslate nohighlight">\(\nu_0 = V_{max}Y\)</span> where <span class="math notranslate nohighlight">\(Y\)</span> is the fraction of active sites accupied and is give by</p>
+<div class="math notranslate nohighlight">
+\[Y = \frac{\alpha (1+\alpha)^{n-1}}{(1+\alpha)^{n} + L}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha = [S]_t/K_R\)</span> and <span class="math notranslate nohighlight">\(L\)</span> is the equilibrium constant between the active (<span class="math notranslate nohighlight">\(R\)</span>) and inactive states (<span class="math notranslate nohighlight">\(T\)</span>) and <span class="math notranslate nohighlight">\(L = T/R\)</span></p>
+<p>We can write Michaelis-Menten equation using the same convention</p>
+<div class="math notranslate nohighlight">
+\[\nu_0 = V_{max} Y\]</div>
+<p>where <span class="math notranslate nohighlight">\(Y\)</span> is the fraction of occupied active sites and is described by</p>
+<div class="math notranslate nohighlight">
+\[Y = \frac{[S]_t}{K_M + [S]_t}\]</div>
+</section>
+<section id="problem-22-from-math-ideas-2">
+<h2>Problem 22 from Math Ideas 2<a class="headerlink" href="#problem-22-from-math-ideas-2" title="Permalink to this heading">#</a></h2>
+<p>Show that the equation for cooperative enzyme kinetics is the same as the
+Michaelis-Menten equation when the enzyme is always active (<span class="math notranslate nohighlight">\(L=0\)</span>).</p>
+<p><strong>Solution</strong></p>
+<p>If <span class="math notranslate nohighlight">\(L=0\)</span> then that means that the <span class="math notranslate nohighlight">\(T/R\)</span> ratio is extremely large and the enzyme is entirely in the <span class="math notranslate nohighlight">\(R\)</span> form we will no observe cooperative kinetics. Observe…</p>
+<p><span class="math notranslate nohighlight">\(\nu_0 = V_{max}Y\)</span> where <span class="math notranslate nohighlight">\(Y\)</span> is the fraction of active sites accupied and is give by</p>
+<div class="math notranslate nohighlight">
+\[Y = \frac{\alpha (1+\alpha)^{n-1}}{(1+\alpha)^{n} + L}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha = [S]_t/K_R\)</span> and <span class="math notranslate nohighlight">\(L\)</span> is the equilibrium constant between the active (<span class="math notranslate nohighlight">\(R\)</span>) and inactive states (<span class="math notranslate nohighlight">\(T\)</span>) and <span class="math notranslate nohighlight">\(L = T/R\)</span>. If <span class="math notranslate nohighlight">\(L=0\)</span> then…</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1a282502-bcfc-4e75-8028-68006fbc0bc2">
+<span class="eqno">(3)<a class="headerlink" href="#equation-1a282502-bcfc-4e75-8028-68006fbc0bc2" title="Permalink to this equation">#</a></span>\[\begin{align}
+Y &amp;= \frac{\alpha (1+\alpha)^{n-1}}{(1+\alpha)^{n} + 0} \\
+Y &amp;= \frac{\alpha}{1+\alpha} \\
+Y &amp;= \frac{\frac{[S]_t}{K_R}}{1+\frac{[S]_t}{K_R}} \\
+Y &amp;= \frac{{[S]_t}}{K_R+[S]_t}
+\end{align}\]</div>
+<p>Which is the same form as in the Michaelis-Menten equation. <span class="math notranslate nohighlight">\(K_R\)</span> is the dissociation constant for a given subunit active site and is the same as <span class="math notranslate nohighlight">\(K_M\)</span> for a single subunit enzyme.</p>
+</section>
+<section id="problem-23-from-math-ideas-2">
+<h2>Problem 23 from Math Ideas 2<a class="headerlink" href="#problem-23-from-math-ideas-2" title="Permalink to this heading">#</a></h2>
+<p>How would the observed <span class="math notranslate nohighlight">\(V_{max}\)</span> decrease or increase if I add 100 μM of
+a non-competitive inhibitor to my enzyme reaction. The dissociation
+constant for the inhibitor, <span class="math notranslate nohighlight">\(K_I\)</span>, is 100 μM.</p>
+<p><strong>Solution</strong></p>
+<p>A non-competitive inhibitor will decrease <span class="math notranslate nohighlight">\(V_{max}\)</span>.  We know that</p>
+<div class="math notranslate nohighlight">
+\[V_{max}^{app} = \frac{V_{max}}{1 + \frac{[I]}{K_I}}\]</div>
+<p>so I can calculate the new value for <span class="math notranslate nohighlight">\(V_{max}^{app}\)</span>.</p>
+<p>Consider the calculations below.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I_conc</span> <span class="o">=</span> <span class="mf">100E-6</span>   <span class="c1"># units of molar</span>
+<span class="n">K_I</span> <span class="o">=</span> <span class="mf">100E-6</span>      <span class="c1"># units of molar</span>
+<span class="n">V_max</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">V_max_app</span> <span class="o">=</span> <span class="n">V_max</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">I_conc</span> <span class="o">/</span> <span class="n">K_I</span><span class="p">)</span>
+
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">V_max_app</span> <span class="o">/</span> <span class="n">V_max</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The V_max would decrease by a factor of </span><span class="si">{</span><span class="n">ratio</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The V_max would decrease by a factor of 0.5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-24-from-math-ideas-2">
+<h2>Problem 24 from Math Ideas 2<a class="headerlink" href="#problem-24-from-math-ideas-2" title="Permalink to this heading">#</a></h2>
+<p>How would the observed <span class="math notranslate nohighlight">\(K_M\)</span> decrease or increase if I add 150 μM of a
+competitive inhibitor to my enzyme reaction. The dissociation constant
+for the inhibitor, <span class="math notranslate nohighlight">\(K_I\)</span>, is 75 μM.</p>
+<p><strong>Solution</strong></p>
+<p>A competive inhibitor will increase the observed value of <span class="math notranslate nohighlight">\(K_M\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[K_M^{app} = K_M\left({1 + \frac{[I]}{K_I}}\right)\]</div>
+<p>Consider the calculations below</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">I_conc</span> <span class="o">=</span> <span class="mf">150E-6</span>   <span class="c1"># units of molar</span>
+<span class="n">K_I</span> <span class="o">=</span> <span class="mf">75E-6</span>      <span class="c1"># units of molar</span>
+<span class="n">K_M</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="n">K_M_app</span> <span class="o">=</span> <span class="n">K_M</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">I_conc</span> <span class="o">/</span> <span class="n">K_I</span><span class="p">)</span>
+
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">K_M_app</span> <span class="o">/</span> <span class="n">K_M</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The K_M would increase by a factor of </span><span class="si">{</span><span class="n">ratio</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The K_M would increase by a factor of 3.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="problem-25-from-math-ideas-2">
+<h2>Problem 25 from Math Ideas 2<a class="headerlink" href="#problem-25-from-math-ideas-2" title="Permalink to this heading">#</a></h2>
+<p>How would the observed <span class="math notranslate nohighlight">\(K_M\)</span> decrease or increase if I add 75 μM of a non-
+competitive inhibitor to my enzyme reaction. The dissociation constant
+for the inhibitor, <span class="math notranslate nohighlight">\(K_I\)</span>, is 25 μM.</p>
+<p><strong>Solution</strong></p>
+<p>Trick question! The value of <span class="math notranslate nohighlight">\(K_M\)</span> should not be affected by a non-
+competitive inhibitor</p>
+</section>
+<section id="problem-26-from-math-ideas-2">
+<h2>Problem 26 from Math Ideas 2<a class="headerlink" href="#problem-26-from-math-ideas-2" title="Permalink to this heading">#</a></h2>
+<p>The substrate concentration in my enzyme kinetics experiment is 1.2 mM.
+The <span class="math notranslate nohighlight">\(k_{cat}\)</span> for my enzyme/substrate system is <span class="math notranslate nohighlight">\(5.2\times 10^3\ M^{-1}s^{-1}\)</span>. The enzyme
+concentration is 1 μM. The <span class="math notranslate nohighlight">\(K_M\)</span> is 100 mM.</p>
+<ol class="arabic simple">
+<li><p>What is the observed initial rate under these conditions?</p></li>
+<li><p>What is the value of <span class="math notranslate nohighlight">\(k_{cat}/K_M\)</span>? How does it compare?</p></li>
+<li><p>How much does the rate change if I halve the substrate concentration?</p></li>
+<li><p>How much does the rate change when I double the substrate concentration?</p></li>
+<li><p>How much does the rate change when I double the substrate concentration again?</p></li>
+<li><p>What would the line equation be for the Lineweaver-Burke plot of
+this experiment?</p></li>
+<li><p>Sketch the Michaelis-Menten plot and indicate <span class="math notranslate nohighlight">\(V_{max}\)</span> and <span class="math notranslate nohighlight">\(K_M\)</span> on the
+plot.</p></li>
+</ol>
+<p><strong>solution</strong></p>
+<p>All of this has been demonstrated above. I will steal the code I need from earlier answers and reuse it below.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Code stolen from question 17 - adapted for this problem</span>
+
+<span class="n">E_conc</span> <span class="o">=</span> <span class="mf">1E-6</span>   <span class="c1"># molar</span>
+<span class="n">K_M</span> <span class="o">=</span> <span class="mf">100E-3</span>    <span class="c1"># molar</span>
+<span class="n">k_cat</span> <span class="o">=</span> <span class="mf">5.2E3</span>   <span class="c1"># per molar per second</span>
+
+<span class="n">Vmax</span> <span class="o">=</span> <span class="n">E_conc</span> <span class="o">*</span> <span class="n">k_cat</span>
+
+<span class="n">rate</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S</span><span class="o">/</span><span class="p">(</span><span class="n">S</span><span class="o">+</span><span class="n">K_M</span><span class="p">)</span>
+
+<span class="n">S</span> <span class="o">=</span> <span class="mf">1.2E-3</span>      <span class="c1"># molar</span>
+
+<span class="n">rate</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S</span><span class="o">/</span><span class="p">(</span><span class="n">K_M</span><span class="o">+</span><span class="n">S</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate is </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> molar per second&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The value of kcat/KM is </span><span class="si">{</span><span class="n">k_cat</span><span class="o">/</span><span class="n">K_M</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> per second&quot;</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span> <span class="n">S</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">rate2</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S2</span><span class="o">/</span><span class="p">(</span><span class="n">K_M</span><span class="o">+</span><span class="n">S2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate with half the conc of S is </span><span class="si">{</span><span class="n">rate2</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> molar per second. thats about </span><span class="si">{</span><span class="n">rate</span><span class="o">/</span><span class="n">rate2</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">-fold slower&quot;</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span> <span class="n">S</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">rate2</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S2</span><span class="o">/</span><span class="p">(</span><span class="n">K_M</span><span class="o">+</span><span class="n">S2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate with double the conc of S is </span><span class="si">{</span><span class="n">rate2</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> molar per second. thats about </span><span class="si">{</span><span class="n">rate2</span><span class="o">/</span><span class="n">rate</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">-fold faster&quot;</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span> <span class="n">S2</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">rate2</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S2</span><span class="o">/</span><span class="p">(</span><span class="n">K_M</span><span class="o">+</span><span class="n">S2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate with 4-fold greater conc of S is </span><span class="si">{</span><span class="n">rate2</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> molar per second. thats about </span><span class="si">{</span><span class="n">rate2</span><span class="o">/</span><span class="n">rate</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">-fold faster. Are we starting to see the curve?&quot;</span><span class="p">)</span>
+
+<span class="n">S2</span> <span class="o">=</span> <span class="n">S</span><span class="o">*</span><span class="mi">16</span>
+<span class="n">rate2</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S2</span><span class="o">/</span><span class="p">(</span><span class="n">K_M</span><span class="o">+</span><span class="n">S2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The rate with 16-fold greater conc of S is </span><span class="si">{</span><span class="n">rate2</span><span class="si">:</span><span class="s2">0.2e</span><span class="si">}</span><span class="s2"> molar per second. thats about </span><span class="si">{</span><span class="n">rate2</span><span class="o">/</span><span class="n">rate</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">-fold faster. We are definitely seeing the curve?&quot;</span><span class="p">)</span>
+
+<span class="n">slope</span> <span class="o">=</span> <span class="n">K_M</span> <span class="o">/</span> <span class="n">Vmax</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">Vmax</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The lineweaver-Burke version of the equation for this plot would be y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">slope</span> <span class="o">=</span> <span class="p">(</span><span class="n">K_M</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span> <span class="o">/</span> <span class="n">Vmax</span>
+<span class="n">intercept</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">Vmax</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;If I used the original given units of mM for S and M^(-1)s^(-1) for rate the equation would be y = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">x + </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s2">0.1f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="n">max_conc</span> <span class="o">=</span> <span class="mf">500E-3</span>
+
+<span class="n">S_series</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_conc</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">rate_series</span> <span class="o">=</span> <span class="n">Vmax</span> <span class="o">*</span> <span class="n">S_series</span> <span class="o">/</span> <span class="p">(</span><span class="n">S_series</span> <span class="o">+</span> <span class="n">K_M</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">S_series</span><span class="p">,</span> <span class="n">rate_series</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">Vmax</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">S_series</span><span class="p">),</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">100E-3</span><span class="p">,</span><span class="n">Vmax</span><span class="o">*</span><span class="mf">.95</span><span class="p">,</span><span class="s2">&quot;V_max&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="n">Vmax</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="n">K_M</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">K_M</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">Vmax</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">K_M</span><span class="o">*</span><span class="mf">1.05</span><span class="p">,</span><span class="n">Vmax</span><span class="o">*</span><span class="mf">.05</span><span class="p">,</span><span class="s2">&quot;K_M&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The rate is 6.17e-05 molar per second
+The value of kcat/KM is 5.20e+04 per second
+The rate with half the conc of S is 3.10e-05 molar per second. thats about 2.0-fold slower
+The rate with double the conc of S is 1.22e-04 molar per second. thats about 2.0-fold faster
+The rate with 4-fold greater conc of S is 2.38e-04 molar per second. thats about 3.9-fold faster. Are we starting to see the curve?
+The rate with 16-fold greater conc of S is 8.38e-04 molar per second. thats about 13.6-fold faster. We are definitely seeing the curve?
+The lineweaver-Burke version of the equation for this plot would be y = 19.2x + 192.3
+If I used the original given units of mM for S and M^(-1)s^(-1) for rate the equation would be y = 19230.8x + 192.3
+</pre></div>
+</div>
+<img alt="../_images/a2f6ceb8f17e778f69c95f60b87b283e797b598304ff1ceefdf448f823cdf42c.png" src="../_images/a2f6ceb8f17e778f69c95f60b87b283e797b598304ff1ceefdf448f823cdf42c.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./T03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../T3_Step_by_Step_Examples.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Step-by-Step Code Examples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../T04/T4_InhibitionA.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Drug Interaction and Enzyme Kinetics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-11-from-math-ideas-2">Problem 11 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-12-from-math-ideas-2">Problem 12 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-13-from-math-ideas">Problem 13 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-14-from-math-ideas">Problem 14 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-15-from-math-ideas">Problem 15 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-16-from-math-ideas">Problem 16 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-17-from-math-ideas">Problem 17 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-18-from-math-ideas">Problem 18 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-19-from-math-ideas">Problem 19 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-20-from-math-ideas">Problem 20 from Math Ideas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-21-from-math-ideas-2">Problem 21 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-22-from-math-ideas-2">Problem 22 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-23-from-math-ideas-2">Problem 23 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-24-from-math-ideas-2">Problem 24 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-25-from-math-ideas-2">Problem 25 from Math Ideas 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-26-from-math-ideas-2">Problem 26 from Math Ideas 2</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Barry Linkletter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
