@@ -402,7 +402,7 @@ document.write(`
 <span class="c1">### Install UNCERTAINTIES package </span>
 <span class="c1">####################################</span>
 
-<span class="c1">#!pip install uncertainties  # to install in Colab. Add it back to avoid installing again and again.</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>uncertainties<span class="w">  </span>#<span class="w"> </span>to<span class="w"> </span>install<span class="w"> </span><span class="k">in</span><span class="w"> </span>Colab.<span class="w"> </span>Add<span class="w"> </span>it<span class="w"> </span>back<span class="w"> </span>to<span class="w"> </span>avoid<span class="w"> </span>installing<span class="w"> </span>again<span class="w"> </span>and<span class="w"> </span>again.
 
 <span class="c1">####################################</span>
 <span class="c1">### Load tools </span>
@@ -563,7 +563,7 @@ document.write(`
 <span class="c1">### on a single graph</span>
 <span class="c1">################################################################################</span>
 
-<span class="n">concs</span><span class="p">,</span> <span class="n">rates</span> <span class="o">=</span> <span class="n">T4Tools</span><span class="o">.</span><span class="n">get_slopes_and_plot_them_all</span><span class="p">(</span><span class="n">df_no_inh</span><span class="p">,</span>
+<span class="n">concs</span><span class="p">,</span> <span class="n">rates</span> <span class="o">=</span> <span class="n">T4Tools</span><span class="o">.</span><span class="n">get_slopes_and_plot_them_all</span><span class="p">(</span><span class="n">df_no_inh</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span>
                                             <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Change in concentration vs. Time&quot;</span><span class="p">,</span> 
                                             <span class="n">xaxis</span> <span class="o">=</span> <span class="s2">&quot;$t /min$&quot;</span><span class="p">,</span> 
                                             <span class="n">yaxis</span> <span class="o">=</span> <span class="s2">&quot;$\Delta [P] / \mu M$&quot;</span><span class="p">)</span>
