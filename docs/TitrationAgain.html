@@ -1,0 +1,739 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Modeling pH Curved &#8212; Python for Biochemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'TitrationAgain';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="start.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python for Biochemistry</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="start.html">
+                    Data Interpretation for Biochemistry
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="T02/T2_AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="T02/T2_Exercise.html">Problem Set Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="T3_Galactsidase_enzyme_kinetics.html">Enzyme Kinetics Four Ways for Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T3_Step_by_Step_Examples.html">Step-by-Step Code Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="T04/T4_InhibitionA.html">Drug Interaction and Enzyme Kinetics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T04/T4_MM_Intro_fun.html">Example: Enzyme Kinetics with Inhibitors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="T04/Tutorial_4_exercises_Answers.html">Answers for Questions 5 to 10</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 7</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="T07/T07-membranepotential1.html">Chemical Potential</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./TitrationAgain.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/TitrationAgain.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modeling pH Curved</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#titration-of-hcl-in-water">Titration of HCl in Water</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-initial-ph">The Initial pH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-titrant">Adding Titrant</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modeling-ph-curved">
+<h1>Modeling pH Curved<a class="headerlink" href="#modeling-ph-curved" title="Permalink to this heading">#</a></h1>
+<section id="titration-of-hcl-in-water">
+<h2>Titration of HCl in Water<a class="headerlink" href="#titration-of-hcl-in-water" title="Permalink to this heading">#</a></h2>
+<p>Let us consider the tiration of a strong acid in water using a solution of a stron base as the titrant. The usual example is an unknown HCl solution titrated by an NaOH solution of known concentration.</p>
+<p>I add 10 mL of 1.2 M HCl to enough water to create a total volume of 100 mL. We can easily calculate how many mL of a 0.100 M solution of NaOH are required to reach the endpoint. But what does the titration look like if I chose to plot pH vs. volume NaOH added?</p>
+</section>
+<section id="the-initial-ph">
+<h2>The Initial pH<a class="headerlink" href="#the-initial-ph" title="Permalink to this heading">#</a></h2>
+<p>Neutral water has a pH value of 7. Adding the HCl will increase the concentration of hydronium ion. The new pH can be calculated as in the code below. The moles of titrant needed to return to pH 7 will be equal to the moles of acid added.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+
+
+<span class="c1">######################</span>
+<span class="c1">## Define values</span>
+<span class="c1">######################</span>
+
+<span class="n">conc_HCl_stock_solution</span> <span class="o">=</span> <span class="mf">1.2</span> <span class="c1"># moles/L</span>
+<span class="n">volume_HCl_aliquote</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># mL</span>
+<span class="n">total_volume_sample</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># mL</span>
+<span class="n">initial_pH_value</span> <span class="o">=</span> <span class="mi">7</span>
+
+<span class="c1">## convert values to standard SI units</span>
+
+<span class="n">volume_HCl_aliquote</span> <span class="o">=</span> <span class="n">volume_HCl_aliquote</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="mi">1000</span>  <span class="c1"># 1L/1000mL</span>
+<span class="n">total_volume_sample</span> <span class="o">=</span> <span class="n">total_volume_sample</span> <span class="o">*</span> <span class="mi">1</span><span class="o">/</span><span class="mi">1000</span>  <span class="c1"># 1L/1000mL</span>
+
+<span class="c1">#######################</span>
+<span class="c1">## Calculate concentration and pH of sample</span>
+<span class="c1">#######################</span>
+
+<span class="n">initial_conc_H</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="o">-</span><span class="n">initial_pH_value</span>  <span class="c1">## convert pH to [H]</span>
+<span class="n">initial_moles_H_in_neutral_sample</span> <span class="o">=</span> <span class="n">initial_conc_H</span> <span class="o">*</span> <span class="n">total_volume_sample</span>
+
+<span class="n">moles_HCl_added</span> <span class="o">=</span> <span class="n">volume_HCl_aliquote</span> <span class="o">*</span> <span class="n">conc_HCl_stock_solution</span>
+
+<span class="n">final_moles_H_in_sample</span> <span class="o">=</span> <span class="n">initial_moles_H_in_neutral_sample</span> <span class="o">+</span> <span class="n">moles_HCl_added</span>
+
+<span class="n">concentration_of_H_in_sample</span> <span class="o">=</span> <span class="n">final_moles_H_in_sample</span> <span class="o">/</span> <span class="n">total_volume_sample</span>
+<span class="n">pH_sample_initial</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">concentration_of_H_in_sample</span><span class="p">)</span>
+
+<span class="c1">#######################</span>
+<span class="c1">## Print out values for inspection</span>
+<span class="c1">#######################</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The moles of H+ in 100 mL of neutral water is </span><span class="si">{</span><span class="n">initial_moles_H_in_neutral_sample</span><span class="si">:</span><span class="s2">0.10f</span><span class="si">}</span><span class="s2"> moles&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The moles of H+ in 10 mL of HCl aliquote is </span><span class="si">{</span><span class="n">moles_HCl_added</span><span class="si">:</span><span class="s2">0.3f</span><span class="si">}</span><span class="s2"> moles&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The total moles of H+ in 100 mL of sample is </span><span class="si">{</span><span class="n">final_moles_H_in_sample</span><span class="si">:</span><span class="s2">0.10f</span><span class="si">}</span><span class="s2"> moles&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Maybe we can ignore the initial H+ in neutral water when adding acid?&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Concentration of H+ in sample is </span><span class="si">{</span><span class="n">concentration_of_H_in_sample</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> moles/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Initial pH of sample is </span><span class="si">{</span><span class="n">pH_sample_initial</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The moles of H+ in 100 mL of neutral water is 0.0000000100 moles
+The moles of H+ in 10 mL of HCl aliquote is 0.012 moles
+The total moles of H+ in 100 mL of sample is 0.0120000100 moles
+Maybe we can ignore the initial H+ in neutral water when adding acid?
+
+Concentration of H+ in sample is 0.1200 moles/L
+Initial pH of sample is 0.9208
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="adding-titrant">
+<h2>Adding Titrant<a class="headerlink" href="#adding-titrant" title="Permalink to this heading">#</a></h2>
+<p>It is easier to calculate the titrant that must be added to change the pH to a given value compared to the pH after a set amount of titrant is added.</p>
+<p>The total amount of base added to a system (<span class="math notranslate nohighlight">\(B_T\)</span>) will be the total of the free hydroxide concentration (<span class="math notranslate nohighlight">\(OH^-\)</span>) and the change in amount of the basic form of the acid present (<span class="math notranslate nohighlight">\(A\)</span>). We can say that…</p>
+<div class="math notranslate nohighlight">
+\[ B_T = OH^- + A \]</div>
+<p>And we can state that the amount of strong acid added will be equal to the sum of the acidic form and the basic salt.</p>
+<div class="math notranslate nohighlight">
+\[ HA_t = HA + A \]</div>
+<p>…therefore…</p>
+<div class="math notranslate nohighlight">
+\[ HA_t - HA = A \]</div>
+<p>… and we can substitute this expression for <span class="math notranslate nohighlight">\(A\)</span></p>
+<div class="math notranslate nohighlight">
+\[ B_T = OH^- + (HA_t - HA )\]</div>
+<p>Since <span class="math notranslate nohighlight">\(HA\)</span> in this case is a strong acid, we can say that any <span class="math notranslate nohighlight">\(HA\)</span> will be 100% dissociated and any <span class="math notranslate nohighlight">\(HA\)</span> that has not yet been completely titrated will be in the form of <span class="math notranslate nohighlight">\(H^+\)</span></p>
+<p>The free concentration of hydroxide gives us the observed concentration of hydronium ion (and thus we would have the pH) by using the water product, <span class="math notranslate nohighlight">\(K_W\)</span>.</p>
+<p>We will now combine these equation to state an equation where we can calculate the amount of base that is added to reach a given value of hydronium ion concentration as we titrate a strong acid.</p>
+<div class="math notranslate nohighlight">
+\[ B_T = \frac{K_W}{H^+} + (HA_t - H^+ ) \]</div>
+<p>Now given a value for <span class="math notranslate nohighlight">\(H^+\)</span> we can calculate the moles of base required reach that value. The terms of the above equation are explained as follows.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\frac{K_W}{H^+}\)</span> is the concentration of free hydroxide base present.</p></li>
+<li><p><span class="math notranslate nohighlight">\(HA_t\)</span> is the concentration of strong acid that was added. It will be set the pH value at the start of the titration.</p></li>
+<li><p><span class="math notranslate nohighlight">\(- H^+\)</span> represents the remaining amount of HA as we are titrating. So <span class="math notranslate nohighlight">\(HA_t - H^+\)</span> is the amount of hydroxide titrant that was used.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pH</span> <span class="o">=</span> <span class="mf">0.9208</span>  <span class="c1">## The initial pH of our sample as determined above</span>
+<span class="n">Kw</span> <span class="o">=</span> <span class="mf">1E-14</span>
+
+<span class="n">pH_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">pH</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>   <span class="c1"># a list of 100 pH values starting at initial pH</span>
+<span class="n">H_list</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">pH_list</span><span class="p">)</span>              <span class="c1"># a list of [H] values calculted from the pH list</span>
+
+<span class="n">Init_H</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**-</span><span class="n">pH</span>                     <span class="c1"># the amount of HCl added defined the pH </span>
+
+<span class="n">Bt</span> <span class="o">=</span> <span class="n">Kw</span><span class="o">/</span><span class="n">H_list</span> <span class="o">+</span> <span class="p">(</span><span class="n">Init_H</span> <span class="o">-</span> <span class="n">H_list</span><span class="p">)</span>
+
+<span class="n">x</span><span class="o">=</span><span class="n">pH_list</span>
+<span class="n">y</span><span class="o">=</span><span class="n">Bt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13d33c890&gt;]
+</pre></div>
+</div>
+<img alt="_images/d44571fc4a09cfb2b21c1299205b6e5ec72a716d063fb75aa543574d9502c754.png" src="_images/d44571fc4a09cfb2b21c1299205b6e5ec72a716d063fb75aa543574d9502c754.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">InterpolatedUnivariateSpline</span>
+
+
+<span class="n">pH</span> <span class="o">=</span> <span class="mf">0.9208</span>  <span class="c1">## The initial pH of our sample as determined above</span>
+<span class="n">Kw</span> <span class="o">=</span> <span class="mf">1E-14</span>
+
+<span class="n">pH_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">pH</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1"># a list of 100 pH values starting at initial pH</span>
+<span class="n">H_list</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">pH_list</span><span class="p">)</span>              <span class="c1"># a list of [H] values calculted from the pH list</span>
+
+<span class="n">Init_H</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**-</span><span class="n">pH</span>                     <span class="c1"># the amount of HCl added defined the pH </span>
+
+<span class="n">Bt</span> <span class="o">=</span> <span class="n">Kw</span><span class="o">/</span><span class="n">H_list</span> <span class="o">+</span> <span class="p">(</span><span class="n">Init_H</span> <span class="o">-</span> <span class="n">H_list</span><span class="p">)</span>
+
+
+<span class="n">y</span><span class="o">=</span><span class="n">pH_list</span>
+<span class="n">x</span><span class="o">=</span><span class="n">Bt</span>
+
+<span class="n">f2</span> <span class="o">=</span> <span class="n">InterpolatedUnivariateSpline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">f2</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+
+<span class="n">der</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+
+    <span class="n">h</span> <span class="o">=</span> <span class="mf">1e-4</span>
+    <span class="n">der</span><span class="o">.</span><span class="n">append</span><span class="p">(</span> <span class="p">(</span> <span class="n">f2</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">+</span><span class="n">h</span><span class="p">)</span><span class="o">-</span><span class="n">f2</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">-</span><span class="n">h</span><span class="p">)</span> <span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span> <span class="p">)</span>
+<span class="n">der</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">der</span><span class="p">)</span>   
+
+
+
+<span class="n">der</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x1</span> <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span><span class="n">y1</span><span class="p">,</span><span class="s2">&quot;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13d183d10&gt;]
+</pre></div>
+</div>
+<img alt="_images/6edfe02727dca6f8470094ce2b019da890b85d042830a1e44d0b7ff0b2dd705a.png" src="_images/6edfe02727dca6f8470094ce2b019da890b85d042830a1e44d0b7ff0b2dd705a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">der</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">y1</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x1</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x1</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">der</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+
+<span class="n">max_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">der</span><span class="p">)</span>
+<span class="n">max_val</span> <span class="o">=</span> <span class="n">x2</span><span class="p">[</span><span class="n">max_idx</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;endpoint = </span><span class="si">{</span><span class="n">max_val</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>endpoint = 0.12
+</pre></div>
+</div>
+<img alt="_images/ef026272b6694084b9c56b492e5c37157bcc8f656b790b497ccf67f9fec6a36c.png" src="_images/ef026272b6694084b9c56b492e5c37157bcc8f656b790b497ccf67f9fec6a36c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfdx</span> <span class="o">=</span> <span class="n">f2</span><span class="o">.</span><span class="n">derivative</span><span class="p">()</span>
+<span class="n">der</span> <span class="o">=</span> <span class="n">dfdx</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span><span class="n">der</span><span class="p">,</span><span class="s2">&quot;o-&quot;</span><span class="p">)</span>
+
+<span class="n">max_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">der</span><span class="p">)</span>
+<span class="n">max_val</span> <span class="o">=</span> <span class="n">x2</span><span class="p">[</span><span class="n">max_idx</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;endpoint = </span><span class="si">{</span><span class="n">max_val</span><span class="si">:</span><span class="s2">0.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>endpoint = 0.12
+</pre></div>
+</div>
+<img alt="_images/f803ca5b8a284eee208687ba9c33dad3a671e76f9bf03a4d7600c561632949b1.png" src="_images/f803ca5b8a284eee208687ba9c33dad3a671e76f9bf03a4d7600c561632949b1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pH</span> <span class="o">=</span> <span class="mf">0.9208</span>  <span class="c1">## The initial pH of our sample as determined above</span>
+<span class="n">Kw</span> <span class="o">=</span> <span class="mf">1E-14</span>
+<span class="n">Ka</span> <span class="o">=</span> <span class="mf">1E6</span>
+
+<span class="n">pH_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">pH</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1"># a list of 100 pH values starting at initial pH</span>
+<span class="n">H_list</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">pH_list</span><span class="p">)</span>              <span class="c1"># a list of [H] values calculted from the pH list</span>
+
+<span class="n">Init_H</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**-</span><span class="n">pH</span>                     <span class="c1"># the amount of HCl added defined the pH </span>
+
+<span class="c1">#Bt = Kw/H_list + (Init_H - H_list)</span>
+
+<span class="n">Bt</span> <span class="o">=</span> <span class="n">Kw</span><span class="o">/</span><span class="n">H_list</span> <span class="o">+</span> <span class="n">Init_H</span> <span class="o">*</span> <span class="n">H_list</span> <span class="o">/</span> <span class="p">(</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">H_list</span><span class="p">)</span> <span class="o">-</span> <span class="n">H_list</span>
+
+
+<span class="n">y</span><span class="o">=</span><span class="n">pH_list</span>
+<span class="n">x</span><span class="o">=</span><span class="n">Bt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13d1c9190&gt;]
+</pre></div>
+</div>
+<img alt="_images/e05b30ee6e6a2007ac84664f2f6cd5ac6f668d332ae22ec6126aa228d9454f8a.png" src="_images/e05b30ee6e6a2007ac84664f2f6cd5ac6f668d332ae22ec6126aa228d9454f8a.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#titration-of-hcl-in-water">Titration of HCl in Water</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-initial-ph">The Initial pH</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-titrant">Adding Titrant</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Barry Linkletter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1046 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Modeling Titrations &#8212; Python for Biochemistry</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'T02/T2_TitrModel';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../start.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Python for Biochemistry</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../start.html">
+                    Data Interpretation for Biochemistry
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 2</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="T2_AcidBaseMath.html">Acid Equilibria with <em>Python</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="T2_Exercise.html">Problem Set Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 3</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T3_Galactsidase_enzyme_kinetics.html">Enzyme Kinetics Four Ways for Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T3_Step_by_Step_Examples.html">Step-by-Step Code Examples</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 4</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T04/T4_InhibitionA.html">Drug Interaction and Enzyme Kinetics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T04/T4_MM_Intro_fun.html">Example: Enzyme Kinetics with Inhibitors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../T04/Tutorial_4_exercises_Answers.html">Answers for Questions 5 to 10</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorial 7</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../T07/T07-membranepotential1.html">Chemical Potential</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/blinkletter/3530Biochem/blob/main/./T02/T2_TitrModel.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/T02/T2_TitrModel.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modeling Titrations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modeling Titrations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-as-a-calculator">Python as a Calculator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-titration">A Simple Titration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-acid-equilibrium">The Acid Equilibrium</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-things-backwards">Doing Things Backwards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#titrating-with-strong-base">Titrating with Strong Base</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-titration-plot-for-acetic-acid">The Titration Plot for Acetic Acid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phenolphthalein-indicator">Phenolphthalein Indicator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#not-so-simple">Not So Simple</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-polyprotic-acid">A Polyprotic Acid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-model">Using the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-first-derivative">Using the First Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acetate">Acetate</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modeling-titrations">
+<h1>Modeling Titrations<a class="headerlink" href="#modeling-titrations" title="Permalink to this heading">#</a></h1>
+<p>This exercise will introduce you to the ideas needed to interpret mathematical models of chemical systems. We will use the classic titration as our example.</p>
+<p>We can model any chemical system with math and then see if the model fits our experimental data. If we obtain a good fit we may be able to determine the parameters of the system with some accuracy. Let us examine a simple titration of acetic acid.</p>
+<p><em>Note:  You can perform this exercise using Maple or Matlab, both of which are freely available to UPEI students via a site license. I am presenting this using Python because it is free to everyone for all time.</em></p>
+<section id="python-as-a-calculator">
+<h2>Python as a Calculator<a class="headerlink" href="#python-as-a-calculator" title="Permalink to this heading">#</a></h2>
+<p>First let us consider the basics. You should explore my notes on <a class="reference external" href="https://blinkletter.github.io/MathWithPython/start.html">Python as a calculator</a> and then work through the <a class="reference external" href="https://blinkletter.github.io/MathWithPython/E1_The_ICE_Table_in_Python.html">example of weak acid dissociation</a> found on those pages.</p>
+<p>Download the Jupyter Notebook for <a class="reference external" href="https://blinkletter.github.io/MathWithPython/E1_The_ICE_Table_in_Python.html">example of weak acid dissociation</a> and solve the following problem: What is the pH of the solution created by adding 2.0 mL of acetic acid to 500 mL of pure water?</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sympy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">GitHub_Data_Location</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/blinkletter/3530Biochem/main/T02/data/&quot;</span>
+
+<span class="c1">#github_location_styles = &quot;https://raw.githubusercontent.com/blinkletter/LFER-QSAR/main/styles/&quot;</span>
+<span class="c1">#plt.style.use(github_location_styles + &quot;tufte.mplstyle&quot;)        </span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="a-simple-titration">
+<h2>A Simple Titration<a class="headerlink" href="#a-simple-titration" title="Permalink to this heading">#</a></h2>
+<p>Let us take that as a starting point. The pH of the solution is 2.96 (did you use the density of acetic acid to get the correct mass for the calculations?). We need a function that will model the concentration of hydronium ion and the amount of base added as we titrate.</p>
+<section id="the-acid-equilibrium">
+<h3>The Acid Equilibrium<a class="headerlink" href="#the-acid-equilibrium" title="Permalink to this heading">#</a></h3>
+<p>As we learned in the <a class="reference external" href="https://blinkletter.github.io/MathWithPython/E1_The_ICE_Table_in_Python.html">example of weak acid dissociation</a>, the acid equilibrium of acetic acid can be expressed as…</p>
+<div class="math notranslate nohighlight">
+\[AcOH \rightleftharpoons H^+ + AcO^-\]</div>
+<div class="math notranslate nohighlight">
+\[K_a = \frac{[H^+][AcO^-]}{[AcOH]}\]</div>
+<p>We will use the more general form below for all future equations…</p>
+<div class="math notranslate nohighlight">
+\[HA \rightleftharpoons H + A\]</div>
+<div class="math notranslate nohighlight">
+\[K_a = \frac{[H][A]}{[AH]}\]</div>
+</section>
+<section id="doing-things-backwards">
+<h3>Doing Things Backwards<a class="headerlink" href="#doing-things-backwards" title="Permalink to this heading">#</a></h3>
+<p>In all the math that follows you will see that we are building equations that give us the amount of the basic or acidic form of the acid being titrated, not the concentration of hydronium, [H]. This is because the math is simpler with this approach.</p>
+</section>
+<section id="titrating-with-strong-base">
+<h3>Titrating with Strong Base<a class="headerlink" href="#titrating-with-strong-base" title="Permalink to this heading">#</a></h3>
+<p>The total concentration of acetic acid, <span class="math notranslate nohighlight">\([A]_T\)</span>, in the solution is the combined concentrations of the acid and the conjugate base.</p>
+<div class="math notranslate nohighlight">
+\[[A]_T = [A] + [AH]\]</div>
+<p>Combining this with the equation for <span class="math notranslate nohighlight">\(K_a\)</span> described above will give us an expression for the amount of the basic form as a fraction of the total amount of the acetic acid that was added.</p>
+<div class="math notranslate nohighlight">
+\[[A] = [A]_T\frac{K_a}{K_a+[H]}\]</div>
+<p>We are titrating with a strong base, like NaOH.  We assume that it is a much stronger base that the acetate ion and the amount of hydroxide, <span class="math notranslate nohighlight">\(B_T\)</span>, added will be represented by the amount of acetate ion, <span class="math notranslate nohighlight">\([A]\)</span>, and free hydroxide, <span class="math notranslate nohighlight">\([OH]\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[B_T = [OH] + [A]\]</div>
+<p>Substitiute in the expression for <span class="math notranslate nohighlight">\([A]\)</span> above and we have…</p>
+<div class="math notranslate nohighlight">
+\[B_T = [OH] + [A]_T\frac{K_a}{K_a+[H]}\]</div>
+<p>We can express <span class="math notranslate nohighlight">\([OH]\)</span> as a function of <span class="math notranslate nohighlight">\([H]\)</span>…</p>
+<div class="math notranslate nohighlight">
+\[[OH] = \frac{K_W}{[H]}\]</div>
+<p>Therefore…</p>
+<div class="math notranslate nohighlight">
+\[B_T = \frac{K_W}{[H]} + [A]_T\frac{K_a}{K_a+[H]}\]</div>
+<p>We can make a list of pH values (remember that <span class="math notranslate nohighlight">\(pH = -\log{[H]}\)</span>) and calculate a list of corresponding values for base added, <span class="math notranslate nohighlight">\(B_T\)</span>. We can then plot <span class="math notranslate nohighlight">\(pH\)</span> vs. <span class="math notranslate nohighlight">\(B_T\)</span> to get a model titration curve. The following code will calculate these two lists of values.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">KW</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span> <span class="mi">14</span><span class="p">)</span>       <span class="c1"># Ionic product of water</span>
+<span class="n">Ka</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span> <span class="mf">4.76</span><span class="p">)</span>     <span class="c1"># Ka value for acetic acid</span>
+<span class="n">At</span> <span class="o">=</span> <span class="mf">0.06994</span>            <span class="c1"># concentration of acetic acid added (in moles/L)</span>
+
+<span class="n">pH_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">2.96</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>      <span class="c1"># a list of 100 pH values</span>
+<span class="n">H_list</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span> <span class="n">pH_list</span><span class="p">)</span>                <span class="c1"># a list of [H] values calculted from the pH list</span>
+
+<span class="n">B_list</span> <span class="o">=</span> <span class="n">KW</span> <span class="o">/</span> <span class="n">H_list</span> <span class="o">+</span> <span class="n">At</span> <span class="o">*</span> <span class="n">Ka</span> <span class="o">/</span> <span class="p">(</span><span class="n">Ka</span> <span class="o">+</span> <span class="n">H_list</span><span class="p">)</span>   <span class="c1"># a list of calculated values for base added to reach the value given in the list of H_list values.</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+<section id="the-titration-plot-for-acetic-acid">
+<h3>The Titration Plot for Acetic Acid<a class="headerlink" href="#the-titration-plot-for-acetic-acid" title="Permalink to this heading">#</a></h3>
+<p>The following code will now plot the results. We start at <span class="math notranslate nohighlight">\(pH = 2.96\)</span>. This values comes from our calculation for adding 2.0 mL of acetic acid to 500 mL of water for an initial concentration of <span class="math notranslate nohighlight">\([A]_T = 0.0699 M\)</span> We can see in the plot that the endpoint occurs very near that value for concentration of NaOH added.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">B_list</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pH_list</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">At</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">pH_list</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">pH_list</span><span class="p">),</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/2ebc9927a192e132ff1b593a8f589116851714f771907cddc7332b51da19cb4d.png" src="../_images/2ebc9927a192e132ff1b593a8f589116851714f771907cddc7332b51da19cb4d.png" />
+</div>
+</div>
+</section>
+<section id="phenolphthalein-indicator">
+<h3>Phenolphthalein Indicator<a class="headerlink" href="#phenolphthalein-indicator" title="Permalink to this heading">#</a></h3>
+<p>We know that phenolphthalein indicator changes from colorless to pink at pH 8.5. What is the amount of base needed to reach that pH value? We can just do the math with the code below.</p>
+<p>Take note of how vertical the function is at the endpoint. pH changes rapidly in neutral water with the tiniest addition of acid or base. Once we have fully titrated the acetic acid there is nothing to prevent the pH from rising past the <span class="math notranslate nohighlight">\(pK_a\)</span> value of the phenolphthalein indicator.</p>
+<p>The amount of phenolphthalein present is very small and it has no significant effect on the titration. As long as your pH change is rapid in the region of pH = 8 to 9 then this indicator will work well.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pH</span> <span class="o">=</span> <span class="mf">8.3</span>
+<span class="n">H</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span><span class="p">(</span><span class="o">-</span> <span class="n">pH</span><span class="p">)</span>
+<span class="n">Ka</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span> <span class="mf">4.76</span><span class="p">)</span>      <span class="c1"># Ka value for acetic acid</span>
+
+<span class="n">B</span> <span class="o">=</span> <span class="n">KW</span><span class="o">/</span><span class="n">H</span> <span class="o">+</span> <span class="n">At</span><span class="o">*</span><span class="n">Ka</span><span class="o">/</span><span class="p">(</span><span class="n">Ka</span><span class="o">+</span><span class="n">H</span><span class="p">)</span>  <span class="c1"># This is the equation we used to make the plot above</span>
+
+<span class="c1"># Plot the titration curve with the phenolphthalein pKa indicated by a dashed line</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hlines</span><span class="p">(</span><span class="mf">8.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">B</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">B_list</span><span class="p">,</span> <span class="n">pH_list</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># print the calculated endpoint when pH = Pka of phenolphthalein</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The endpoint is reached when the concentration of NaOH added is... &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">B</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> moles/L&quot;</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/37974875604451f2156216c4983c4d1f5faa40ec2c66130f7474da58023c2f01.png" src="../_images/37974875604451f2156216c4983c4d1f5faa40ec2c66130f7474da58023c2f01.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The endpoint is reached when the concentration of NaOH added is... 
+0.069922 moles/L
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="not-so-simple">
+<h2>Not So Simple<a class="headerlink" href="#not-so-simple" title="Permalink to this heading">#</a></h2>
+<p>We are not always starting with a pure solution of acetic acid and water. Imagine I begin with an unknown mixture of acetic acid and sodium acetate. I want to get the total concentration of acetate by titration. The mixture is already partly titrated if significant amounts of the base and the acid forms are present.</p>
+<p>I will add enough strong acid (e.g. HCl) to take the pH well below the <span class="math notranslate nohighlight">\(pK_a\)</span> of acetic acid.  At pH 1.0 the acetic acid is 99.8% in its acidic form. We will also have excess acid. So the amount of titrant will be increased by the amount of strong acid.</p>
+<div class="math notranslate nohighlight">
+\[B_T + [H] = [OH] + [A] \]</div>
+<div class="math notranslate nohighlight">
+\[B_T = [OH] - [H] + [A] \]</div>
+<div class="math notranslate nohighlight">
+\[B_T = \frac{K_W}{[H]} - [H] + [A]_T\frac{K_a}{K_a+[H]}\]</div>
+<p>The code below implements this model.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">KW</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span> <span class="mi">14</span><span class="p">)</span>       <span class="c1"># Ionic product of water</span>
+<span class="n">Ka</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span> <span class="mf">4.76</span><span class="p">)</span>     <span class="c1"># Ka value for acetic acid</span>
+<span class="n">At</span> <span class="o">=</span> <span class="mf">0.06994</span>            <span class="c1"># concentration of acetic acid added (in moles/L)</span>
+
+
+<span class="n">pH_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>   <span class="c1"># a list of 100 pH values</span>
+<span class="n">H_list</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">pH_list</span><span class="p">)</span>             <span class="c1"># a list of [H] values calculted from the pH list</span>
+
+<span class="n">Init_H</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**-</span><span class="n">pH_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            <span class="c1"># The starting [H], represents amount of additional strong </span>
+                                    <span class="c1">#  acid added and assumes that the tritrated acid was added </span>
+                                    <span class="c1">#  in its fully acidic form.</span>
+        
+<span class="n">B_list</span> <span class="o">=</span> <span class="n">KW</span><span class="o">/</span><span class="n">H_list</span> <span class="o">+</span> <span class="n">At</span><span class="o">*</span><span class="n">Ka</span><span class="o">/</span><span class="p">(</span><span class="n">Ka</span><span class="o">+</span><span class="n">H_list</span><span class="p">)</span> <span class="o">-</span> <span class="n">H_list</span> <span class="o">+</span> <span class="n">Init_H</span>   <span class="c1">#Init_H added so that the titration starts at zero</span>
+
+
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">Init_H</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">Init_H</span> <span class="o">+</span> <span class="n">At</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">B_list</span><span class="p">,</span> <span class="n">pH_list</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/57f8beee7f57f1441b30b3132ad085a8ded4e88f4615905c0e76e68d449c8ef7.png" src="../_images/57f8beee7f57f1441b30b3132ad085a8ded4e88f4615905c0e76e68d449c8ef7.png" />
+</div>
+</div>
+<p>The vertical lines in the plot above denote the equivalence points for titrating away the 0.1 moles/L of string acid that was added to bring the pH down to 1.0 and the 0.070 moles/L of aceric acid that was present. This is still a simple system and was modelled by adding together the titration curves of water and of acetic acid.</p>
+</section>
+<section id="a-polyprotic-acid">
+<h2>A Polyprotic Acid<a class="headerlink" href="#a-polyprotic-acid" title="Permalink to this heading">#</a></h2>
+<p>Many biological molecules have more than one acidic proton with a <span class="math notranslate nohighlight">\(p\rm K_a\)</span> value in the range of a typical aqueous titration.</p>
+<p>Let us consider the titration of phosphoric acid by a very strong base. Phosphoric acid has three acidic protons.</p>
+<div class="math notranslate nohighlight">
+\[ H_3PO_4 \rightleftharpoons H_2PO_4^{-} \rightleftharpoons HPO_4^{2-} \rightleftharpoons PO_4^{3-} \]</div>
+<p>And there are three corresponding <span class="math notranslate nohighlight">\(\rm Ka\)</span> values for the acid equilibrium if phosphoric acid.</p>
+<div class="math notranslate nohighlight">
+\[ K_{a_1} = \frac{[H^+][H_2PO_4^{-}]}{[H_3PO_4]}\; \; \;K_{a_2} = \frac{[H^+][HPO_4^{2-}]}{[H_2PO_4^{-}]}\; \; \;K_{a_3} = \frac{[H^+][PO_4^{3-}]}{[HPO_4^{2-}]}\]</div>
+<p>And the total amount pf phosphate in the system does not change with the titration so we can say that…</p>
+<div class="math notranslate nohighlight">
+\[ [P]_T = [H_3PO_4] + [H_2PO_4^{-}] + [HPO_4^{2-}] + [PO_4^{3-}] \]</div>
+<p>From these statements we can derive the following relationship for the amount of base added to acheive a given <span class="math notranslate nohighlight">\(p \rm H\)</span> value.</p>
+<div class="math notranslate nohighlight">
+\[B_T = \frac{K_W}{[H]}- [H] + [P]_T\frac{K_{a_1}[H^+]^2 + 2K_{a_1}K_{a_2}[H^+] + 3K_{a_1}K_{a_2}K_{a_3}}{[H^+]^3+ K_{a_1}[H^+]^2 + K_{a_1}K_{a_2}[H^+] + K_{a_1}K_{a_2}K_{a_3}} \]</div>
+<p>The details of deriving this equation are given in the <strong>Acid/base Equilibria Tutorial</strong> document. The code and plot for the model is shown below.</p>
+<p>This equation could be written as a sum of the titration terms of the polyprotic acid as shown below. This is exactly the same equation as above except the terms in the polyvalent equation have not been collected.</p>
+<div class="math notranslate nohighlight">
+\[B_T = \frac{K_W}{[H]} - [H] + [P]_T\left(\frac{K_{a_1}}{K_{a_1}+[H]}+\frac{K_{a_2}}{K_{a_2}+[H]}+\frac{K_{a_3}}{K_{a_3}+[H]}\right)\]</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">KW</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span> <span class="mi">14</span><span class="p">)</span>       <span class="c1"># Ionic product of water</span>
+<span class="n">Ka1</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span> <span class="mf">2.15</span><span class="p">)</span>       <span class="c1"># Ka value for H3PO4 acid</span>
+<span class="n">Ka2</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span> <span class="mf">7.20</span><span class="p">)</span>       <span class="c1"># Ka value for H2PO4 acid</span>
+<span class="n">Ka3</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span> <span class="mf">12.35</span><span class="p">)</span>      <span class="c1"># Ka value for HPO4 acid</span>
+<span class="n">Pt</span> <span class="o">=</span> <span class="mf">0.05</span>               <span class="c1"># concentration of phosphoric acid added (in moles/L)</span>
+
+
+<span class="n">pH_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.44</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>   <span class="c1"># a list of 200 pH values</span>
+<span class="n">H_list</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">pH_list</span><span class="p">)</span>             <span class="c1"># a list of [H] values calculated from the pH list</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">H_list</span>                          <span class="c1"># For simplicity in the math expression</span>
+
+<span class="n">Init_H</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**-</span><span class="n">pH_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>            <span class="c1"># The starting [H], represents amount of additional strong </span>
+                                    <span class="c1">#  acid added and assumes that the tritrated acid was added </span>
+                                    <span class="c1">#  in its fully acidic form. \</span>
+        
+<span class="n">B_list</span> <span class="o">=</span> <span class="n">Init_H</span>  <span class="o">+</span> <span class="n">KW</span><span class="o">/</span><span class="n">H</span> <span class="o">-</span> <span class="n">H</span> <span class="o">+</span> <span class="n">Pt</span>   \
+          <span class="o">*</span> <span class="p">((</span> <span class="n">Ka1</span><span class="o">*</span><span class="n">H</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">+</span><span class="p">(</span> <span class="mi">2</span><span class="o">*</span><span class="n">Ka1</span><span class="o">*</span><span class="n">Ka2</span><span class="o">*</span><span class="n">H</span> <span class="p">)</span><span class="o">+</span><span class="p">(</span> <span class="mi">3</span><span class="o">*</span><span class="n">Ka1</span><span class="o">*</span><span class="n">Ka2</span><span class="o">*</span><span class="n">Ka3</span> <span class="p">))</span> \
+          <span class="o">/</span> <span class="p">((</span> <span class="n">H</span><span class="o">**</span><span class="mi">3</span> <span class="p">)</span><span class="o">+</span><span class="p">(</span> <span class="n">Ka1</span><span class="o">*</span><span class="n">H</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span><span class="o">+</span><span class="p">(</span> <span class="n">Ka1</span><span class="o">*</span><span class="n">Ka2</span><span class="o">*</span><span class="n">H</span> <span class="p">)</span><span class="o">+</span><span class="p">(</span> <span class="n">Ka1</span><span class="o">*</span><span class="n">Ka2</span><span class="o">*</span><span class="n">Ka3</span> <span class="p">))</span> 
+         <span class="c1">#Init_H added so that the titration starts at zero</span>
+
+<span class="c1">#B_list = Init_H + 1*(KW/H - H) + Pt * (Ka1/(Ka1+H) + Ka2/(Ka2+H) + Ka3/(Ka3+H)) #Init_H added so that the titration starts at zero</span>
+         
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">Init_H</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">Init_H</span> <span class="o">+</span> <span class="n">Pt</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">Init_H</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">Pt</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span>  <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">Init_H</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">Pt</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">B_list</span><span class="p">,</span> <span class="n">pH_list</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/5e2aa2d2d15191ce4b3572e0b9cbd4d9a461450bf79f4b4f5c37dd243ae160e3.png" src="../_images/5e2aa2d2d15191ce4b3572e0b9cbd4d9a461450bf79f4b4f5c37dd243ae160e3.png" />
+</div>
+</div>
+</section>
+<section id="using-the-model">
+<h2>Using the Model<a class="headerlink" href="#using-the-model" title="Permalink to this heading">#</a></h2>
+<p>Observe in the plot above that the lowest and highest <span class="math notranslate nohighlight">\(p\rm K_a\)</span> values in phosphoric acid are not resolved. The water itself is being titrated below <span class="math notranslate nohighlight">\(p\rm H\)</span> 2 and above <span class="math notranslate nohighlight">\(p\rm H\)</span> 12 and this signal is added to and overwhelms the signal from the phosphoric acid. We cannot easily determine the <span class="math notranslate nohighlight">\(p\rm K_a\)</span>  values for the first and third acid dissociation by visual inspection. But we could fit experimental data to the model and see if we can determine the Ka values and the concentration.</p>
+<p>First we will find some data reported in the literature. I obtained data from a recent paper that described the titration of 25 mL of a 0.04389 M solution of phosphoric acid using a 0.09948 M solution of NaOH. The code below will read in the data from a file.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Titration of 25 mL of H3PO4 0.04389 M with NaOH 0.09948 M (Veq1=11.03 mL; Veq2=22.06 mL)</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">NaOH_conc</span> <span class="o">=</span> <span class="mf">0.09948</span>  <span class="c1"># moles/L</span>
+
+<span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;PO4.Data.csv&quot;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="n">GitHub_Data_Location</span> <span class="o">+</span> <span class="n">data_file</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pH&quot;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Volume.mL&quot;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">/</span><span class="mi">1000</span><span class="o">*</span><span class="n">NaOH_conc</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;kx&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="mf">0.04389</span><span class="o">*</span><span class="mf">.025</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../_images/924058be009ba7810fae54b7f7ee2348fb16a3ad3f8256c0e411face743ee509.png" src="../_images/924058be009ba7810fae54b7f7ee2348fb16a3ad3f8256c0e411face743ee509.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.00109725
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-the-first-derivative">
+<h2>Using the First Derivative<a class="headerlink" href="#using-the-first-derivative" title="Permalink to this heading">#</a></h2>
+<p>The slope of the line (the first derivative) will help identify the endpoints.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span>
+
+<span class="n">interpolation</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">interpolate</span><span class="o">.</span><span class="n">make_smoothing_spline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">interpolation</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">der</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="mi">3000</span><span class="p">,</span> <span class="s2">&quot;kx&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="mi">3000</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">der</span><span class="p">,</span> <span class="s2">&quot;k-&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x13c690150&gt;]
+</pre></div>
+</div>
+<img alt="../_images/1e26520d5bb6b35f693eb59a67c3ab3f23e1913742010ba08dfe163771ed79bb.png" src="../_images/1e26520d5bb6b35f693eb59a67c3ab3f23e1913742010ba08dfe163771ed79bb.png" />
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Titration of 25 mL of H3PO4 0.04389 M with NaOH 0.09948 M (Veq1=11.03 mL; Veq2=22.06 mL)</span>
+
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="k">def</span> <span class="nf">titrate3</span><span class="p">(</span><span class="n">pH_list</span><span class="p">,</span> <span class="n">Ka1</span><span class="p">,</span> <span class="n">Ka2</span><span class="p">,</span> <span class="n">Ka3</span><span class="p">):</span>
+    
+    <span class="n">KW</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">14</span><span class="p">)</span>
+    
+    <span class="n">H</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">pH_list</span><span class="p">)</span>                              
+    <span class="n">Init_H</span> <span class="o">=</span> <span class="n">H</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>      
+    <span class="n">Pt</span> <span class="o">=</span> <span class="mf">0.00109725</span>
+    
+    <span class="n">B_list</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">Init_H</span> <span class="o">+</span> <span class="mi">0</span><span class="o">*</span><span class="p">(</span><span class="n">KW</span><span class="o">/</span><span class="n">H</span><span class="p">)</span> <span class="o">-</span> <span class="mi">0</span><span class="o">*</span><span class="n">H</span> <span class="o">+</span> <span class="n">Pt</span> <span class="o">*</span> <span class="p">(</span><span class="n">Ka1</span><span class="o">/</span><span class="p">(</span><span class="n">Ka1</span><span class="o">+</span><span class="n">H</span><span class="p">)</span> <span class="o">+</span> <span class="n">Ka2</span><span class="o">/</span><span class="p">(</span><span class="n">Ka2</span><span class="o">+</span><span class="n">H</span><span class="p">)</span> <span class="o">+</span> <span class="n">Ka3</span><span class="o">/</span><span class="p">(</span><span class="n">Ka3</span><span class="o">+</span><span class="n">H</span><span class="p">))</span> 
+    <span class="c1">#Init_H added so that the titration starts at zero</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">B_list</span><span class="p">)</span>
+
+<span class="n">NaOH_conc</span> <span class="o">=</span> <span class="mf">0.09948</span>  <span class="c1"># moles/L</span>
+
+<span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;PO4.Data.csv&quot;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="n">GitHub_Data_Location</span> <span class="o">+</span> <span class="n">data_file</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;pH&quot;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;Volume.mL&quot;</span><span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">/</span><span class="mi">1000</span><span class="o">*</span><span class="n">NaOH_conc</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;kx&quot;</span><span class="p">)</span>
+
+
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">titrate3</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">B_opt_list</span> <span class="o">=</span> <span class="n">titrate3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mf">7.17792405e-03</span><span class="p">,</span><span class="mf">2.29729339e-07</span><span class="p">,</span><span class="mf">3.29742550e-12</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">B_opt_list</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;b-&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">3.29742550e-12</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[7.17792405e-03 3.29742550e-12 2.29729339e-07]
+[ -2.14400114 -11.48182501  -6.63878354]
+-11.782855003516664
+</pre></div>
+</div>
+<img alt="../_images/14ab33d38c9fd58104f602313dd49012a4e92bff789b73bc3cf1b10d838114b2.png" src="../_images/14ab33d38c9fd58104f602313dd49012a4e92bff789b73bc3cf1b10d838114b2.png" />
+</div>
+</div>
+</section>
+<section id="acetate">
+<h2>Acetate<a class="headerlink" href="#acetate" title="Permalink to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  Titration with NaOH 0.4905 M, of 3.96 mmol of acetic acid plus 0.484 mmol de HCl dissolved in 200 mL of KCl 0.10 M</span>
+<span class="c1"># from http://dx.doi.org/10.20431/2349-0403.0409002</span>
+
+
+<span class="kn">import</span> <span class="nn">scipy</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="k">def</span> <span class="nf">titrate3</span><span class="p">(</span><span class="n">pH_list</span><span class="p">,</span> <span class="n">Ka1</span><span class="p">,</span> <span class="n">At</span><span class="p">):</span>
+    
+    <span class="n">KW</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">14</span><span class="p">)</span>
+    
+    <span class="n">H</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">pH_list</span><span class="p">)</span>                              
+    <span class="n">Init_H</span> <span class="o">=</span> <span class="mf">0.00048</span>  <span class="c1"># moles HCl added     </span>
+<span class="c1">#    At = 0.00396</span>
+    
+    <span class="n">B_list</span> <span class="o">=</span> <span class="p">(</span><span class="n">KW</span><span class="o">/</span><span class="n">H</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">Init_H</span> <span class="o">-</span> <span class="n">H</span><span class="p">)</span> <span class="o">+</span> <span class="n">At</span> <span class="o">*</span> <span class="p">(</span><span class="n">Ka1</span><span class="o">/</span><span class="p">(</span><span class="n">Ka1</span><span class="o">+</span><span class="n">H</span><span class="p">))</span>
+
+    <span class="c1">#Init_H added so that the titration starts at zero</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">B_list</span><span class="p">)</span>
+
+
+<span class="n">NaOH_conc</span> <span class="o">=</span> <span class="mf">0.4905</span>  <span class="c1"># moles/L</span>
+
+<span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;AcOH.Data.csv&quot;</span>
+<span class="n">file_name</span> <span class="o">=</span> <span class="n">GitHub_Data_Location</span> <span class="o">+</span> <span class="n">data_file</span>
+
+<span class="n">xf</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">)</span>
+<span class="c1">#print(xf.columns)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">xf</span><span class="p">[</span><span class="s2">&quot;pH&quot;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">xf</span><span class="p">[</span><span class="s2">&quot;V_mL&quot;</span><span class="p">]</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">/</span> <span class="mi">1000</span> <span class="o">*</span> <span class="n">NaOH_conc</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;kx&quot;</span><span class="p">)</span>
+
+
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">optimize</span><span class="o">.</span><span class="n">curve_fit</span><span class="p">(</span><span class="n">titrate3</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]])</span>
+
+<span class="n">Ka</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">At</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">B_opt_list</span> <span class="o">=</span> <span class="n">titrate3</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Ka</span><span class="p">,</span> <span class="n">At</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">B_opt_list</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="s2">&quot;b-&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="c1">#print(-np.log10(a))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2.55308528e-05 3.26805871e-03]
+</pre></div>
+</div>
+<img alt="../_images/53b28e8c7c07ccc5f4fffabc02c929fa49454500e961f72eb8691223b21a72cf.png" src="../_images/53b28e8c7c07ccc5f4fffabc02c929fa49454500e961f72eb8691223b21a72cf.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="resources">
+<h1>Resources<a class="headerlink" href="#resources" title="Permalink to this heading">#</a></h1>
+<p>I am not a programmer, I am a user. I learned how to use Python at the most basic level and then turned to helpful resources made available by others. Along the way I made notes that I turned into some resources for myself that you may find useful as well.</p>
+<p><strong>Math with Python</strong>.  These are some pages that I made to help me learn how to perform calculations and do basic modelling with Python. <a class="reference external" href="https://blinkletter.github.io/MathWithPython/start.html">https://blinkletter.github.io/MathWithPython/start.html</a></p>
+<p><strong>Mathematical Python</strong>. An introduction to mathematical computing including:Jupyter notebooks, basic Python programming, and scientific computing with NumPy, SciPy and Matplotlib. <a class="reference external" href="https://patrickwalls.github.io/mathematicalpython/">https://patrickwalls.github.io/mathematicalpython/</a></p>
+<p><strong>Scientific Computing for Chemists with Python</strong>. Python basics with a focus on examples applicable to chemistry. <a class="reference external" href="https://weisscharlesj.github.io/SciCompforChemists/intro.html">https://weisscharlesj.github.io/SciCompforChemists/intro.html</a></p>
+<p>The data for the phosphate and acetate titrations was from “Titration Error in Polyprotic Acid-Base Titrations: Applications to Titration of Vinegar, Cola Drinks and Antibiotic Batches.” Julia Martín, Gloria Cañamares Marin, Agustin G. Asuero, <em>International Journal of Advanced Research in Chemical Science</em>, <strong>2017</strong>, <em>4</em>, 7-20. <a class="reference external" href="http://dx.doi.org/10.20431/2349-0403.0409002">http://dx.doi.org/10.20431/2349-0403.0409002</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">0.04389</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.3576344191550267
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./T02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modeling Titrations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-as-a-calculator">Python as a Calculator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-titration">A Simple Titration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-acid-equilibrium">The Acid Equilibrium</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#doing-things-backwards">Doing Things Backwards</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#titrating-with-strong-base">Titrating with Strong Base</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-titration-plot-for-acetic-acid">The Titration Plot for Acetic Acid</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phenolphthalein-indicator">Phenolphthalein Indicator</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#not-so-simple">Not So Simple</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-polyprotic-acid">A Polyprotic Acid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-model">Using the Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-first-derivative">Using the First Derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acetate">Acetate</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#resources">Resources</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Barry Linkletter
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
