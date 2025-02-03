@@ -93,6 +93,7 @@ def get_slopes_and_plot_them_all(df, title ="Enter Title Here", xaxis = "x-axis"
     plt.xlabel(xaxis)
     plt.title(title)
 
+    plt.tight_layout()
     plt.savefig("MultiPlot.pdf")
     plt.show()
 
@@ -182,6 +183,7 @@ def MM_Plot(x, y):
     ### Display and export the plot
     ######################
     
+    plt.tight_layout()
     plt.savefig("MM_plot.pdf")
     plt.show()
 
@@ -267,6 +269,7 @@ def Linear_Plot(x, y, title ="Enter Title Here", xaxis = "x-axis", yaxis = "y-ax
     ### Display and export the plot
     #####################
     
+    plt.tight_layout()
     plt.savefig("Linear_plot.pdf")
     plt.show()
 
